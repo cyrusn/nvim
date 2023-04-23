@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' },
+      { "debugloop/telescope-undo.nvim" },
     }
   }
 
@@ -23,7 +24,6 @@ return require('packer').startup(function(use)
   use("windwp/nvim-autopairs")
   use("akinsho/bufferline.nvim")
   use("folke/which-key.nvim")
-  use("mbbill/undotree")
   use("github/copilot.vim")
   use("lukas-reineke/indent-blankline.nvim")
 
@@ -83,4 +83,7 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
+
+  use("akinsho/toggleterm.nvim")
+  use("ahmedkhalf/project.nvim")
 end)
