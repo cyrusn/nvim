@@ -1,8 +1,11 @@
-local opts = { noremap = true, silent = true }
+
+local gs = require('gitsigns')
+
+local function keymap(mode, key, func, desc)
+  vim.keymap.set(mode, key, func, { desc = desc })
+end
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
 --Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -16,66 +19,66 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Suggested by theprimeagen, delete and paste in visual mode will not copy
-keymap("v", "p", [["_dP]], opts)
-keymap("v", "d", [["_dd]], opts)
-keymap("x", "p", [["_dP]], opts)
-keymap('x', "d", [["_dd"]], opts)
+keymap("v", "p", [["_dP]])
+keymap("v", "x", [["_xx]])
+keymap("x", "p", [["_dP]])
+keymap('x', "x", [["_xx"]])
 
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 -- zz will redraw the cursor in the middle of window
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "n", "nzzzv", opts)
-keymap("n", "N", "Nzzzv", opts)
-keymap("n", "<C-k>", "<cmd>cnext<CR>zz", opts)
-keymap("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
-keymap('n', 'j', 'jzzzj', opts)
-keymap('n', 'k', 'kzzzk', opts)
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "n", "nzzzv")
+keymap("n", "N", "Nzzzv")
+keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
+keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
+keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
+keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
+keymap('n', 'j', 'jzzzj')
+keymap('n', 'k', 'kzzzk')
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", ":resize -2<CR>")
+keymap("n", "<C-Down>", ":resize +2<CR>")
+keymap("n", "<C-Left>", ":vertical resize -2<CR>")
+keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>")
+keymap("n", "<S-h>", ":bprevious<CR>")
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
 
 -- Insert --
 -- Press jk fast to exit insert mode 
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "kj", "<ESC>", opts)
+keymap("i", "jk", "<ESC>")
+keymap("i", "kj", "<ESC>")
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-j>", ":m .+1<CR>==")
+keymap("v", "<A-k>", ":m .-2<CR>==")
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv")
+keymap("x", "K", ":move '<-2<CR>gv-gv")
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 -- Terminal --
 -- Better terminal navigation
@@ -84,3 +87,57 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- Leader Mappings --
+-- Basic
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", "Explorer")
+keymap("n", "<leader>q", "<cmd>q<CR>", "Quit")
+keymap("n", "<leader>c", "<cmd>Bdelete<CR>", "Close Buffer")
+keymap("n", "<leader>w", "<cmd>w<CR>", "Save")
+keymap("n", "<leader>b", "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", "Search Buffers")
+keymap("n", "<leader>f", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", "Find files")
+keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", "Find Text")
+keymap("n", "<leader>u", "<cmd>Telescope undo<cr>", "Undo")
+keymap("n", "<leader>ms", "<cmd>:so<cr>", "Source File")
+keymap("n", "<leader>Q", "<cmd>qa<CR>", "Quit All")
+
+-- LSP
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
+keymap("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics")
+keymap("n", "<leader>lw", "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics")
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format")
+keymap("n", "<leader>li", "<cmd>LspInfo<cr>", "Info")
+keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", "Installer Info")
+keymap("n", "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic")
+keymap("n", "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
+keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action")
+keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix")
+keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename")
+keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols")
+keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols")
+
+-- Packer
+keymap("n", "<leader>ps", "<cmd>PackerSync<cr>", "Sync")
+keymap("n", "<leader>pu", "<cmd>PackerUpdate<cr>", "Update")
+
+-- Git
+keymap("n", "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk")
+keymap("n", "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk")
+keymap("n", "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk")
+keymap("n", "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk")
+keymap("n", "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer")
+keymap("n", "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer")
+keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>", "Open changed file")
+keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", "Checkout branch")
+keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", "Checkout commit")
+keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", "Diff")
+keymap("n", "<leader>gD", "<cmd>Gitsigns diffthis Head<cr>", "Diff Head")
+keymap("v", "<leader>gr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Reset Hunk")
+keymap("v", "<leader>gs", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage Hunk")
+
+-- Search
+keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown <cr>", "Projects")
+keymap("n", "sh", "<cmd>Telescope help_tags theme=dropdown <cr>", "Helps")
+keymap("n", "<leader>sk", "<cmd>Telescope keymaps theme=dropdown <cr>", "Keymaps")
+keymap("n", "<leader>sm", "<cmd>Telescope man_pages theme=dropdown <cr>", "Man Pages")
+keymap("n", "<leader>sr", "<cmd>Telescope oldfiles theme=dropdown <cr>", "Recent Files")
+keymap("n", "<leader>sc", "<cmd>Telescope commands theme=dropdown <cr>", "Commands")
