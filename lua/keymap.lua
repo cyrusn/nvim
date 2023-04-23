@@ -22,6 +22,9 @@ keymap("v", "p", [["_dP]], opts)
 keymap("v", "d", [["_dd]], opts)
 keymap("x", "p", [["_dP]], opts)
 keymap('x', "d", [["_dd"]], opts)
+keymap('n', 'j', 'jzzzj', opts)
+keymap('n', 'k', 'kzzzk', opts)
+
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 -- zz will redraw the cursor in the middle of window
