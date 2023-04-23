@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -22,8 +20,6 @@ keymap("v", "p", [["_dP]], opts)
 keymap("v", "d", [["_dd]], opts)
 keymap("x", "p", [["_dP]], opts)
 keymap('x', "d", [["_dd"]], opts)
-keymap('n', 'j', 'jzzzj', opts)
-keymap('n', 'k', 'kzzzk', opts)
 
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
@@ -36,6 +32,8 @@ keymap("n", "<C-k>", "<cmd>cnext<CR>zz", opts)
 keymap("n", "<C-j>", "<cmd>cprev<CR>zz", opts)
 keymap("n", "<leader>k", "<cmd>lnext<CR>zz", opts)
 keymap("n", "<leader>j", "<cmd>lprev<CR>zz", opts)
+keymap('n', 'j', 'jzzzj', opts)
+keymap('n', 'k', 'kzzzk', opts)
 
 -- Normal --
 -- Better window navigation

@@ -85,9 +85,10 @@ local mappings = {
   -- Search
   ["s"]  = { name = "Search" },
   ["sp"] = { "<cmd>Telescope projects theme=dropdown <cr>", "Projects" },
-  ["sh"] = { "<cmd>Telescope help_tags theme=dropdown <cr>", "Find Help" },
+  ["sh"] = { "<cmd>Telescope help_tags theme=dropdown <cr>", "Helps" },
+  ["sk"] = { "<cmd>Telescope keymaps theme=dropdown <cr>", "Keymaps" },
   ["sm"] = { "<cmd>Telescope man_pages theme=dropdown <cr>", "Man Pages" },
-  ["sr"] = { "<cmd>Telescope oldfiles theme=dropdown <cr>", "Open Recent Files" },
+  ["sr"] = { "<cmd>Telescope oldfiles theme=dropdown <cr>", "Recent Files" },
   ["sc"] = { "<cmd>Telescope commands theme=dropdown <cr>", "Commands" },
 }
 
