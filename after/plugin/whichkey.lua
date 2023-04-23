@@ -39,7 +39,7 @@ local opts = {
 local mappings = {
   ["e"]  = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["q"]  = { "<cmd>q<CR>", "Quit" },
-  ["c"]  = { "<cmd>bd<CR>", "Close Buffer" },
+  ["c"]  = { "<cmd>Bdelete<CR>", "Close Buffer" },
   ["w"]  = { "<cmd>w<CR>", "Save" },
   ["b"]  = { "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", "Search Buffers" },
   ["f"]  = { "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", "Find files" },

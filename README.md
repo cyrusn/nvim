@@ -1,9 +1,9 @@
-# My NeoVim Settings
+# my neovim settings
 
-## Reference
-- [LunarVim/Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
-- [ThePrimeagen/init.lua](https://github.com/ThePrimeagen/init.lua)
+## reference
+- [lunarvim/neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
+- [theprimeagen/init.lua](https://github.com/ThePrimeagen/init.lua)
 
-## TODO
+## todo
 - add telescope-undo
 - remove unnessesory keymaps

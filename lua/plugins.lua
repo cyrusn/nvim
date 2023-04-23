@@ -86,4 +86,5 @@ return require('packer').startup(function(use)
 
   use("akinsho/toggleterm.nvim")
   use("ahmedkhalf/project.nvim")
+  use('moll/vim-bbye')
 end)
