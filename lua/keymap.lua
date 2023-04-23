@@ -20,10 +20,7 @@ vim.g.maplocalleader = " "
 
 -- Suggested by theprimeagen, delete and paste in visual mode will not copy
 keymap("v", "p", [["_dP]])
-keymap("v", "x", [["_xx]])
 keymap("x", "p", [["_dP]])
-keymap('x', "x", [["_xx"]])
-
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 -- zz will redraw the cursor in the middle of window
