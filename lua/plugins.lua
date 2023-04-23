@@ -7,10 +7,13 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Fuzzy finder
+  -- https://github.com/nvim-telescope/telescope.nvim
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/plenary.nvim' },
+      -- https://github.com/debugloop/telescope-undo.nvim
       { "debugloop/telescope-undo.nvim" },
     }
   }
@@ -19,27 +22,37 @@ return require('packer').startup(function(use)
   use('folke/tokyonight.nvim')
   use({ "catppuccin/nvim", as = "catppuccin" })
 
+  -- copilot
+  -- https://github.com/github/copilot.vim
+  use("github/copilot.vim")
+
+  -- autopairs
+  -- https://github.com/jiangmiao/auto-pairs
+  use("windwp/nvim-autopairs")
 
   -- layout
-  use("windwp/nvim-autopairs")
+  -- https://github.com/akinsho/bufferline.nvim
   use("akinsho/bufferline.nvim")
-  use("folke/which-key.nvim")
-  use("github/copilot.vim")
+  -- https://github.com/lukas-reineke/indent-blankline.nvim
   use("lukas-reineke/indent-blankline.nvim")
-
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-  use("nvim-treesitter/nvim-treesitter-context");
-
+  -- https://github.com/nvim-lualine/lualine.nvim
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
-  use({
-    "williamboman/mason.nvim",
-    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
-  })
+  -- key binding tips
+  -- https://github.com/folke/which-key.nvim
+  use("folke/which-key.nvim")
 
+  -- for syntax highlight
+  -- https://github.com/nvim-treesitter/nvim-treesitter
+  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use("nvim-treesitter/nvim-treesitter-context");
+
+
+  -- Sidebar
+  -- https://github.com/nvim-tree/nvim-tree.lua
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -47,25 +60,29 @@ return require('packer').startup(function(use)
     },
   }
 
+  -- Git
+  -- https://github.com/lewis6991/gitsigns.nvim
   use("lewis6991/gitsigns.nvim")
 
+  -- A pretty list for showing diagnostics --
+  -- https://github.com/folke/trouble.nvim
   use({
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup {
         icons = false,
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
       }
     end
   })
 
+  -- LSP
+  -- https://github.com/VonHeikemen/lsp-zero.nvim
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
+      -- https://github.com/williamboman/mason.nvim
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
 
@@ -83,7 +100,15 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Terminal
+  -- https://github.com/akinsho/toggleterm.nvim
   use("akinsho/toggleterm.nvim")
+
+  -- Project management
+  -- https://github.com/ahmedkhalf/project.nvim
   use("ahmedkhalf/project.nvim")
+
+  -- close buffer gracefully
+  -- https://github.com/moll/vim-bbye
   use('moll/vim-bbye')
 end)
