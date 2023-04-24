@@ -1,4 +1,3 @@
-
 local gs = require('gitsigns')
 
 local function keymap(mode, key, func, desc)
@@ -30,8 +29,8 @@ keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
 keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
+keymap("n", "<leader>k", "<cmd>lnext<CR>zz", "Next Location")
+keymap("n", "<leader>j", "<cmd>lprev<CR>zz", "Prev Location")
 keymap('n', 'j', 'jzzzj')
 keymap('n', 'k', 'kzzzk')
 
@@ -53,13 +52,8 @@ keymap("n", "<S-l>", ":bnext<CR>")
 keymap("n", "<S-h>", ":bprevious<CR>")
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi")
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi")
-
--- Insert --
--- Press jk fast to exit insert mode 
-keymap("i", "jk", "<ESC>")
-keymap("i", "kj", "<ESC>")
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==", 'Move down')
+keymap("n", "<A-j>", "<Esc>:m .+1<CR>==", 'Move up')
 
 -- Visual --
 -- Stay in indent mode
@@ -67,15 +61,13 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==")
-keymap("v", "<A-k>", ":m .-2<CR>==")
+keymap("v", "<A-j>", ":m .+1<CR>==", "Move up")
+keymap("v", "<A-k>", ":m .-2<CR>==", "Move down")
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv")
-keymap("x", "K", ":move '<-2<CR>gv-gv")
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", "Move down")
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", "Move up")
 
 -- Terminal --
 -- Better terminal navigation
@@ -94,23 +86,11 @@ keymap("n", "<leader>b", "<cmd>Telescope buffers theme=dropdown previewer=false<
 keymap("n", "<leader>f", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", "Find files")
 keymap("n", "<leader>F", "<cmd>Telescope live_grep<cr>", "Find Text")
 keymap("n", "<leader>u", "<cmd>Telescope undo<cr>", "Undo")
-keymap("n", "<leader>ms", "<cmd>:so<cr>", "Source File")
+keymap("n", "<leader>S", "<cmd>:so<cr>", "Source File")
 keymap("n", "<leader>Q", "<cmd>qa<CR>", "Quit All")
 
 -- LSP
-keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
-keymap("n", "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics")
-keymap("n", "<leader>lw", "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics")
-keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format")
-keymap("n", "<leader>li", "<cmd>LspInfo<cr>", "Info")
-keymap("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", "Installer Info")
-keymap("n", "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic")
-keymap("n", "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
-keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action")
-keymap("n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix")
-keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename")
-keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols")
-keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols")
+-- All LSP commands are configured in after/plugin/lsp.lua
 
 -- Packer
 keymap("n", "<leader>ps", "<cmd>PackerSync<cr>", "Sync")

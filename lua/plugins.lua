@@ -69,9 +69,7 @@ return require('packer').startup(function(use)
   use({
     "folke/trouble.nvim",
     config = function()
-      require("trouble").setup {
-        icons = false,
-      }
+      require("trouble").setup({})
     end
   })
 
