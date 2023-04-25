@@ -1,5 +1,7 @@
 -- basic
-require("user.basic")
+require("user.options")
+require("user.packer")
+require("user.keymap")
 
 -- plugins settings
 require("user.autopairs")
