@@ -4,16 +4,15 @@ if not status_ok then
   return
 end
 
-local keymap = require('user.helpers').keymap
-
 lsp.preset({})
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function()
   lsp.buffer_autoformat()
 end)
+
 
 lsp.ensure_installed({
   'pyright', 'tailwindcss', 'volar', 'yamlls',
