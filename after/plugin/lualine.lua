@@ -24,6 +24,16 @@ local diff = {
   cond = hide_in_width
 }
 
+local hostname = {
+  'hostname',
+  cond = hide_in_width,
+  fmt = function(str)
+    if string.len(str) > 4 then
+      return string.sub(str, 1, 4) .. '..'
+    end
+  end
+}
+
 local mode = {
   "mode",
   fmt = function(str)
@@ -72,9 +82,9 @@ lualine.setup({
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { branch, diagnostics },
+    lualine_a = {},
     lualine_b = { mode },
-    lualine_c = {},
+    lualine_c = { hostname, branch, diagnostics },
     -- lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_x = { diff, spaces, "encoding", filetype },
     lualine_y = { location },
