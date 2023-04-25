@@ -1,4 +1,5 @@
 local status_ok, lualine = pcall(require, "lualine")
+
 if not status_ok then
   return
 end
@@ -95,11 +96,11 @@ lualine.setup({
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { mode },
+    lualine_a = { datetime, mode },
     lualine_b = { branch, },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { diff, "encoding", filetype },
+    lualine_y = { diagnostics, diff, "encoding", filetype },
     lualine_z = { location },
   },
   inactive_sections = {
@@ -113,11 +114,11 @@ lualine.setup({
   tabline = {},
   extensions = {},
   winbar = {
-    lualine_a = { datetime },
-    lualine_b = { filename },
-    lualine_c = {},
-    lualine_x = { diagnostics },
-    lualine_y = {},
-    lualine_z = { hostname }
+    -- lualine_a = { datetime },
+    -- lualine_b = { filename },
+    -- lualine_c = {},
+    -- lualine_x = { diagnostics },
+    -- lualine_y = {},
+    -- lualine_z = { hostname }
   }
 })

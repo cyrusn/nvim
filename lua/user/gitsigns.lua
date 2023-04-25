@@ -1,4 +1,5 @@
 local status_ok, gitsigns = pcall(require, "gitsigns")
+
 if not status_ok then
   return
 end
@@ -12,8 +13,8 @@ gitsigns.setup {
     changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-  numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+  numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
   word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
@@ -46,3 +47,20 @@ gitsigns.setup {
     enable = false,
   },
 }
+
+local keymap = require("user.helpers").keymap
+
+-- Git
+keymap("n", "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk")
+keymap("n", "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk")
+keymap("n", "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk")
+keymap("n", "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk")
+keymap("n", "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer")
+keymap("n", "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer")
+keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>", "Open changed file")
+keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", "Checkout branch")
+keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", "Checkout commit")
+keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", "Diff")
+keymap("n", "<leader>gD", "<cmd>Gitsigns diffthis Head<cr>", "Diff Head")
+keymap("v", "<leader>gr", function() gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Reset Hunk")
+keymap("v", "<leader>gs", function() gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage Hunk")

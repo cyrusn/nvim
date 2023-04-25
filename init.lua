@@ -1,4 +1,17 @@
-require("options")
-require("keymap")
-require("plugins")
+-- basic
+require("user.basic")
 
+-- plugins settings
+require("user.autopairs")
+require("user.bufferline")
+require("user.colorscheme")
+require("user.gitsigns")
+require("user.indent_blankline")
+require("user.lsp")
+require("user.lualine")
+require("user.nvim_tree")
+require("user.project")
+require("user.telescope")
+require("user.toggleterm")
+require("user.treesitter")
+require("user.whichkey")

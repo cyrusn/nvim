@@ -7,7 +7,7 @@ end
 
 local setup = {
   plugins = {
-    marks = true,
+    marks = false,
     presets = {
       operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = false,      -- adds help for motions

@@ -1,8 +1,4 @@
-local gs = require('gitsigns')
-
-local function keymap(mode, key, func, desc)
-  vim.keymap.set(mode, key, func, { desc = desc })
-end
+local keymap = require("user.helpers").keymap
 
 -- Shorten function name
 --Remap space as leader key
@@ -96,24 +92,10 @@ keymap("n", "<leader>Q", "<cmd>qa<CR>", "Quit All")
 keymap("n", "<leader>ps", "<cmd>PackerSync<cr>", "Sync")
 keymap("n", "<leader>pu", "<cmd>PackerUpdate<cr>", "Update")
 
--- Git
-keymap("n", "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk")
-keymap("n", "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk")
-keymap("n", "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk")
-keymap("n", "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk")
-keymap("n", "<leader>gS", "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer")
-keymap("n", "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer")
-keymap("n", "<leader>go", "<cmd>Telescope git_status<cr>", "Open changed file")
-keymap("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", "Checkout branch")
-keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", "Checkout commit")
-keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", "Diff")
-keymap("n", "<leader>gD", "<cmd>Gitsigns diffthis Head<cr>", "Diff Head")
-keymap("v", "<leader>gr", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Reset Hunk")
-keymap("v", "<leader>gs", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, "Stage Hunk")
 
 -- Search
 keymap("n", "<leader>sp", "<cmd>Telescope projects theme=dropdown <cr>", "Projects")
-keymap("n", "sh", "<cmd>Telescope help_tags theme=dropdown <cr>", "Helps")
+keymap("n", "<leader>sh", "<cmd>Telescope help_tags theme=dropdown <cr>", "Helps")
 keymap("n", "<leader>sk", "<cmd>Telescope keymaps theme=dropdown <cr>", "Keymaps")
 keymap("n", "<leader>sm", "<cmd>Telescope man_pages theme=dropdown <cr>", "Man Pages")
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles theme=dropdown <cr>", "Recent Files")
