@@ -1,4 +1,3 @@
--- Only required if you have packer configured as `opt`
 vim.cmd.packadd('packer.nvim')
 
 local status_ok, packer = pcall(require, "packer")
@@ -114,5 +113,8 @@ return packer.startup(function(use)
   -- https://github.com/moll/vim-bbye
   use('moll/vim-bbye')
 
+
   use('lewis6991/impatient.nvim')
+  use('goolord/alpha-nvim')
+  use('yamatsum/nvim-cursorline')
 end)

@@ -5,8 +5,8 @@ if not status_ok then
 end
 
 -- Disable netrw completely at startup
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- empty setup using defaults
 nvim_tree.setup({
@@ -15,6 +15,9 @@ nvim_tree.setup({
   update_focused_file = {
     enable = true,
     update_cwd = false,
+  },
+  renderer = {
+    root_folder_label = ':t:r',
   },
   diagnostics = {
     enable = true,

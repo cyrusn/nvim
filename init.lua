@@ -1,12 +1,15 @@
 -- basic
 require("user.options")
-require("user.packer")
+require("user.plugins")
 require("user.keymap")
+require('impatient')
 
 -- plugins settings
+require("user.alpha")
 require("user.autopairs")
 require("user.bufferline")
 require("user.colorscheme")
+require("user.cursorline")
 require("user.gitsigns")
 require("user.indent_blankline")
 require("user.lsp")

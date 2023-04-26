@@ -1,5 +1,4 @@
 local status_ok, lualine = pcall(require, "lualine")
-
 if not status_ok then
   return
 end
@@ -56,7 +55,7 @@ local filename = {
   'filename',
   path = 1,
   fmt  = function(str)
-    return './' .. str:gsub(vim.fn.getcwd(), '.')
+    return './' .. str
   end,
 }
 
@@ -98,7 +97,7 @@ lualine.setup({
   sections = {
     lualine_a = { datetime, mode },
     lualine_b = { branch, },
-    lualine_c = {},
+    lualine_c = { filename },
     lualine_x = {},
     lualine_y = { diagnostics, diff, "encoding", filetype },
     lualine_z = { location },
