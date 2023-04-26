@@ -4,6 +4,10 @@ if not status_ok then
   return
 end
 
+-- Disable netrw completely at startup
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- empty setup using defaults
 nvim_tree.setup({
   -- for Project
@@ -22,4 +26,9 @@ nvim_tree.setup({
       error = "",
     },
   },
+  filters = {
+    custom = {
+      '^\\.git$'
+    },
+  }
 })
