@@ -59,10 +59,12 @@ local filename = {
   end,
 }
 
+--[[
 local hostname = {
   'hostname',
   cond = hide_in_width,
 }
+]]--
 
 local datetime = {
   'datetime',
