@@ -28,7 +28,8 @@ local setup = {
     count = true
   },
   triggers_blacklist = {
-    n = { 'g' }
+    n = { 'g' },
+    v = { 'g' },
   },
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
