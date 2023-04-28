@@ -24,8 +24,23 @@ local setup = {
     margin = { 0, 0, 0, 0 },  -- extra window margin [top, right, bottom, left]
     padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
   },
+  motions = {
+    count = true
+  },
+  triggers_blacklist = {
+    n = { 'g' }
+  },
+  key_labels = {
+    -- override the label used to display some keys. It doesn't effect WK in any other way.
+    -- For example:
+    ["<leader>"] = "SPACE",
+    -- ["<cr>"] = "RET",
+    -- ["<tab>"] = "TAB",
+  },
 }
+
 which_key.setup(setup)
+
 which_key.register({
   ["l"] = { name = 'LSP' },
   ["lg"] = { name = 'Go to' },

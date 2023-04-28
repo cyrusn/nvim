@@ -24,8 +24,8 @@ return packer.startup(function(use)
   -- colorscheme
   use('folke/tokyonight.nvim')
   use({ "catppuccin/nvim", as = "catppuccin" })
+  use('martinsione/darkplus.nvim')
 
-  -- copilot
   -- https://github.com/github/copilot.vim
   use("github/copilot.vim")
 

@@ -1,11 +1,20 @@
-local status_ok, catppuccin = pcall(require, "catppuccin")
+local status_ok, scheme = pcall(require, "tokyonight")
 
 if not status_ok then
   return
 end
 
-vim.cmd.colorscheme "catppuccin"
 
-catppuccin.setup({
-  transparent_background = true
+-- scheme.setup({
+--   flavour = "mocha",
+--   transparent_background = true,
+-- })
+
+
+scheme.setup({
+  style = 'night',
+  dim_inactive = true,
 })
+
+
+vim.cmd('colorscheme tokyonight')
