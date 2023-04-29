@@ -8,8 +8,8 @@ return {
   { "n", "N",         "Nzzzv" },
   { "n", "<C-k>",     "<cmd>cnext<CR>zz" },
   { "n", "<C-j>",     "<cmd>cprev<CR>zz" },
-  { "n", "<leader>k", "<cmd>lnext<CR>zz",       "Next Location" },
-  { "n", "<leader>j", "<cmd>lprev<CR>zz",       "Prev Location" },
+  -- { "n", "<leader>k", "<cmd>lnext<CR>zz",       "Next Location" },
+  -- { "n", "<leader>j", "<cmd>lprev<CR>zz",       "Prev Location" },
   { 'n', 'j',         'jzzzj' },
   { 'n', 'k',         'kzzzk' },
 
@@ -34,22 +34,21 @@ return {
   { "n", "<S-l>",     ":bnext<CR>" },
   { "n", "<S-h>",     ":bprevious<CR>" },
 
-  -- Move text up and down
-  { "n", "<A-k>",     "<Esc>:m .-2<CR>==",      'Move down' },
-  { "n", "<A-j>",     "<Esc>:m .+1<CR>==",      'Move up' },
-
+  { 't', '<esc>',     [[<C-\><C-n>]],            "Terminal" },
   -- Visual --
   -- Stay in indent mode
-  { "v", "<",         "<gv" },
-  { "v", ">",         ">gv" },
+  -- { "v", "<",         "<gv" },
+  -- { "v", ">",         ">gv" },
 
   -- Move text up and down
-  { "v", "<A-j>",     ":m .+1<CR>==",           "Move up" },
-  { "v", "<A-k>",     ":m .-2<CR>==",           "Move down" },
-
-  -- Visual Block --
-  -- Move text up and down
-  { "x", "<A-k>",     ":move '<-2<CR>gv-gv",    "Move down" },
-  { "x", "<A-j>",     ":move '>+1<CR>gv-gv",    "Move up" },
+  --
+  { "i", "<A-j>",     "<esc><cmd>m .+1<cr>==gi", "Move down" },
+  { "i", "<A-k>",     "<esc><cmd>m .-2<cr>==gi", "Move up" },
+  { "n", "<A-k>",     "<Cmd>:m .-2<CR>==",       'Move down' },
+  { "n", "<A-j>",     "<Cmd>:m .+1<CR>==",       'Move up' },
+  { "v", "<A-j>",     ":m .+1<CR>==",            "Move up" },
+  { "v", "<A-k>",     ":m .-2<CR>==",            "Move down" },
+  { "x", "<A-k>",     ":move '<-2<CR>gv=gv",     "Move down" },
+  { "x", "<A-j>",     ":move '>+1<CR>gv=gv",     "Move up" },
 
 }

@@ -1,16 +1,14 @@
 -- basic
-require("user.options")
 require("user.plugins")
+require("user.options")
 require("user.keymap")
 require('impatient')
 
 -- plugins settings
-require("user.alpha")
 require("user.autopairs")
-require("user.bufferline")
 require("user.colorscheme")
 require("user.cursorline")
-require("user.gitsigns")
+require("user.devicon")
 require("user.indent_blankline")
 require("user.lsp")
 require("user.lualine")
@@ -20,3 +18,4 @@ require("user.telescope")
 require("user.toggleterm")
 require("user.treesitter")
 require("user.whichkey")
+require("user.gitSigns")

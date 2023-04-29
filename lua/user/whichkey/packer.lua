@@ -1,5 +1,4 @@
 -- Packer
-
 return {
   { "n", "<leader>ps", "<cmd>PackerSync<cr>",    "Sync" },
   { "n", "<leader>pu", "<cmd>PackerUpdate<cr>",  "Update" },

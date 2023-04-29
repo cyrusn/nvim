@@ -23,8 +23,6 @@ return packer.startup(function(use)
 
   -- colorscheme
   use('folke/tokyonight.nvim')
-  use({ "catppuccin/nvim", as = "catppuccin" })
-  use('martinsione/darkplus.nvim')
 
   -- https://github.com/github/copilot.vim
   use("github/copilot.vim")
@@ -34,15 +32,11 @@ return packer.startup(function(use)
   use("windwp/nvim-autopairs")
 
   -- layout
-  -- https://github.com/akinsho/bufferline.nvim
-  use("akinsho/bufferline.nvim")
   -- https://github.com/lukas-reineke/indent-blankline.nvim
   use("lukas-reineke/indent-blankline.nvim")
+
   -- https://github.com/nvim-lualine/lualine.nvim
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
+  use('nvim-lualine/lualine.nvim')
 
   -- key binding tips
   -- https://github.com/folke/which-key.nvim
@@ -53,21 +47,17 @@ return packer.startup(function(use)
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use("nvim-treesitter/nvim-treesitter-context");
 
-
   -- Sidebar
   -- https://github.com/nvim-tree/nvim-tree.lua
   use {
     'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
   }
 
   -- Git
   -- https://github.com/lewis6991/gitsigns.nvim
   use("lewis6991/gitsigns.nvim")
 
-  -- A pretty list for showing diagnostics --
+  -- A pretty list for showing diagnostics
   -- https://github.com/folke/trouble.nvim
   use({
     "folke/trouble.nvim",
@@ -113,8 +103,15 @@ return packer.startup(function(use)
   -- https://github.com/moll/vim-bbye
   use('moll/vim-bbye')
 
-
+  -- impatient
+  -- https://github.com/lewis6991/impatient.nvim
   use('lewis6991/impatient.nvim')
-  use('goolord/alpha-nvim')
+
+  -- cursorline
+  -- https://github.com/yamatsum/nvim-cursorline
   use('yamatsum/nvim-cursorline')
+
+  -- file icon
+  -- https://github.com/nvim-tree/nvim-web-devicons
+  use('nvim-tree/nvim-web-devicons')
 end)

@@ -8,6 +8,7 @@ local setup = {
   plugins = {
     marks = false,
     presets = {
+      registers = false,    -- registers loaded by which-key
       operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = false,      -- adds help for motions
       text_objects = false, -- help for text objects triggered after entering an operator
@@ -17,7 +18,7 @@ local setup = {
       g = false,            -- bindings for prefixed with g
     },
   },
-  ignore_missing = false,
+  ignore_missing = true,
   window = {
     border = "rounded",       -- none, single, double, shadow
     position = "bottom",      -- bottom, top
@@ -28,11 +29,11 @@ local setup = {
     count = true
   },
   triggers_blacklist = {
-    n = { 'g' },
-    v = { 'g' },
+    --  n = { "g" },
+    --  v = { "g" },
   },
   key_labels = {
-    -- override the label used to display some keys. It doesn't effect WK in any other way.
+    -- override the label used to display some keys. It doesn"t effect WK in any other way.
     -- For example:
     ["<leader>"] = "SPACE",
     -- ["<cr>"] = "RET",
@@ -42,23 +43,53 @@ local setup = {
 
 which_key.setup(setup)
 
-which_key.register({
-  ["l"] = { name = 'LSP' },
-  ["lg"] = { name = 'Go to' },
-  ["g"] = { name = 'Git' },
-  ["s"] = { name = 'Search' },
-  ["p"] = { name = 'Packer' },
-}, {
-  prefix = '<leader>',
-  mode = 'n',
-})
+
+local keymapSets = {
+  require("user.whichkey.git"),
+  require("user.whichkey.basic"),
+  require("user.whichkey.lsp"),
+  require("user.whichkey.packer"),
+}
+
+RegisterKeymaps = {
+  ["<leader>l"] = { name = "LSP" },
+  ["<leader>g"] = { name = "Git" },
+  ["<leader>s"] = { name = "Search" },
+  ["<leader>p"] = { name = "Packer" },
+}
+
+for _, keymaps in ipairs(keymapSets) do
+  for _, values in ipairs(keymaps) do
+    local _, key, func, desc = unpack(values)
+    RegisterKeymaps[key] = { func, desc }
+  end
+end
+
+which_key.register(
+  RegisterKeymaps, {
+    mode = "n",
+  })
+
+
+local git_status_ok, gitsigns = pcall(require, "gitsigns")
+
+if not git_status_ok then
+  return
+end
 
 
 which_key.register({
-  ["g"] = { name = 'Git' },
+  ["<leader>gr"] = {
+    function()
+      gitsigns.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
+    end, "Reset Hunk" },
+  ["<leader>gs"] = {
+    function()
+      gitsigns.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
+    end, "Stage Hunk" },
+
 }, {
   mode = "v",     -- Visual mode
-  prefix = "<leader>",
   buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true,  -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
