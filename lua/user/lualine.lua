@@ -33,7 +33,7 @@ local datetime = {
 local buffers = {
   'buffers',
   symbols = {
-    alternate_file = '󰅐 ', -- Text to show to identify the alternate file
+    alternate_file = '', -- Text to show to identify the alternate file
   },
 }
 
