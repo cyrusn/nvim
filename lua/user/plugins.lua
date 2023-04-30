@@ -23,6 +23,7 @@ return packer.startup(function(use)
 
   -- colorscheme
   use('folke/tokyonight.nvim')
+  use({ "catppuccin/nvim", as = "catppuccin" })
 
   -- https://github.com/github/copilot.vim
   use("github/copilot.vim")
@@ -114,4 +115,17 @@ return packer.startup(function(use)
   -- file icon
   -- https://github.com/nvim-tree/nvim-web-devicons
   use('nvim-tree/nvim-web-devicons')
+
+  -- replace the ui
+  -- https://github.com/folke/noice.nvim
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+    }
+  })
+
+  -- A fancy, configurable, notification manager for NeoVim
+  -- https://github.com/rcarriga/nvim-notify
+  use("rcarriga/nvim-notify")
 end)
