@@ -41,7 +41,7 @@ lualine.setup({
   options = {
     icons_enabled = true,
     theme = "auto",
-    disabled_filetypes = { "alpha", "dashboard", "Outline", "NvimTree" },
+    disabled_filetypes = { "alpha", "dashboard", "Outline" },
     always_divide_middle = true,
     globalstatus = true,
     -- section_separators = '',
@@ -71,13 +71,6 @@ lualine.setup({
     lualine_y = { "encoding", 'filetype' },
     lualine_z = { "location" },
   },
-  extensions = {},
-  winbar = {
-    -- lualine_a = { datetime },
-    -- lualine_b = { filename },
-    -- lualine_c = {},
-    -- lualine_x = { diagnostics },
-    -- lualine_y = {},
-    -- lualine_z = {}
-  },
+  extensions = { 'toggleterm', 'nvim-tree', 'trouble' },
+  winbar = {},
 })
