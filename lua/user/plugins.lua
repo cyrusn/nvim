@@ -2,7 +2,7 @@ local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -11,12 +11,12 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 
 if not status_ok then
   return
 end
+
 
 return packer.startup(function(use)
   -- Packer can manage itself
@@ -57,7 +57,13 @@ return packer.startup(function(use)
 
   -- for syntax highlight
   -- https://github.com/nvim-treesitter/nvim-treesitter
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    };
   use("nvim-treesitter/nvim-treesitter-context");
 
   -- Sidebar
@@ -141,6 +147,6 @@ return packer.startup(function(use)
   -- https://github.com/rcarriga/nvim-notify
   -- use("rcarriga/nvim-notify")
   if packer_bootstrap then
-    require('packer').sync()
+    packer.sync()
   end
 end)
