@@ -17,7 +17,10 @@ nvim_tree.setup({
     update_cwd = false,
   },
   renderer = {
-    root_folder_label = ':t:r',
+    root_folder_label = ':t',
+    indent_markers = {
+      enable = true,
+    },
   },
   diagnostics = {
     enable = true,

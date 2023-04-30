@@ -8,7 +8,6 @@ local setup = {
   plugins = {
     marks = false,
     presets = {
-      registers = false,    -- registers loaded by which-key
       operators = false,    -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = false,      -- adds help for motions
       text_objects = false, -- help for text objects triggered after entering an operator
@@ -23,7 +22,7 @@ local setup = {
     border = "rounded",       -- none, single, double, shadow
     position = "bottom",      -- bottom, top
     margin = { 0, 0, 0, 0 },  -- extra window margin [top, right, bottom, left]
-    padding = { 0, 0, 0, 0 }, -- extra window padding [top, right, bottom, left]
+    padding = { 0, 0, 1, 0 }, -- extra window padding [top, right, bottom, left]
   },
   motions = {
     count = true
@@ -49,12 +48,14 @@ local keymapSets = {
   require("user.whichkey.basic"),
   require("user.whichkey.lsp"),
   require("user.whichkey.packer"),
+  require("user.whichkey.search"),
 }
 
 RegisterKeymaps = {
   ["<leader>l"] = { name = "LSP" },
   ["<leader>g"] = { name = "Git" },
   ["<leader>s"] = { name = "Search" },
+  ["<leader>q"] = { name = "Quit" },
   ["<leader>p"] = { name = "Packer" },
 }
 

@@ -5,7 +5,6 @@ vim.g.maplocalleader = " "
 
 local keymapSets = {
   require("user.keymap.basic"),
-  require("user.keymap.search"),
   require("user.keymap.terminal"),
   require("user.keymap.lsp"),
 }

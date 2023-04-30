@@ -14,10 +14,16 @@ noice.setup({
   },
   presets = {
     bottom_search = true,         -- use a classic bottom cmdline for search
-    command_palette = true,       -- position the cmdline and popupmenu together
+    command_palette = true,       -- position the cmdline and cmd_popup together
     long_message_to_split = true, -- long messages will be sent to a split
   },
   cmdline = {
     view = 'cmdline'
+  },
+  messages = {
+    view = 'mini',
+  },
+  notify = {
+    view = 'mini'
   }
 })

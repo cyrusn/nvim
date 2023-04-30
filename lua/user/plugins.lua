@@ -127,5 +127,5 @@ return packer.startup(function(use)
 
   -- A fancy, configurable, notification manager for NeoVim
   -- https://github.com/rcarriga/nvim-notify
-  use("rcarriga/nvim-notify")
+  -- use("rcarriga/nvim-notify")
 end)
