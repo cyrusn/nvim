@@ -20,14 +20,11 @@ local diagnostics = {
 local filename = {
   'filename',
   path = 1,
-  fmt  = function(str)
-    return './' .. str
-  end,
 }
 
 local datetime = {
   'datetime',
-  style = '%H:%M:%S',
+  style = ' %H:%M:%S',
 }
 
 local buffers = {
@@ -37,6 +34,8 @@ local buffers = {
   },
 }
 
+local navic = require("nvim-navic")
+
 lualine.setup({
   options = {
     icons_enabled = true,
@@ -45,7 +44,7 @@ lualine.setup({
     always_divide_middle = true,
     globalstatus = true,
     -- section_separators = '',
-    component_separators = ''
+    -- component_separators = ''
   },
   inactive_sections = {
     lualine_a = {},
@@ -61,15 +60,36 @@ lualine.setup({
     lualine_c = { buffers },
     lualine_x = { diagnostics, 'diff' },
     lualine_y = {},
-    lualine_z = { 'progress' }
+    lualine_z = {}
   },
   sections = {
-    lualine_a = { datetime },
-    lualine_b = { "branch", "mode" },
-    lualine_c = { filename },
-    lualine_x = {},
-    lualine_y = { "encoding", 'filetype' },
-    lualine_z = { "location" },
+    lualine_a = { "mode" },
+    lualine_b = { "branch" },
+    lualine_c = {
+      'diagnostics', 'filetype', filename, {
+      'navic',
+      function()
+        return navic.get_location()
+      end,
+      cond = function()
+        return package.loaded["nvim-navic"] and navic.is_available()
+      end
+    } },
+    lualine_x = { 'encoding' },
+    lualine_y = {
+      {
+        "progress",
+        separator = " ",
+        padding = { left = 1, right = 0 }
+      },
+      {
+        "location",
+        padding = { left = 0, right = 1 }
+      },
+    },
+    lualine_z = {
+      datetime
+    },
   },
   extensions = { 'toggleterm', 'nvim-tree', 'trouble' },
   winbar = {},

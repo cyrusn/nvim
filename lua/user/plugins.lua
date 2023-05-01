@@ -138,6 +138,11 @@ return packer.startup(function(use)
     }
   })
 
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
+
   -- A fancy, configurable, notification manager for NeoVim
   -- https://github.com/rcarriga/nvim-notify
   -- use("rcarriga/nvim-notify")
