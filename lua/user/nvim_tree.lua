@@ -25,12 +25,7 @@ nvim_tree.setup({
   diagnostics = {
     enable = true,
     show_on_dirs = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
+    icons = require('user.icons').diagnostics,
   },
   filters = {
     custom = {

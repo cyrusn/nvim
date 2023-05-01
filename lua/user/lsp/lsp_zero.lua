@@ -18,11 +18,6 @@ lsp.ensure_installed({
   'lua_ls', 'rust_analyzer'
 })
 
-lsp.set_sign_icons({
-  error = '',
-  warn = '',
-  hint = '',
-  info = ''
-})
+lsp.set_sign_icons(require('user.icons').diagnostics)
 
 lsp.setup()

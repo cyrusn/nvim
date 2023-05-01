@@ -3,16 +3,21 @@ if not status_ok then
   return
 end
 
+local formatIcons = function(icons)
+  local result = {}
+
+  for key, value in pairs(icons) do
+    result[key] = string.format("%s ", value)
+  end
+
+  return result
+end
+
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn", "info", "hint" },
-  symbols = {
-    hint = " ",
-    info = " ",
-    warning = " ",
-    error = " ",
-  },
+  symbols = formatIcons(require('user.icons').diagnostics),
   colored = true,
   update_in_insert = false,
 }
@@ -34,6 +39,11 @@ local buffers = {
   },
 }
 
+local diff = {
+  'diff',
+  symbols = formatIcons(require('user.icons').git_status),
+}
+
 local navic = require("nvim-navic")
 
 lualine.setup({
@@ -44,7 +54,7 @@ lualine.setup({
     always_divide_middle = true,
     globalstatus = true,
     -- section_separators = '',
-    -- component_separators = ''
+    component_separators = { left = '•', right = '•' },
   },
   inactive_sections = {
     lualine_a = {},
@@ -58,15 +68,18 @@ lualine.setup({
     lualine_a = {},
     lualine_b = {},
     lualine_c = { buffers },
-    lualine_x = { diagnostics, 'diff' },
-    lualine_y = {},
+    lualine_x = { diagnostics, diff },
+    lualine_y = {
+      { 'filetype', colored = false, icons_enabled = false },
+      'encoding'
+    },
     lualine_z = {}
   },
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = {
-      'diagnostics', 'filetype', filename, {
+      filename, {
       'navic',
       function()
         return navic.get_location()
@@ -75,7 +88,7 @@ lualine.setup({
         return package.loaded["nvim-navic"] and navic.is_available()
       end
     } },
-    lualine_x = { 'encoding' },
+    lualine_x = {},
     lualine_y = {
       {
         "progress",
