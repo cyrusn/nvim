@@ -15,8 +15,7 @@ end)
 
 
 lsp.ensure_installed({
-  'pyright', 'tailwindcss', 'volar', 'yamlls',
-  'tsserver', 'rust_analyzer', 'html', 'jsonnet_ls', 'marksman',
+  'lua_ls', 'rust_analyzer'
 })
 
 lsp.set_sign_icons({
