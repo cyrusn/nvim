@@ -49,6 +49,7 @@ local keymapSets = {
   require("user.whichkey.lsp"),
   require("user.whichkey.packer"),
   require("user.whichkey.search"),
+  require("user.whichkey.quit"),
 }
 
 RegisterKeymaps = {

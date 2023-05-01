@@ -12,6 +12,7 @@ return {
   { 'n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>',          'Rename' },
   { 'n', '<leader>lt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition' },
   { 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.format()<CR>',          'Format' },
-  { 'n', '<leader>lI', '<cmd>LspInfo<CR>',                           'LSP Info' },
+  { 'n', '<leader>lo', '<cmd>LspInfo<CR>',                           'LSP Info' },
+  { 'n', '<leader>lI', '<cmd>LspInstall<CR>',                        'LSP Install' },
   { 'n', '<leader>lm', '<cmd>Mason<CR>',                             'Mason' },
 }

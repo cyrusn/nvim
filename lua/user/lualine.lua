@@ -54,7 +54,7 @@ lualine.setup({
     always_divide_middle = true,
     globalstatus = true,
     -- section_separators = '',
-    component_separators = { left = '•', right = '•' },
+    component_separators = '•',
   },
   inactive_sections = {
     lualine_a = {},
@@ -70,7 +70,11 @@ lualine.setup({
     lualine_c = { buffers },
     lualine_x = { diagnostics, diff },
     lualine_y = {
-      { 'filetype', colored = false, icons_enabled = false },
+      {
+        'filetype',
+        colored = false,
+        icons_enabled = false
+      },
       'encoding'
     },
     lualine_z = {}
@@ -79,15 +83,17 @@ lualine.setup({
     lualine_a = { "mode" },
     lualine_b = { "branch" },
     lualine_c = {
-      filename, {
-      'navic',
-      function()
-        return navic.get_location()
-      end,
-      cond = function()
-        return package.loaded["nvim-navic"] and navic.is_available()
-      end
-    } },
+      filename,
+      {
+        'navic',
+        function()
+          return navic.get_location()
+        end,
+        cond = function()
+          return package.loaded["nvim-navic"] and navic.is_available()
+        end
+      }
+    },
     lualine_x = {},
     lualine_y = {
       {
