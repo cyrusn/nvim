@@ -20,4 +20,4 @@ lsp.ensure_installed({
 
 lsp.set_sign_icons(require('user.icons').diagnostics)
 
-lsp.setup()
+lsp.setup({})

@@ -51,4 +51,8 @@ return {
   { "x", "<A-k>",     ":move '<-2<CR>gv=gv",     "Move down" },
   { "x", "<A-j>",     ":move '>+1<CR>gv=gv",     "Move up" },
 
+
+  -- Close buffer
+  { "n", "<A-w>",     "<cmd>Bdelete!<CR>",       "Close buffer" },
+  { "n", "<A-q>",     "<cmd>qa!<CR>",            "Quit all" },
 }

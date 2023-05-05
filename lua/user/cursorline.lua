@@ -7,7 +7,7 @@ end
 cursorline.setup({
   cursorline = {
     enable = true,
-    timeout = 0,
+      timeout = 0,
     number = true,
   },
 })

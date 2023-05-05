@@ -36,6 +36,8 @@ return packer.startup(function(use)
   -- colorscheme
   use('folke/tokyonight.nvim')
   use({ "catppuccin/nvim", as = "catppuccin" })
+  use('marko-cerovac/material.nvim')
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 
   -- https://github.com/github/copilot.vim
   use("github/copilot.vim")

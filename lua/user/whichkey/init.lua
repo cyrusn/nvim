@@ -47,7 +47,7 @@ local keymapSets = {
   require("user.whichkey.git"),
   require("user.whichkey.basic"),
   require("user.whichkey.lsp"),
-  require("user.whichkey.packer"),
+  require("user.whichkey.plugins"),
   require("user.whichkey.search"),
   require("user.whichkey.quit"),
 }
@@ -57,7 +57,7 @@ RegisterKeymaps = {
   ["<leader>g"] = { name = "Git" },
   ["<leader>s"] = { name = "Search" },
   ["<leader>q"] = { name = "Quit" },
-  ["<leader>p"] = { name = "Packer" },
+  ["<leader>p"] = { name = "Plugins" },
 }
 
 for _, keymaps in ipairs(keymapSets) do
