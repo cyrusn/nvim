@@ -30,17 +30,24 @@ local diagnostics = {
 local filename = {
 	"filename",
 	path = 1,
+	color = {
+		fg = colors.main.green,
+		bg = colors.editor.bg,
+	},
 	separator = " ",
 }
 
 local navic_location = {
 	"navic",
 	function()
-		return navic.get_location()
+		return require("nvim-navic").get_location()
 	end,
 	cond = function()
 		return package.loaded["nvim-navic"] and navic.is_available()
 	end,
+	separator = "",
+	color_correction = "dynamic",
+	padding = { right = 0, left = 0 },
 }
 
 local datetime = {
@@ -52,6 +59,14 @@ local buffers = {
 	"buffers",
 	symbols = {
 		alternate_file = "", -- Text to show to identify the alternate file
+	},
+	max_length = vim.o.columns,
+	separator = "",
+	buffers_color = {
+		active = {
+			fg = colors.editor.accent,
+			bg = colors.editor.bg,
+		},
 	},
 }
 
@@ -80,7 +95,7 @@ lualine.setup({
 		disabled_filetypes = { "alpha", "dashboard", "Outline" },
 		always_divide_middle = true,
 		globalstatus = true,
-		section_separators = "",
+		-- section_separators = "",
 		component_separators = "•",
 	},
 	inactive_sections = {
@@ -92,9 +107,9 @@ lualine.setup({
 		lualine_z = {},
 	},
 	tabline = {
-		lualine_a = { buffers },
+		lualine_a = {},
 		lualine_b = {},
-		lualine_c = {},
+		lualine_c = { buffers },
 		lualine_x = { diagnostics, diff },
 		lualine_y = {
 			{

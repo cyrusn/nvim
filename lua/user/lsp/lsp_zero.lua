@@ -1,7 +1,7 @@
-local status_ok, lsp = pcall(require, 'lsp-zero')
+local status_ok, lsp = pcall(require, "lsp-zero")
 
 if not status_ok then
-  return
+	return
 end
 
 lsp.preset({})
@@ -10,14 +10,22 @@ lsp.preset({})
 lsp.nvim_workspace()
 
 lsp.on_attach(function()
-  lsp.buffer_autoformat()
+	-- 	lsp.buffer_autoformat()
 end)
 
-
-lsp.ensure_installed({
-  'lua_ls', 'rust_analyzer'
+lsp.format_on_save({
+	servers = {
+		["lua_ls"] = { "lua" },
+		["rust_analyzer"] = { "rust" },
+		["null-ls"] = { "html", "javascript", "json", "markdown" },
+	},
 })
 
-lsp.set_sign_icons(require('user.icons').diagnostics)
+lsp.ensure_installed({
+	"lua_ls",
+	"rust_analyzer",
+})
+
+lsp.set_sign_icons(require("user.icons").diagnostics)
 
 lsp.setup({})

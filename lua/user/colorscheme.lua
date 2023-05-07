@@ -40,15 +40,14 @@ material.setup({
 		},
 	},
 	custom_colors = function(colors)
-		-- colors.syntax.fn = colors.main.yellow
-		colors.syntax.variable = colors.editor.yellow
-		colors.syntax.field = colors.editor.fg
-		colors.syntax.keyword = colors.main.purple
-		colors.syntax.value = colors.main.orange
-		colors.syntax.operator = colors.main.cyan
-		colors.syntax.fn = colors.main.blue
-		colors.syntax.string = colors.main.green
-		colors.syntax.type = colors.main.purple
+		-- colors.syntax.variable = colors.editor.fg
+		-- colors.syntax.field = colors.editor.fg
+		-- colors.syntax.keyword = colors.main.purple
+		-- colors.syntax.value = colors.main.orange
+		-- colors.syntax.operator = colors.main.cyan
+		-- colors.syntax.fn = colors.main.blue
+		-- colors.syntax.string = colors.main.green
+		-- colors.syntax.type = colors.main.purple
 	end,
 })
 
