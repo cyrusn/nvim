@@ -12,6 +12,9 @@ end
 nvim_tree.setup({
   -- for Project
   -- https://github.com/ahmedkhalf/project.nvim
+  view = {
+    width = 27,
+  },
   update_focused_file = {
     enable = true,
     update_cwd = false,

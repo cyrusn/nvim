@@ -1,8 +1,8 @@
 -- basic
+vim.loader.enable()
 require("user.plugins")
-require("user.options")
 require("user.keymap")
-require('impatient')
+require("user.options")
 
 -- plugins settings
 require("user.autopairs")
