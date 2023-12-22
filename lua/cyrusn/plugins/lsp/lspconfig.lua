@@ -9,14 +9,14 @@ return {
 	},
 	config = function()
 		local config = require("cyrusn.config")
-    local servers = config.servers
-    local diagnostic_icons = config.icons.diagnostics
+		local servers = config.servers
+		local diagnostic_icons = config.icons.diagnostics
 
 		local lsp_zero = require("lsp-zero")
 
 		lsp_zero.extend_lspconfig()
 
-		lsp_zero.on_attach(function(client, bufnr)
+		lsp_zero.on_attach(function(_, bufnr)
 			-- see :help lsp-zero-keybindings
 			-- to learn the available actions
 			lsp_zero.default_keymaps({
@@ -24,9 +24,9 @@ return {
 				exclude = { "<F2>", "<F3>", "<F4>" },
 			})
 
-			if client.server_capabilities.documentSymbolProvider then
-				require("nvim-navic").attach(client, bufnr)
-			end
+			-- if client.server_capabilities.documentSymbolProvider then
+			-- 	require("nvim-navic").attach(client, bufnr)
+			-- end
 
 			local map = function(mode, l, r, desc, opts)
 				opts = opts or {}
