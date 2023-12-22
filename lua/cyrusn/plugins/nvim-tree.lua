@@ -19,7 +19,8 @@ return {
 			},
 			filters = {
 				dotfiles = false,
-        no_buffer = false,
+        git_ignored = false,
+        custom = {".git", ".DS_Store", "node_modules"},
 			},
 			disable_netrw = true,
 			hijack_netrw = true,
