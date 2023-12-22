@@ -27,7 +27,7 @@ return {
 				},
 				lualine_c = {
 					{ "filename", path = 4 },
-					{ "navic" },
+					-- { "navic" },
 				},
 				lualine_x = {
 					-- {
