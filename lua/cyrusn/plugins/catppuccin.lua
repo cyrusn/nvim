@@ -5,14 +5,13 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			integrations = {
+				fidget = true,
 				gitsigns = true,
 				lsp_trouble = true,
 				mason = true,
-				navic = { enabled = true },
 				nvimtree = true,
-				which_key = true,
-				noice = true,
 				telescope = { enabled = true },
+				which_key = true,
 			},
 		})
 		vim.cmd.colorscheme("catppuccin")
