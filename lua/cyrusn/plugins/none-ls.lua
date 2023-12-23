@@ -14,5 +14,7 @@ return {
 			nls.builtins.formatting.shfmt,
 			nls.builtins.completion.spell,
 		})
+
+    return opts
 	end,
 }
