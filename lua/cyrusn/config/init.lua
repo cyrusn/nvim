@@ -12,17 +12,44 @@ M.servers = {
 	"sqlls",
 	"tailwindcss",
 	"tsserver",
-	"vuels",
+	"volar",
 	"yamlls",
 }
 
+-- specific config for lspconfig
+M.server_configs = {
+	tsserver = {
+		init_options = {
+			preferences = {
+				-- disable CommonJS modules warning
+				disableSuggestions = true,
+			},
+		},
+	},
+}
+
 -- conform.nvim
-M.formatters = {
+M.formatters_by_ft = {
 	lua = { "stylua" },
 	python = { "black" },
-	javascript = { { "prettierd", "prettier" } },
+	vue = { "eslint_d" },
+	javascript = { "prettier" },
+	json = { "prettier" },
 	go = { "goimports", "gofmt" },
 	sql = { "sql_formatter" },
+	["*"] = { "codespell" },
+	["_"] = { "trim_whitespace" },
+}
+
+M.formatters = {
+	prettier = {
+		prepend_args = {
+			"--single-quote",
+			"--trailing-comma=none",
+			"--jsx-single-quote",
+			"--no-semi",
+		},
+	},
 }
 
 -- icons set

@@ -64,16 +64,28 @@ return {
 
 		require("mason").setup({})
 
+		local lspconfig = require("lspconfig")
+		local handlers = {
+			lsp_zero.default_setup,
+
+			lua_ls = function()
+				local lua_opts = lsp_zero.nvim_lua_ls()
+				lspconfig.lua_ls.setup(lua_opts)
+			end,
+		}
+
+		local server_configs = config.server_configs
+
+		for server, _config in pairs(server_configs) do
+			handlers[server] = function()
+				lspconfig[server].setup(_config)
+			end
+		end
+
 		require("mason-lspconfig").setup({
 			ensure_installed = servers,
 			automatic_servers_installation = true,
-			handlers = {
-				lsp_zero.default_setup,
-				lua_ls = function()
-					local lua_opts = lsp_zero.nvim_lua_ls()
-					require("lspconfig").lua_ls.setup(lua_opts)
-				end,
-			},
+			handlers = handlers,
 		})
 
 		lsp_zero.setup_servers(servers)
