@@ -1,12 +1,11 @@
-local opt = vim.opt
 local g = vim.g
-
 g.mapleader = " "
-
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
 -------------------------------------- vim.options ------------------------------------------
+local opt = vim.opt
+
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.conceallevel = 0 -- Hide * markup for bold and italic
