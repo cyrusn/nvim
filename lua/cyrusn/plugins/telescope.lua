@@ -6,9 +6,9 @@ return {
 	},
 	keys = function()
 		local builtin = require("telescope.builtin")
-
 		return {
 			{ "<leader><space>", builtin.find_files, desc = "Find Files" },
+			{ "<C-p>", builtin.find_files, desc = "Find Files" },
 			{ "<leader>/", builtin.live_grep, desc = "Live grep" },
 			-- find
 			{ "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
@@ -46,5 +46,14 @@ return {
 			},
 		}
 	end,
-	config = true,
+	opts = {
+		defaults = {
+			layout_config = {
+				preview_width = 0.5,
+			},
+		},
+		-- pickers = {
+		-- 	find_files = { theme = "ivy" },
+		-- },
+	},
 }
