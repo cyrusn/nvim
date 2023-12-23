@@ -1,6 +1,6 @@
 return {
 	"j-hui/fidget.nvim",
-	enabled = false,
+	enabled = true,
 	opts = {
 		notification = {
 			override_vim_notify = true,
