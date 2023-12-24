@@ -137,4 +137,11 @@ M.icons.kinds = {
 	Variable = "󰀫 ",
 }
 
+function M.set_which_key(keybindings, bufnr)
+	local has_wk, wk = pcall(require, "which-key")
+	if has_wk then
+		wk.register(keybindings, { buffer = bufnr })
+	end
+end
+
 return M
