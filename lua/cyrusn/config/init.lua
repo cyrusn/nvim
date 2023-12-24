@@ -69,9 +69,9 @@ M.icons.diagnostics = {
 }
 
 M.icons.diff = {
-	added = " ",
-	modified = " ",
-	removed = " ",
+	added = "+",
+	modified = "~",
+	removed = "-",
 }
 
 M.icons.git = {
@@ -79,7 +79,7 @@ M.icons.git = {
 	staged = "✓",
 	unmerged = "",
 	renamed = "➜",
-	untracked = "★",
+	untracked = "?",
 	deleted = "",
 	ignored = "◌",
 }
