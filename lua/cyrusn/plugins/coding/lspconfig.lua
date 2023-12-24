@@ -24,24 +24,17 @@ return {
 				exclude = { "<F2>", "<F3>", "<F4>" },
 			})
 
-			-- if client.server_capabilities.documentSymbolProvider then
-			-- 	require("nvim-navic").attach(client, bufnr)
-			-- end
+			-- setup which-key when attach buffer
+			config.set_which_key({
+				["<leader>c"] = { name = "+code" },
+				["<leader>d"] = { name = "+diagnostic" },
+			}, bufnr)
 
 			local map = function(mode, l, r, desc, opts)
 				opts = opts or {}
 				opts.buffer = bufnr
 				opts.desc = desc
 				return vim.keymap.set(mode, l, r, opts)
-			end
-
-			local wk = require("which-key")
-
-			if wk then
-				wk.register({
-					["<leader>c"] = { name = "+code" },
-					["<leader>d"] = { name = "+diagnostic" },
-				}, { buffer = bufnr })
 			end
 
 			-- +code
