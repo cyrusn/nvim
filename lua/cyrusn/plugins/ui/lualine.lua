@@ -27,14 +27,8 @@ return {
 				},
 				lualine_c = {
 					{ "filename", path = 4 },
-					-- { "navic" },
 				},
 				lualine_x = {
-					-- {
-					-- 	require("noice").api.status.command.get,
-					-- 	cond = require("noice").api.status.command.has,
-					-- 	color = { fg = "#ff9e64" },
-					-- },
 					{
 						require("lazy.status").updates,
 						cond = require("lazy.status").has_updates,
