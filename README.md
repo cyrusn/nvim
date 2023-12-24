@@ -1,9 +1,11 @@
 # my neovim settings
 
-## Installation
+## Installation for macOS
 
 ```sh
+brew install neovim 
 git clone https://github.com/cyrusn/nvim.git ~/.config/nvim
+nvim ~/.config/nvim/
 ```
 
 ## Package Manager
