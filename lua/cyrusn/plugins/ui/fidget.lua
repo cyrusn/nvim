@@ -14,9 +14,4 @@ return {
 			["nvim-tree"] = { enable = true },
 		},
 	},
-	config = function(_, opts)
-		local fidget = require("fidget")
-		fidget.setup(opts)
-		vim.msg_show = fidget.notify
-	end,
 }
