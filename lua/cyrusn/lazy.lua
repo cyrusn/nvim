@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Example using a list of specs with the default options
 require("lazy").setup({
-  {import = "cyrusn.plugins.ui"},
   {import = "cyrusn.plugins.coding"},
   {import = "cyrusn.plugins.editor"},
+  {import = "cyrusn.plugins.ui"},
 })

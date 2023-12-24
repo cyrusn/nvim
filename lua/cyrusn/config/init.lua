@@ -79,7 +79,7 @@ M.icons.git = {
 	staged = "✓",
 	unmerged = "",
 	renamed = "➜",
-	untracked = "?",
+	untracked = "★",
 	deleted = "",
 	ignored = "◌",
 }
