@@ -2,15 +2,16 @@ return {
 	"lewis6991/gitsigns.nvim",
 	opts = function()
 		local config = require("cyrusn.config")
+    local gitsigns_icons = config.icons.gitsigns
 
 		local opts = {
 			signs = {
-				add = { text = config.icons.diff.added},
-				change = { text = config.icons.diff.modified },
-				delete = { text = config.icons.diff.removed },
-				topdelete = { text = '‾'},
-				changedelete = { text = '≠'},
-				untracked = { text = config.icons.git.untracked },
+				add = { text = gitsigns_icons.added},
+				change = { text = gitsigns_icons.modified },
+				delete = { text = gitsigns_icons.removed },
+				topdelete = { text = gitsigns_icons.topdelete},
+				changedelete = { text = gitsigns_icons.changedelete},
+				untracked = { text = gitsigns_icons.untracked },
 			},
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns

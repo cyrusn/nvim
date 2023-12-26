@@ -68,10 +68,13 @@ M.icons.diagnostics = {
 	info = " ",
 }
 
-M.icons.diff = {
+M.icons.gitsigns = {
 	added = "+",
 	modified = "~",
 	removed = "-",
+	topdelete = "‾",
+	changedelete = "≠",
+	untracked = "★",
 }
 
 M.icons.git = {
