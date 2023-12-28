@@ -20,6 +20,7 @@ return {
 			["<leader>b"] = { name = "+buffers" },
 			["<leader>s"] = { name = "+search" },
 			["<leader>g"] = { name = "+git" },
+			["<leader>o"] = { name = "+obsidian" },
 		})
 		wk.setup(opts)
 	end,
