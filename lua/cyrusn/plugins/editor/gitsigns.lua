@@ -72,7 +72,7 @@ return {
 				map("n", "<leader>td", gs.toggle_deleted, "Show Git Deleted")
 
 				map("n", "<leader>hc", function()
-					vim.ui.input("Commit message: ", function(message)
+					vim.ui.input("Commit Message: ", function(message)
 						vim.cmd('!git commit -m "' .. message .. '"')
 					end)
 				end, "Commit")
