@@ -2,15 +2,15 @@ return {
 	"lewis6991/gitsigns.nvim",
 	opts = function()
 		local config = require("cyrusn.config")
-    local gitsigns_icons = config.icons.gitsigns
+		local gitsigns_icons = config.icons.gitsigns
 
 		local opts = {
 			signs = {
-				add = { text = gitsigns_icons.added},
+				add = { text = gitsigns_icons.added },
 				change = { text = gitsigns_icons.modified },
 				delete = { text = gitsigns_icons.removed },
-				topdelete = { text = gitsigns_icons.topdelete},
-				changedelete = { text = gitsigns_icons.changedelete},
+				topdelete = { text = gitsigns_icons.topdelete },
+				changedelete = { text = gitsigns_icons.changedelete },
 				untracked = { text = gitsigns_icons.untracked },
 			},
 			on_attach = function(bufnr)
@@ -70,6 +70,12 @@ return {
 					gs.diffthis("~")
 				end, "Diff This ~")
 				map("n", "<leader>td", gs.toggle_deleted, "Show Git Deleted")
+
+				map("n", "<leader>hc", function()
+					vim.ui.input("Commit message: ", function(message)
+						vim.cmd('!git commit -m "' .. message .. '"')
+					end)
+				end, "Commit")
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns Select Hunk")
