@@ -11,6 +11,13 @@ return {
 	opts = function()
 		local icons = require("cyrusn.config").icons
 		return {
+			hijack_cursor = true,
+			disable_netrw = true,
+			hijack_netrw = true,
+			view = {
+				adaptive_size = false,
+				preserve_window_proportions = true,
+			},
 			diagnostics = {
 				enable = true,
 			},
@@ -20,24 +27,16 @@ return {
 			filters = {
 				dotfiles = false,
 				git_ignored = false,
-				custom = { ".git", ".DS_Store", "node_modules" },
+				custom = { "^\\.git", "^\\.DS_Store", "node_modules" },
 			},
-			disable_netrw = true,
-			hijack_netrw = true,
-			hijack_cursor = true,
-			hijack_unnamed_buffer_when_opening = false,
 			sync_root_with_cwd = true,
 			update_focused_file = {
 				enable = true,
 				update_root = true,
 			},
-      respect_buf_cwd = true,
+			respect_buf_cwd = true,
 			filesystem_watchers = {
 				enable = true,
-			},
-			view = {
-				adaptive_size = false,
-				preserve_window_proportions = true,
 			},
 			renderer = {
 				root_folder_label = false,
