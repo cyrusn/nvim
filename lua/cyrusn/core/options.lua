@@ -6,6 +6,7 @@ g.loaded_netrwPlugin = 1
 -------------------------------------- vim.options ------------------------------------------
 local opt = vim.opt
 
+opt.helpheight = 30
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.conceallevel = 0 -- Hide * markup for bold and italic
