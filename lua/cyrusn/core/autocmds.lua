@@ -34,37 +34,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- close some filetypes with <q>
+-- settings for markdown and gitcommit
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("close_with_q"),
-	pattern = {
-		"PlenaryTestPopup",
-		"help",
-		"lspinfo",
-		"man",
-		"notify",
-		"qf",
-		"query",
-		"spectre_panel",
-		"startuptime",
-		"tsplayground",
-		"neotest-output",
-		"checkhealth",
-		"neotest-summary",
-		"neotest-output-panel",
-	},
-	callback = function(event)
-		vim.bo[event.buf].buflisted = false
-		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-	end,
-})
-
--- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("wrap_spell"),
+	group = augroup("markdown_settings"),
 	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
+		vim.opt_local.conceallevel = 1 -- Hide * markup for bold and italic
 	end,
 })
