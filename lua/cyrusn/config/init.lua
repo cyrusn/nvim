@@ -35,6 +35,7 @@ M.formatters_by_ft = {
 	vue = { "eslint_d" },
 	html = { "prettier" },
 	javascript = { "prettier" },
+	markdown = { "markdownlint" },
 	json = { "prettier" },
 	go = { "goimports", "gofmt" },
 	sql = { "sql_formatter" },
