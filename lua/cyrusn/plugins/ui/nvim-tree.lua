@@ -7,6 +7,7 @@ return {
 	cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 	keys = {
 		{ "<leader>te", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
+		{ "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },
 	},
 	opts = function()
 		local icons = require("cyrusn.config").icons
