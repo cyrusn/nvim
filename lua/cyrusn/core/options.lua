@@ -6,7 +6,9 @@ g.loaded_netrwPlugin = 1
 -------------------------------------- vim.options ------------------------------------------
 local opt = vim.opt
 
-opt.helpheight = 30
+opt.foldlevel = 99 -- unfold all folds by default
+opt.foldmethod = "indent"
+opt.helpheight = 36
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.conceallevel = 0 -- Hide * markup for bold and italic
