@@ -16,6 +16,6 @@ return {
 				hl = symbol.hl,
 			}
 		end
-    return opts
+		return opts
 	end,
 }

@@ -6,7 +6,7 @@ return {
 		opts.root_dir = opts.root_dir
 			or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
 
-    -- copilot
+		-- copilot
 		opts.sources = vim.list_extend(opts.sources or {}, {
 			nls.builtins.formatting.fish_indent,
 			nls.builtins.diagnostics.fish,
@@ -15,6 +15,6 @@ return {
 			nls.builtins.completion.spell,
 		})
 
-    return opts
+		return opts
 	end,
 }

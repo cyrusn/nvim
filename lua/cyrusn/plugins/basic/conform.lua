@@ -12,9 +12,9 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local config= require("cyrusn.config")
+		local config = require("cyrusn.config")
 		opts.formatters_by_ft = config.formatters_by_ft
-		opts.formatters= config.formatters
+		opts.formatters = config.formatters
 
 		require("conform").setup(opts)
 	end,

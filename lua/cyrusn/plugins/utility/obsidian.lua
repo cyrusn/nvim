@@ -50,6 +50,6 @@ return {
 			folder = "/Diary",
 			template = nil,
 		},
-    disable_frontmatter = true,
+		disable_frontmatter = true,
 	},
 }
