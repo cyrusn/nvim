@@ -5,5 +5,9 @@ return {
 		"ggandor/leap.nvim",
 		"tpope/vim-repeat",
 	},
-  config = true,
+	opts = {
+		keys = { f = "f", F = "F", t = "t", T = "T" },
+		labeled_modes = "",
+		multiline = true,
+	},
 }
