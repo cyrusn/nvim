@@ -32,7 +32,7 @@ M.server_configs = {
 M.formatters_by_ft = {
 	lua = { "stylua" },
 	python = { "black" },
-	vue = { "eslint_d" },
+	vue = { "prettier" },
 	html = { "prettier" },
 	javascript = { "prettier" },
 	markdown = { "markdownlint" },
@@ -141,10 +141,19 @@ M.icons.kinds = {
 	Variable = "󰀫 ",
 }
 
-function M.set_which_key(keybindings, bufnr)
+M.listchars = {
+	tab = "│ ",
+	lead = "·",
+	trail = "·",
+	extends = "▸",
+	precedes = "◂",
+	leadmultispace = "│·",
+}
+
+function M.set_which_key(keybindings, option)
 	local has_wk, wk = pcall(require, "which-key")
 	if has_wk then
-		wk.register(keybindings, { buffer = bufnr })
+		wk.register(keybindings, option)
 	end
 end
 

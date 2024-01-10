@@ -1,6 +1,10 @@
 local keymap = vim.keymap
 
 keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = "Netrw" })
+keymap.set("n", "<leader>x", "<cmd>bd<cr>", { desc = "Close Buffer" })
+keymap.set("n", "H", "<cmd>bp<cr>", { desc = "Prev Buffer" })
+keymap.set("n", "L", "<cmd>bn<cr>", { desc = "Next Buffer" })
 keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- better up/down

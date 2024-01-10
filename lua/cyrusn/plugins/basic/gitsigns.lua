@@ -17,9 +17,9 @@ return {
 				local gs = package.loaded.gitsigns
 
 				-- setup which-key when attach buffer
-				config.set_which_key({
-					["<leader>h"] = { name = "+hunk" },
-				}, bufnr)
+				-- config.set_which_key({
+				-- 	["<leader>h"] = { name = "+hunk" },
+				-- }, { buffer = bufnr, mode = { "n", "v" } })
 
 				local function map(mode, l, r, desc, opts)
 					opts = opts or {}
@@ -65,17 +65,16 @@ return {
 				map("n", "<leader>hb", function()
 					gs.blame_line({ full = true })
 				end, "Blame Line")
-				map("n", "<leader>tb", gs.toggle_current_line_blame, "Blame Line (Current)")
 				map("n", "<leader>hd", gs.diffthis, "Diff This")
 				map("n", "<leader>hD", function()
 					gs.diffthis("~")
 				end, "Diff This ~")
-				map("n", "<leader>td", gs.toggle_deleted, "Show Git Deleted")
+				map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
+				map("n", "<leader>td", gs.toggle_deleted, "Toggle Git Deleted")
 
 				map("n", "<leader>hc", function()
-					vim.ui.input("Commit Message: ", function(message)
-						vim.cmd('!git commit -m "' .. message .. '"')
-					end)
+					local message = vim.ui.input("Commit Message: ")
+					vim.cmd('!git commit -m "' .. message .. '"')
 				end, "Commit")
 
 				-- Text object

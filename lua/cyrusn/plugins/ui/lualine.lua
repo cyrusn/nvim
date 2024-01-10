@@ -26,6 +26,7 @@ return {
 					},
 				},
 				lualine_c = {
+
 					{ "filename", path = 4 },
 				},
 				lualine_x = {
@@ -46,8 +47,10 @@ return {
 				},
 			},
 			extensions = {
-
-				"neo-tree",
+				"nvim-tree",
+				"oil",
+				"mason",
+				"trouble",
 				"lazy",
 			},
 		}

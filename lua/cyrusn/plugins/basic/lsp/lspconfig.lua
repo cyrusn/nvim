@@ -25,10 +25,10 @@ return {
 			})
 
 			-- setup which-key when attach buffer
-			config.set_which_key({
-				["<leader>c"] = { name = "+code" },
-				["<leader>d"] = { name = "+diagnostic" },
-			}, bufnr)
+			-- config.set_which_key({
+			-- 	["<leader>c"] = { name = "+code" },
+			-- 	["<leader>d"] = { name = "+diagnostic" },
+			-- }, { buffer = bufnr })
 
 			local map = function(mode, l, r, desc, opts)
 				opts = opts or {}
@@ -39,7 +39,7 @@ return {
 
 			-- +code
 			map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
-			map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
+			map("n", "<leader>cr", vim.lsp.buf.rename, "LSP Rename")
 			map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
 			map("n", "<leader>cd", "<cmd>Telescope lsp_definitions<cr>", "Definition")
 			map("n", "<leader>ct", "<cmd>Telescope lsp_type_definitions<cr>", "Type Definition")

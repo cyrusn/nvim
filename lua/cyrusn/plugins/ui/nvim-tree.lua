@@ -6,7 +6,7 @@ return {
 	},
 	cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 	keys = {
-		{ "<leader>te", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
+		{ "<leader>te", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },
 		{ "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },
 	},
 	opts = function()
