@@ -1,4 +1,4 @@
 return {
-	"zbirenbaum/copilot-cmp",
+	"stevearc/dressing.nvim",
 	config = true,
 }

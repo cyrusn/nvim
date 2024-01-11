@@ -17,8 +17,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "cyrusn.plugins.basic" },
 	{ import = "cyrusn.plugins.basic.lsp" },
-	{ import = "cyrusn.plugins.coding" },
-	-- { import = "cyrusn.plugins.editor" },
-	-- { import = "cyrusn.plugins.ui" },
-	{ import = "cyrusn.plugins.utility" },
+	{ import = "cyrusn.plugins" },
 })

@@ -1,9 +1,10 @@
 vim.g.mapleader = " "
 
 -- netrw setting
+-- disable netrw
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
---
+-- enable netrw
 -- vim.g.netrw_liststyle = 3
 -- vim.g.netrw_preview = 1
 -- vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()

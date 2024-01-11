@@ -16,10 +16,10 @@ return {
 		-- see below for full list of optional dependencies 👇
 	},
 	keys = {
-		{ "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search Notes" },
-		{ "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open Today" },
-		{ "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Note" },
-		{ "<leader>oa", "<cmd>ObsidianOpen Agenda<cr>", desc = "Open Agenda" },
+		{ "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search Osidian Notes" },
+		{ "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open Osidian Today" },
+		{ "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Note in Osidian" },
+		{ "<leader>oa", "<cmd>ObsidianOpen Agenda<cr>", desc = "Open Agenda in Osidian" },
 	},
 	opts = {
 		workspaces = {

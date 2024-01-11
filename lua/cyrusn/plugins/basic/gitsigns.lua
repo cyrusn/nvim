@@ -16,11 +16,6 @@ return {
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns
 
-				-- setup which-key when attach buffer
-				-- config.set_which_key({
-				-- 	["<leader>h"] = { name = "+hunk" },
-				-- }, { buffer = bufnr, mode = { "n", "v" } })
-
 				local function map(mode, l, r, desc, opts)
 					opts = opts or {}
 					opts.buffer = bufnr
@@ -73,8 +68,9 @@ return {
 				map("n", "<leader>td", gs.toggle_deleted, "Toggle Git Deleted")
 
 				map("n", "<leader>hc", function()
-					local message = vim.ui.input("Commit Message: ")
-					vim.cmd('!git commit -m "' .. message .. '"')
+					vim.ui.input("Commit Message: ", function(message)
+						vim.cmd('!git commit -m "' .. message .. '"')
+					end)
 				end, "Commit")
 
 				-- Text object
