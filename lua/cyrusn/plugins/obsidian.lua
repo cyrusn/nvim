@@ -16,10 +16,10 @@ return {
 		-- see below for full list of optional dependencies 👇
 	},
 	keys = {
-		{ "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search Osidian Notes" },
-		{ "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open Osidian Today" },
-		{ "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Note in Osidian" },
-		{ "<leader>oa", "<cmd>ObsidianOpen Agenda<cr>", desc = "Open Agenda in Osidian" },
+		{ "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Search Obsidian Notes" },
+		{ "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open Obsidian Today" },
+		{ "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Note in Obsidian" },
+		{ "<leader>oa", "<cmd>ObsidianOpen Agenda<cr>", desc = "Open Agenda in Obsidian" },
 	},
 	opts = {
 		workspaces = {
@@ -34,14 +34,14 @@ return {
 				action = function()
 					return require("obsidian").util.gf_passthrough()
 				end,
-				opts = { noremap = false, expr = true, buffer = true, desc = "Follow Link" },
+				opts = { noremap = false, expr = true, buffer = true, desc = "Follow Obsidian Link" },
 			},
 			-- Toggle check-boxes.
 			["<leader>ox"] = {
 				action = function()
 					return require("obsidian").util.toggle_checkbox()
 				end,
-				opts = { buffer = true, desc = "CheckBox" },
+				opts = { buffer = true, desc = "Toggle CheckBox" },
 			},
 		},
 		-- see below for full list of options 👇

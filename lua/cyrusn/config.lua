@@ -39,7 +39,6 @@ M.formatters_by_ft = {
 	json = { "prettier" },
 	go = { "goimports", "gofmt" },
 	sql = { "sql_formatter" },
-	["*"] = { "codespell" },
 	["_"] = { "trim_whitespace" },
 }
 
