@@ -20,6 +20,7 @@ return {
 		{ "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Open Obsidian Today" },
 		{ "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open Note in Obsidian" },
 		{ "<leader>oa", "<cmd>ObsidianOpen Agenda<cr>", desc = "Open Agenda in Obsidian" },
+		{ "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Open Backlinks of Current Note" },
 	},
 	opts = {
 		workspaces = {
