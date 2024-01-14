@@ -1,5 +1,4 @@
 return {
-	"echasnovski/mini.comment",
-	enabled = false,
+	"cchasnovski/mini.comment",
 	config = true,
 }
