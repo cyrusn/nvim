@@ -1,5 +1,13 @@
 local M = {}
 
+-- load config
+function M.setup()
+	local modules = { "options", "autocmds", "keymaps" }
+	for _, mod in ipairs(modules) do
+		require("cyrusn.config." .. mod)
+	end
+end
+
 -- lsp-zero and mason
 M.servers = {
 	"cssls",
@@ -148,12 +156,5 @@ M.listchars = {
 	precedes = "◂",
 	leadmultispace = "│·",
 }
-
-function M.set_which_key(keybindings, option)
-	local has_wk, wk = pcall(require, "which-key")
-	if has_wk then
-		wk.register(keybindings, option)
-	end
-end
 
 return M

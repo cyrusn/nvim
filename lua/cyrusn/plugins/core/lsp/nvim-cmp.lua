@@ -13,7 +13,7 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_snipmate").lazy_load()
 
 		require("cmp").setup({
 			completion = {
@@ -36,11 +36,12 @@ return {
 					select = true,
 				}),
 			},
+
 			sources = {
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "copilot", group_index = 2 },
-				{ name = "buffer" },
+				{ name = "nvim_lsp" },
+				{ name = "copilot" },
+				{ nme = "buffer" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
 			},

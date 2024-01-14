@@ -10,13 +10,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Check if we need to reload the file when it changed
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
-	group = augroup("checktime"),
-	command = "checktime",
-})
-
--- go to last loc when opening a buffer
+-- remember last edit position
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup("last_loc"),
 	callback = function(event)
