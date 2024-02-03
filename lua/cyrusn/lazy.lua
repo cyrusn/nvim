@@ -14,9 +14,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Example using a list of specs with the default options
+
+local opts = {
+	dev = {
+		patterns = { "cyrusn" },
+	},
+}
+
 require("cyrusn.config").setup()
+
 require("lazy").setup({
 	{ import = "cyrusn.plugins.core" },
 	{ import = "cyrusn.plugins.core.lsp" },
 	{ import = "cyrusn.plugins" },
-})
+}, opts)

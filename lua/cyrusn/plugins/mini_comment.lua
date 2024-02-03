@@ -1,4 +1,4 @@
 return {
-	"cchasnovski/mini.comment",
+	"echasnovski/mini.comment",
 	config = true,
 }
