@@ -22,6 +22,7 @@ M.servers = {
 	"tsserver",
 	"volar",
 	"yamlls",
+	"prismals",
 }
 
 -- specific config for lspconfig
