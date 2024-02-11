@@ -1,6 +1,5 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = false, -- use custom statusline instead
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
