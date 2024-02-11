@@ -2,7 +2,7 @@ local M = {}
 
 -- load config
 function M.setup()
-	local modules = { "options", "autocmds", "keymaps" }
+	local modules = { "options", "autocmds", "keymaps", "statusline" }
 	for _, mod in ipairs(modules) do
 		require("cyrusn.config." .. mod)
 	end
