@@ -30,6 +30,7 @@ return {
 				"vim",
 				"vimdoc",
 				"yaml",
+				"prisma",
 			},
 			sync_install = false,
 			highlight = { enable = true },
