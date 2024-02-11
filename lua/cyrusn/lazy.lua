@@ -25,6 +25,6 @@ require("cyrusn.config").setup()
 
 require("lazy").setup({
 	{ import = "cyrusn.plugins.core" },
-	{ import = "cyrusn.plugins.core.lsp" },
+	{ import = "cyrusn.plugins.lsp" },
 	{ import = "cyrusn.plugins" },
 }, opts)
