@@ -9,11 +9,13 @@ function M.setup()
 end
 
 -- lsp-zero and mason
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 M.servers = {
 	"cssls",
 	"emmet_ls",
 	"eslint",
 	"graphql",
+	"gopls",
 	"html",
 	"lua_ls",
 	"pylsp",

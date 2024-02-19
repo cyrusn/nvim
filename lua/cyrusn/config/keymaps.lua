@@ -6,7 +6,6 @@ vim.keymap.set("n", "H", "<cmd>bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "L", "<cmd>bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 vim.keymap.set("n", "<leader>bn", "<cmd>new<cr>", { desc = "New Buffer" })
-vim.keymap.set("n", "<leader>ht", "<cmd>!git status<cr>", { desc = "Show Git Status" })
 
 -- better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
