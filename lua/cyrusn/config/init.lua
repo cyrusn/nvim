@@ -9,6 +9,8 @@ function M.setup()
 end
 
 -- lsp-zero and mason
+-- the servers object below is the setup for mason `{ ensure_installed = servers }`
+-- and lsp zero `lsp_zero.setup_servers(servers)`
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 M.servers = {
 	"cssls",
@@ -29,11 +31,25 @@ M.servers = {
 
 -- specific config for lspconfig
 M.server_configs = {
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 	tsserver = {
 		init_options = {
 			preferences = {
 				-- disable CommonJS modules warning
 				disableSuggestions = true,
+			},
+		},
+	},
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
+	pylsp = {
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						maxLineLength = 88,
+						ignore = { "E501" },
+					},
+				},
 			},
 		},
 	},
