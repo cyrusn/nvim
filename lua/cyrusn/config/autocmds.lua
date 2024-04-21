@@ -38,3 +38,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.conceallevel = 1 -- Hide * markup for bold and italic
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	group = augroup("term_settings"),
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+	end,
+})
