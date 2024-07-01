@@ -11,6 +11,9 @@ return {
 			mode = { "n", "v" },
 		},
 	},
+	init = function()
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+	end,
 	opts = function()
 		local config = require("cyrusn.config")
 		return {

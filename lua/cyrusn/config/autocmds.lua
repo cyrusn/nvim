@@ -28,14 +28,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- settings for markdown and gitcommit
+-- settings for markdown and git commit
 vim.api.nvim_create_autocmd("FileType", {
 	group = augroup("markdown_settings"),
 	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
-		vim.opt_local.conceallevel = 1 -- Hide * markup for bold and italic
+		vim.opt_local.conceallevel = 0 -- Hide * markup for bold and italic
 	end,
 })
 

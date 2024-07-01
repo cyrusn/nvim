@@ -22,7 +22,7 @@ return {
 		{ "<leader>sG", "<cmd>Telescope git_commits<CR>", desc = "Search Git Commits" },
 		{ "<leader>sg", "<cmd>Telescope git_status<CR>", desc = "Search Git Status" },
 		{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Search Registers" },
-		-- { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Search Commands" },
+		{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Search Commands" },
 		{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Search Auto Commands" },
 		{ "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Search Buffers" },
 		{ "<leader>bs", "<cmd>Telescope buffers<cr>", desc = "Search Buffers" },
@@ -33,9 +33,6 @@ return {
 	opts = {
 		defaults = {
 			file_ignore_patterns = { "node_modules" },
-			layout_config = {
-				preview_width = 0.5,
-			},
 		},
 	},
 }

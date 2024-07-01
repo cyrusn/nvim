@@ -13,6 +13,7 @@ end
 -- and lsp zero `lsp_zero.setup_servers(servers)`
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 M.servers = {
+	"clangd",
 	"cssls",
 	"emmet_ls",
 	"eslint",
@@ -61,8 +62,9 @@ M.formatters_by_ft = {
 	python = { "black" },
 	vue = { "prettier" },
 	html = { "prettier" },
-	javascript = { "prettier" },
+	javascript = { { "prettierd", "prettier" } },
 	markdown = { "markdownlint" },
+	c = { "clang-format" },
 	json = { "prettier" },
 	go = { "goimports", "gofmt" },
 	sql = { "sql_formatter" },
@@ -75,6 +77,7 @@ M.formatters = {
 			"--single-quote",
 			"--trailing-comma=none",
 			"--jsx-single-quote",
+			"--ignore-path=.prettierignore",
 			"--no-semi",
 		},
 	},

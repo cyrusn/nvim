@@ -6,13 +6,12 @@ return {
 		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
 	},
 	config = function()
+		-- require("mini.surround").setup()
+		-- require("mini.pairs").setup()
+
 		require("mini.align").setup()
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
-		require("mini.tabline").setup()
-		-- require("mini.jump").setup()
-		-- require("mini.pairs").setup()
-		-- require("mini.surround").setup()
 
 		local miniclue = require("mini.clue")
 		miniclue.setup({
@@ -54,11 +53,11 @@ return {
 				{ mode = "n", keys = "<leader>o", desc = "+obsidian" },
 				{ mode = "n", keys = "<leader>s", desc = "+search" },
 				{ mode = "n", keys = "<leader>t", desc = "+toggle" },
-        { mode = "n", keys = "<leader>c", desc = "+code" },
-        { mode = "n", keys = "<leader>h", desc = "+hunk" },
+				{ mode = "n", keys = "<leader>c", desc = "+code" },
+				{ mode = "n", keys = "<leader>h", desc = "+hunk" },
 				{ mode = "x", keys = "<leader>c", desc = "+code" },
 				{ mode = "x", keys = "<leader>h", desc = "+hunk" },
-        --
+
 				-- Enhance this by adding descriptions for <Leader> mapping groups
 				miniclue.gen_clues.builtin_completion(),
 				miniclue.gen_clues.g(),
@@ -80,8 +79,6 @@ return {
 				hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
 				todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 				note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-
-				-- Highlight hex color strings (`#rrggbb`) using that color
 				hex_color = hipatterns.gen_highlighter.hex_color(),
 			},
 		})
@@ -96,34 +93,5 @@ return {
 			TRACE = { duration = 1000 },
 			OFF = { duration = 1000 },
 		})
-
-		-- require("mini.files").setup({
-		-- 	options = {
-		-- 		use_as_default_explorer = false,
-		-- 	},
-		-- 	windows = {
-		-- 		preview = true,
-		-- 		width_focus = 20,
-		-- 		width_nofocus = 15,
-		-- 		width_preview = 60,
-		-- 	},
-		-- })
-
-		local MiniStatusline = require("mini.statusline")
-		MiniStatusline.setup()
-
-		-- force to show relative path
-		MiniStatusline.section_filename = function()
-			return vim.fn.expand("%:.") .. ": %m"
-		end
-
-		-- show Percentage in the file location
-		MiniStatusline.section_location = function()
-			if vim.bo.filetype == "alpha" then
-				return ""
-			end
-
-			return "%P %l:%c "
-		end
 	end,
 }
