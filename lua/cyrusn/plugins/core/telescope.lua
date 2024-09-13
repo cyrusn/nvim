@@ -11,6 +11,18 @@ return {
 				require("telescope").load_extension("fzf")
 			end,
 		},
+		{
+			"jemag/telescope-diff.nvim",
+			config = function()
+				require("telescope").load_extension("diff")
+				vim.api.nvim_create_user_command("DiffCurrent", function()
+					require("telescope").extensions.diff.diff_current({ hidden = true })
+				end, {})
+				vim.api.nvim_create_user_command("Diff2Files", function()
+					require("telescope").extensions.diff.diff_files({ hidden = true })
+				end, {})
+			end,
+		},
 	},
 	keys = {
 		{ "<C-p>", "<cmd> Telescope git_files<CR>", desc = "Find Git Files" },
@@ -23,6 +35,7 @@ return {
 		{ "<leader>sg", "<cmd>Telescope git_status<CR>", desc = "Search Git Status" },
 		{ '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Search Registers" },
 		{ "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Search Commands" },
+    { "<leader>sC", "<cmd>Telescope command_history<cr>", desc = "Search Command History" },
 		{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Search Auto Commands" },
 		{ "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Search Buffers" },
 		{ "<leader>bs", "<cmd>Telescope buffers<cr>", desc = "Search Buffers" },
