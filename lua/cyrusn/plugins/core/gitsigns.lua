@@ -1,5 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
+	enabled = false,
 	opts = function()
 		local config = require("cyrusn.config")
 		local gitsigns_icons = config.icons.gitsigns

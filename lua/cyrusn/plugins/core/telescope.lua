@@ -26,10 +26,10 @@ return {
 	},
 	keys = {
 		{ "<C-p>", "<cmd> Telescope git_files<CR>", desc = "Find Git Files" },
-		{ "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+		-- { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
 
 		{ "<leader>p", "<cmd>lua require('telescope.builtin').find_files({no_ignore=true})<cr>", desc = "Find Files" },
-		{ "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Search Live Grep" },
+		-- { "<leader>/", "<cmd>Telescope live_grep<CR>", desc = "Search Live Grep" },
 		{ "<leader>sw", "<cmd>Telescope grep_string<CR>", desc = "Search String Under Cursor" },
 		{ "<leader>sG", "<cmd>Telescope git_commits<CR>", desc = "Search Git Commits" },
 		{ "<leader>sg", "<cmd>Telescope git_status<CR>", desc = "Search Git Status" },

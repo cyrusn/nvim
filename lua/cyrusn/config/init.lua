@@ -2,7 +2,11 @@ local M = {}
 
 -- load config
 function M.setup()
-	local modules = { "options", "autocmds", "keymaps" }
+	local modules = {
+		"options",
+		"autocmds",
+		"keymaps",
+	}
 	for _, mod in ipairs(modules) do
 		require("cyrusn.config." .. mod)
 	end
@@ -15,19 +19,21 @@ end
 M.servers = {
 	"clangd",
 	"cssls",
+	"diff",
 	"emmet_ls",
 	"eslint",
-	"graphql",
 	"gopls",
+	"graphql",
 	"html",
 	"lua_ls",
+	"markdown",
+	"prismals",
 	"pylsp",
 	"sqlls",
 	"tailwindcss",
 	"tsserver",
 	"volar",
 	"yamlls",
-	"prismals",
 }
 
 -- specific config for lspconfig
