@@ -20,14 +20,7 @@ return {
 		})
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
-		require("mini.files").setup({
-			windows = {
-				preview = true,
-        width_preview = 50
-			},
-		})
-		require("mini.git").setup()
-		require("mini.diff").setup()
+		require("mini.files").setup()
 		require("mini.indentscope").setup()
 		require("mini.move").setup()
 		require("mini.pairs").setup()
