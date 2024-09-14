@@ -4,14 +4,32 @@ return {
 	keys = {
 		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
 		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
+		{ "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
+		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
+		{ "<leader>mp", "<cmd>Pick files<cr>", desc = "Pick files" },
+		{ "<leader>ms", "<cmd>lua MiniTrailspace.trim <cr>", desc = "trim space" },
+		{ "<leader>me", "<cmd>lua MiniTrailspace.trim_last_lines<cr>", desc = "trim end-line" },
+		{ "<leader><space>", "<cmd>Pick files<cr>", desc = "Pick files" },
+		{ "<leader>mg", "<cmd>Pick grep_live<cr>", desc = "Pick grep" },
+		{ "<leader>/", "<cmd>Pick grep_live<cr>", desc = "Pick grep" },
 	},
 	config = function()
-		-- require("mini.surround").setup()
-		-- require("mini.pairs").setup()
-
 		require("mini.align").setup()
+		require("mini.basics").setup({
+			mappings = { window = true },
+		})
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
+		require("mini.files").setup()
+		require("mini.git").setup()
+		require("mini.diff").setup()
+		require("mini.indentscope").setup()
+		require("mini.move").setup()
+		require("mini.pairs").setup()
+		require("mini.pick").setup()
+		require("mini.statusline").setup()
+		require("mini.surround").setup()
+		require("mini.tabline").setup()
 
 		local miniclue = require("mini.clue")
 		miniclue.setup({
@@ -57,6 +75,7 @@ return {
 				{ mode = "n", keys = "<leader>h", desc = "+hunk" },
 				{ mode = "x", keys = "<leader>c", desc = "+code" },
 				{ mode = "x", keys = "<leader>h", desc = "+hunk" },
+				{ mode = "n", keys = "<leader>m", desc = "+mini" },
 
 				-- Enhance this by adding descriptions for <Leader> mapping groups
 				miniclue.gen_clues.builtin_completion(),
