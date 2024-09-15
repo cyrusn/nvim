@@ -12,8 +12,48 @@ return {
 		{ "<leader><space>", "<cmd>Pick files<cr>", desc = "Pick files" },
 		{ "<leader>mg", "<cmd>Pick grep_live<cr>", desc = "Pick grep" },
 		{ "<leader>/", "<cmd>Pick grep_live<cr>", desc = "Pick grep" },
+
+		-- Search:
+		{ "<leader>sf", "<cmd>Pick git_files<CR>", desc = "Find Git Files" },
+		{ "<leader>sG", "<cmd>Pick git_commits<CR>", desc = "Search Git Commits" },
+		{ "<leader>sg", "<cmd>Pick git_hunk<CR>", desc = "Search Git Hunk" },
+		{ '<leader>s"', "<cmd>Pick registers<cr>", desc = "Search Registers" },
+		{ "<leader>sc", "<cmd>Pick commands<cr>", desc = "Search Commands" },
+		{ "<leader>sC", "<cmd>Pick history<cr>", desc = "Search Command History" },
+		{ "<leader>sb", "<cmd>Pick buffers<cr>", desc = "Search Buffers" },
+		{ "<leader>bs", "<cmd>Pick buffers<cr>", desc = "Search Buffers" },
+		{ "<leader>sh", "<cmd>Pick help<cr>", desc = "Search Help Pages" },
+		{ "<leader>sk", "<cmd>Pick keymaps<cr>", desc = "Search Key Maps" },
+		{ "<leader>sd", "<cmd>Pick lsp scope='diagnostic'<cr>", desc = "Search Workspace diagnostics" },
+
+		-- Tools:
+		{ "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
+		{ "<leader>ms", "<cmd>lua MiniTrailspace.trim <cr>", desc = "trim space" },
+		{ "<leader>me", "<cmd>lua MiniTrailspace.trim_last_lines<cr>", desc = "trim end-line" },
+		{ "<leader>md", "<cmd>Pick lsp scope='definiton'<cr>", desc = "Search Definition" },
+
+		-- Code:
+		{ "<leader>cd", "<cmd>lua Pick lsp scope='declaration'<cr>", desc = "Declaration" },
+		{ "<leader>cD", "<cmd>lua MiniExtra.pickers.lsp({scope='definiton'})<cr>", desc = "Definition" },
+		{ "<leader>cs", "<cmd>lua MiniExtra.pickers.lsp({scope='document_symbol'})<cr>", desc = "Document Symbol" },
+		{ "<leader>cw", "<cmd>lua MiniExtra.pickers.lsp({scope='workspace_symbol'})<cr>", desc = "WorkspaceSymbol" },
+		{ "<leader>ct", "<cmd>lua MiniExtra.pickers.lsp({scope='type_definitions'})<cr>", desc = "Type Definition" },
+		{ "<leader>cI", "<cmd>lua MiniExtra.pickers.lsp({scope='implementations'})<cr>", desc = "LSP Implementations" },
+		{ "<leader>cR", "<cmd>lua MiniExtra.pickers.lsp({scope='references'})<cr>", desc = "References" },
 	},
 	config = function()
+		require("mini.files").setup({
+			options = {
+				use_as_default_explorer = true,
+			},
+		})
+		require("mini.git").setup()
+		require("mini.diff").setup()
+		require("mini.tabline").setup()
+		require("mini.statusline").setup()
+		require("mini.pick").setup()
+		require("mini.extra").setup()
+
 		require("mini.align").setup()
 		require("mini.basics").setup({
 			mappings = { window = true },
