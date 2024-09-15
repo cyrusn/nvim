@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	dependencies = { "mason.nvim" },
+	dependencies = { "mason.nvim", "nvim-lua/plenary.nvim" },
 	opts = function(_, opts)
 		local nls = require("null-ls")
 		opts.root_dir = opts.root_dir

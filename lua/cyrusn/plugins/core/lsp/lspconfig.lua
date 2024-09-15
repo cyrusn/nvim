@@ -41,13 +41,13 @@ return {
 			map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
 			map("n", "<leader>cr", vim.lsp.buf.rename, "LSP Rename")
 			map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
-			map("n", "<leader>cd", "<cmd>Telescope lsp_definitions<cr>", "Definition")
-			map("n", "<leader>ct", "<cmd>Telescope lsp_type_definitions<cr>", "Type Definition")
-			map("n", "<leader>cR", "<cmd>Telescope lsp_references<cr>", "LSP References")
-			map("n", "<leader>cI", "<cmd>Telescope lsp_implementations<cr>", "LSP Implementations")
+			-- map("n", "<leader>cd", "<cmd>Telescope lsp_definitions<cr>", "Definition")
+			-- map("n", "<leader>ct", "<cmd>Telescope lsp_type_definitions<cr>", "Type Definition")
+			-- map("n", "<leader>cR", "<cmd>Telescope lsp_references<cr>", "LSP References")
+			-- map("n", "<leader>cI", "<cmd>Telescope lsp_implementations<cr>", "LSP Implementations")
+			--    map("n", "<leader>db", "<cmd>Telescope diagnostics bufnr=0<cr>", "Show Buffer Diagnostics")
 
 			-- +diagnostics
-			map("n", "<leader>db", "<cmd>Telescope diagnostics bufnr=0<cr>", "Show Buffer Diagnostics")
 			map("n", "<leader>df", vim.diagnostic.open_float, "Show Line Diagnostics")
 			map("n", "[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
 			map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
