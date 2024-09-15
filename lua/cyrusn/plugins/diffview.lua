@@ -3,6 +3,6 @@ return {
 	config = true,
 	keys = {
 		{ "<leader>hv", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
-		{ "<leader>hc", "<cmd>DiffviewOpen<cr>", desc = "Close Diffview" },
+		{ "<leader>hc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
 	},
 }

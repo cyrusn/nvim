@@ -8,14 +8,12 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit" })
 -- terminal
 vim.keymap.set("n", "<leader>T", "<cmd>terminal<cr>", { desc = "Open terminal" })
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", { desc = "Quit terminal" })
-vim.keymap.set("t", "<leader>e", "<cmd>Ex<cr>", { desc = "Toggle Netrw" })
-
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
+-- use bufferline instead
 -- Move to next or previous buffer
 vim.keymap.set("n", "<S-h>", "<cmd>bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bn<cr>", { desc = "Next Buffer" })
-
 
 -- use mini.basics and mini.move instead
 -- Move Lines
