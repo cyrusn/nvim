@@ -7,7 +7,6 @@ return {
 		"catppuccin/nvim",
 	},
 	keys = {
-
 		{ "<leader>X", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close Other Buffers" },
 		{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 		{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
