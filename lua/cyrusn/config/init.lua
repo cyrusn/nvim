@@ -19,27 +19,25 @@ end
 M.servers = {
 	"clangd",
 	"cssls",
-	"diff",
 	"emmet_ls",
 	"eslint",
 	"gopls",
 	"graphql",
 	"html",
 	"lua_ls",
-	"markdown",
 	"prismals",
 	"pylsp",
 	"sqlls",
 	"tailwindcss",
-	"tsserver",
 	"volar",
 	"yamlls",
+  "ts_ls",
 }
 
 -- specific config for lspconfig
 M.server_configs = {
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-	tsserver = {
+	ts_ls= {
 		init_options = {
 			preferences = {
 				-- disable CommonJS modules warning

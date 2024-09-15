@@ -4,7 +4,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"VonHeikemen/lsp-zero.nvim",
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		"williamboman/mason-lspconfig.nvim",
 	},
 	config = function()
