@@ -29,15 +29,15 @@ M.servers = {
 	"pylsp",
 	"sqlls",
 	"tailwindcss",
+	"ts_ls",
 	"volar",
 	"yamlls",
-  "ts_ls",
 }
 
 -- specific config for lspconfig
 M.server_configs = {
 	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-	ts_ls= {
+	ts_ls = {
 		init_options = {
 			preferences = {
 				-- disable CommonJS modules warning
@@ -102,78 +102,6 @@ M.icons.diagnostics = {
 	info = " ",
 }
 
-M.icons.gitsigns = {
-	added = "+",
-	modified = "~",
-	removed = "-",
-	topdelete = "‾",
-	changedelete = "≠",
-	untracked = "★",
-}
-
-M.icons.git = {
-	unstaged = "✗",
-	staged = "✓",
-	unmerged = "",
-	renamed = "➜",
-	untracked = "★",
-	deleted = "",
-	ignored = "◌",
-}
-
-M.icons.folder = {
-	default = "",
-	empty = "",
-	empty_open = "",
-	open = "",
-	symlink = "",
-	symlink_open = "",
-	arrow_open = "",
-	arrow_closed = "",
-}
-
-M.icons.kinds = {
-	Array = " ",
-	Boolean = "󰨙 ",
-	Class = " ",
-	Codeium = "󰘦 ",
-	Color = " ",
-	Control = " ",
-	Collapsed = " ",
-	Constant = "󰏿 ",
-	Constructor = " ",
-	Copilot = " ",
-	Enum = " ",
-	EnumMember = " ",
-	Event = " ",
-	Field = " ",
-	File = " ",
-	Folder = " ",
-	Function = "󰊕 ",
-	Interface = " ",
-	Key = " ",
-	Keyword = " ",
-	Method = "󰊕 ",
-	Module = " ",
-	Namespace = "󰦮 ",
-	Null = " ",
-	Number = "󰎠 ",
-	Object = " ",
-	Operator = " ",
-	Package = " ",
-	Property = " ",
-	Reference = " ",
-	Snippet = " ",
-	String = " ",
-	Struct = "󰆼 ",
-	TabNine = "󰏚 ",
-	Text = " ",
-	TypeParameter = " ",
-	Unit = " ",
-	Value = " ",
-	Variable = "󰀫 ",
-}
-
 M.listchars = {
 	tab = "│ ",
 	lead = "·",
@@ -182,5 +110,78 @@ M.listchars = {
 	precedes = "◂",
 	leadmultispace = "│·",
 }
+
+-- M.icons.gitsigns = {
+-- 	added = "+",
+-- 	modified = "~",
+-- 	removed = "-",
+-- 	topdelete = "‾",
+-- 	changedelete = "≠",
+-- 	untracked = "★",
+-- }
+--
+-- M.icons.git = {
+-- 	unstaged = "✗",
+-- 	staged = "✓",
+-- 	unmerged = "",
+-- 	renamed = "➜",
+-- 	untracked = "★",
+-- 	deleted = "",
+-- 	ignored = "◌",
+-- }
+--
+-- M.icons.folder = {
+-- 	default = "",
+-- 	empty = "",
+-- 	empty_open = "",
+-- 	open = "",
+-- 	symlink = "",
+-- 	symlink_open = "",
+-- 	arrow_open = "",
+-- 	arrow_closed = "",
+-- }
+--
+-- M.icons.kinds = {
+-- 	Array = " ",
+-- 	Boolean = "󰨙 ",
+-- 	Class = " ",
+-- 	Codeium = "󰘦 ",
+-- 	Color = " ",
+-- 	Control = " ",
+-- 	Collapsed = " ",
+-- 	Constant = "󰏿 ",
+-- 	Constructor = " ",
+-- 	Copilot = " ",
+-- 	Enum = " ",
+-- 	EnumMember = " ",
+-- 	Event = " ",
+-- 	Field = " ",
+-- 	File = " ",
+-- 	Folder = " ",
+-- 	Function = "󰊕 ",
+-- 	Interface = " ",
+-- 	Key = " ",
+-- 	Keyword = " ",
+-- 	Method = "󰊕 ",
+-- 	Module = " ",
+-- 	Namespace = "󰦮 ",
+-- 	Null = " ",
+-- 	Number = "󰎠 ",
+-- 	Object = " ",
+-- 	Operator = " ",
+-- 	Package = " ",
+-- 	Property = " ",
+-- 	Reference = " ",
+-- 	Snippet = " ",
+-- 	String = " ",
+-- 	Struct = "󰆼 ",
+-- 	TabNine = "󰏚 ",
+-- 	Text = " ",
+-- 	TypeParameter = " ",
+-- 	Unit = " ",
+-- 	Value = " ",
+-- 	Variable = "󰀫 ",
+-- }
+--
 
 return M

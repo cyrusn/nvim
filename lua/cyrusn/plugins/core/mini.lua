@@ -5,9 +5,15 @@ return {
 		vim.cmd.colorscheme("minicyan")
 
 		require("mini.files").setup({
-		  options = { use_as_default_explorer = true }
+		  options = { use_as_default_explorer = true },
+		    windows = {
+		      preview = true,
+		      width_focus = 25,
+		      width_preview = 80
+		    }
 		})
 		require("mini.align").setup()
+		require("mini.cursorword").setup()
 		require("mini.git").setup()
 		require("mini.diff").setup()
 		require("mini.tabline").setup()
