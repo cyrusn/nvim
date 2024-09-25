@@ -5,12 +5,28 @@ return {
 		vim.cmd.colorscheme("minicyan")
 
 		require("mini.files").setup({
-		  options = { use_as_default_explorer = true },
-		    windows = {
-		      preview = true,
-		      width_focus = 25,
-		      width_preview = 80
-		    }
+			mappings = {
+				close = "<esc>",
+				go_in = "L",
+				go_in_plus = "l",
+				go_out = "H",
+				go_out_plus = "h",
+				mark_goto = "'",
+				mark_set = "m",
+				reset = "<BS>",
+				reveal_cwd = "@",
+				show_help = "g?",
+				synchronize = "=",
+				trim_left = "<",
+				trim_right = ">",
+			},
+
+			options = { use_as_default_explorer = true },
+			windows = {
+				preview = true,
+				width_focus = 25,
+				width_preview = 80,
+			},
 		})
 		require("mini.align").setup()
 		require("mini.cursorword").setup()
@@ -70,9 +86,9 @@ return {
 
 			clues = {
 				{
-				  mode = "n",
-				  keys = "<leader>b",
-				  desc = "+buffer"
+					mode = "n",
+					keys = "<leader>b",
+					desc = "+buffer",
 				},
 				{ mode = "n", keys = "<leader>d", desc = "+diagnostic" },
 				-- { mode = "n", keys = "<leader>o", desc = "+obsidian" },
@@ -124,11 +140,13 @@ return {
 		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
 		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
 		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
-		{ "<leader>E", "<cmd>lua MiniExtra.pickers.explorer()<cr>", desc = "Open files" },
+		{ "<leader>E", "<cmd>lua MiniExtra.pickers.explorer()<cr>", desc = "Open explorer" },
 
 		-- Mini.Pick and Mini.Extra
 		{ "<leader><space>", "<cmd>Pick files<cr>", desc = "Pick files" },
-		{ "<leader>/", "<cmd>Pick grep_live<cr>", desc = "Pick grep" },
+		{ "<leader>p", "<cmd>Pick files tool='fallback'<cr>", desc = "Pick all files" },
+		{ "<leader>/", "<cmd>Pick grep<cr>", desc = "Pick grep" },
+		{ "<leader>?", "<cmd>lua MiniPick.builtin.grep({tool = 'fallback'})<cr>", desc = "Pick grep (All)" },
 
 		-- Search:
 		{ "<leader>sf", "<cmd>Pick git_files<CR>", desc = "Find Git Files" },
