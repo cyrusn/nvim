@@ -5,6 +5,11 @@ return {
 		vim.cmd.colorscheme("minicyan")
 
 		require("mini.files").setup({
+			content = {
+				filter = function(fs_entry)
+					return fs_entry.name ~= ".git"
+				end,
+			},
 			mappings = {
 				close = "<esc>",
 				go_in = "L",
@@ -28,26 +33,27 @@ return {
 				width_preview = 80,
 			},
 		})
-		require("mini.align").setup()
-		require("mini.cursorword").setup()
-		require("mini.git").setup()
 		require("mini.diff").setup()
+		require("mini.git").setup()
+		require("mini.icons").setup()
 		require("mini.tabline").setup()
-		require("mini.splitjoin").setup()
 		require("mini.statusline").setup()
+		require("mini.pairs").setup()
+		require("mini.cursorword").setup()
 		require("mini.pick").setup()
 		require("mini.extra").setup()
 		require("mini.basics").setup({
-			mappings = { window = true },
+			mappings = {
+				basic = false,
+				window = true,
+			},
 		})
 
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
 		require("mini.completion").setup()
-		require("mini.icons").setup()
 		require("mini.indentscope").setup()
 		require("mini.move").setup()
-		require("mini.pairs").setup()
 		require("mini.surround").setup()
 
 		local miniclue = require("mini.clue")
@@ -85,13 +91,8 @@ return {
 			},
 
 			clues = {
-				{
-					mode = "n",
-					keys = "<leader>b",
-					desc = "+buffer",
-				},
+				{ mode = "n", keys = "<leader>b", desc = "+buffer" },
 				{ mode = "n", keys = "<leader>d", desc = "+diagnostic" },
-				-- { mode = "n", keys = "<leader>o", desc = "+obsidian" },
 				{ mode = "n", keys = "<leader>s", desc = "+search" },
 				{ mode = "n", keys = "<leader>t", desc = "+toggle" },
 				{ mode = "n", keys = "<leader>c", desc = "+code" },
@@ -99,6 +100,7 @@ return {
 				{ mode = "x", keys = "<leader>c", desc = "+code" },
 				{ mode = "x", keys = "<leader>h", desc = "+hunk" },
 				{ mode = "n", keys = "<leader>m", desc = "+mini" },
+				-- { mode = "n", keys = "<leader>o", desc = "+obsidian" },
 
 				-- Enhance this by adding descriptions for <Leader> mapping groups
 				miniclue.gen_clues.builtin_completion(),
@@ -139,6 +141,7 @@ return {
 	keys = {
 		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
 		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
+		{ "<leader>bd", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
 		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
 		{ "<leader>E", "<cmd>lua MiniExtra.pickers.explorer()<cr>", desc = "Open explorer" },
 
@@ -172,7 +175,7 @@ return {
 		{ "<leader>cd", "<cmd>lua MiniExtra.pickers.lsp({ scope='declaration '})<cr>", desc = "Declaration" },
 		{ "<leader>cD", "<cmd>lua MiniExtra.pickers.lsp({ scope='definition '})<cr>", desc = "Definition" },
 		{ "<leader>cs", "<cmd>lua MiniExtra.pickers.lsp({ scope='document_symbol' })<cr>", desc = "Document Symbol" },
-		{ "<leader>cw", "<cmd>lua MiniExtra.pickers.lsp({ scope='workspace_symbol' })<cr>", desc = "WorkspaceSymbol" },
+		{ "<leader>cw", "<cmd>lua MiniExtra.pickers.lsp({ scope='workspace_symbol' })<cr>", desc = "Workspace Symbol" },
 		{ "<leader>ct", "<cmd>lua MiniExtra.pickers.lsp({ scope='type_definition' })<cr>", desc = "Type Definition" },
 		{ "<leader>cI", "<cmd>lua MiniExtra.pickers.lsp({ scope='implementation' })<cr>", desc = "Implementations" },
 		{ "<leader>cR", "<cmd>lua MiniExtra.pickers.lsp({ scope='references' })<cr>", desc = "References" },

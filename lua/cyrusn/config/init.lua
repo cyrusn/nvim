@@ -12,9 +12,9 @@ function M.setup()
 	end
 end
 
--- lsp-zero and mason
+-- lsp_zero and mason
 -- the servers object below is the setup for mason `{ ensure_installed = servers }`
--- and lsp zero `lsp_zero.setup_servers(servers)`
+-- and lsp_zero `lsp_zero.setup_servers(servers)`
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 M.servers = {
 	"clangd",
@@ -24,20 +24,20 @@ M.servers = {
 	"gopls",
 	"graphql",
 	"html",
-	"lua_ls",
+	lua_ls = { settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	} },
 	"prismals",
-	"pylsp",
 	"sqlls",
 	"tailwindcss",
-	"ts_ls",
 	"volar",
 	"yamlls",
-}
-
--- specific config for lspconfig
-M.server_configs = {
-	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 	ts_ls = {
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
 		init_options = {
 			preferences = {
 				-- disable CommonJS modules warning
@@ -45,8 +45,8 @@ M.server_configs = {
 			},
 		},
 	},
-	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
 	pylsp = {
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
 		settings = {
 			pylsp = {
 				plugins = {
@@ -87,21 +87,6 @@ M.formatters = {
 	},
 }
 
--- icons set
-M.icons = {}
-
-M.icons.misc = {
-	default = "󰈚",
-	symlink = "",
-}
-
-M.icons.diagnostics = {
-	error = " ",
-	warn = " ",
-	hint = " ",
-	info = " ",
-}
-
 M.listchars = {
 	tab = "│ ",
 	lead = "·",
@@ -110,78 +95,5 @@ M.listchars = {
 	precedes = "◂",
 	leadmultispace = "│·",
 }
-
--- M.icons.gitsigns = {
--- 	added = "+",
--- 	modified = "~",
--- 	removed = "-",
--- 	topdelete = "‾",
--- 	changedelete = "≠",
--- 	untracked = "★",
--- }
---
--- M.icons.git = {
--- 	unstaged = "✗",
--- 	staged = "✓",
--- 	unmerged = "",
--- 	renamed = "➜",
--- 	untracked = "★",
--- 	deleted = "",
--- 	ignored = "◌",
--- }
---
--- M.icons.folder = {
--- 	default = "",
--- 	empty = "",
--- 	empty_open = "",
--- 	open = "",
--- 	symlink = "",
--- 	symlink_open = "",
--- 	arrow_open = "",
--- 	arrow_closed = "",
--- }
---
--- M.icons.kinds = {
--- 	Array = " ",
--- 	Boolean = "󰨙 ",
--- 	Class = " ",
--- 	Codeium = "󰘦 ",
--- 	Color = " ",
--- 	Control = " ",
--- 	Collapsed = " ",
--- 	Constant = "󰏿 ",
--- 	Constructor = " ",
--- 	Copilot = " ",
--- 	Enum = " ",
--- 	EnumMember = " ",
--- 	Event = " ",
--- 	Field = " ",
--- 	File = " ",
--- 	Folder = " ",
--- 	Function = "󰊕 ",
--- 	Interface = " ",
--- 	Key = " ",
--- 	Keyword = " ",
--- 	Method = "󰊕 ",
--- 	Module = " ",
--- 	Namespace = "󰦮 ",
--- 	Null = " ",
--- 	Number = "󰎠 ",
--- 	Object = " ",
--- 	Operator = " ",
--- 	Package = " ",
--- 	Property = " ",
--- 	Reference = " ",
--- 	Snippet = " ",
--- 	String = " ",
--- 	Struct = "󰆼 ",
--- 	TabNine = "󰏚 ",
--- 	Text = " ",
--- 	TypeParameter = " ",
--- 	Unit = " ",
--- 	Value = " ",
--- 	Variable = "󰀫 ",
--- }
---
 
 return M
