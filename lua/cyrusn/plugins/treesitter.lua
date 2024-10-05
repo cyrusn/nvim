@@ -1,37 +1,13 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	build = ":TSUpdate",
 	config = function()
-		local configs = require("nvim-treesitter.configs")
-		configs.setup({
+		local config = require("cyrusn.config").treesitter
+
+		require("nvim-treesitter.configs").setup({
 			autotag = {
 				enable = true,
 			},
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"javascript",
-				"jsdoc",
-				"json",
-				"jsonc",
-				"lua",
-				"luadoc",
-				"luap",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"query",
-				"regex",
-				"toml",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-				"prisma",
-			},
+			ensure_installed = config.ensure_installed,
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },

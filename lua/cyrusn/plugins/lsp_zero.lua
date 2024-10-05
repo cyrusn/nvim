@@ -1,21 +1,25 @@
 return {
-	"neovim/nvim-lspconfig",
-	cmd = { "LspInfo", "LspInstall", "LspStart" },
-	event = { "BufReadPre", "BufNewFile" },
+	"VonHeikemen/lsp-zero.nvim",
+	branch = "v4.x",
 	dependencies = {
-		{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
-		{ "williamboman/mason.nvim" },
-		{ "hrsh7th/cmp-nvim-lsp" },
-		{ "hrsh7th/nvim-cmp" },
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		"hrsh7th/cmp-nvim-lsp",
 	},
+	keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
 	config = function()
 		local lsp_zero = require("lsp-zero")
+		local config = require("cyrusn.config").mason
+		local servers = config.servers
+		local ensure_installed = config.ensure_installed
 
 		local lsp_attach = function(_, bufnr)
 			lsp_zero.default_keymaps({
 				buffer = bufnr,
 				preserve_mappings = false,
 			})
+
 			local map = function(mode, l, r, desc, opts)
 				opts = opts or {}
 				opts.buffer = bufnr
@@ -38,6 +42,30 @@ return {
 			sign_text = true,
 			float_border = "rounded",
 			lsp_attach = lsp_attach,
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		})
+
+		require("mason").setup()
+
+		local lspconfig = require("lspconfig")
+		local handlers = {}
+
+		for key, val in pairs(servers) do
+			if type(key) == "number" then
+				handlers[val] = function()
+					lspconfig[val].setup({})
+				end
+			else
+				handlers[key] = function()
+					lspconfig[key].setup(val)
+				end
+			end
+		end
+
+		require("mason-lspconfig").setup({
+			ensure_installed = ensure_installed,
+			automatic_servers_installation = true,
+			handlers = handlers,
 		})
 	end,
 }

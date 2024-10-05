@@ -14,7 +14,6 @@ vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
-local config = require("cyrusn.config")
 
 -- vim.options
 vim.opt.timeout = false
@@ -30,7 +29,14 @@ vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.list = true -- Show some invisible characters (tabs...
-vim.opt.listchars:append(config.listchars)
+vim.opt.listchars:append({
+	tab = "│ ",
+	lead = "·",
+	trail = "·",
+	extends = "▸",
+	precedes = "◂",
+	leadmultispace = "│·",
+})
 vim.opt.mouse = "a" -- Enable mouse mode
 vim.opt.number = true -- Print line number
 vim.opt.relativenumber = true -- Relative line numbers

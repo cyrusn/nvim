@@ -2,16 +2,20 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
+			"VonHeikemen/lsp-zero.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"onsails/lspkind.nvim",
+
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			local cmp = require("cmp")
-			local cmp_format = require("lsp-zero").cmp_format({ details = true })
+			require("lspkind").setup()
+			local cmp_format = require("lspkind").cmp_format()
 			local cmp_action = require("lsp-zero").cmp_action()
 
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -28,22 +32,23 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
-					-- confirm completion
 					["<Tab>"] = cmp_action.tab_complete(),
 					["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
 					-- scroll up and down the documentation window
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
 				}),
+
 				sources = {
 					{ name = "nvim_lsp" },
-					{ name = "buffer" },
 					{ name = "luasnip" },
+					{ name = "buffer" },
 				},
 
-				formatting = cmp_format,
+				formatting = {
+					format = cmp_format,
+				},
 			})
 
 			cmp.setup.cmdline({ "/", "?" }, {

@@ -1,6 +1,5 @@
 local M = {}
 
--- load config
 function M.setup()
 	local modules = {
 		"options",
@@ -12,47 +11,84 @@ function M.setup()
 	end
 end
 
--- lsp_zero and mason
--- the servers object below is the setup for mason `{ ensure_installed = servers }`
--- and lsp_zero `lsp_zero.setup_servers(servers)`
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-M.servers = {
-	"clangd",
-	"cssls",
-	"emmet_ls",
-	"eslint",
-	"gopls",
-	"graphql",
-	"html",
-	lua_ls = { settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	} },
-	"prismals",
-	"sqlls",
-	"tailwindcss",
-	"volar",
-	"yamlls",
-	ts_ls = {
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-		init_options = {
-			preferences = {
-				-- disable CommonJS modules warning
-				disableSuggestions = true,
-			},
-		},
+-- helpers
+--
+M.helpers = {
+	includes = function(tbl, str)
+		local result = false
+
+		for _, val in pairs(tbl) do
+			if type(val) == "string" then
+				if string.gsub(val, "^%s*(.-)%s*$", "%1") == string.gsub(str, "^%s*(.-)%s*$", "%1") then
+					result = true
+				end
+			end
+		end
+
+		return result
+	end,
+}
+
+-- nvim-treesitter
+M.treesitter = {
+	ensure_installed = {
+		"lua",
+		"vim",
+		"markdown",
 	},
-	pylsp = {
-		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						maxLineLength = 88,
-						ignore = { "E501" },
+}
+
+-- mason.nvim
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+M.mason = {
+	ensure_installed = {
+		"cssls",
+		"gopls",
+		"html",
+		"lua_ls",
+		"pylsp",
+		"sqlls",
+		"ts_ls",
+	},
+
+	servers = {
+		"clangd",
+		"cssls",
+		"emmet_ls",
+		"eslint",
+		"gopls",
+		"graphql",
+		"html",
+		lua_ls = {
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+				},
+			},
+		},
+		"prismals",
+		"sqlls",
+		"tailwindcss",
+		"volar",
+		"yamlls",
+		ts_ls = {
+			init_options = {
+				preferences = {
+					-- disable CommonJS modules warning
+					disableSuggestions = true,
+				},
+			},
+		},
+		pylsp = {
+			settings = {
+				pylsp = {
+					plugins = {
+						pycodestyle = {
+							maxLineLength = 88,
+							ignore = { "E501" },
+						},
 					},
 				},
 			},
@@ -61,39 +97,30 @@ M.servers = {
 }
 
 -- conform.nvim
-M.formatters_by_ft = {
-	lua = { "stylua" },
-	python = { "black" },
-	vue = { "prettier" },
-	html = { "prettier" },
-	javascript = { { "prettierd", "prettier" } },
-	markdown = { "markdownlint" },
-	c = { "clang-format" },
-	json = { "prettier" },
-	go = { "goimports", "gofmt" },
-	sql = { "sql_formatter" },
-	["_"] = { "trim_whitespace" },
-}
-
-M.formatters = {
-	prettier = {
-		prepend_args = {
-			"--single-quote",
-			"--trailing-comma=none",
-			"--jsx-single-quote",
-			"--ignore-path=.prettierignore",
-			"--no-semi",
+M.conform = {
+	formatters_by_ft = {
+		lua = { "stylua" },
+		python = { "black" },
+		vue = { "prettier" },
+		html = { "prettier" },
+		javascript = { "prettier" },
+		markdown = { "markdownlint" },
+		c = { "clang-format" },
+		json = { "prettier" },
+		go = { "goimports", "gofmt" },
+		sql = { "sql_formatter" },
+		["_"] = { "trim_whitespace" },
+	},
+	formatters = {
+		prettier = {
+			prepend_args = {
+				"--single-quote",
+				"--trailing-comma=none",
+				"--jsx-single-quote",
+				"--ignore-path=.prettierignore",
+				"--no-semi",
+			},
 		},
 	},
 }
-
-M.listchars = {
-	tab = "│ ",
-	lead = "·",
-	trail = "·",
-	extends = "▸",
-	precedes = "◂",
-	leadmultispace = "│·",
-}
-
 return M

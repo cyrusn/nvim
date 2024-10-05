@@ -3,11 +3,16 @@ return {
 	lazy = false,
 	config = function()
 		vim.cmd.colorscheme("minicyan")
+		local helpers = require("cyrusn.config").helpers
 
 		require("mini.files").setup({
 			content = {
 				filter = function(fs_entry)
-					return fs_entry.name ~= ".git"
+					local ignored_files = {
+						".git",
+						".trash",
+					}
+					return not helpers.includes(ignored_files, fs_entry.name)
 				end,
 			},
 			mappings = {
@@ -33,12 +38,11 @@ return {
 				width_preview = 80,
 			},
 		})
-		require("mini.diff").setup()
-		require("mini.git").setup()
 		require("mini.icons").setup()
 		require("mini.tabline").setup()
 		require("mini.statusline").setup()
 		require("mini.pairs").setup()
+		require("mini.operators").setup()
 		require("mini.cursorword").setup()
 		require("mini.pick").setup()
 		require("mini.extra").setup()
@@ -51,7 +55,6 @@ return {
 
 		require("mini.bufremove").setup()
 		require("mini.comment").setup()
-		require("mini.completion").setup()
 		require("mini.indentscope").setup()
 		require("mini.move").setup()
 		require("mini.surround").setup()
