@@ -5,8 +5,8 @@ return {
 	keys = {
 		-- Mini.Pick and Mini.Extra
 		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
-		{ "<leader>/", "<cmd>FzfLua grep<cr>", desc = "Grep" },
-		{ "<leader>?", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
+		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Grep" },
+		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
 
 		-- Search:
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },

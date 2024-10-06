@@ -72,11 +72,6 @@ return {
 				-- Leader triggers
 				{ mode = "n", keys = "<Leader>" },
 				{ mode = "x", keys = "<Leader>" },
-				{ mode = "n", keys = "<Leader>m" },
-				{ mode = "x", keys = "<Leader>m" },
-
-				-- Built-in completion
-				{ mode = "i", keys = "<C-x>" },
 
 				-- `g` key
 				{ mode = "n", keys = "g" },
