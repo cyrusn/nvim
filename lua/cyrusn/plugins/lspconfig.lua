@@ -18,7 +18,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
+			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
 		},
@@ -31,7 +31,7 @@ return {
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 				window = {
@@ -100,6 +100,7 @@ return {
 				}, {
 					{ name = "cmdline" },
 				}),
+				matching = { disallow_symbol_nonprefix_matching = false },
 			})
 		end,
 	},
