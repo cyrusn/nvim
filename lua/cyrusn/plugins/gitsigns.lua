@@ -54,8 +54,8 @@ return {
 			map("n", "<leader>hb", function()
 				gs.blame_line({ full = true })
 			end, "Blame Line")
-			map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
-			map("n", "<leader>td", gs.toggle_deleted, "Toggle Git Deleted")
+			map("n", "<leader>hb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
+			map("n", "<leader>hd", gs.toggle_deleted, "Toggle Git Deleted")
 
 			map("n", "<leader>hc", function()
 				vim.ui.input({ prompt = "Commit Message: " }, function(message)

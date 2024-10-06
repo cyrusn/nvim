@@ -141,7 +141,7 @@ return {
 				map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
 
 				-- +diagnostics
-				map("n", "<leader>df", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
+				map("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
 				map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
 				map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic")
 			end

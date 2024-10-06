@@ -1,8 +1,9 @@
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>x", "<cmd>bd<cr>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>X", "<cmd>%bd|e#<cr>", { desc = "Close all other buffers" })
 
 -- terminal
-vim.keymap.set("n", "<leader>T", "<cmd>terminal<cr>", { desc = "Open terminal" })
+vim.keymap.set("n", "<leader>t", "<cmd>terminal<cr>", { desc = "Open terminal" })
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>", { desc = "Quit terminal" })
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
