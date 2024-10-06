@@ -32,9 +32,23 @@ M.helpers = {
 -- nvim-treesitter
 M.treesitter = {
 	ensure_installed = {
+		"bash",
+		"comment",
+		"css",
+		"gitcommit",
+		"html",
+		"javascript",
 		"lua",
-		"vim",
 		"markdown",
+		"markdown_inline",
+		"python",
+		"toml",
+		"vim",
+		"vimdoc",
+		"yaml",
+		"lua",
+		"markdown",
+		"json",
 	},
 }
 
@@ -47,6 +61,9 @@ M.mason = {
 		"html",
 		"lua_ls",
 		"pylsp",
+		"bashls",
+		"beautysh",
+		"yamlfix",
 		"sqlls",
 		"ts_ls",
 	},

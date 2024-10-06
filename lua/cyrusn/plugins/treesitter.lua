@@ -8,6 +8,7 @@ return {
 				enable = true,
 			},
 			ensure_installed = config.ensure_installed,
+      auto_install = true,
 			sync_install = false,
 			highlight = { enable = true },
 			indent = { enable = true },
