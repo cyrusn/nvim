@@ -62,8 +62,6 @@ M.mason = {
 		"lua_ls",
 		"pylsp",
 		"bashls",
-		"beautysh",
-		"yamlfix",
 		"sqlls",
 		"ts_ls",
 	},
