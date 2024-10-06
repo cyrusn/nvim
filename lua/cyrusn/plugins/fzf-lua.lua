@@ -12,7 +12,7 @@ return {
 		{ "<leader>si", "<cmd>FzfLua builtin<cr>", desc = "Search FzfLua builtin" },
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Search Git Files" },
 		{ "<leader>sG", "<cmd>FzfLua git_commits<CR>", desc = "Search Git Commits" },
-		{ "<leader>ss", "<cmd>FzfLua git_status<CR>", desc = "Search Git Hunk" },
+		{ "<leader>ss", "<cmd>FzfLua git_status<CR>", desc = "Search Git Status" },
 		{ '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Search Registers" },
 		{ "<leader>sc", "<cmd>FzfLua commands<cr>", desc = "Search Commands" },
 		{ "<leader>sC", "<cmd>FzfLua command_history<cr>", desc = "Search Command History" },
