@@ -1,8 +1,13 @@
 return {
 	"echasnovski/mini.nvim",
 	lazy = false,
+	keys = {
+		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
+		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
+		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
+	},
 	config = function()
-		vim.cmd.colorscheme("minicyan")
+		-- vim.cmd.colorscheme("minicyan")
 		local helpers = require("cyrusn.config").helpers
 
 		require("mini.files").setup({
@@ -31,21 +36,21 @@ return {
 				trim_right = ">",
 			},
 
-			options = { use_as_default_explorer = true },
+			options = { use_as_default_explorer = false},
 			windows = {
 				preview = true,
 				width_focus = 25,
 				width_preview = 80,
 			},
 		})
-		require("mini.icons").setup()
 		require("mini.tabline").setup()
 		require("mini.statusline").setup()
+    require("mini.git").setup()
+    require("mini.diff").setup()
+    require("mini.icons").setup()
 		require("mini.pairs").setup()
 		require("mini.operators").setup()
 		require("mini.cursorword").setup()
-		require("mini.pick").setup()
-		require("mini.extra").setup()
 		require("mini.basics").setup({
 			mappings = {
 				basic = false,
@@ -94,7 +99,6 @@ return {
 			},
 
 			clues = {
-				{ mode = "n", keys = "<leader>b", desc = "+buffer" },
 				{ mode = "n", keys = "<leader>d", desc = "+diagnostic" },
 				{ mode = "n", keys = "<leader>s", desc = "+search" },
 				{ mode = "n", keys = "<leader>t", desc = "+toggle" },
@@ -141,46 +145,4 @@ return {
 			OFF = { duration = 1000 },
 		})
 	end,
-	keys = {
-		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
-		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
-		{ "<leader>bd", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
-		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
-		{ "<leader>E", "<cmd>lua MiniExtra.pickers.explorer()<cr>", desc = "Open explorer" },
-
-		-- Mini.Pick and Mini.Extra
-		{ "<leader><space>", "<cmd>Pick files<cr>", desc = "Pick files" },
-		{ "<leader>p", "<cmd>Pick files tool='fallback'<cr>", desc = "Pick all files" },
-		{ "<leader>/", "<cmd>Pick grep<cr>", desc = "Pick grep" },
-		{ "<leader>?", "<cmd>lua MiniPick.builtin.grep({tool = 'fallback'})<cr>", desc = "Pick grep (All)" },
-
-		-- Search:
-		{ "<leader>sf", "<cmd>Pick git_files<CR>", desc = "Find Git Files" },
-		{ "<leader>sG", "<cmd>Pick git_commits<CR>", desc = "Search Git Commits" },
-		{ "<leader>sg", "<cmd>Pick git_hunks<CR>", desc = "Search Git Hunk" },
-		{ '<leader>s"', "<cmd>Pick registers<cr>", desc = "Search Registers" },
-		{ "<leader>sc", "<cmd>Pick commands<cr>", desc = "Search Commands" },
-		{ "<leader>sC", "<cmd>Pick history<cr>", desc = "Search Command History" },
-		{ "<leader>sb", "<cmd>Pick buffers<cr>", desc = "Search Buffers" },
-		{ "<leader>bs", "<cmd>Pick buffers<cr>", desc = "Search Buffers" },
-		{ "<leader>sh", "<cmd>Pick help<cr>", desc = "Search Help Pages" },
-		{ "<leader>sk", "<cmd>Pick keymaps<cr>", desc = "Search Key Maps" },
-		{ "<leader>sd", "<cmd>Pick lsp scope='diagnostic'<cr>", desc = "Search Workspace diagnostics" },
-		{ "<leader>sB", "<cmd>lua MiniExtra.pickers.buf_lines()<cr>", desc = "Search current buf_lines" },
-
-		-- Tools:
-		{ "<leader>mf", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
-		{ "<leader>ms", "<cmd>lua MiniTrailspace.trim <cr>", desc = "trim space" },
-		{ "<leader>me", "<cmd>lua MiniTrailspace.trim_last_lines<cr>", desc = "trim end-line" },
-		{ "<leader>md", "<cmd>Pick lsp scope='definiton'<cr>", desc = "Search Definition" },
-
-		-- Code:
-		{ "<leader>cd", "<cmd>lua MiniExtra.pickers.lsp({ scope='declaration '})<cr>", desc = "Declaration" },
-		{ "<leader>cD", "<cmd>lua MiniExtra.pickers.lsp({ scope='definition '})<cr>", desc = "Definition" },
-		{ "<leader>cs", "<cmd>lua MiniExtra.pickers.lsp({ scope='document_symbol' })<cr>", desc = "Document Symbol" },
-		{ "<leader>cw", "<cmd>lua MiniExtra.pickers.lsp({ scope='workspace_symbol' })<cr>", desc = "Workspace Symbol" },
-		{ "<leader>ct", "<cmd>lua MiniExtra.pickers.lsp({ scope='type_definition' })<cr>", desc = "Type Definition" },
-		{ "<leader>cI", "<cmd>lua MiniExtra.pickers.lsp({ scope='implementation' })<cr>", desc = "Implementations" },
-		{ "<leader>cR", "<cmd>lua MiniExtra.pickers.lsp({ scope='references' })<cr>", desc = "References" },
-	},
 }

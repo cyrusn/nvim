@@ -1,19 +1,19 @@
 vim.g.mapleader = " "
 
 -- disable netrw
--- vim.g.loaded_netrwPlugin = 1
--- vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 --
 -- enable netrw if nvim-tree is not installed
-vim.g.netrw_preview = 1
-vim.g.netrw_liststyle = 0
-vim.g.netrw_winsize = 20
-vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
-vim.g.netrw_sizestyle = "H"
-vim.g.netrw_banner = 0
-vim.g.netrw_keepdir = 0
-vim.g.netrw_localrmdir = "rm -rf"
-vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+-- vim.g.netrw_preview = 1
+-- vim.g.netrw_liststyle = 0
+-- vim.g.netrw_winsize = 20
+-- vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
+-- vim.g.netrw_sizestyle = "H"
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_keepdir = 0
+-- vim.g.netrw_localrmdir = "rm -rf"
+-- vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
 vim.opt.timeout = false

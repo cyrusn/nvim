@@ -57,7 +57,7 @@ return {
 			map("n", "<leader>tb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
 			map("n", "<leader>td", gs.toggle_deleted, "Toggle Git Deleted")
 
-			map("n", "<leader>hC", function()
+			map("n", "<leader>hc", function()
 				vim.ui.input({ prompt = "Commit Message: " }, function(message)
 					vim.cmd('!git commit -m "' .. message .. '"')
 				end)
