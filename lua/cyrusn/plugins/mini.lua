@@ -3,13 +3,26 @@ return {
 	lazy = false,
 	keys = {
 		{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
-		{ "<leader>x", "<cmd>lua MiniBufremove.delete(0)<cr>", desc = "Delete Buffer" },
 		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
 	},
 	config = function()
 		-- vim.cmd.colorscheme("minicyan")
-		local helpers = require("cyrusn.config").helpers
 
+		require("mini.tabline").setup()
+		require("mini.statusline").setup()
+		require("mini.git").setup()
+		require("mini.diff").setup()
+		require("mini.icons").setup()
+		require("mini.pairs").setup()
+		require("mini.operators").setup()
+		require("mini.cursorword").setup()
+		require("mini.comment").setup()
+		require("mini.indentscope").setup()
+		require("mini.move").setup()
+		require("mini.surround").setup()
+
+		-- mini.files
+		local helpers = require("cyrusn.config").helpers
 		require("mini.files").setup({
 			content = {
 				filter = function(fs_entry)
@@ -36,21 +49,15 @@ return {
 				trim_right = ">",
 			},
 
-			options = { use_as_default_explorer = false},
+			options = { use_as_default_explorer = false },
 			windows = {
 				preview = true,
 				width_focus = 25,
 				width_preview = 80,
 			},
 		})
-		require("mini.tabline").setup()
-		require("mini.statusline").setup()
-    require("mini.git").setup()
-    require("mini.diff").setup()
-    require("mini.icons").setup()
-		require("mini.pairs").setup()
-		require("mini.operators").setup()
-		require("mini.cursorword").setup()
+
+		-- mini.basics
 		require("mini.basics").setup({
 			mappings = {
 				basic = false,
@@ -58,18 +65,15 @@ return {
 			},
 		})
 
-		require("mini.bufremove").setup()
-		require("mini.comment").setup()
-		require("mini.indentscope").setup()
-		require("mini.move").setup()
-		require("mini.surround").setup()
-
+		-- mini.clues
 		local miniclue = require("mini.clue")
 		miniclue.setup({
 			triggers = {
 				-- Leader triggers
 				{ mode = "n", keys = "<Leader>" },
 				{ mode = "x", keys = "<Leader>" },
+				{ mode = "n", keys = "<Leader>m" },
+				{ mode = "x", keys = "<Leader>m" },
 
 				-- Built-in completion
 				{ mode = "i", keys = "<C-x>" },
@@ -99,21 +103,19 @@ return {
 			},
 
 			clues = {
-				{ mode = "n", keys = "<leader>d", desc = "+diagnostic" },
 				{ mode = "n", keys = "<leader>s", desc = "+search" },
-				{ mode = "n", keys = "<leader>t", desc = "+toggle" },
 				{ mode = "n", keys = "<leader>c", desc = "+code" },
 				{ mode = "n", keys = "<leader>h", desc = "+hunk" },
 				{ mode = "x", keys = "<leader>c", desc = "+code" },
 				{ mode = "x", keys = "<leader>h", desc = "+hunk" },
-				{ mode = "n", keys = "<leader>m", desc = "+mini" },
-				-- { mode = "n", keys = "<leader>o", desc = "+obsidian" },
 
 				-- Enhance this by adding descriptions for <Leader> mapping groups
 				miniclue.gen_clues.builtin_completion(),
 				miniclue.gen_clues.g(),
 				miniclue.gen_clues.marks(),
-				miniclue.gen_clues.registers(),
+				miniclue.gen_clues.registers({
+					show_contents = false,
+				}),
 				miniclue.gen_clues.windows(),
 				miniclue.gen_clues.z(),
 			},
@@ -122,6 +124,7 @@ return {
 			},
 		})
 
+		-- mini.hipatterns
 		local hipatterns = require("mini.hipatterns")
 		hipatterns.setup({
 			highlighters = {
@@ -134,6 +137,7 @@ return {
 			},
 		})
 
+		-- mini.notify
 		local notify = require("mini.notify")
 		notify.setup()
 		vim.notify = notify.make_notify({
