@@ -3,12 +3,10 @@ return {
 	-- optional for icon support
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
-		-- Mini.Pick and Mini.Extra
+		-- Search:
 		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
 		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Grep" },
 		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
-
-		-- Search:
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },
 		{ "<leader>sG", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
 		{ "<leader>ss", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
