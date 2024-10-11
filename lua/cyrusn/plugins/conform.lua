@@ -18,7 +18,7 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				c = { "clang-format" },
-        sh = { "beautysh" },
+				sh = { "beautysh" },
 				fish = { "fish_indent" },
 				go = { "goimports", "gofmt" },
 				html = { "prettier" },
@@ -52,5 +52,6 @@ return {
 				-- },
 			},
 		})
+		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
 }

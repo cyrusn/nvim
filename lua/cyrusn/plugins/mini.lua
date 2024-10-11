@@ -8,32 +8,41 @@ return {
 	{ "echasnovski/mini.pairs", config = true },
 	{ "echasnovski/mini.surround", config = true },
 	{
+		"echasnovski/mini.bufremove",
+		keys = {
+			{ "<leader>x", "<cmd>lua MiniBufremove.delete(0, true)<cr>", desc = "Close Buffer" },
+		},
+		config = true,
+	},
+	{
 		"echasnovski/mini.files",
+		lazy = false,
 		dependancies = {
 			"echasnovski/mini.icons",
 		},
 		keys = {
-			{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open files" },
+			{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open MiniFiles" },
 		},
 		config = function()
-			local helpers = require("cyrusn.config").helpers
+			local ignored_files = {
+				".git",
+				".trash",
+			}
+
 			require("mini.files").setup({
 				content = {
 					filter = function(fs_entry)
-						local ignored_files = {
-							".git",
-							".trash",
-						}
-						return not helpers.includes(ignored_files, fs_entry.name)
+						return not vim.list_contains(ignored_files, fs_entry.name)
 					end,
 				},
 				mappings = {
+					close = "<ESC>",
 					go_in = "L",
 					go_in_plus = "l",
 					go_out = "H",
 					go_out_plus = "h",
 				},
-				options = { use_as_default_explorer = false },
+				options = { use_as_default_explorer = true },
 				windows = {
 					preview = true,
 					width_focus = 25,
@@ -44,6 +53,7 @@ return {
 	},
 	{
 		"echasnovski/mini.notify",
+		lazy = false,
 		keys = {
 			{ "<leader>n", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Show history" },
 		},
@@ -53,11 +63,11 @@ return {
 
 			vim.notify = notify.make_notify({
 				ERROR = { duration = 3000 },
-				WARN = { duration = 1000 },
-				INFO = { duration = 1000 },
-				DEBUG = { duration = 1000 },
-				TRACE = { duration = 1000 },
-				OFF = { duration = 1000 },
+				WARN = { duration = 2000 },
+				INFO = { duration = 2000 },
+				DEBUG = { duration = 2000 },
+				TRACE = { duration = 2000 },
+				OFF = { duration = 2000 },
 			})
 		end,
 	},
@@ -66,8 +76,8 @@ return {
 		config = function()
 			require("mini.basics").setup({
 				mappings = {
-					basic = false,
-					window = true,
+					basic = true,
+					windows = true,
 				},
 			})
 		end,

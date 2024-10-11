@@ -5,6 +5,8 @@ return {
 	keys = {
 		-- Search:
 		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
+		{ "<leader>C", "<cmd>FzfLua files cwd='~/.config/nvim'<cr>", desc = "Config Files" },
+
 		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Grep" },
 		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },
