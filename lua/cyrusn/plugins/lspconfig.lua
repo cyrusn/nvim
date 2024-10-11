@@ -118,10 +118,60 @@ return {
 			local lsp_zero = require("lsp-zero")
 			local lspconfig = require("lspconfig")
 
-			local config = require("cyrusn.config").mason
-			local servers = config.servers
-			local ensure_installed = config.ensure_installed
+			local ensure_installed = {
+				"cssls",
+				"gopls",
+				"html",
+				"lua_ls",
+				"pylsp",
+				"bashls",
+				"sqlls",
+				"ts_ls",
+			}
 
+			local servers = {
+				"clangd",
+				"cssls",
+				"emmet_ls",
+				"eslint",
+				"gopls",
+				"graphql",
+				"html",
+				"prismals",
+				"sqlls",
+				"tailwindcss",
+				"volar",
+				"yamlls",
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim" },
+							},
+						},
+					},
+				},
+				ts_ls = {
+					init_options = {
+						preferences = {
+							-- disable CommonJS modules warning
+							disableSuggestions = true,
+						},
+					},
+				},
+				pylsp = {
+					settings = {
+						pylsp = {
+							plugins = {
+								pycodestyle = {
+									maxLineLength = 88,
+									ignore = { "E501" },
+								},
+							},
+						},
+					},
+				},
+			}
 			local lsp_attach = function(_, bufnr)
 				lsp_zero.default_keymaps({
 					buffer = bufnr,
@@ -168,8 +218,8 @@ return {
 			end
 
 			require("mason-lspconfig").setup({
-				ensure_installed = ensure_installed,
 				automatic_servers_installation = true,
+				ensure_installed = ensure_installed,
 				handlers = handlers,
 			})
 		end,
