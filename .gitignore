@@ -1,4 +1,4 @@
 lazy-lock.json
-lua/cyrusn/unused/*.lua
+lua/cyrusn/unused/
 .DS_Store
 spell/
