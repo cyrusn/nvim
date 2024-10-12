@@ -22,18 +22,73 @@ return {
 		},
 		keys = {
 			{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open MiniFiles" },
+			{ "g.", "<cmd>MiniFilesToggleHiddenFiles<cr>", desc = "Toggle Hidden Files", ft = "minifiles" },
 		},
 		config = function()
+			local MiniFiles = require("mini.files")
 			local ignored_files = {
 				".git",
-				".trash",
+				".DS_Store",
+				"node_modules",
 			}
+			local show_hidden = false
+
+			local default_sort = MiniFiles.default_sort
+			local default_filter = MiniFiles.default_filter
+
+			local sort_hidden = function(entries)
+				local all_paths = table.concat(
+					vim.tbl_map(function(entry)
+						return entry.path
+					end, entries),
+					"\n"
+				)
+				local output_lines = {}
+				local job_id = vim.fn.jobstart({ "git", "check-ignore", "--stdin" }, {
+					stdout_buffered = true,
+					on_stdout = function(_, data)
+						output_lines = data
+					end,
+				})
+
+				-- command failed to run
+				if job_id < 1 then
+					return entries
+				end
+
+				-- send paths via STDIN
+				vim.fn.chansend(job_id, all_paths)
+				vim.fn.chanclose(job_id, "stdin")
+				vim.fn.jobwait({ job_id })
+				return require("mini.files").default_sort(vim.tbl_filter(function(entry)
+					return not vim.tbl_contains(output_lines, entry.path)
+				end, entries))
+			end
+
+			local filter_hidden = function(fs_entry)
+				return not vim.list_contains(ignored_files, fs_entry.name)
+			end
+
+			local toggle_hidden_files = function()
+				show_hidden = not show_hidden
+
+				local new_sorter = show_hidden and default_sort or sort_hidden
+				local new_filter = show_hidden and default_filter or filter_hidden
+
+				MiniFiles.refresh({
+					content = {
+						sort = new_sorter,
+						filter = new_filter,
+					},
+				})
+			end
+
+			vim.api.nvim_create_user_command("MiniFilesToggleHiddenFiles", toggle_hidden_files, { nargs = 0 })
 
 			require("mini.files").setup({
 				content = {
-					filter = function(fs_entry)
-						return not vim.list_contains(ignored_files, fs_entry.name)
-					end,
+					filter = show_hidden and default_filter or filter_hidden,
+					sort = show_hidden and default_sort or sort_hidden,
 				},
 				mappings = {
 					close = "<ESC>",
