@@ -72,12 +72,12 @@ return {
 			local toggle_hidden_files = function()
 				show_hidden = not show_hidden
 
-				local new_sorter = show_hidden and default_sort or sort_hidden
+				local new_sort = show_hidden and default_sort or sort_hidden
 				local new_filter = show_hidden and default_filter or filter_hidden
 
 				MiniFiles.refresh({
 					content = {
-						sort = new_sorter,
+						sort = new_sort,
 						filter = new_filter,
 					},
 				})
@@ -189,6 +189,7 @@ return {
 					{ mode = "n", keys = "<leader>h", desc = "+hunk" },
 					{ mode = "x", keys = "<leader>c", desc = "+code" },
 					{ mode = "x", keys = "<leader>h", desc = "+hunk" },
+					{ mode = "n", keys = "<leader>o", desc = "+obsidian" },
 
 					-- Enhance this by adding descriptions for <Leader> mapping groups
 					miniclue.gen_clues.builtin_completion(),
