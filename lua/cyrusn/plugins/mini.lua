@@ -189,7 +189,6 @@ return {
 					{ mode = "n", keys = "<leader>h", desc = "+hunk" },
 					{ mode = "x", keys = "<leader>c", desc = "+code" },
 					{ mode = "x", keys = "<leader>h", desc = "+hunk" },
-					{ mode = "n", keys = "<leader>o", desc = "+obsidian" },
 
 					-- Enhance this by adding descriptions for <Leader> mapping groups
 					miniclue.gen_clues.builtin_completion(),
