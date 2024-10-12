@@ -26,12 +26,12 @@ return {
 		},
 		config = function()
 			local MiniFiles = require("mini.files")
+			local is_show_hidden = false
 			local ignored_files = {
 				".git",
 				".DS_Store",
 				"node_modules",
 			}
-			local show_hidden = false
 
 			local default_sort = MiniFiles.default_sort
 			local default_filter = MiniFiles.default_filter
@@ -70,10 +70,10 @@ return {
 			end
 
 			local toggle_hidden_files = function()
-				show_hidden = not show_hidden
+				is_show_hidden = not is_show_hidden
 
-				local new_sort = show_hidden and default_sort or sort_hidden
-				local new_filter = show_hidden and default_filter or filter_hidden
+				local new_sort = is_show_hidden and default_sort or sort_hidden
+				local new_filter = is_show_hidden and default_filter or filter_hidden
 
 				MiniFiles.refresh({
 					content = {
@@ -87,8 +87,8 @@ return {
 
 			require("mini.files").setup({
 				content = {
-					filter = show_hidden and default_filter or filter_hidden,
-					sort = show_hidden and default_sort or sort_hidden,
+					filter = is_show_hidden and default_filter or filter_hidden,
+					sort = is_show_hidden and default_sort or sort_hidden,
 				},
 				mappings = {
 					close = "<ESC>",
