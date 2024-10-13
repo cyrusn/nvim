@@ -2,6 +2,7 @@ vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- use mini.bufremove
 -- vim.keymap.set("n", "<leader>x", "<cmd>bd #<cr>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>X", "<cmd>%bd|e#<cr>", { desc = "Close all other buffers" })
+vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", {desc = 'Quit'})
 
 -- terminal
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -14,6 +15,16 @@ vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Window
+vim.keymap.set("n", "<M-o>", "<c-w>o")
+vim.keymap.set("n", "<M-.>", "<c-w>5>" )
+vim.keymap.set("n", "<M-,>", "<c-w>5<")
+vim.keymap.set("n", "<M-=>", "<c-w>+")
+vim.keymap.set("n", "<M-->", "<c-w>-")
+vim.keymap.set("n", "<M-v>", "<c-w>v")
+vim.keymap.set("n", "<M-s>", "<c-w>s")
+vim.keymap.set("n", "<M-x>", "<c-w>c")
 
 -- better up/down
 -- j and k will move visual line instead of move line
