@@ -2,12 +2,10 @@ return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v4.x",
-		lazy = true,
-		config = false,
 	},
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
+		keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
 		config = true,
 	},
 	{
@@ -113,7 +111,6 @@ return {
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
-		keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
 		config = function()
 			local lsp_zero = require("lsp-zero")
 			local lspconfig = require("lspconfig")

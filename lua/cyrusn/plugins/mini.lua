@@ -1,12 +1,5 @@
 return {
-	{ "echasnovski/mini.statusline", config = true },
-	{ "echasnovski/mini.tabline", config = true },
 	{ "echasnovski/mini.comment", config = true },
-	{ "echasnovski/mini.cursorword", config = true },
-	{ "echasnovski/mini.move", config = true },
-	{ "echasnovski/mini.operators", config = true },
-	{ "echasnovski/mini.pairs", config = true },
-	{ "echasnovski/mini.surround", config = true },
 	{
 		"echasnovski/mini.bufremove",
 		keys = {
@@ -123,17 +116,6 @@ return {
 				DEBUG = { duration = 2000 },
 				TRACE = { duration = 2000 },
 				OFF = { duration = 2000 },
-			})
-		end,
-	},
-	{
-		"echasnovski/mini.basics",
-		config = function()
-			require("mini.basics").setup({
-				mappings = {
-					basic = true,
-					windows = true,
-				},
 			})
 		end,
 	},

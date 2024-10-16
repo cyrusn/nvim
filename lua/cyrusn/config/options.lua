@@ -56,4 +56,3 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.opt.wrap = false -- Disable line wrap
-vim.opt.inccommand = 'split'
