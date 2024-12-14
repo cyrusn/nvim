@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
 	-- optional for icon support
+	lazy = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- Search:
@@ -40,5 +41,6 @@ return {
 		require("fzf-lua").setup({
 			"default-title",
 		})
+		require("fzf-lua").register_ui_select()
 	end,
 }
