@@ -1,22 +1,20 @@
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
-	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	},
 	keys = {
 		{
 			"<leader>?",
 			function()
-				require("which-key").show({ global = false})
+				require("which-key").show({ global = false })
 			end,
-			desc = "Buffer Local Keymaps (which-key)",
+			desc = "Buffer Local Keymaps",
 		},
 	},
 	config = function()
 		local wk = require("which-key")
+		wk.setup({
+			preset = "helix",
+		})
 		wk.add({
 			{ "<leader>c", group = "code" },
 			{ "<leader>s", group = "search" },
