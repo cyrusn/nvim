@@ -81,7 +81,7 @@ return {
 				go_out = "H",
 				go_out_plus = "h",
 			},
-			options = { use_as_default_explorer = true },
+			options = { use_as_default_explorer = false },
 			windows = {
 				preview = true,
 				width_focus = 25,
