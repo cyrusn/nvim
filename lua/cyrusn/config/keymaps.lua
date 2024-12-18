@@ -1,8 +1,8 @@
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
-vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
-vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
-vim.keymap.set("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
+-- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
+-- vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
+-- vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+-- vim.keymap.set("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
 
 -- use mini.bufremove and bufferline to handle it, they won't affect the layout when buffer closed
 -- vim.keymap.set("n", "<leader>x", "<cmd>bd #<cr>", { desc = "Close buffer" })

@@ -18,7 +18,11 @@ return {
 		wk.add({
 			{ "<leader>c", group = "code" },
 			{ "<leader>s", group = "search" },
-			{ "<leader>h", group = "hunk" },
+			{ "<leader>h", group = "git" },
+			{ "<leader>t", group = "trouble", icon = "T" },
+			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
+			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
+			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
 		})
 	end,
 }
