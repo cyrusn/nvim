@@ -7,15 +7,14 @@ return {
 		{ "<leader>X", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		{ "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
+		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 	},
 	opts = {
 		bufdelete = { enabled = true },
-		dashboard = { enabled = true },
 		indent = { enabled = true },
-		input = { enabled = true },
 		lazygit = { enabled = true },
 		notifier = { enabled = true },
-		scope = { enabled = true },
 		scroll = { enabled = true },
+		terminal = { enabled = true },
 	},
 }
