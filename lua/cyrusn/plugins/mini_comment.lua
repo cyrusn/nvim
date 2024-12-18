@@ -1,1 +1,4 @@
-return { "echasnovski/mini.comment", config = true }
+return {
+	"echasnovski/mini.comment",
+	config = true,
+}
