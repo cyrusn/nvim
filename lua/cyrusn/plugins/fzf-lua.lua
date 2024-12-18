@@ -5,12 +5,12 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- Search:
-		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
-		{ "<leader>C", "<cmd>FzfLua files cwd='~/.config/nvim'<cr>", desc = "Config Files" },
+		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Search Files" },
 
-		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Grep" },
-		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
+		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Search Grep" },
+		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Search Live Grep" },
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },
+		{ "<leader>sF", "<cmd>FzfLua files cwd='~/.config/nvim'<cr>", desc = "Config Files" },
 		{ "<leader>sG", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
 		{ "<leader>ss", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
 		{ '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Registers" },
