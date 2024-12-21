@@ -3,7 +3,7 @@ return {
 	opts = {},
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	keys = {
-		{ "<leader>e", "<cmd>Oil --float<cr>", desc = "Open Oil" },
+		{ "<leader>e", "<cmd>Oil<cr>", desc = "Open Oil" },
 		{ "<leader>-", "<cmd>Oil .<cr>", desc = "Open Oil in root" },
 	},
 	config = function()
