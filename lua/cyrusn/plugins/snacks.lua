@@ -14,7 +14,7 @@ return {
 		indent = { enabled = true },
 		lazygit = { enabled = true },
 		notifier = { enabled = true },
-		scroll = { enabled = true },
+		-- scroll = { enabled = true },
 		terminal = { enabled = true },
 	},
 }
