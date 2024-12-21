@@ -29,6 +29,8 @@ return {
 				python = { "black" },
 				sql = { "sql_formatter" },
 				vue = { "prettier" },
+				yaml = { "yamlfmt" },
+				dotenv = { "yamlfmt" },
 				["_"] = { "trim_whitespace" },
 			},
 			formatters = {
