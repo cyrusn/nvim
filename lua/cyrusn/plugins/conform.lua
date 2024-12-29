@@ -19,10 +19,11 @@ return {
 			formatters_by_ft = {
 				c = { "clang-format" },
 				sh = { "beautysh" },
-				fish = { "fish_indent" },
+				fish = { "fish_indent", lsp_format = "fallback" },
 				go = { "goimports", "gofmt" },
 				html = { "prettier" },
 				javascript = { "prettier" },
+				typescript = { "prettier" },
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "markdownlint" },
@@ -31,6 +32,7 @@ return {
 				vue = { "prettier" },
 				yaml = { "yamlfmt" },
 				dotenv = { "yamlfmt" },
+				prisma = { lsp_format = "fallback" },
 				["_"] = { "trim_whitespace" },
 			},
 			formatters = {

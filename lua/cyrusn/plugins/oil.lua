@@ -1,12 +1,15 @@
 return {
 	"stevearc/oil.nvim",
-	opts = {},
+	event = "VeryLazy",
+	enabled = true,
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	keys = {
-		{ "<leader>e", "<cmd>Oil<cr>", desc = "Open Oil" },
-		{ "<leader>-", "<cmd>Oil .<cr>", desc = "Open Oil in root" },
+		{ "<leader>o", "<cmd>Oil<cr>", desc = "Open oil explorer" },
+		{ "<leader>-", "<cmd>Oil .<cr>", desc = "Open oil explorer in root" },
 	},
 	config = function()
+		-- make preview on right
+		vim.opt.splitright = true
 		local function parse_output(proc)
 			local result = proc:wait()
 			local ret = {}
@@ -69,14 +72,12 @@ return {
 		end
 
 		require("oil").setup({
+			default_file_explorer = false,
 			delete_to_trash = true,
 			win_options = {
 				winbar = "%!v:lua.get_oil_winbar()",
 			},
 			keymaps = {
-				["l"] = "actions.select",
-				["h"] = { "actions.parent", mode = "n" },
-				["<ESC>"] = { "actions.close", mode = "n" },
 				["gd"] = {
 					desc = "Toggle file detail view",
 					callback = function()

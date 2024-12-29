@@ -1,7 +1,6 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		branch = "v4.x",
 	},
 	{
 		"williamboman/mason.nvim",
@@ -113,6 +112,17 @@ return {
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
+
+			lsp_zero.ui({
+				float_border = "rounded",
+				sign_text = {
+					error = "✘",
+					warn = "▲",
+					hint = "⚑",
+					info = "»",
+				},
+			})
+
 			local lspconfig = require("lspconfig")
 
 			local ensure_installed = {
@@ -194,7 +204,6 @@ return {
 			end
 
 			lsp_zero.extend_lspconfig({
-				sign_text = true,
 				float_border = "rounded",
 				lsp_attach = lsp_attach,
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),

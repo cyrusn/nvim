@@ -1,7 +1,7 @@
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 -- vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
--- vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+-- vim.keymap.set("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
 -- vim.keymap.set("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
 
 -- use mini.bufremove and bufferline to handle it, they won't affect the layout when buffer closed
@@ -21,14 +21,14 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Window
-vim.keymap.set("n", "<M-o>", "<c-w>o")
-vim.keymap.set("n", "<M-.>", "<c-w>5>")
-vim.keymap.set("n", "<M-,>", "<c-w>5<")
-vim.keymap.set("n", "<M-=>", "<c-w>+")
-vim.keymap.set("n", "<M-->", "<c-w>-")
-vim.keymap.set("n", "<M-v>", "<c-w>v")
-vim.keymap.set("n", "<M-s>", "<c-w>s")
-vim.keymap.set("n", "<M-x>", "<c-w>c")
+vim.keymap.set("n", "<A-.>", "<c-w>5>", { desc = "increse width" })
+vim.keymap.set("n", "<A-,>", "<c-w>5<", { desc = "decrese width" })
+vim.keymap.set("n", "<A-=>", "<c-w>+", { desc = "increase height" })
+vim.keymap.set("n", "<A-->", "<c-w>-", { desc = "decrese height" })
+vim.keymap.set("n", "<A-o>", "<c-w>o", { desc = "close other window" })
+vim.keymap.set("n", "<A-v>", "<c-w>v", { desc = "vsplit" })
+vim.keymap.set("n", "<A-s>", "<c-w>s", { desc = "split window" })
+vim.keymap.set("n", "<A-x>", "<c-w>c", { desc = "close window" })
 
 -- better up/down
 -- j and k will move visual line instead of move line
@@ -38,8 +38,8 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, si
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to next or previous buffer
-vim.keymap.set("n", "<S-h>", "<cmd>bp<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "<S-l>", "<cmd>bn<cr>", { desc = "Next Buffer" })
+-- vim.keymap.set("n", "<S-h>", "<cmd>bp<cr>", { desc = "Prev Buffer" })
+-- vim.keymap.set("n", "<S-l>", "<cmd>bn<cr>", { desc = "Next Buffer" })
 
 -- Move Lines
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })

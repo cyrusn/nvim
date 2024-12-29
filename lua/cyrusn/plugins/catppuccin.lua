@@ -4,7 +4,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
-			flavour = "macchiato", -- latte, frappe, macchiato, mocha
+			flavour = "mocha", -- latte, frappe, macchiato, mocha
 			integrations = {
 				gitsigns = true,
 				mason = true,
@@ -13,6 +13,10 @@ return {
 					indentscope_color = "",
 				},
 				fzf = true,
+				fidget = true,
+				snacks = true,
+				lsp_trouble = true,
+				which_key = true,
 			},
 		})
 		vim.cmd.colorscheme("catppuccin")

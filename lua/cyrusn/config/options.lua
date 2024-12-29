@@ -1,19 +1,18 @@
 vim.g.mapleader = " "
 
 -- disable netrw
--- vim.g.loaded_netrwPlugin = 1
--- vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 --
--- enable netrw if nvim-tree is not installed
-vim.g.netrw_preview = 1
-vim.g.netrw_liststyle = 0
-vim.g.netrw_winsize = 20
-vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
-vim.g.netrw_sizestyle = "H"
-vim.g.netrw_banner = 0
-vim.g.netrw_keepdir = 0
-vim.g.netrw_localrmdir = "rm -rf"
-vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+-- enable netrw if file explorer is not installed
+-- vim.g.netrw_preview = 1
+-- vim.g.netrw_liststyle = 0
+-- vim.g.netrw_winsize = 20
+-- vim.g.netrw_sizestyle = "h"
+-- vim.g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]] -- use .gitignore
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_localrmdir = "rm -rf"
+-- vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
 vim.opt.timeout = false
@@ -56,26 +55,3 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.opt.wrap = false -- Disable line wrap
-
--- Module for defining new filetypes. I picked up these configurations based on inspirations from this dotfiles repo:
--- https://github.com/davidosomething/dotfiles/blob/be22db1fc97d49516f52cef5c2306528e0bf6028/nvim/lua/dko/filetypes.lua
-vim.filetype.add({
-	-- Detect and assign filetype based on the extension of the filename
-	extension = {
-		mdx = "mdx",
-		log = "log",
-		conf = "conf",
-		env = "dotenv",
-	},
-	-- Detect and apply filetypes based on the entire filename
-	filename = {
-		[".env"] = "dotenv",
-		["env"] = "dotenv",
-		["tsconfig.json"] = "jsonc",
-	},
-	-- Detect and apply filetypes based on certain patterns of the filenames
-	pattern = {
-		-- INFO: Match filenames like - ".env.example", ".env.local" and so on
-		["%.env%.[%w_.-]+"] = "dotenv",
-	},
-})
