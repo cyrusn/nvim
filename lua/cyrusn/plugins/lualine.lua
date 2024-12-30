@@ -12,6 +12,9 @@ return {
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},
+			winbar = {
+				lualine_b = { { "filename", path = 4 } },
+			},
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
@@ -19,9 +22,7 @@ return {
 					"diff",
 					"diagnostics",
 				},
-				lualine_c = {
-					{ "filename", path = 4 },
-				},
+				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
 					"encoding",
