@@ -76,8 +76,7 @@ return {
 				sort = is_show_hidden and default_sort or sort_hidden,
 			},
 			mappings = {
-				close = "<C-c>",
-				reset = "<ESC>",
+				close = "<ESC>",
 				go_in = "L",
 				go_in_plus = "l",
 				go_out = "H",
