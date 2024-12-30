@@ -3,30 +3,73 @@ return {
 	enabled = true,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		{
+			"SmiteshP/nvim-navic",
+			opts = {
+				highlight = true,
+				separator = " ",
+				lazy_update_context = true,
+				lsp = {
+					auto_attach = true,
+				},
+			},
+		},
 	},
 	config = function()
 		local opts = {
 			options = {
-				theme = "catppuccin",
+				theme = "auto",
 				icons_enabled = true,
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},
 			winbar = {
-				lualine_b = { { "filename", path = 4 } },
+				lualine_b = {
+					{ "filename", path = 5 },
+					{
+						"diff",
+						symbols = {
+							added = " ",
+							modified = " ",
+							removed = " ",
+						},
+					},
+					{
+						"diagnostics",
+						symbols = {
+							error = "✘ ",
+							warn = " ",
+							hint = " ",
+							info = " ",
+						},
+					},
+				},
+				lualine_c = {
+					{
+						"navic",
+						color_correction = "dynamic",
+					},
+				},
+				lualine_y = {},
+				lualine_z = {
+					function()
+						return " " .. os.date("%Y-%m-%d %R")
+					end,
+				},
 			},
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
 					"branch",
-					"diff",
-					"diagnostics",
 				},
-				lualine_c = {},
+				lualine_c = {
+					{ "filename", path = 1 },
+				},
 				lualine_x = {},
 				lualine_y = {
 					"encoding",
 					"filetype",
+					"filesize",
 				},
 				lualine_z = {
 					{ "progress", separator = " ", padding = { left = 1, right = 0 } },

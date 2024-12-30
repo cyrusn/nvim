@@ -16,6 +16,10 @@ return {
 				fidget = true,
 				snacks = true,
 				lsp_trouble = true,
+				navic = {
+					enabled = true,
+					custom_bg = "NONE",
+				},
 				which_key = true,
 			},
 		})
