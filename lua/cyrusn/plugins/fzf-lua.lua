@@ -5,10 +5,11 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- Search:
+		{ "<C-l>", "<cmd>FzfLua buffers<cr>", desc = "List Buffers" },
 		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Search Files" },
+		{ "<leader>p", "<cmd>FzfLua live_grep<cr>", desc = "Search Live Grep" },
+		{ "<leader>/", "<cmd>FzfLua grep<cr>", desc = "Search Grep" },
 
-		{ "<leader>?", "<cmd>FzfLua grep<cr>", desc = "Search Grep" },
-		{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Search Live Grep" },
 		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },
 		{ "<leader>sF", "<cmd>FzfLua files cwd='~/.config/nvim'<cr>", desc = "Config Files" },
 		{ "<leader>sG", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
@@ -19,7 +20,7 @@ return {
 		{ "<leader>sC", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
 		{ "<leader>sb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
 		{ "<leader>sh", "<cmd>FzfLua helptags<cr>", desc = "Help Pages" },
-		{ "<leader>sH", "<cmd>FzfLua search_history<cr>", desc = "Search History" },
+		{ "<leader>sH", "<cmd>FzfLua search_history<cr>", desc = "History" },
 		{ "<leader>sk", "<cmd>FzfLua keymaps<cr>", desc = "Keymaps" },
 		{ "<leader>sR", "<cmd>FzfLua resume<cr>", desc = "Resume" },
 		{ "<leader>sd", "<cmd>FzfLua diagnostics_document<cr>", desc = "Document Diagnostics" },
@@ -38,8 +39,29 @@ return {
 	},
 	config = function()
 		-- calling `setup` is optional for customization
-		require("fzf-lua").setup({
-			"default-title",
+		local fzflua = require("fzf-lua")
+		local actions = fzflua.actions
+
+		fzflua.setup({
+			"borderless",
+			git = {
+				files = {
+					formatter = "path.filename_first",
+				},
+			},
+			files = {
+				formatter = "path.filename_first",
+			},
+			buffers = {
+				formatter = "path.filename_first",
+			},
+			grep = {
+				formatter = "path.filename_first",
+				actions = {
+					["ctrl-g"] = { actions.grep_lgrep },
+					["ctrl-h"] = { actions.toggle_ignore },
+				},
+			},
 		})
 		require("fzf-lua").register_ui_select()
 	end,
