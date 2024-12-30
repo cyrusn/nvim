@@ -7,7 +7,6 @@ return {
 	opts = {
 		-- options
 		notification = {
-			filter = vim.log.levels.TRACE,
 			override_vim_notify = true,
 		},
 	},
