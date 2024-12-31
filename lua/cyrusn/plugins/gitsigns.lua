@@ -1,6 +1,25 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	enabled = true,
+	opts = {
+		signs = {
+			add = { text = "" },
+			change = { text = "" },
+			delete = { text = "" },
+			topdelete = { text = "" },
+			changedelete = { text = "" },
+			untracked = { text = "┃" },
+		},
+		signs_staged = {
+			add = { text = "" },
+			change = { text = "" },
+			delete = { text = "" },
+			topdelete = { text = "" },
+			changedelete = { text = "" },
+			untracked = { text = "┃" },
+		},
+	},
+
 	config = function(_, opts)
 		opts.on_attach = function(bufnr)
 			local gs = require("gitsigns")
@@ -45,8 +64,8 @@ return {
 			map("n", "<leader>hr", gs.reset_hunk, "Reset Hunk")
 			map("n", "<leader>hS", gs.stage_buffer, "Stage Buffer")
 			map("n", "<leader>hR", gs.reset_buffer, "Reset Buffer")
-			map("n", "<leader>hu", gs.undo_stage_hunk, "Undo Stage")
-			map("n", "<leader>hp", gs.preview_hunk, "Preview Hunk")
+			map({ "n", "v" }, "<leader>hu", gs.undo_stage_hunk, "Undo Stage")
+			map({ "n", "v" }, "<leader>hp", gs.preview_hunk, "Preview Hunk")
 			map("n", "<leader>hd", gs.diffthis, "Diff This")
 			map("n", "<leader>hD", function()
 				gs.diffthis("~")
@@ -57,7 +76,7 @@ return {
 			map("n", "<leader>hb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
 			map("n", "<leader>hd", gs.toggle_deleted, "Toggle Git Deleted")
 
-			map("n", "<leader>hc", function()
+			map({ "n", "v" }, "<leader>hc", function()
 				vim.ui.input({ prompt = "Commit Message: " }, function(message)
 					vim.cmd('!git commit -m "' .. message .. '"')
 				end)
