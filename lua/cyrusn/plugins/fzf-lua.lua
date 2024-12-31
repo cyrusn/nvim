@@ -5,15 +5,20 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- Search:
-		{ "<C-l>", "<cmd>FzfLua buffers<cr>", desc = "List Buffers" },
-		{ "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Search Files" },
+		{ "<leader>l", "<cmd>FzfLua buffers formatter=path.filename_first<cr>", desc = "List Buffers" },
+		{ "<leader><space>", "<cmd>FzfLua files formatter=path.filename_first<cr>", desc = "Search Files" },
 		{ "<leader>p", "<cmd>FzfLua live_grep<cr>", desc = "Search Live Grep" },
 		{ "<leader>/", "<cmd>FzfLua grep<cr>", desc = "Search Grep" },
 
-		{ "<leader>sf", "<cmd>FzfLua git_files<CR>", desc = "Git Files" },
-		{ "<leader>sF", "<cmd>FzfLua files cwd='~/.config/nvim'<cr>", desc = "Config Files" },
+		{ "<leader>sf", "<cmd>FzfLua git_files formatter=path.filename_first <CR>", desc = "Git Files" },
+		{
+			"<leader>sF",
+			"<cmd>FzfLua files cwd='~/.config/nvim' formatter=path.filename_first<cr>",
+			desc = "Config Files",
+		},
 		{ "<leader>sG", "<cmd>FzfLua git_commits<CR>", desc = "Git Commits" },
-		{ "<leader>ss", "<cmd>FzfLua git_status<CR>", desc = "Git Status" },
+		{ "<leader>so", "<cmd>FzfLua oldfiles formatter=path.filename_first<CR>", desc = "Old Files" },
+		{ "<leader>ss", "<cmd>FzfLua git_status formatter=path.filename_first<CR>", desc = "Git Status" },
 		{ '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Registers" },
 		{ "<leader>sB", "<cmd>FzfLua builtin<cr>", desc = "Builtin Commands" },
 		{ "<leader>sc", "<cmd>FzfLua commands<cr>", desc = "Commands" },
@@ -44,19 +49,7 @@ return {
 
 		fzflua.setup({
 			"borderless",
-			git = {
-				files = {
-					formatter = "path.filename_first",
-				},
-			},
-			files = {
-				formatter = "path.filename_first",
-			},
-			buffers = {
-				formatter = "path.filename_first",
-			},
 			grep = {
-				formatter = "path.filename_first",
 				actions = {
 					["ctrl-g"] = { actions.grep_lgrep },
 					["ctrl-h"] = { actions.toggle_ignore },
