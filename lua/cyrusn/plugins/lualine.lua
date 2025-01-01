@@ -3,17 +3,6 @@ return {
 	enabled = true,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		{
-			"SmiteshP/nvim-navic",
-			opts = {
-				highlight = true,
-				separator = " ",
-				lazy_update_context = true,
-				lsp = {
-					auto_attach = true,
-				},
-			},
-		},
 	},
 	config = function()
 		local opts = {
@@ -42,12 +31,6 @@ return {
 							hint = " ",
 							info = " ",
 						},
-					},
-				},
-				lualine_c = {
-					{
-						"navic",
-						color_correction = "dynamic",
 					},
 				},
 				lualine_y = {},
