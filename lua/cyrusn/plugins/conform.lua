@@ -30,6 +30,7 @@ return {
 				markdown = { "markdownlint" },
 				python = { "flake8", lsp_format = "fallback" },
 				sql = { "sql_formatter" },
+				toml = { lsp_format = "fallback" },
 				vue = { "prettier" },
 				yaml = { "yamlfmt" },
 				dotenv = { "yamlfmt" },

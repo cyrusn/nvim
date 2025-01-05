@@ -23,6 +23,7 @@ return {
 			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
 			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
+			{ "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
 		})
 	end,
 }
