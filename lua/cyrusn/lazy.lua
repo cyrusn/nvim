@@ -25,5 +25,9 @@ local opts = {
 require("cyrusn.config").setup()
 
 require("lazy").setup({
-	{ import = "cyrusn.plugins" },
+	-- { import = "cyrusn.plugins" },
+	{ import = "cyrusn.plugins.editor" },
+	{ import = "cyrusn.plugins.coding" },
+  { import = "cyrusn.plugins.ui" },
+  { import = "cyrusn.plugins.util" },
 }, opts)

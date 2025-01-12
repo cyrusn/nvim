@@ -21,7 +21,7 @@ return {
 				sh = { "beautysh" },
 				fish = { "fish_indent", lsp_format = "fallback" },
 				go = { "goimports", "gofmt" },
-				html = { "prettier" },
+				html = { "prettier", lsp_format = "fallback" },
 				css = { "prettier", lsp_format = "fallback" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },

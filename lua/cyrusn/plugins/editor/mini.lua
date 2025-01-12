@@ -1,6 +1,6 @@
 return {
-	"echasnovski/mini.files",
-	enabled = true,
+	"echasnovski/mini.nvim",
+	enabled = false,
 	lazy = false,
 	dependancies = {
 		"echasnovski/mini.icons",
@@ -76,8 +76,8 @@ return {
 				sort = is_show_hidden and default_sort or sort_hidden,
 			},
 			mappings = {
-				reset = "q",
-				close = "<ESC>",
+				reset = "<ESC>",
+				close = "q",
 				go_in = "L",
 				go_in_plus = "l",
 				go_out = "H",

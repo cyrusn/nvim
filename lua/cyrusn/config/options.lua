@@ -1,18 +1,18 @@
 vim.g.mapleader = " "
 
 -- disable netrw
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
 --
 -- enable netrw if file explorer is not installed
--- vim.g.netrw_preview = 1
--- vim.g.netrw_liststyle = 0
--- vim.g.netrw_winsize = 20
--- vim.g.netrw_sizestyle = "h"
--- vim.g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]] -- use .gitignore
--- vim.g.netrw_banner = 0
--- vim.g.netrw_localrmdir = "rm -rf"
--- vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+vim.g.netrw_preview = 1
+vim.g.netrw_liststyle = 0
+vim.g.netrw_winsize = 20
+vim.g.netrw_sizestyle = "h"
+vim.g.netrw_list_hide = (vim.fn["netrw_gitignore#Hide"]()) .. [[,\(^\|\s\s\)\zs\.\S\+]] -- use .gitignore
+vim.g.netrw_banner = 0
+vim.g.netrw_localrmdir = "rm -rf"
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
 vim.opt.timeout = false
