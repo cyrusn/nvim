@@ -1,5 +1,6 @@
 return {
 	"folke/which-key.nvim",
+	enabled = true,
 	event = "VeryLazy",
 	keys = {
 		{
@@ -23,7 +24,8 @@ return {
 			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
 			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
-			{ "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
+			{ "<leader>w", group= 'session',  icon = { icon = "", color = "green" } },
+			-- { "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
 		})
 	end,
 }
