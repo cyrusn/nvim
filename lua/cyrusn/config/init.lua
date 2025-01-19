@@ -5,6 +5,7 @@ function M.setup()
 		"options",
 		"autocmds",
 		"keymaps",
+		"statusline",
 	}
 	for _, mod in ipairs(modules) do
 		require("cyrusn.config." .. mod)
