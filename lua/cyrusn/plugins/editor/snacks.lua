@@ -10,11 +10,11 @@ return {
 		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 	},
 	opts = {
-		-- dashboard = { enabled = true },
 		bufdelete = { enabled = true },
 		indent = { enabled = true },
 		util = { enabled = true },
 		lazygit = { enabled = true },
+		statuscolumn = { enabled = true },
 		-- notifier = { enabled = true },
 		-- scroll = { enabled = true },
 		terminal = { enabled = true },
