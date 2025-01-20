@@ -24,7 +24,6 @@ return {
 			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
 			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
-			{ "<leader>w", group= 'session',  icon = { icon = "", color = "green" } },
 			-- { "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
 		})
 	end,
