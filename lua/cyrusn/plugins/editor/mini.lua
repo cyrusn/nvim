@@ -7,9 +7,14 @@ return {
 	},
 	keys = {
 		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "Open Explorer" },
-		{ "g.", "<cmd>MiniFilesToggleHiddenFiles<cr>", desc = "Toggle Hidden Files", ft = "minifiles" },
+		{ ".", "<cmd>MiniFilesToggleHiddenFiles<cr>", desc = "Toggle Hidden Files", ft = "minifiles" },
 	},
 	config = function()
+		require("mini.ai").setup()
+		require("mini.bracketed").setup()
+		require("mini.pairs").setup()
+
+		-- MiniFiles
 		local MiniFiles = require("mini.files")
 		local is_show_hidden = false
 		local ignored_files = {
@@ -83,7 +88,7 @@ return {
 				go_out = "H",
 				go_out_plus = "h",
 			},
-			options = { use_as_default_explorer = true },
+			options = { use_as_default_explorer = false },
 			windows = {
 				preview = true,
 				width_focus = 25,
