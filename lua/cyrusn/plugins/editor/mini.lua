@@ -12,7 +12,6 @@ return {
 	config = function()
 		require("mini.ai").setup()
 		require("mini.bracketed").setup()
-		require("mini.pairs").setup()
 
 		-- MiniFiles
 		local MiniFiles = require("mini.files")
