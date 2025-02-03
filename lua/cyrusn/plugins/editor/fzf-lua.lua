@@ -5,7 +5,6 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		-- Search:
-		{ "<leader>r", "<cmd>FzfLua resume<cr>", desc = "Resume" },
 		{ "<leader>l", "<cmd>FzfLua buffers formatter=path.filename_first<cr>", desc = "List Buffers" },
 		{ "<leader>g", "<cmd>FzfLua git_status formatter=path.filename_first<cr>", desc = "Git Status" },
 
@@ -17,7 +16,7 @@ return {
 		{
 			"<leader>sF",
 			"<cmd>FzfLua files cwd='~/.config/nvim' formatter=path.filename_first<cr>",
-			desc = "Search Config Files",
+			desc = "Config Files",
 		},
 		{ "<leader>sB", "<cmd>FzfLua builtin<cr>", desc = "Builtin Commands" },
 		{ "<leader>sC", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
@@ -31,7 +30,8 @@ return {
 		{ "<leader>sl", "<cmd>FzfLua blines<cr>", desc = "Buffer Lines" },
 		{ "<leader>sm", "<cmd>FzfLua marks<cr>", desc = "Buffer Marks" },
 		{ "<leader>so", "<cmd>FzfLua oldfiles formatter=path.filename_first<CR>", desc = "Old Files" },
-		{ "<leader>ss", "<cmd>FzfLua git_status formatter=path.filename_first<CR>", desc = "Git Status" },
+		{ "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbol" },
+		{ "<leader>sS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "WorkspaceSymbol" },
 		{ '<leader>s"', "<cmd>FzfLua registers<cr>", desc = "Registers" },
 
 		-- Code:
@@ -42,8 +42,9 @@ return {
 		{ "<leader>cf", "<cmd>FzfLua lsp_finder<cr>", desc = "All LSP locations" },
 		{ "<leader>ct", "<cmd>FzfLua lsp_typedefs<cr>", desc = "Type Definition" },
 		{ "<leader>cI", "<cmd>FzfLua lsp_implementations<cr>", desc = "Implementations" },
-		{ "<leader>cR", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
-		{ "<leader>cc", "<cmd>FzfLua lsp_code_actions<cr>", desc = "Code Actions" },
+		{ "<leader>cr", "<cmd>FzfLua lsp_references<cr>", desc = "References" },
+		{ "<leader>r", "<cmd>FzfLua lsp_references<cr>", desc = "Search References" },
+		{ "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", desc = "Code Actions" },
 	},
 	config = function()
 		-- calling `setup` is optional for customization
