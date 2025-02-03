@@ -46,14 +46,14 @@ return {
 						return vim.keymap.set(mode, l, r, opts)
 					end
 
-					map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
-					map("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
+					-- map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
+					map("n", "<leader>cR", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
 					map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
 
 					-- +diagnostics
-					map("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
-					map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
-					map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic")
+					-- map("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
+					-- map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
+					-- map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic")
 				end,
 			})
 
