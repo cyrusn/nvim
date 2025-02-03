@@ -15,6 +15,10 @@ return {
 		local wk = require("which-key")
 		wk.setup({
 			preset = "helix",
+			triggers = {
+				{ "<auto>", mode = "nixsotc" },
+				{ "m", mode = { "n", "v" } },
+			},
 		})
 		wk.add({
 			{ "<leader>c", group = "code" },
@@ -24,6 +28,7 @@ return {
 			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
 			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
+			{ "<leader>w", group = "session", icon = { icon = "", color = "green" } },
 			-- { "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
 		})
 	end,
