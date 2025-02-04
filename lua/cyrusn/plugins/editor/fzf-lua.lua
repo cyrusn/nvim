@@ -52,7 +52,7 @@ return {
 		local actions = fzflua.actions
 
 		fzflua.setup({
-			"borderless",
+			"default-prompt",
 			grep = {
 				actions = {
 					["ctrl-g"] = { actions.grep_lgrep },
