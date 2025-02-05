@@ -6,7 +6,7 @@ return {
 		require("marks").setup({
 			default_mappings = false,
 			mappings = {
-				set = "m",
+				set = "ms",
 				toggle = "mm",
 				next = "mf",
 				prev = "mb",
