@@ -26,10 +26,11 @@ return {
 		{ "<leader>b", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 		{ "<leader>l", "<cmd>lua Snacks.picker.lines()<cr>", desc = "Lines" },
 		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Notification History" },
-		{ "<leader>p", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Visual selection", mode = { "n", "x" } },
 		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
-		{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 		{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
+		{ "<leader>/", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word", mode = { "n", "x" } },
+		{ "<leader>p", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
+		{ "<leader>P", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 
 		-- picker:git
 		{ "<leader>hL", "<cmd>lua Snacks.picker.git_log_line()<cr>", desc = "Git Log Line" },
@@ -41,7 +42,6 @@ return {
 
 		-- picker:search
 		{ "<leader>s/", "<cmd>lua Snacks.picker.search_history()<cr>", desc = "Search History" },
-		{ "<leader>sB", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
 		{ "<leader>sD", "<cmd>lua Snacks.picker.diagnostics_buffer()<cr>", desc = "Buffer Diagnostics" },
 		{ "<leader>sU", "<cmd>lua Snacks.picker.colorschemes()<cr>", desc = "Colorschemes" },
 		{ "<leader>sc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
@@ -60,10 +60,10 @@ return {
 		-- picker:LSP
 		{ "<leader>cD", "<cmd>lua Snacks.picker.lsp_declarations()<cr>", desc = "Goto Declaration" },
 		{ "<leader>cI", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
-		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "LSP Workspace Symbols" },
 		{ "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Goto Definition" },
-		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
 		{ "<leader>ct", "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>", desc = "Goto Type Definition" },
+		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
+		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "LSP Workspace Symbols" },
 
 		-- unused
 		-- { "<leader>p", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
@@ -84,6 +84,8 @@ return {
 		lazygit = {},
 		-- notifier = {},
 		picker = {
+			layout = { preset = "vscode", preview = "main" },
+			formatters = { file = { filename_first = true } },
 			sources = {
 				explorer = {
 					layout = { preset = "vscode", preview = "main" },
@@ -91,12 +93,13 @@ return {
 				},
 				buffers = {
 					tree = true,
-					layout = { preset = "vscode", preview = "main" },
 					current = false,
+				},
+				grep_buffers = {
+					need_search = true,
 				},
 				smart = {
 					multi = { "buffers", "files" },
-					layout = { preset = "vscode", preview = "main" },
 				},
 				lsp_references = {
 					include_current = true,
@@ -106,15 +109,14 @@ return {
 					include_current = true,
 					auto_confirm = false,
 				},
+				command_history = { layout = { preview = false } },
+				search_history = { layout = { preview = false } },
+				keymaps = { layout = { preview = false } },
 			},
-			formatters = { file = { filename_first = true } },
 		},
 		statuscolumn = {},
 		terminal = {},
 		util = {},
-		words = {
-			debounce = 0,
-			jumplist = true,
-		},
+		words = {},
 	},
 }
