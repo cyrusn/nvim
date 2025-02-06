@@ -47,7 +47,7 @@ return {
 					end
 
 					-- map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
-					map("n", "<leader>cR", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
+					map("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
 					map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
 
 					-- +diagnostics
@@ -60,6 +60,7 @@ return {
 			local lspconfig = require("lspconfig")
 			local ensure_installed = { "lua_ls", "ts_ls", "eslint", "html", "jsonls" }
 
+			-- reference: https://lsp-zero.netlify.app/docs/language-server-configuration.html#configure-language-servers
 			require("mason-lspconfig").setup({
 				automatic_servers_installation = true,
 				ensure_installed = ensure_installed,
@@ -100,6 +101,15 @@ return {
 									diagnostics = {
 										globals = { "vim" },
 									},
+								},
+							},
+						})
+					end,
+					ts_ls = function()
+						lspconfig["tsserver"].setup({
+							init_options = {
+								preferences = {
+									disableSuggestions = true,
 								},
 							},
 						})
