@@ -23,13 +23,13 @@ return {
 		{ "<leader>C", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config Files" },
 		{ "<leader>g", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Git Status" },
 		{ "<leader>j", "<cmd>lua Snacks.picker.jumps()<cr>", desc = "Jumps" },
-		{ "<leader>b", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
+		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 		{ "<leader>l", "<cmd>lua Snacks.picker.lines()<cr>", desc = "Lines" },
 		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Notification History" },
 		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
 		{ "<leader>:", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
-		{ "<leader>/", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word", mode = { "n", "x" } },
-		{ "<leader>p", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
+		{ "<leader>/", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
+		{ "<leader>p", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word", mode = { "n", "x" } },
 		{ "<leader>P", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 
 		-- picker:git
@@ -84,22 +84,44 @@ return {
 		lazygit = {},
 		-- notifier = {},
 		picker = {
-			layout = { preset = "vscode", preview = "main" },
+			layout = { preset = "custom", preview = "main" },
+			layouts = {
+				custom = {
+					preview = false,
+					layout = {
+						position = "bottom",
+						backdrop = false,
+						row = 1,
+						width = 0,
+						min_width = 80,
+						height = 10,
+						title = "{title} {live} {flags} ({preview})",
+						title_pos = "center",
+						border = "top",
+						box = "vertical",
+						{
+							box = "horizontal",
+							{ win = "list" },
+							{ win = "preview", width = 0.7 },
+						},
+						{ win = "input", height = 1 },
+					},
+				},
+			},
 			formatters = { file = { filename_first = true } },
 			sources = {
 				explorer = {
-					layout = { preset = "vscode", preview = "main" },
+					layout = { preset = "custom", preview = "main" },
 					auto_close = true,
-				},
-				buffers = {
-					tree = true,
-					current = false,
-				},
-				grep_buffers = {
-					need_search = true,
 				},
 				smart = {
 					multi = { "buffers", "files" },
+				},
+				buffers = {
+					current = false,
+				},
+				qrep_buffers = {
+					need_search = true,
 				},
 				lsp_references = {
 					include_current = true,
