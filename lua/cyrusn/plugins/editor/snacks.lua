@@ -54,6 +54,7 @@ return {
 		{ "<leader>sp", "<cmd>lua Snacks.picker.projects()<cr>", desc = "Projects" },
 		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix List" },
 		{ "<leader>sr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
+		{ "<leader>ss", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
 		{ "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", desc = "Undo History" },
 		{ '<leader>s"', "<cmd>lua Snacks.picker.registers()<cr>", desc = "Registers" },
 
@@ -62,8 +63,7 @@ return {
 		{ "<leader>cI", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Goto Implementation" },
 		{ "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Goto Definition" },
 		{ "<leader>ct", "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>", desc = "Goto Type Definition" },
-		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
-		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "LSP Workspace Symbols" },
+		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "LSP Workspace Symbols" },
 
 		-- unused
 		-- { "<leader>p", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
@@ -84,56 +84,88 @@ return {
 		lazygit = {},
 		-- notifier = {},
 		picker = {
-			layout = { preset = "custom", preview = "main" },
+			layout = { preset = "custom_ivy_split" },
 			layouts = {
-				custom = {
-					preview = false,
+				custom_explorer = {
+					preview = "main",
 					layout = {
-						position = "bottom",
 						backdrop = false,
-						row = 1,
-						width = 0,
-						min_width = 80,
-						height = 10,
-						title = "{title} {live} {flags} ({preview})",
+						row = -2,
+						col = -1,
+						width = 35,
+						height = 0.6,
+						title = "{title} {live} {flags}",
 						title_pos = "center",
-						border = "top",
+						border = "rounded",
 						box = "vertical",
+						{ win = "input", height = 1 },
 						{
 							box = "horizontal",
 							{ win = "list" },
 							{ win = "preview", width = 0.7 },
 						},
+					},
+				},
+				custom_ivy_split = {
+					preview = "main",
+					layout = {
+						box = "vertical",
+						backdrop = false,
+						width = 0,
+						height = 0.3,
+						position = "bottom",
+						border = "top",
+						title = " {title} {live} {flags}",
+						title_pos = "left",
 						{ win = "input", height = 1 },
+						{
+							box = "horizontal",
+							{ win = "list", border = "none" },
+							{ win = "preview", title = "{preview}", width = 0.7 },
+						},
 					},
 				},
 			},
-			formatters = { file = { filename_first = true } },
+			formatters = { file = { filename_first = true, truncate = 30 } },
 			sources = {
 				explorer = {
-					layout = { preset = "custom", preview = "main" },
+					layout = { preset = "custom_explorer", preview = "main" },
 					auto_close = true,
 				},
 				smart = {
+					layout = { preset = "custom_explorer", preview = "main" },
 					multi = { "buffers", "files" },
 				},
+				git_files = {
+					layout = { preset = "custom_explorer", preview = "main" },
+				},
 				buffers = {
+					layout = { preset = "custom_explorer", preview = "main" },
+					hidden = true,
 					current = false,
 				},
-				qrep_buffers = {
-					need_search = true,
-				},
-				lsp_references = {
-					include_current = true,
-					auto_confirm = false, -- if true, will automatically jump to the reference when only single reference is found.
+				recent = {
+					layout = { preset = "custom_explorer", preview = "main" },
 				},
 				lsp_type_definitions = {
+					layout = { preset = "custom_explorer", preview = "main" },
 					include_current = true,
 					auto_confirm = false,
 				},
-				command_history = { layout = { preview = false } },
-				search_history = { layout = { preview = false } },
-				keymaps = { layout = { preview = false } },
+				lsp_symbols = {
+					layout = { preset = "custom_explorer", preview = "main" },
+					include_current = true,
+				},
+				lsp_workspace_symbols = {
+					layout = { preset = "custom_explorer", preview = "main" },
+					include_current = true,
+				},
+				qrep_buffers = { need_search = true },
+				lsp_references = {
+					-- layout = { preview = "main" },
+					include_current = true,
+					auto_confirm = false, -- if true, will automatically jump to the reference when only single reference is found.
+				},
 			},
 		},
 		statuscolumn = {},
