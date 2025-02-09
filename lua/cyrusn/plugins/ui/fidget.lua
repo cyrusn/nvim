@@ -3,7 +3,7 @@ return {
 	enabled = true,
 	event = "VeryLazy",
 	keys = {
-		{ "<leader>n", "<cmd>:Fidget history<cr>", desc = "Show Notification History" },
+		{ "<leader>n", "<cmd>:Fidget history<cr>", desc = "Notification History" },
 	},
 	opts = {
 		-- options
