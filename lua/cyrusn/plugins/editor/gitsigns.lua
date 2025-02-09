@@ -70,18 +70,11 @@ return {
 			map("n", "<leader>hD", function()
 				gs.diffthis("~")
 			end, "Diff This ~")
-			map("n", "<leader>hb", function()
+			map("n", "<leader>hB", function()
 				gs.blame_line({ full = true })
 			end, "Blame Line")
 			map("n", "<leader>hb", gs.toggle_current_line_blame, "Toggle Blame Line (Current)")
 			map("n", "<leader>ht", gs.toggle_deleted, "Toggle Git Deleted")
-
-			map({ "n", "v" }, "<leader>hc", function()
-				vim.ui.input({ prompt = "Commit Message: " }, function(message)
-					vim.cmd('!git commit -m "' .. message .. '"')
-				end)
-			end, "Commit")
-
 			-- Text object
 			map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns Select Hunk")
 		end
