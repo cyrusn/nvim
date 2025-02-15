@@ -106,7 +106,7 @@ return {
 						})
 					end,
 					ts_ls = function()
-						lspconfig["tsserver"].setup({
+						lspconfig["ts_ls"].setup({
 							init_options = {
 								preferences = {
 									disableSuggestions = true,
