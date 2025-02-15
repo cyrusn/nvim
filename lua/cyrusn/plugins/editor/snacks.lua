@@ -9,7 +9,7 @@ return {
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
-		-- { "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
+		{ "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 		-- explorer
@@ -31,7 +31,11 @@ return {
 		explorer = {},
 		indent = {},
 		lazygit = {},
-		-- notifier = {},
+		notifier = {
+			style = "minimal",
+			top_down = false,
+			margin = { top = 0, right = 0, bottom = 2 },
+		},
 		picker = {
 			layout = { preset = "fat_split" },
 			layouts = {
@@ -93,6 +97,7 @@ return {
 				lsp_type_definitions = { include_current = true, auto_confirm = false },
 				lsp_workspace_symbols = { include_current = true },
 				pickers = { layout = { preset = "tall" } },
+				project = { layout = { preset = "fat_preview" } },
 				search_history = { layout = { preset = "fat" } },
 				zoxide = { layout = { preset = "fat" } },
 				smart = { multi = { "buffers", "files" } },
