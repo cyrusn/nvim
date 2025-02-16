@@ -18,10 +18,10 @@ return {
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Find Files" },
 		{ "<leader>C", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config Files" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-		{ "<leader>/", "<cmd>lua Snacks.picker.lines()<cr>", desc = "Lines" },
+		{ "<leader>/", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Words" },
 		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
 		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
-		{ "<leader>u", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
+		{ "<leader>.", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
 	},
 	opts = {
 		styles = {
@@ -89,7 +89,6 @@ return {
 				command_history = { layout = { preset = "fat" } },
 				commands = { layout = { preset = "fat" } },
 				explorer = { layout = { preset = "tall_split" }, auto_close = true },
-				grep_buffers = { need_search = true },
 				keymaps = { layout = { preset = "fat" } },
 				highhighlights = { layout = { preset = "tall" } },
 				lsp_references = { include_current = true, auto_confirm = false },
