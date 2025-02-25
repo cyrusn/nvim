@@ -5,15 +5,15 @@ local modes = {
 	["n"] = "NORMAL",
 	["no"] = "NORMAL",
 	["v"] = "VISUAL",
-	["V"] = "VISUAL LINE",
-	[""] = "VISUAL BLOCK",
+	["V"] = "V.LINE",
+	[""] = "V.BLOCK",
 	["s"] = "SELECT",
-	["S"] = "SELECT LINE",
-	[""] = "SELECT BLOCK",
+	["S"] = "S.LINE",
+	[""] = "S.BLOCK",
 	["i"] = "INSERT",
 	["ic"] = "INSERT",
 	["R"] = "REPLACE",
-	["Rv"] = "VISUAL REPLACE",
+	["Rv"] = "V.REPLACE",
 	["c"] = "COMMAND",
 	["cv"] = "VIM EX",
 	["ce"] = "EX",
@@ -33,7 +33,7 @@ local diagnostics_icons = {
 
 function M.mode()
 	local current_mode = vim.api.nvim_get_mode().mode
-	return "%#Normal#" .. string.format(" %s ", modes[current_mode]):upper() .. "%#Normal# "
+	return string.format("  %s ", modes[current_mode]):upper() .. " "
 end
 
 function M.filepath()
@@ -53,7 +53,8 @@ function M.filename()
 	return fname .. " "
 end
 
-function M.lsp()
+function M.diagnostic()
+	local all_count = 0
 	local count = {}
 	local levels = {
 		errors = "Error",
@@ -63,7 +64,9 @@ function M.lsp()
 	}
 
 	for k, level in pairs(levels) do
-		count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
+		local tbl_count = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
+		all_count = all_count + tbl_count
+		count[k] = tbl_count
 	end
 
 	local errors = ""
@@ -84,7 +87,23 @@ function M.lsp()
 		info = diagnostics_icons.hint .. count["info"] .. " "
 	end
 
-	return errors .. warnings .. hints .. info
+	if all_count == 0 then
+		return ""
+	end
+
+	return errors .. warnings .. hints .. info .. " "
+end
+
+function M.gitHead()
+	local git_info = vim.b.gitsigns_status_dict
+	if not git_info or git_info.head == "" then
+		return ""
+	end
+	return table.concat({
+		" ",
+		git_info.head,
+		"  ",
+	})
 end
 
 function M.gitsigns()
@@ -92,9 +111,9 @@ function M.gitsigns()
 	if not git_info or git_info.head == "" then
 		return ""
 	end
-	local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
-	local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
-	local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
+	local added = git_info.added and ("+" .. git_info.added .. " ") or ""
+	local changed = git_info.changed and ("~" .. git_info.changed .. " ") or ""
+	local removed = git_info.removed and ("-" .. git_info.removed .. " ") or ""
 	if git_info.added == 0 then
 		added = ""
 	end
@@ -105,13 +124,10 @@ function M.gitsigns()
 		removed = ""
 	end
 	return table.concat({
-		"%#GitSignsAdd# ",
-		git_info.head,
-		" ",
 		added,
 		changed,
 		removed,
-		"%#Normal#",
+		" ",
 	})
 end
 
@@ -125,16 +141,15 @@ end
 
 local statusline = {
 	'%{%v:lua._statusline_component("mode")%}',
-	"%#Normal#",
-	'%{%v:lua._statusline_component("lsp")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
+	'%{%v:lua._statusline_component("gitHead")%}',
 	"%m",
 	"%r",
 	'%{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("filename")%}',
-	"%#Normal#",
+	'%{%v:lua._statusline_component("filename")%} ',
 	"%=",
-	"%{&filetype} ",
+	'%{%v:lua._statusline_component("diagnostic")%}',
+	'%{%v:lua._statusline_component("gitsigns")%}',
+	"%{&filetype}  ",
 	"%P %l:%c ",
 }
 
