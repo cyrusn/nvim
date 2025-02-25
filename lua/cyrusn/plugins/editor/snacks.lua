@@ -21,6 +21,7 @@ return {
 		{ "<leader>/", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Words" },
 		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
 		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
+		{ "<leader>P", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Pickers", mode = { "n", "x" } },
 		{ "<leader>.", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
 	},
 	opts = {
