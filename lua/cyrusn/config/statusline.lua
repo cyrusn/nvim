@@ -1,18 +1,15 @@
-local diagnostics_icons = {
-	error = "✘ ",
-	warn = " ",
-	hint = " ",
-	info = " ",
-}
+-- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
+local M = {}
 
 local modes = {
 	["n"] = "NORMAL",
 	["no"] = "NORMAL",
 	["v"] = "VISUAL",
 	["V"] = "VISUAL LINE",
-	[""] = "VISUAL BLOCK",
+	[""] = "VISUAL BLOCK",
 	["s"] = "SELECT",
 	["S"] = "SELECT LINE",
+	[""] = "SELECT BLOCK",
 	["i"] = "INSERT",
 	["ic"] = "INSERT",
 	["R"] = "REPLACE",
@@ -27,40 +24,28 @@ local modes = {
 	["t"] = "TERMINAL",
 }
 
-local function mode()
+local diagnostics_icons = {
+	error = "✘ ",
+	warn = " ",
+	hint = " ",
+	info = " ",
+}
+
+function M.mode()
 	local current_mode = vim.api.nvim_get_mode().mode
-	return string.format(" %s ", modes[current_mode]):upper()
+	return "%#Normal#" .. string.format(" %s ", modes[current_mode]):upper() .. "%#Normal# "
 end
 
-local function update_mode_colors()
-	local current_mode = vim.api.nvim_get_mode().mode
-	local mode_color = "%#StatusLineAccent#"
-	if current_mode == "n" then
-		mode_color = "%#StatuslineAccent#"
-	elseif current_mode == "i" or current_mode == "ic" then
-		mode_color = "%#StatuslineInsertAccent#"
-	elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
-		mode_color = "%#StatuslineVisualAccent#"
-	elseif current_mode == "R" then
-		mode_color = "%#StatuslineReplaceAccent#"
-	elseif current_mode == "c" then
-		mode_color = "%#StatuslineCmdLineAccent#"
-	elseif current_mode == "t" then
-		mode_color = "%#StatuslineTerminalAccent#"
-	end
-	return mode_color
-end
-
-local function filepath()
+function M.filepath()
 	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
 	if fpath == "" or fpath == "." then
-		return " "
+		return ""
 	end
 
-	return string.format(" %%<%s/", fpath)
+	return string.format("%%<%s/", fpath)
 end
 
-local function filename()
+function M.filename()
 	local fname = vim.fn.expand("%:t")
 	if fname == "" then
 		return ""
@@ -68,7 +53,7 @@ local function filename()
 	return fname .. " "
 end
 
-local function lsp()
+function M.lsp()
 	local count = {}
 	local levels = {
 		errors = "Error",
@@ -87,33 +72,22 @@ local function lsp()
 	local info = ""
 
 	if count["errors"] ~= 0 then
-		errors = " %#LspDiagnosticsSignError# " .. diagnostics_icons.error .. count["errors"]
+		errors = diagnostics_icons.error .. count["errors"] .. " "
 	end
 	if count["warnings"] ~= 0 then
-		warnings = " %#LspDiagnosticsSignWarning# " .. diagnostics_icons.warn .. count["warnings"]
+		warnings = diagnostics_icons.warn .. count["warnings"] .. " "
 	end
 	if count["hints"] ~= 0 then
-		hints = " %#LspDiagnosticsSignHint# " .. diagnostics_icons.hint .. count["hints"]
+		hints = diagnostics_icons.hint .. count["hints"] .. " "
 	end
 	if count["info"] ~= 0 then
-		info = " %#LspDiagnosticsSignInformation# " .. diagnostics_icons.hint .. count["info"]
+		info = diagnostics_icons.hint .. count["info"] .. " "
 	end
 
-	return errors .. warnings .. hints .. info .. "%#Normal#"
+	return errors .. warnings .. hints .. info
 end
 
-local function filetype()
-	return string.format(" %s ", vim.bo.filetype):upper()
-end
-
-local function lineinfo()
-	if vim.bo.filetype == "alpha" then
-		return ""
-	end
-	return " %P %l:%c "
-end
-
-local vcs = function()
+function M.gitsigns()
 	local git_info = vim.b.gitsigns_status_dict
 	if not git_info or git_info.head == "" then
 		return ""
@@ -131,52 +105,37 @@ local vcs = function()
 		removed = ""
 	end
 	return table.concat({
+		"%#GitSignsAdd# ",
+		git_info.head,
 		" ",
 		added,
 		changed,
 		removed,
-		" ",
-		"%#GitSignsAdd# ",
-		git_info.head,
-		" %#Normal#",
-	})
-end
-
-Statusline = {}
-
-function Statusline.active()
-	return table.concat({
-		"%#Statusline#",
-		update_mode_colors(),
-		mode(),
-		"%#Normal# ",
-    vcs(),
-    lsp(),
 		"%#Normal#",
-		filepath(),
-    filename(),
-		"%=%#StatusLineExtra#",
-		filetype(),
-		lineinfo(),
 	})
 end
 
-function Statusline.inactive()
-	return " %F"
+function M.filetype()
+	return string.format(" %s ", vim.bo.filetype):upper()
 end
 
-function Statusline.short()
-	return "%#StatusLineNC#   NvimTree"
+function _G._statusline_component(name)
+	return M[name]()
 end
 
-vim.api.nvim_exec(
-	[[
-  augroup Statusline
-  au!
-  au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-  augroup END
-]],
-	false
-)
+local statusline = {
+	'%{%v:lua._statusline_component("mode")%}',
+	"%#Normal#",
+	'%{%v:lua._statusline_component("lsp")%}',
+	'%{%v:lua._statusline_component("gitsigns")%}',
+	"%m",
+	"%r",
+	'%{%v:lua._statusline_component("filepath")%}',
+	'%{%v:lua._statusline_component("filename")%}',
+	"%#Normal#",
+	"%=",
+	"%{&filetype} ",
+	"%P %l:%c ",
+}
+
+vim.o.statusline = table.concat(statusline, "")
