@@ -50,7 +50,7 @@ function M.filename()
 	if fname == "" then
 		return ""
 	end
-	return fname .. " "
+	return fname .. " %m"
 end
 
 function M.diagnostic()
@@ -142,10 +142,9 @@ end
 local statusline = {
 	'%{%v:lua._statusline_component("mode")%}',
 	'%{%v:lua._statusline_component("gitHead")%}',
-	"%m",
 	"%r",
 	'%{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("filename")%} ',
+	'%{%v:lua._statusline_component("filename")%}',
 	"%=",
 	'%{%v:lua._statusline_component("diagnostic")%}',
 	'%{%v:lua._statusline_component("gitsigns")%}',
