@@ -12,6 +12,8 @@ return {
 		{ "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
+		-- dashboard
+		{ "<leader>d", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
@@ -29,6 +31,15 @@ return {
 			notification = {},
 		},
 		bufdelete = {},
+		dashboard = {
+			sections = {
+				{ section = "header" },
+				{ icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+				{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+				{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+				{ section = "startup" },
+			},
+		},
 		explorer = {},
 		indent = {},
 		lazygit = {},

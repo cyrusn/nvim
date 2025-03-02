@@ -1,5 +1,6 @@
 return {
 	"rmagatti/auto-session",
+	enabled = false,
 	lazy = false,
 	keys = {
 		{ "<leader>ws", "<cmd>Autosession search<cr>", desc = "Search Session" },
