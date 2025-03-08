@@ -33,7 +33,7 @@ local diagnostics_icons = {
 
 function M.mode()
 	local current_mode = vim.api.nvim_get_mode().mode
-	return string.format("  %s ", modes[current_mode]):upper() .. " "
+	return string.format("  %s ", modes[current_mode]):upper()
 end
 
 function M.filepath()
@@ -42,15 +42,7 @@ function M.filepath()
 		return ""
 	end
 
-	return string.format("%%<%s/", fpath)
-end
-
-function M.filename()
-	local fname = vim.fn.expand("%:t")
-	if fname == "" then
-		return ""
-	end
-	return fname .. " %m"
+	return string.format("%s/", fpath)
 end
 
 function M.diagnostic()
@@ -91,7 +83,7 @@ function M.diagnostic()
 		return ""
 	end
 
-	return errors .. warnings .. hints .. info .. " "
+	return errors .. warnings .. hints .. info
 end
 
 function M.gitHead()
@@ -102,7 +94,7 @@ function M.gitHead()
 	return table.concat({
 		" ",
 		git_info.head,
-		"  ",
+		" ",
 	})
 end
 
@@ -127,7 +119,6 @@ function M.gitsigns()
 		added,
 		changed,
 		removed,
-		" ",
 	})
 end
 
@@ -135,21 +126,34 @@ function M.filetype()
 	return string.format(" %s ", vim.bo.filetype):upper()
 end
 
+function M.time()
+	return " " .. os.date("%Y-%m-%d %R")
+end
+
 function _G._statusline_component(name)
 	return M[name]()
 end
 
 local statusline = {
+	"%#Statusline#",
 	'%{%v:lua._statusline_component("mode")%}',
-	'%{%v:lua._statusline_component("gitHead")%}',
-	"%r",
+	"%#ColorColumn#",
+	' %{%v:lua._statusline_component("gitHead")%}',
 	'%{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("filename")%}',
+	"%t %m%r",
 	"%=",
-	'%{%v:lua._statusline_component("diagnostic")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
-	"%{&filetype}  ",
+	"%{&filetype} ",
 	"%P %l:%c ",
 }
 
+local winbar = {
+	"%#ColorColumn# ",
+	"%t ",
+	"%m ",
+	'%{%v:lua._statusline_component("diagnostic")%}',
+	'%{%v:lua._statusline_component("gitsigns")%}',
+	'%=%{%v:lua._statusline_component("time") %}',
+}
+
+vim.o.winbar = table.concat(winbar, "")
 vim.o.statusline = table.concat(statusline, "")
