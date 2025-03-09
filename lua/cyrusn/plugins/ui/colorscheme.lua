@@ -25,7 +25,7 @@ return {
 					which_key = true,
 				},
 			})
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd("colorscheme catppuccin")
 		end,
 	},
 	{
@@ -35,7 +35,7 @@ return {
 		priority = 1000,
 		opts = {},
 		config = function()
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd("colorscheme tokyonight")
 		end,
 	},
 	{
