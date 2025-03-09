@@ -16,20 +16,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)vim.g.mapleader = " "
-
 require("cyrusn.config.options")
 require("cyrusn.config.statusline")
 require("cyrusn.config.keymaps")
 require("cyrusn.config.autocmds")
-
-local opts = {
-	dev = {
-		patterns = { "cyrusn" },
-	},
-}
 
 require("lazy").setup({
 	spec = {
@@ -40,4 +30,7 @@ require("lazy").setup({
 	},
 	install = { colorscheme = { "habamax" } },
 	checker = { enabled = true },
-}, opts)
+	dev = {
+		patterns = { "cyrusn" },
+	},
+})

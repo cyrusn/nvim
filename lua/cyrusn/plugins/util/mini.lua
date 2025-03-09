@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.nvim",
-	enabled = true,
+	enabled = false,
 	lazy = false,
 	dependancies = {
 		"echasnovski/mini.icons",

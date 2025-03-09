@@ -158,4 +158,3 @@ local winbar = {
 
 vim.o.winbar = table.concat(winbar, "")
 vim.o.statusline = table.concat(statusline, "")
-vim.cmd([[colorscheme habamax]])

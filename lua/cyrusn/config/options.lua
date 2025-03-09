@@ -1,9 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- default colorscheme
+vim.cmd([[colorscheme habamax]])
+
 -- disable netrw
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
 
 -- enable netrw if file explorer is not installed
 vim.g.netrw_preview = 1
