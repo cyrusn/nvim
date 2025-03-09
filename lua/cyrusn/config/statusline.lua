@@ -83,7 +83,7 @@ function M.diagnostic()
 		return ""
 	end
 
-	return " " .. errors .. warnings .. hints .. info
+	return errors .. warnings .. hints .. info
 end
 
 function M.gitHead()
@@ -116,7 +116,6 @@ function M.gitsigns()
 		removed = ""
 	end
 	return table.concat({
-		"  ",
 		added,
 		changed,
 		removed,
@@ -136,7 +135,7 @@ function _G._statusline_component(name)
 end
 
 local statusline = {
-	"%#Cursor#",
+	"%#Search#",
 	'%{%v:lua._statusline_component("mode")%}',
 	"%#ColorColumn#",
 	' %{%v:lua._statusline_component("gitHead")%}',
@@ -148,14 +147,15 @@ local statusline = {
 }
 
 local winbar = {
-	"%#Cursor#",
+	"%#Search#",
+	" %t",
+	" %m",
+	" %#ColorColumn#",
+	' %{%v:lua._statusline_component("gitsigns")%}',
 	'%{%v:lua._statusline_component("diagnostic")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
-	"%#ColorColumn# ",
-	"%t ",
-	"%m ",
-	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',
+	'%=%#Search# %{%v:lua._statusline_component("time") %} ',
 }
 
 vim.o.winbar = table.concat(winbar, "")
 vim.o.statusline = table.concat(statusline, "")
+vim.cmd([[colorscheme habamax]])

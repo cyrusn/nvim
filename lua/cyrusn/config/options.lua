@@ -1,9 +1,10 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- disable netrw
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
---
+
 -- enable netrw if file explorer is not installed
 vim.g.netrw_preview = 1
 vim.g.netrw_liststyle = 0
