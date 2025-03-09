@@ -1,8 +1,9 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = true,
+	enabled = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"lewis6991/gitsigns.nvim",
 	},
 	config = function()
 		local opts = {
@@ -17,11 +18,17 @@ return {
 					{ "filename", path = 5 },
 					{
 						"diff",
-						symbols = {
-							added = " ",
-							modified = " ",
-							removed = " ",
-						},
+						source = function()
+							local git_info = vim.b.gitsigns_status_dict
+							if not git_info or git_info.head == "" then
+								return nil
+							end
+							return {
+								added = git_info.added,
+								modified = git_info.changed,
+								removed = git_info.removed,
+							}
+						end,
 					},
 					{
 						"diagnostics",
@@ -60,11 +67,8 @@ return {
 				},
 			},
 			extensions = {
-				"fzf",
 				"lazy",
 				"mason",
-				"oil",
-				"trouble",
 			},
 		}
 
