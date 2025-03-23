@@ -41,6 +41,7 @@ vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true,
 -- Move to next or previous buffer
 vim.keymap.set("n", "[b", "<cmd>bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bn<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "M", "<c-^>", { desc = "Edit Alternate File" })
 
 -- Move Lines
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
