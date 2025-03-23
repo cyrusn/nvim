@@ -12,19 +12,19 @@ return {
 		{ "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
-		-- dashboard
-		{ "<leader>d", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
+		-- -- dashboard
+		-- { "<leader>d", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Find Files" },
 		{ "<leader>C", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config Files" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-		{ "<leader>/", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Words" },
 		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
 		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
-		{ "<leader>P", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
-		{ "<leader>.", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
+		{ "<leader>W", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
+		{ "<leader>w", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Word in Buffers" },
+		{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
 	},
 	opts = {
 		styles = {
@@ -92,7 +92,20 @@ return {
 				buffers = { current = false },
 				command_history = { layout = { preset = "fat" } },
 				commands = { layout = { preset = "fat" } },
-				explorer = { layout = { preset = "tall_split" }, auto_close = true },
+				explorer = {
+					layout = { preset = "tall_split" },
+					auto_close = true,
+					git_status_open = true,
+					diagnostics_open = true,
+					hidden = true,
+				},
+				files = { hidden = true },
+				grep_buffers = {
+					live = false,
+					search = function(picker)
+						return picker:word()
+					end,
+				},
 				keymaps = { layout = { preset = "fat" } },
 				highhighlights = { layout = { preset = "tall" } },
 				lsp_references = { include_current = true, auto_confirm = false },
@@ -103,7 +116,7 @@ return {
 				project = { layout = { preset = "fat_preview" } },
 				search_history = { layout = { preset = "fat" } },
 				zoxide = { layout = { preset = "fat" } },
-				smart = { multi = { "buffers", "files" } },
+				smart = { multi = { "buffers", "files" }, hidden = true },
 				undo = { layout = { preset = "fat_preview" } },
 			},
 		},
