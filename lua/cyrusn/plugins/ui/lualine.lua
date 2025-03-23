@@ -40,8 +40,7 @@ return {
 						},
 					},
 				},
-				lualine_y = {},
-				lualine_z = {
+				lualine_y = {
 					function()
 						return " " .. os.date("%Y-%m-%d %R")
 					end,
