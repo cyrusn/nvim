@@ -135,9 +135,9 @@ function _G._statusline_component(name)
 end
 
 local statusline = {
-	"%#Search#",
+	"%#Cursor#",
 	'%{%v:lua._statusline_component("mode")%}',
-	"%#ColorColumn#",
+	"%#CursorLine#",
 	' %{%v:lua._statusline_component("gitHead")%}',
 	'%{%v:lua._statusline_component("filepath")%}',
 	"%t %m%r",
@@ -147,10 +147,10 @@ local statusline = {
 }
 
 local winbar = {
-	"%#Search#",
+	"%#Cursor#",
 	" %t",
 	" %m",
-	" %#ColorColumn#",
+	" %#CursorLine#",
 	' %{%v:lua._statusline_component("gitsigns")%}',
 	'%{%v:lua._statusline_component("diagnostic")%}',
 	'%=%#Search# %{%v:lua._statusline_component("time") %} ',
