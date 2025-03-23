@@ -7,7 +7,7 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			{
 				"williamboman/mason.nvim",
-				keys = { { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" } },
+				keys = { { "<leader>aM", "<cmd>Mason<cr>", desc = "Mason" } },
 				config = true,
 			},
 			"williamboman/mason-lspconfig.nvim",

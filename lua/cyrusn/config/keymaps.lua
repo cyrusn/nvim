@@ -1,8 +1,8 @@
-vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>aL", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- vim.keymap.set("n", "<leader>e", "<cmd>Ex .<cr>", { desc = "Netrew" })
 -- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 -- vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
-vim.keymap.set("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
+-- vim.keymap.set("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
 -- vim.keymap.set("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
 
 -- use mini.bufremove and bufferline to handle it, they won't affect the layout when buffer closed
@@ -41,7 +41,7 @@ vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true,
 -- Move to next or previous buffer
 vim.keymap.set("n", "[b", "<cmd>bp<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "]b", "<cmd>bn<cr>", { desc = "Next Buffer" })
-vim.keymap.set("n", "M", "<c-^>", { desc = "Edit Alternate File" })
+vim.keymap.set("n", "<leader><tab>", "<c-^>", { desc = "Alternate File" })
 
 -- Move Lines
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })

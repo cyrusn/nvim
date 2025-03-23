@@ -4,27 +4,27 @@ return {
 	lazy = false,
 	keys = {
 		-- bufdelete
-		{ "<leader>x", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
-		{ "<leader>X", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
+		{ "<leader>ax", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
+		{ "<leader>aX", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
-		{ "<leader>n", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
+		{ "<leader>an", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
 		-- terminal
-		{ "<leader>z", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
+		{ "<leader>az", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
 		-- -- dashboard
 		-- { "<leader>d", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Find Files" },
-		{ "<leader>C", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config Files" },
+		{ "<leader>aC", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config Files" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-		{ "<leader>r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
 		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
-		{ "<leader>W", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
-		{ "<leader>w", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Word in Buffers" },
-		{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
+    { "<leader>/r", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "References" },
+		{ "<leader>/W", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
+		{ "<leader>//", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Word in Buffers" },
+		{ "<leader>/p", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
 	},
 	opts = {
 		styles = {

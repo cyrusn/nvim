@@ -4,11 +4,11 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>?",
+			"<leader>a?",
 			function()
 				require("which-key").show({ global = false })
 			end,
-			desc = "Buffer Local Keymaps",
+			desc = "Local Keymaps",
 		},
 	},
 	config = function()
@@ -22,11 +22,12 @@ return {
 		wk.add({
 			{ "<leader>c", group = "code" },
 			{ "<leader>h", group = "hunk", icon = { icon = "", color = "red" }, mode = { "n", "v" } },
-			{ "<leader>L", icon = { icon = "󰫹", color = "red" } },
-			{ "<leader>M", icon = { icon = "󰫺", color = "red" } },
-			{ "<leader>e", icon = { icon = "󰙅", color = "blue" } },
+			{ "<leader>aL", icon = { icon = "󰫹", color = "red" } },
+			{ "<leader>aM", icon = { icon = "󰫺", color = "red" } },
+			{ "<leader>e", icon = { icon = "󰙅", color = "magenta" } },
 			{ "<leader>s", group = "session", icon = { icon = "", color = "green" } },
-			-- { "<leader>y", icon = { icon = "󰇥", color = "yellow" } },
+			{ "<leader>/", group = "search" },
+			{ "<leader>a", group = "action", icon = { icon = "󱐋", color = "blue" } },
 		})
 	end,
 }
