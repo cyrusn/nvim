@@ -14,6 +14,15 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			winbar = {
+				lualine_a = {
+					-- {
+					-- 	"buffers",
+					-- 	use_mode_colors = true,
+					-- 	symbols = {
+					-- 		alternate_file = "",
+					-- 	},
+					-- },
+				},
 				lualine_b = {
 					{ "filename", path = 5 },
 					{
@@ -40,10 +49,12 @@ return {
 						},
 					},
 				},
-				lualine_y = {
-					function()
-						return " " .. os.date("%Y-%m-%d %R")
-					end,
+				lualine_z = {
+					{
+						function()
+							return " " .. os.date("%Y-%m-%d %R")
+						end,
+					},
 				},
 			},
 			sections = {

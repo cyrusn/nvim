@@ -25,9 +25,10 @@ return {
 			{ "<leader>aL", icon = { icon = "󰫹", color = "red" } },
 			{ "<leader>aM", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "magenta" } },
-			{ "<leader>s", group = "session", icon = { icon = "", color = "green" } },
-			{ "<leader>/", group = "search" },
+			{ "<leader>w", group = "session", icon = { icon = "", color = "green" } },
+			{ "<leader>s", group = "search" },
 			{ "<leader>a", group = "action", icon = { icon = "󱐋", color = "blue" } },
+			{ "<leader>l", group = "harpoon", icon = { icon = "", color = "blue" } },
 		})
 	end,
 }
