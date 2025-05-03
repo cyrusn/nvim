@@ -23,8 +23,11 @@ return {
 					-- 	},
 					-- },
 				},
+				lualine_a = { "mode" },
 				lualine_b = {
 					{ "filename", path = 5 },
+				},
+				lualine_c = {
 					{
 						"diff",
 						source = function()
