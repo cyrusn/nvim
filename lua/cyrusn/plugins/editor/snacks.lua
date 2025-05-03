@@ -97,7 +97,7 @@ return {
 				fat_split = { preset = "fat", preview = "main" },
 				tall_split = { preset = "tall", preview = "main" },
 			},
-			formatters = { file = { filename_first = true } },
+			formatters = { file = { filename_first = true, truncate = 120} },
 			sources = {
 				buffers = { focus = "list" },
 				command_history = { layout = { preset = "fat" } },
