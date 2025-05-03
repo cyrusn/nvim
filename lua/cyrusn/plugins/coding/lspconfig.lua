@@ -68,6 +68,25 @@ return {
 					function(server_name)
 						lspconfig[server_name].setup({})
 					end,
+					emmet_ls = function()
+						lspconfig.emmet_ls.setup({
+							-- on_attach = on_attach,
+							filetypes = {
+								"css",
+								"eruby",
+								"html",
+								"javascript",
+								"javascriptreact",
+								"less",
+								"sass",
+								"scss",
+								"svelte",
+								"pug",
+								"typescriptreact",
+								"vue",
+							},
+						})
+					end,
 					html = function()
 						lspconfig["html"].setup({
 							cmd = { "vscode-html-language-server", "--stdio" },
