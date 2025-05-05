@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = true,
+	enabled = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"lewis6991/gitsigns.nvim",
@@ -14,15 +14,15 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			winbar = {
-				lualine_a = {
-					-- {
-					-- 	"buffers",
-					-- 	use_mode_colors = true,
-					-- 	symbols = {
-					-- 		alternate_file = "",
-					-- 	},
-					-- },
-				},
+				-- lualine_a = {
+				-- {
+				-- 	"buffers",
+				-- 	use_mode_colors = true,
+				-- 	symbols = {
+				-- 		alternate_file = "",
+				-- 	},
+				-- },
+				-- },
 				lualine_a = { "mode" },
 				lualine_b = {
 					{ "filename", path = 5 },

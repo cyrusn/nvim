@@ -76,7 +76,7 @@ function M.diagnostic()
 		hints = "%#DiagnosticHint#" .. diagnostics_icons.hint .. count["hints"] .. " "
 	end
 	if count["info"] ~= 0 then
-		info = "%#DiagnosticInfo#" .. diagnostics_icons.hint .. count["info"] .. " "
+		info = "%#DiagnosticInfo#" .. diagnostics_icons.info.. count["info"] .. " "
 	end
 
 	if all_count == 0 then

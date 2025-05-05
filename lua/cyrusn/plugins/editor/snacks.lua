@@ -46,9 +46,9 @@ return {
 		indent = {},
 		lazygit = {},
 		notifier = {
-			style = "compact",
+			style = "minimal",
 			top_down = false,
-			margin = { top = 0, right = 0, bottom = 2 },
+			margin = { top = 0, right = 1, bottom = 2 },
 		},
 		words = {},
 		picker = {
