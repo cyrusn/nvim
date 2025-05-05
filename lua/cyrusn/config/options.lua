@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- default colorscheme
-vim.cmd([[colorscheme habamax]])
+vim.cmd([[colorscheme default]])
 
 -- disable netrw
 -- vim.g.loaded_netrwPlugin = 1

@@ -33,6 +33,7 @@ return {
 		{ "<leader>sr", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "LSP References" },
 		{ "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Word in Buffers" },
 		{ "<leader>sp", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
+		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix List", mode = { "n", "x" } },
 		{ "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume", mode = { "n", "x" } },
 	},
 	opts = {
@@ -45,7 +46,7 @@ return {
 		indent = {},
 		lazygit = {},
 		notifier = {
-			style = "minimal",
+			style = "compact",
 			top_down = false,
 			margin = { top = 0, right = 0, bottom = 2 },
 		},
@@ -97,7 +98,7 @@ return {
 				fat_split = { preset = "fat", preview = "main" },
 				tall_split = { preset = "tall", preview = "main" },
 			},
-			formatters = { file = { filename_first = true, truncate = 120} },
+			formatters = { file = { filename_first = true, truncate = 120 } },
 			sources = {
 				buffers = { focus = "list" },
 				command_history = { layout = { preset = "fat" } },
@@ -112,7 +113,7 @@ return {
 				files = { hidden = true },
 				grep_buffers = { live = false },
 				keymaps = { layout = { preset = "fat" } },
-				highhighlights = { layout = { preset = "tall" } },
+				highlights = { layout = { preset = "tall", preview = "main" } },
 				lsp_references = { include_current = true, auto_confirm = false, focus = "list" },
 				lsp_symbols = {
 					include_current = true,
@@ -132,6 +133,7 @@ return {
 				zoxide = { layout = { preset = "fat" } },
 				smart = { multi = { "recent", "files" }, hidden = true },
 				undo = { layout = { preset = "fat", preview = "main" } },
+				qflist = { focus = "list" },
 			},
 		},
 		statuscolumn = {},

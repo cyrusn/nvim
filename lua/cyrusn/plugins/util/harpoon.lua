@@ -23,7 +23,7 @@ return {
 
 		vim.keymap.set("n", "<leader>le", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end, { desc = "Edit harpoon files" })
+		end, { desc = "Edit harpoon list" })
 
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "[[", function()
@@ -50,6 +50,7 @@ return {
 									if item.value ~= nil then
 										table.insert(file_paths, {
 											file = item.value,
+											text = item.value,
 										})
 									end
 								end
@@ -58,12 +59,12 @@ return {
 							win = {
 								input = {
 									keys = {
-										["dd"] = { "delete", mode = { "n", "x" } },
+										["<C-x>"] = { "delete", mode = { "n", "x" } },
 									},
 								},
 								list = {
 									keys = {
-										["dd"] = { "delete", mode = { "n", "x" } },
+										["<C-x>"] = { "delete", mode = { "n", "x" } },
 									},
 								},
 							},

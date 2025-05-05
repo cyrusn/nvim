@@ -67,23 +67,23 @@ function M.diagnostic()
 	local info = ""
 
 	if count["errors"] ~= 0 then
-		errors = diagnostics_icons.error .. count["errors"] .. " "
+		errors = "%#DiagnosticError#" .. diagnostics_icons.error .. count["errors"] .. " "
 	end
 	if count["warnings"] ~= 0 then
-		warnings = diagnostics_icons.warn .. count["warnings"] .. " "
+		warnings = "%#DiagnosticWarn#" .. diagnostics_icons.warn .. count["warnings"] .. " "
 	end
 	if count["hints"] ~= 0 then
-		hints = diagnostics_icons.hint .. count["hints"] .. " "
+		hints = "%#DiagnosticHint#" .. diagnostics_icons.hint .. count["hints"] .. " "
 	end
 	if count["info"] ~= 0 then
-		info = diagnostics_icons.hint .. count["info"] .. " "
+		info = "%#DiagnosticInfo#" .. diagnostics_icons.hint .. count["info"] .. " "
 	end
 
 	if all_count == 0 then
 		return ""
 	end
 
-	return errors .. warnings .. hints .. info
+	return "%#@comment#| " .. errors .. warnings .. hints .. info
 end
 
 function M.gitHead()
@@ -103,9 +103,10 @@ function M.gitsigns()
 	if not git_info or git_info.head == "" then
 		return ""
 	end
-	local added = git_info.added and ("+" .. git_info.added .. " ") or ""
-	local changed = git_info.changed and ("~" .. git_info.changed .. " ") or ""
-	local removed = git_info.removed and ("-" .. git_info.removed .. " ") or ""
+	local added = git_info.added and ("%#GitSignsAdd#" .. "+" .. git_info.added .. " ") or ""
+	local changed = git_info.changed and ("%#GitSignsChange#" .. "~" .. git_info.changed .. " ") or ""
+	local removed = git_info.removed and ("%#GitSignsDelete#" .. "-" .. git_info.removed .. " ") or ""
+
 	if git_info.added == 0 then
 		added = ""
 	end
@@ -116,6 +117,7 @@ function M.gitsigns()
 		removed = ""
 	end
 	return table.concat({
+		"%* ",
 		added,
 		changed,
 		removed,
@@ -137,12 +139,14 @@ end
 local statusline = {
 	"%#Cursor#",
 	'%{%v:lua._statusline_component("mode")%}',
-	"%#CursorLine#",
+	"%#StatusLine#",
 	' %{%v:lua._statusline_component("gitHead")%}',
-	'%{%v:lua._statusline_component("filepath")%}',
+	"%#TabLine#",
+	'  %{%v:lua._statusline_component("filepath")%}',
 	"%t %m%r",
 	"%=",
-	"%{&filetype} ",
+	"%#Cursor#",
+	" %{&filetype} ",
 	"%P %l:%c ",
 }
 
@@ -150,10 +154,9 @@ local winbar = {
 	"%#Cursor#",
 	" %t",
 	" %m",
-	" %#CursorLine#",
-	' %{%v:lua._statusline_component("gitsigns")%}',
+	'%{%v:lua._statusline_component("gitsigns")%}',
 	'%{%v:lua._statusline_component("diagnostic")%}',
-	'%=%#Search# %{%v:lua._statusline_component("time") %} ',
+	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',
 }
 
 vim.o.winbar = table.concat(winbar, "")
