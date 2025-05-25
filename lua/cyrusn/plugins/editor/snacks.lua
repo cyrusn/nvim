@@ -17,7 +17,7 @@ return {
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
-		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Find Files" },
+		{ "<leader><space>", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
 		{
 			"<leader>ac",
 			"<cmd>lua Snacks.picker.explorer({cwd=vim.fn.stdpath('config')})<cr>",
@@ -52,6 +52,9 @@ return {
 		},
 		words = {},
 		picker = {
+			matcher = {
+				frecency = true,
+			},
 			layout = { preset = "fat_split" },
 			layouts = {
 				tall = {
@@ -100,7 +103,7 @@ return {
 			},
 			formatters = { file = { filename_first = true, truncate = 120 } },
 			sources = {
-				buffers = { focus = "list" },
+				buffers = { focus = "list", current = false },
 				command_history = { layout = { preset = "fat" } },
 				commands = { layout = { preset = "fat" } },
 				explorer = {

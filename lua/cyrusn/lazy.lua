@@ -28,7 +28,7 @@ require("lazy").setup({
     { import = "cyrusn.plugins.ui" },
 		{ import = "cyrusn.plugins.util" },
 	},
-	install = { colorscheme = { "habamax" } },
+	install = { colorscheme = { "default" } },
 	checker = { enabled = true },
 	dev = {
 		patterns = { "cyrusn" },

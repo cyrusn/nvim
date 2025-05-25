@@ -4,6 +4,10 @@ vim.g.maplocalleader = "\\"
 -- default colorscheme
 vim.cmd([[colorscheme default]])
 
+-- lsp and diagnostic
+vim.lsp.set_log_level("debug")
+vim.diagnostic.config({ virtual_text = true })
+
 -- disable netrw
 -- vim.g.loaded_netrwPlugin = 1
 -- vim.g.loaded_netrw = 1

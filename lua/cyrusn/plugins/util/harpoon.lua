@@ -4,7 +4,6 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local harpoon = require("harpoon")
-		local snacks = require("snacks")
 		-- REQUIRED
 		harpoon:setup()
 		-- REQUIRED
@@ -46,7 +45,7 @@ return {
 							finder = function()
 								local harpoon = require("harpoon")
 								local file_paths = {}
-								for idx, item in ipairs(harpoon:list().items) do
+								for _, item in ipairs(harpoon:list().items) do
 									if item.value ~= nil then
 										table.insert(file_paths, {
 											file = item.value,
@@ -65,6 +64,7 @@ return {
 								list = {
 									keys = {
 										["<C-x>"] = { "delete", mode = { "n", "x" } },
+										["dd"] = { "delete", mode = { "n", "x" } },
 									},
 								},
 							},

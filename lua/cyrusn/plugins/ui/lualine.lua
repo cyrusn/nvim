@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"lewis6991/gitsigns.nvim",
