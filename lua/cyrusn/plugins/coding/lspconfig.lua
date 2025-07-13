@@ -4,7 +4,6 @@ return {
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			-- "hrsh7th/cmp-nvim-lsp",
 			{
 				"williamboman/mason.nvim",
 				keys = { { "<leader>aM", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -16,9 +15,6 @@ return {
 			vim.opt.signcolumn = "yes"
 		end,
 		config = function()
-			-- Add cmp_nvim_lsp capabilities settings to lspconfig
-			-- This should be executed before you configure any language server
-
 			vim.diagnostic.config({
 				signs = {
 					text = {
@@ -29,13 +25,6 @@ return {
 					},
 				},
 			})
-
-			local lspconfig_defaults = require("lspconfig").util.default_config
-			-- lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-			-- 	"force",
-			-- 	lspconfig_defaults.capabilities,
-			-- 	require("cmp_nvim_lsp").default_capabilities()
-			-- )
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "LSP actions",
@@ -52,8 +41,6 @@ return {
 
 					-- +diagnostics
 					map("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
-					-- map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic")
-					-- map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic")
 				end,
 			})
 
