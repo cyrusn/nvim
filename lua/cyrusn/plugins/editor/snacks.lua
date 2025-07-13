@@ -9,11 +9,11 @@ return {
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
-		{ "<leader>an", "<cmd>lua Snacks.notifier.show_history()<cr>", desc = "Show Notifier History" },
+		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
 		-- terminal
-		{ "<leader>az", "<cmd>lua Snacks.terminal.toggle()<cr>", desc = "Terminal" },
+		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 		-- -- dashboard
-		{ "<leader>ad", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
+		-- { "<leader>ad", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
@@ -41,9 +41,9 @@ return {
 			notification = {},
 		},
 		bufdelete = {},
-		dashboard = {},
 		explorer = { replace_netrw = true },
 		indent = {},
+		scope = {},
 		lazygit = {},
 		notifier = {
 			style = "minimal",
@@ -121,6 +121,7 @@ return {
 				lsp_symbols = {
 					include_current = true,
 					auto_confirm = false,
+					focus = "list",
 					layout = { preset = "tall", preview = "main" },
 					filter = {
 						default = true,

@@ -25,7 +25,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "cyrusn.plugins.editor" },
 		{ import = "cyrusn.plugins.coding" },
-    { import = "cyrusn.plugins.ui" },
+		{ import = "cyrusn.plugins.ui" },
 		{ import = "cyrusn.plugins.util" },
 	},
 	install = { colorscheme = { "default" } },

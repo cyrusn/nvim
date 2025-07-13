@@ -1,5 +1,6 @@
 vim.keymap.set("n", "<leader>aL", "<cmd>Lazy<cr>", { desc = "Lazy" })
--- vim.keymap.set("n", "<leader>e", "<cmd>Ex .<cr>", { desc = "Netrew" })
+vim.keymap.set("n", "<leader>au", "<cmd>Lazy update<cr>", { desc = "Lazy Update" })
+-- vim.keymap.set("n", "<leader>g", "<cmd>Ex .<cr>", { desc = "Netrew" })
 -- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
 -- vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
 -- vim.keymap.set("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
@@ -14,10 +15,10 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 
 -- better jumps
 -- redraw after jumps
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-o>", "<C-o>zz")
-vim.keymap.set("n", "<C-i>", "<C-i>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-o>", "<C-o>zz")
+-- vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
@@ -33,10 +34,10 @@ vim.keymap.set("n", "<A-x>", "<c-w>c", { desc = "close window" })
 
 -- better up/down
 -- j and k will move visual line instead of move line
-vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gjzz' : 'jzz'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gkzz' : 'kzz'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to next or previous buffer
 -- vim.keymap.set("n", "[[", "<cmd>bp<cr>", { desc = "Prev Buffer" })

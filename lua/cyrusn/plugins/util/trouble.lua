@@ -1,6 +1,6 @@
 return {
 	"folke/trouble.nvim",
-	enable = true,
+	enabled = false,
 	opts = {}, -- for default options, refer to the configuration section for custom setup.
 	cmd = "Trouble",
 	keys = {
