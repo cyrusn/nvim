@@ -4,7 +4,7 @@ return {
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
+			-- "hrsh7th/cmp-nvim-lsp",
 			{
 				"williamboman/mason.nvim",
 				keys = { { "<leader>aM", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -31,11 +31,11 @@ return {
 			})
 
 			local lspconfig_defaults = require("lspconfig").util.default_config
-			lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-				"force",
-				lspconfig_defaults.capabilities,
-				require("cmp_nvim_lsp").default_capabilities()
-			)
+			-- lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+			-- 	"force",
+			-- 	lspconfig_defaults.capabilities,
+			-- 	require("cmp_nvim_lsp").default_capabilities()
+			-- )
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "LSP actions",
