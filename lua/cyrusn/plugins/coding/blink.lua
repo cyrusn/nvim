@@ -15,6 +15,9 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
+			providers = {
+				lsp = { fallbacks = {} },
+			},
 		},
 		snippets = { preset = "default" },
 		fuzzy = { implementation = "prefer_rust_with_warning" },
