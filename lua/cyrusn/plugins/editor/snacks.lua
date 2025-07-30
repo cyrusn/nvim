@@ -107,7 +107,7 @@ return {
 				command_history = { layout = { preset = "fat" } },
 				commands = { layout = { preset = "fat" } },
 				explorer = {
-					layout = { preset = "tall_split", preview = "main" },
+					layout = { preset = "tall" },
 					auto_close = true,
 					git_status_open = true,
 					diagnostics_open = true,
@@ -116,13 +116,13 @@ return {
 				files = { hidden = true },
 				grep_buffers = { live = false },
 				keymaps = { layout = { preset = "fat" } },
-				highlights = { layout = { preset = "tall", preview = "main" } },
+				highlights = { layout = { preset = "tall_split" } },
 				lsp_references = { include_current = true, auto_confirm = false, focus = "list" },
 				lsp_symbols = {
 					include_current = true,
 					auto_confirm = false,
 					focus = "list",
-					layout = { preset = "tall", preview = "main" },
+					layout = { preset = "tall_split" },
 					filter = {
 						default = true,
 					},
@@ -136,7 +136,7 @@ return {
 				search_history = { layout = { preset = "fat" } },
 				zoxide = { layout = { preset = "fat" } },
 				smart = { multi = { "recent", "files" }, hidden = true },
-				undo = { layout = { preset = "fat", preview = "main" } },
+				undo = { layout = { preset = "fat_split" } },
 				qflist = { focus = "list" },
 			},
 		},
