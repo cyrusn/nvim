@@ -38,33 +38,40 @@ return {
 	},
 	opts = {
 		styles = {
-			notification = {},
+			notification = {
+				wo = { wrap = true }, -- Wrap notifications
+			},
 		},
 		bufdelete = {},
-		explorer = { replace_netrw = true },
 		indent = {},
 		scope = {},
 		lazygit = {},
+		quickfile = {},
+		bigfile = {},
+		words = {},
+		statuscolumn = {},
+		terminal = {},
+		util = {},
 		notifier = {
 			style = "minimal",
 			top_down = false,
 			margin = { top = 0, right = 1, bottom = 2 },
 		},
-		words = {},
+		explorer = { replace_netrw = true },
 		picker = {
+			ui_select = { enabled = true },
 			matcher = {
 				frecency = true,
 			},
-			layout = { preset = "fat_split" },
+			layout = { preset = "fat_preview" },
 			layouts = {
 				tall = {
 					preview = false,
 					layout = {
-						backdrop = false,
-						row = -2,
 						col = -1,
+						backdrop = false,
 						width = 35,
-						height = 0.6,
+						height = 0.9,
 						title = "{title} {live} {flags}",
 						title_pos = "center",
 						border = "rounded",
@@ -83,17 +90,20 @@ return {
 						box = "vertical",
 						backdrop = false,
 						row = -2,
-						col = -1,
-						width = 0.65,
+						-- col = -1,
+						width = 0.9,
 						height = 12,
 						border = "rounded",
 						title = " {title} {live} {flags}",
 						title_pos = "center",
-						{ win = "input", height = 1 },
 						{
 							box = "horizontal",
-							{ win = "list", border = "none" },
-							{ win = "preview", title = "{preview}", width = 0.7 },
+							{
+								box = "vertical",
+								{ win = "input", height = 1 },
+								{ win = "list" },
+							},
+							{ win = "preview", width = 0.65 },
 						},
 					},
 				},
@@ -140,8 +150,5 @@ return {
 				qflist = { focus = "list" },
 			},
 		},
-		statuscolumn = {},
-		terminal = {},
-		util = {},
 	},
 }
