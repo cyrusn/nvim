@@ -16,21 +16,16 @@ return {
 		end, { desc = "Add file to harpoon" })
 
 		vim.keymap.set("n", "<leader>ll", function()
-			local snacks = require("snacks")
-			snacks.picker.harpoon()
-		end, { desc = "List harpoon files " })
-
-		vim.keymap.set("n", "<leader>le", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end, { desc = "Edit harpoon list" })
 
 		-- Toggle previous & next buffers stored within Harpoon list
-		vim.keymap.set("n", "[[", function()
-			harpoon:list():prev()
-		end, { desc = "Prev harpoon" })
-		vim.keymap.set("n", "]]", function()
-			harpoon:list():next()
-		end, { desc = "Next harpoon" })
+		-- vim.keymap.set("n", "[[", function()
+		-- 	harpoon:list():prev()
+		-- end, { desc = "Prev harpoon" })
+		-- vim.keymap.set("n", "]]", function()
+		-- 	harpoon:list():next()
+		-- end, { desc = "Next harpoon" })
 	end,
 	specs = {
 		{
