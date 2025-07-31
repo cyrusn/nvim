@@ -43,9 +43,10 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = augroup("load_session"),
 	callback = function()
-		local ok, persistence = pcall(require, "persistence")
+		local ok, _ = pcall(require, "persistence")
 		if ok then
-			persistence.load()
+			require("persistence").load()
+			vim.cmd("edit")
 		end
 	end,
 	nested = true,
