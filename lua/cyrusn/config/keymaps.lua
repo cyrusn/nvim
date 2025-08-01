@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>aL", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>al", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>au", "<cmd>Lazy update<cr>", { desc = "Lazy Update" })
 -- vim.keymap.set("n", "<leader>g", "<cmd>Ex .<cr>", { desc = "Netrew" })
 -- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })

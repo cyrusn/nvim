@@ -5,7 +5,8 @@ return {
 	keys = {
 		-- bufdelete
 		{ "<leader>x", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
-		{ "<leader>ax", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
+		{ "<leader>ax", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Others Buffers" },
+		{ "<leader>aX", "<cmd>lua Snacks.bufdelete.all()<cr>", desc = "Close All Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier

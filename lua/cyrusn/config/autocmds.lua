@@ -45,8 +45,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		local ok, _ = pcall(require, "persistence")
 		if ok then
-			require("persistence").load()
-			vim.cmd("edit")
+			vim.defer_fn(function()
+				require("persistence").load()
+			end, 100) -- Delay by 100ms, for loading of treesitter
 		end
 	end,
 	nested = true,

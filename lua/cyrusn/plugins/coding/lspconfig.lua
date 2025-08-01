@@ -6,7 +6,7 @@ return {
 		dependencies = {
 			{
 				"williamboman/mason.nvim",
-				keys = { { "<leader>aM", "<cmd>Mason<cr>", desc = "Mason" } },
+				keys = { { "<leader>am", "<cmd>Mason<cr>", desc = "Mason" } },
 				config = true,
 			},
 			"williamboman/mason-lspconfig.nvim",

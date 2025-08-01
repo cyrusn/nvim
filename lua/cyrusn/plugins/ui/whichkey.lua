@@ -22,8 +22,8 @@ return {
 		wk.add({
 			{ "<leader>c", group = "code" },
 			{ "<leader>h", group = "hunk", icon = { icon = "", color = "red" }, mode = { "n", "v" } },
-			{ "<leader>aL", icon = { icon = "󰫹", color = "red" } },
-			{ "<leader>aM", icon = { icon = "󰫺", color = "red" } },
+			{ "<leader>al", icon = { icon = "󰫹", color = "red" } },
+			{ "<leader>am", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>e", icon = { icon = "󰙅", color = "magenta" } },
 			{ "<leader>w", group = "session", icon = { icon = "", color = "green" } },
 			{ "<leader>s", group = "search" },

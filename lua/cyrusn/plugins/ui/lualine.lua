@@ -16,7 +16,6 @@ return {
 			winbar = {
 				-- lualine_a = {
 				-- {
-				-- 	"buffers",
 				-- 	use_mode_colors = true,
 				-- 	symbols = {
 				-- 		alternate_file = "",
@@ -25,9 +24,10 @@ return {
 				-- },
 				lualine_a = { "mode" },
 				lualine_b = {
-					{ "filename", path = 5 },
+					"branch",
 				},
 				lualine_c = {
+					{ "filename", path = 1 },
 					{
 						"diff",
 						source = function()
@@ -67,6 +67,29 @@ return {
 				},
 				lualine_c = {
 					{ "filename", path = 1 },
+					{
+						"diff",
+						source = function()
+							local git_info = vim.b.gitsigns_status_dict
+							if not git_info or git_info.head == "" then
+								return nil
+							end
+							return {
+								added = git_info.added,
+								modified = git_info.changed,
+								removed = git_info.removed,
+							}
+						end,
+					},
+					{
+						"diagnostics",
+						symbols = {
+							error = "✘ ",
+							warn = " ",
+							hint = " ",
+							info = " ",
+						},
+					},
 				},
 				lualine_x = {},
 				lualine_y = {
