@@ -42,6 +42,9 @@ return {
 			notification = {
 				wo = { wrap = true }, -- Wrap notifications
 			},
+			minimal = {
+				wo = { wrap = true },
+			},
 		},
 		bufdelete = {},
 		indent = {},
@@ -56,7 +59,9 @@ return {
 		notifier = {
 			style = "minimal",
 			top_down = false,
-			margin = { top = 0, right = 1, bottom = 2 },
+			width = { min = 40, max = 0.4 },
+			height = { min = 1, max = 0.4 },
+			margin = { top = 2, right = 1, bottom = 1 },
 		},
 		explorer = { replace_netrw = true },
 		picker = {

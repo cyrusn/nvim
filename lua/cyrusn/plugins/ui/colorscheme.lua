@@ -1,20 +1,22 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
 		enabled = false,
-		priority = 1000,
-		opts = {},
+		config = function()
+			vim.cmd("colorscheme tokyonight")
+		end,
 	},
 	{
 		"catppuccin/nvim",
 		enabled = false,
 		name = "catppuccin",
-		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme catppuccin")
+		end,
 	},
 	{
 		"rose-pine/neovim",
-		enabled = true,
+		enabled = false,
 		name = "rose-pine",
 		config = function()
 			vim.cmd("colorscheme rose-pine-main")
@@ -22,7 +24,33 @@ return {
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = false,
+		enabled = true,
+		config = function()
+			require("kanagawa").setup({
+				commentStyle = { italic = true },
+				colors = {
+					theme = {
+						all = {
+							ui = {
+								bg_gutter = "none",
+							},
+						},
+					},
+				},
+				overrides = function(colors)
+					local theme = colors.theme
+					return {
+						NormalFloat = { bg = theme.ui.bg_m1 },
+						FloatBorder = { bg = theme.ui.bg_m1 },
+						FloatTitle = { bg = theme.ui.bg_m1 },
+
+						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						LazyNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						MasonNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+					}
+				end,
+			})
+			require("kanagawa").load("wave")
+		end,
 	},
-	{},
 }

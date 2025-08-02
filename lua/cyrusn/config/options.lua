@@ -23,6 +23,7 @@ vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
+vim.opt.cmdheight = 1
 vim.opt.timeout = false
 vim.opt.laststatus = 3
 vim.opt.foldmethod = "indent"
