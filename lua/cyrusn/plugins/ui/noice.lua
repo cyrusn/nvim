@@ -2,6 +2,14 @@ return {
 	"folke/noice.nvim",
 	enabled = true,
 	event = "VeryLazy",
+	dependencies = {
+		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		"MunifTanjim/nui.nvim",
+		{ "rcarriga/nvim-notify", opts = {
+			render = "wrapped-compact",
+			stages = "static",
+		} },
+	},
 	opts = {
 		cmdline = { view = "cmdline" },
 		lsp = {
@@ -17,17 +25,16 @@ return {
 				filter = {
 					event = "msg_show",
 				},
-				view = "notify",
+				view = "mini",
 			},
 		},
 		presets = {
 			bottom_search = true,
 			command_palette = true,
 			long_message_to_split = true,
-			lsp_doc_border = trpe,
+			lsp_doc_border = true,
 		},
 	},
-  -- stylua: ignore
   keys = {
     { "<leader>n", "", desc = "+noice"},
     { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
@@ -40,9 +47,6 @@ return {
     { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
   },
 	config = function(_, opts)
-		-- HACK: noice shows messages from before it was enabled,
-		-- but this is not ideal when Lazy is installing plugins,
-		-- so clear the messages in this case.
 		if vim.o.filetype == "lazy" then
 			vim.cmd([[messages clear]])
 		end

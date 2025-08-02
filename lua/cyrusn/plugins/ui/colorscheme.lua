@@ -1,33 +1,26 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		enabled = false,
-		config = function()
-			vim.cmd("colorscheme tokyonight")
-		end,
-	},
-	{
 		"catppuccin/nvim",
-		enabled = false,
 		name = "catppuccin",
-		config = function()
-			vim.cmd("colorscheme catppuccin")
-		end,
 	},
 	{
 		"rose-pine/neovim",
-		enabled = false,
 		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine-main")
-		end,
 	},
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = true,
 		config = function()
 			require("kanagawa").setup({
+				compile = false,
+				undercurl = true,
 				commentStyle = { italic = true },
+				functionStyle = {},
+				keywordStyle = { italic = true },
+				statementStyle = { bold = true },
+				typeStyle = {},
+				transparent = false,
+				dimInactive = false,
+				terminalColors = true,
 				colors = {
 					theme = {
 						all = {
@@ -50,7 +43,7 @@ return {
 					}
 				end,
 			})
-			require("kanagawa").load("wave")
+			vim.cmd("colorscheme kanagawa")
 		end,
 	},
 }

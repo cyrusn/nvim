@@ -67,7 +67,7 @@ return {
 				lualine_c = {
 					{
 						"navic",
-						color_correction = "static",
+						color_correction = "dynamic",
 						navic_opts = nil,
 					},
 				},
