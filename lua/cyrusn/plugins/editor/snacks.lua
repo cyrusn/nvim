@@ -40,7 +40,7 @@ return {
 	opts = {
 		styles = {
 			notification = {
-				wo = { wrap = true }, -- Wrap notifications
+				wo = { wrap = true }, -- wrap notifications
 			},
 		},
 		bufdelete = {},
@@ -53,13 +53,13 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		util = {},
-		-- notifier = {
-		-- 	style = "minimal",
-		-- 	top_down = true,
-		-- 	width = { min = 40, max = 0.4 },
-		-- 	height = { min = 1, max = 0.4 },
-		-- 	margin = { top = 2, right = 1, bottom = 1 },
-		-- },
+		notifier = {
+			style = "minimal",
+			top_down = false,
+			width = { min = 1, max = 0.4 },
+			height = { min = 1, max = 0.4 },
+			margin = { top = 2, right = 1, bottom = 2},
+		},
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },

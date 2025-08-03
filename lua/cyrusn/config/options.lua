@@ -23,7 +23,6 @@ vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
-vim.opt.cmdheight = 1
 vim.opt.timeout = false
 vim.opt.laststatus = 3
 vim.opt.foldmethod = "indent"
@@ -54,6 +53,7 @@ vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shi
 vim.opt.smartcase = true -- Don't ignore case with capitals
 vim.opt.smartindent = true -- Insert indents automatically
 vim.opt.spelllang = { "en" }
+vim.opt.spelloptions = "camel"
 vim.opt.spell = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

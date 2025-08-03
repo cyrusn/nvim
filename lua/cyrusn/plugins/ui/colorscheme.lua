@@ -11,16 +11,7 @@ return {
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup({
-				compile = false,
-				undercurl = true,
-				commentStyle = { italic = true },
-				functionStyle = {},
-				keywordStyle = { italic = true },
-				statementStyle = { bold = true },
-				typeStyle = {},
-				transparent = false,
-				dimInactive = false,
-				terminalColors = true,
+				functionStyle = { italic = true },
 				colors = {
 					theme = {
 						all = {
@@ -37,13 +28,13 @@ return {
 						FloatBorder = { bg = theme.ui.bg_m1 },
 						FloatTitle = { bg = theme.ui.bg_m1 },
 
-						NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-						LazyNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-						MasonNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						-- NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						-- LazyNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						-- MasonNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
 					}
 				end,
 			})
-			vim.cmd("colorscheme kanagawa")
+			vim.cmd("colorscheme kanagawa-dragon")
 		end,
 	},
 }
