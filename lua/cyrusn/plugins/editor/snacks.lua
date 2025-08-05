@@ -53,13 +53,13 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		util = {},
-		notifier = {
-			style = "minimal",
-			top_down = false,
-			width = { min = 1, max = 0.4 },
-			height = { min = 1, max = 0.4 },
-			margin = { top = 2, right = 1, bottom = 2},
-		},
+		-- notifier = {
+		-- 	style = "minimal",
+		-- 	top_down = false,
+		-- 	width = { min = 1, max = 0.4 },
+		-- 	height = { min = 1, max = 0.4 },
+		-- 	margin = { top = 2, right = 1, bottom = 2 },
+		-- },
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
@@ -120,7 +120,7 @@ return {
 				command_history = { layout = { preset = "fat" } },
 				commands = { layout = { preset = "fat" } },
 				explorer = {
-					layout = { preset = "tall" },
+					layout = { preset = "tall", preview = "main" },
 					auto_close = true,
 					git_status_open = true,
 					diagnostics_open = true,

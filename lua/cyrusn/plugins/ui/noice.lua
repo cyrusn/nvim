@@ -5,10 +5,10 @@ return {
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
-		{ "rcarriga/nvim-notify", opts = {
-			render = "wrapped-compact",
-			stages = "static",
-		} },
+		-- { "rcarriga/nvim-notify", opts = {
+		-- 	render = "wrapped-compact",
+		-- 	stages = "static",
+		-- } },
 	},
 	opts = {
 		cmdline = { view = "cmdline" },
@@ -20,6 +20,7 @@ return {
 				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 			},
 		},
+		notify = { view = "mini" },
 		routes = {
 			{
 				filter = {
@@ -35,6 +36,16 @@ return {
 			long_message_to_split = true,
 			inc_rename = false,
 			lsp_doc_border = true,
+		},
+		views = {
+			mini = {
+				border = {
+					style = "rounded",
+				},
+				position = {
+					row = -2,
+				},
+			},
 		},
 	},
 	keys = {

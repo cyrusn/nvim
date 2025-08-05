@@ -5,11 +5,11 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{
-				"williamboman/mason.nvim",
+				"mason-org/mason.nvim",
 				keys = { { "<leader>am", "<cmd>Mason<cr>", desc = "Mason" } },
 				config = true,
 			},
-			"williamboman/mason-lspconfig.nvim",
+			"mason-org/mason-lspconfig.nvim",
 		},
 		init = function()
 			vim.opt.signcolumn = "yes"
@@ -72,6 +72,7 @@ return {
 					"vue",
 				},
 			})
+
 			require("lspconfig").html.setup({
 				cmd = { "vscode-html-language-server", "--stdio" },
 				filetypes = { "html", "templ" },
@@ -94,6 +95,18 @@ return {
 				root_dir = function()
 					return vim.loop.cwd()
 				end,
+			})
+
+			require("lspconfig").eslint.setup({
+				settings = {
+					javascript = {
+						implicitProjectConfiguration = {
+							checkJs = true,
+							-- You can add other compiler options here if needed,
+							-- such as "strictNullChecks = true"
+						},
+					},
+				},
 			})
 
 			require("mason-lspconfig").setup({
