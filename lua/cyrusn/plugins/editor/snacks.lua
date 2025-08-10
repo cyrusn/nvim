@@ -10,7 +10,7 @@ return {
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
-		-- { "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
+		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 		-- -- dashboard
@@ -53,13 +53,13 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		util = {},
-		-- notifier = {
-		-- 	style = "minimal",
-		-- 	top_down = false,
-		-- 	width = { min = 1, max = 0.4 },
-		-- 	height = { min = 1, max = 0.4 },
-		-- 	margin = { top = 2, right = 1, bottom = 2 },
-		-- },
+		notifier = {
+			style = "minimal",
+			top_down = false,
+			width = { min = 1, max = 0.4 },
+			height = { min = 1, max = 0.4 },
+			margin = { top = 2, right = 1, bottom = 2 },
+		},
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },

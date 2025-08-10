@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	enabled = true,
+	enabled = false,
 	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -15,6 +15,32 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			winbar = {
+				lualine_a = {
+					"buffers",
+					-- "mode",
+				},
+				lualine_b = {
+					-- "branch",
+				},
+				lualine_c = {
+					-- { "filename", path = 5 },
+        }
+        ,
+				lualine_x = {
+					-- {
+					-- 	require("noice").api.status.mode.get,
+					-- 	cond = require("noice").api.status.mode.has,
+					-- },
+				},
+				lualine_z = {
+					{
+						function()
+							return " " .. os.date("%Y-%m-%d %R")
+						end,
+					},
+				},
+			},
+			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
 					"branch",
@@ -44,32 +70,11 @@ return {
 							info = " ",
 						},
 					},
-				},
-				lualine_x = {
 					-- {
-					-- 	require("noice").api.status.mode.get,
-					-- 	cond = require("noice").api.status.mode.has,
+					-- 	"navic",
+					-- 	color_correction = "dynamic",
+					-- 	navic_opts = nil,
 					-- },
-				},
-				lualine_z = {
-					{
-						function()
-							return " " .. os.date("%Y-%m-%d %R")
-						end,
-					},
-				},
-			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = {
-					"branch",
-				},
-				lualine_c = {
-					{
-						"navic",
-						color_correction = "dynamic",
-						navic_opts = nil,
-					},
 				},
 				lualine_x = {
 					-- {
@@ -92,6 +97,22 @@ return {
 				"mason",
 			},
 		}
+
+		-- local trouble = require("trouble")
+		-- local symbols = trouble.statusline({
+		-- 	mode = "lsp_document_symbols",
+		-- 	groups = {},
+		-- 	title = false,
+		-- 	filter = { range = true },
+		-- 	format = "{kind_icon}{symbol.name:Normal}",
+		-- 	-- The following line is needed to fix the background color
+		-- 	-- Set it to the lualine section you want to use
+		-- 	hl_group = "lualine_c_normal",
+		-- })
+		-- table.insert(opts.sections.lualine_c, {
+		-- 	symbols.get,
+		-- 	cond = symbols.has,
+		-- })
 
 		require("lualine").setup(opts)
 	end,

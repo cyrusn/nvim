@@ -76,7 +76,7 @@ function M.diagnostic()
 		hints = "%#DiagnosticHint#" .. diagnostics_icons.hint .. count["hints"] .. " "
 	end
 	if count["info"] ~= 0 then
-		info = "%#DiagnosticInfo#" .. diagnostics_icons.info.. count["info"] .. " "
+		info = "%#DiagnosticInfo#" .. diagnostics_icons.info .. count["info"] .. " "
 	end
 
 	if all_count == 0 then
@@ -143,7 +143,8 @@ local statusline = {
 	' %{%v:lua._statusline_component("gitHead")%}',
 	"%#TabLine#",
 	'  %{%v:lua._statusline_component("filepath")%}',
-	"%t %m%r",
+	'%{%v:lua._statusline_component("gitsigns")%}',
+	'%{%v:lua._statusline_component("diagnostic")%}',
 	"%=",
 	"%#Cursor#",
 	" %{&filetype} ",
@@ -152,8 +153,11 @@ local statusline = {
 
 local winbar = {
 	"%#Cursor#",
-	" %t",
-	" %m",
+	'%{%v:lua._statusline_component("mode")%}',
+	"%#StatusLine#",
+	' %{%v:lua._statusline_component("gitHead")%}',
+	"%#TabLine#",
+	'  %{%v:lua._statusline_component("filepath")%}',
 	'%{%v:lua._statusline_component("gitsigns")%}',
 	'%{%v:lua._statusline_component("diagnostic")%}',
 	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',

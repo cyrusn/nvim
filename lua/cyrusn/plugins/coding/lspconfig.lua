@@ -1,117 +1,90 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		cmd = { "LspInfo", "LspInstall", "LspStart" },
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = {
-			{
-				"mason-org/mason.nvim",
-				keys = { { "<leader>am", "<cmd>Mason<cr>", desc = "Mason" } },
-				config = true,
-			},
-			"mason-org/mason-lspconfig.nvim",
-		},
-		init = function()
-			vim.opt.signcolumn = "yes"
-		end,
-		config = function()
-			vim.diagnostic.config({
-				signs = {
-					text = {
-						[vim.diagnostic.severity.ERROR] = "✘",
-						[vim.diagnostic.severity.WARN] = " ",
-						[vim.diagnostic.severity.HINT] = " ",
-						[vim.diagnostic.severity.INFO] = " ",
-					},
-				},
-			})
-
-			vim.api.nvim_create_autocmd("LspAttach", {
-				desc = "LSP actions",
-				callback = function(event)
-					local map = function(mode, l, r, desc)
-						local opts = { buffer = event.buf }
-						opts.desc = desc
-						return vim.keymap.set(mode, l, r, opts)
-					end
-
-					map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
-					map("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
-					map("n", "<leader>ci", "<cmd>LspInfo<cr>", "LSP Info")
-
-					-- +diagnostics
-					map("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
-				end,
-			})
-
-			-- reference: https://lsp-zero.netlify.app/docs/language-server-configuration.html#configure-language-servers
-
-			require("lspconfig").lua_ls.setup({
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim", "require" },
+		event = "LazyFile",
+		opts = {
+			servers = {
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { "vim", "require" },
+							},
+							codeLens = { enable = true },
+							completion = {
+								callSnippet = "Both",
+							},
+							hint = {
+								enable = true,
+								setType = false,
+								paramType = true,
+							},
 						},
 					},
 				},
-			})
-			require("lspconfig").emmet_ls.setup({
-				-- on_attach = on_attach,
-				filetypes = {
-					"css",
-					"eruby",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"less",
-					"sass",
-					"scss",
-					"svelte",
-					"pug",
-					"typescriptreact",
-					"vue",
-				},
-			})
-
-			require("lspconfig").html.setup({
-				cmd = { "vscode-html-language-server", "--stdio" },
-				filetypes = { "html", "templ" },
-				init_options = {
-					configurationSection = { "html", "css", "javascript" },
-					embeddedLanguages = {
-						css = true,
-						javascript = true,
-					},
-					provideFormatter = true,
-				},
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-			})
-
-			require("lspconfig").sqlls.setup({
-				cmd = { "sql-language-server", "up", "--method", "stdio" },
-				filetypes = { "sql", "mysql" },
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-			})
-
-			require("lspconfig").eslint.setup({
-				settings = {
+				eslint = {
 					javascript = {
-						implicitProjectConfiguration = {
-							checkJs = true,
-							-- You can add other compiler options here if needed,
-							-- such as "strictNullChecks = true"
+						settings = {
+							implicitProjectConfiguration = {
+								checkJs = true,
+							},
 						},
 					},
 				},
-			})
-
+				emmet_ls = {
+					filetypes = {
+						"css",
+						"eruby",
+						"html",
+						"javascript",
+						"javascriptreact",
+						"less",
+						"sass",
+						"scss",
+						"svelte",
+						"pug",
+						"typescriptreact",
+						"vue",
+					},
+				},
+				html = {
+					filetypes = { "html", "templ" },
+					init_options = {
+						configurationSection = { "html", "css", "javascript" },
+						embeddedLanguages = {
+							css = true,
+							javascript = true,
+						},
+						provideFormatter = true,
+					},
+					root_dir = function()
+						return vim.loop.cwd()
+					end,
+				},
+				jsonls = {},
+				ts_ls = {},
+			},
+		},
+		config = function(_, opts)
+			for server, config in pairs(opts.servers) do
+				vim.lsp.config(server, config)
+				vim.lsp.enable(server)
+			end
+		end,
+	},
+	{
+		"mason-org/mason.nvim",
+		keys = {
+			{ "<leader>am", "<cmd>Mason<cr>", desc = "Mason" },
+			{ "<leader>aM", "<cmd>MasonUpdate<cr>", desc = "Mason Update" },
+		},
+		config = true,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		config = function()
 			require("mason-lspconfig").setup({
 				automatic_enable = true,
-				ensure_installed = { "lua_ls", "ts_ls", "eslint", "html", "jsonls" },
 			})
 		end,
 	},

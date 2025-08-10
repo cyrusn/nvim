@@ -1,0 +1,63 @@
+-- local servers = {
+-- emmet_ls = {
+-- 	filetypes = {
+-- 		"css",
+-- 		"eruby",
+-- 		"html",
+-- 		"javascript",
+-- 		"javascriptreact",
+-- 		"less",
+-- 		"sass",
+-- 		"scss",
+-- 		"svelte",
+-- 		"pug",
+-- 		"typescriptreact",
+-- 		"vue",
+-- 	},
+-- },
+-- eslint = {
+-- 	javascript = {
+-- 		settings = {
+-- 			implicitProjectConfiguration = {
+-- 				checkJs = true,
+-- 			},
+-- 		},
+-- 	},
+-- },
+-- html = {
+-- 	filetypes = { "html", "templ" },
+-- 	init_options = {
+-- 		configurationSection = { "html", "css", "javascript" },
+-- 		embeddedLanguages = {
+-- 			css = true,
+-- 			javascript = true,
+-- 		},
+-- 		provideFormatter = true,
+-- 	},
+-- 	root_dir = function()
+-- 		return vim.loop.cwd()
+-- 	end,
+-- },
+-- jsonls = {},
+-- ts_ls = {},
+-- }
+
+-- for server, config in pairs(servers) do
+-- 	print(server)
+-- 	vim.lsp.config(server, config)
+-- 	vim.lsp.enable(server)
+-- end
+
+-- vim.lsp.config("lua_ls", {
+-- 	settings = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				globals = { "vim", "require" },
+-- 			},
+-- 			runtime = {
+-- 				version = "LuaJIT",
+-- 			},
+-- 		},
+-- 	},
+-- })
+-- vim.lsp.enable({ "lua_ls" })

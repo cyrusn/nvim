@@ -1,35 +1,25 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
+	event = { "VeryLazy" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"neovim/nvim-lspconfig",
+		"mason-org/mason-lspconfig.nvim",
+	},
 	version = "1.*",
 	opts = {
 		keymap = {
 			preset = "default",
-		},
-		appearance = {
-			nerd_font_variant = "mono",
-		},
-		completion = {
-			documentation = { auto_show = true },
-			ghost_text = { enabled = true },
+			["<C-i>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-space>"] = false, -- or {}
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
 			providers = {
 				lsp = { fallbacks = {} },
 			},
 		},
-		snippets = { preset = "luasnip" },
+		signature = { enabled = true },
 		fuzzy = { implementation = "prefer_rust_with_warning" },
-		cmdline = {
-			keymap = {
-				preset = "inherit",
-			},
-			completion = {
-				menu = { auto_show = true },
-				ghost_text = { enabled = true },
-			},
-		},
 	},
 	opts_extend = { "sources.default" },
 }

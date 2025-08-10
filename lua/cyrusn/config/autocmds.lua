@@ -52,3 +52,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 	nested = true,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(event)
+		local bufmap = function(mode, rhs, lhs, desc)
+			vim.keymap.set(mode, rhs, lhs, { buffer = event.buf, desc = desc })
+		end
+
+		bufmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
+		bufmap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
+
+		-- +diagnostics
+		bufmap("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
+	end,
+})

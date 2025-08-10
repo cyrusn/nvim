@@ -15,7 +15,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
 require("cyrusn.config.options")
 require("cyrusn.config.statusline")
 require("cyrusn.config.keymaps")
@@ -34,3 +33,5 @@ require("lazy").setup({
 		patterns = { "cyrusn" },
 	},
 })
+
+-- require("cyrusn.config.lsp")

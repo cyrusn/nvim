@@ -22,7 +22,16 @@ vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
--- vim.o.cmdheight = 0
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "✘",
+			[vim.diagnostic.severity.WARN] = " ",
+			[vim.diagnostic.severity.HINT] = " ",
+			[vim.diagnostic.severity.INFO] = " ",
+		},
+	},
+})
 vim.opt.timeout = false
 vim.opt.laststatus = 3
 vim.opt.foldmethod = "indent"
@@ -44,6 +53,8 @@ vim.opt.listchars:append({
 	precedes = "◂",
 	leadmultispace = "│·",
 })
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 vim.opt.mouse = "a" -- Enable mouse mode
 vim.opt.number = true -- Print line number
 vim.opt.relativenumber = true -- Relative line numbers
@@ -53,11 +64,9 @@ vim.opt.showmode = false
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.smartcase = true -- Don't ignore case with capitals
 vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.spell = true
 vim.opt.spelllang = { "en" }
 vim.opt.spelloptions = "camel"
-vim.opt.spell = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.timeoutlen = 300
