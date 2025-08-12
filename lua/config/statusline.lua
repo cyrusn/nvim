@@ -46,44 +46,36 @@ function M.filepath()
 end
 
 function M.diagnostic()
-	local all_count = 0
-	local count = {}
-	local levels = {
-		errors = "Error",
-		warnings = "Warn",
-		info = "Info",
-		hints = "Hint",
-	}
+	local diagnostics = vim.diagnostic.get(0)
+	local count = { error = 0, warn = 0, info = 0, hint = 0 }
 
-	for k, level in pairs(levels) do
-		local tbl_count = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
-		all_count = all_count + tbl_count
-		count[k] = tbl_count
-	end
-
-	local errors = ""
-	local warnings = ""
-	local hints = ""
-	local info = ""
-
-	if count["errors"] ~= 0 then
-		errors = "%#DiagnosticError#" .. diagnostics_icons.error .. count["errors"] .. " "
-	end
-	if count["warnings"] ~= 0 then
-		warnings = "%#DiagnosticWarn#" .. diagnostics_icons.warn .. count["warnings"] .. " "
-	end
-	if count["hints"] ~= 0 then
-		hints = "%#DiagnosticHint#" .. diagnostics_icons.hint .. count["hints"] .. " "
-	end
-	if count["info"] ~= 0 then
-		info = "%#DiagnosticInfo#" .. diagnostics_icons.info .. count["info"] .. " "
+	for _, diagnostic in ipairs(diagnostics) do
+		if diagnostic.severity == vim.diagnostic.severity.ERROR then
+			count.error = count.error + 1
+		elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+			count.warn = count.warn + 1
+		elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+			count.info = count.info + 1
+		elseif diagnostic.severity == vim.diagnostic.severity.HINT then
+			count.hint = count.hint + 1
+		end
 	end
 
-	if all_count == 0 then
-		return ""
+	local result = {}
+	if count.error > 0 then
+		table.insert(result, "%#DiagnosticError#" .. diagnostics_icons.error .. count.error)
+	end
+	if count.warn > 0 then
+		table.insert(result, "%#DiagnosticWarn#" .. diagnostics_icons.warn .. count.warn)
+	end
+	if count.info > 0 then
+		table.insert(result, "%#DiagnosticInfo#" .. diagnostics_icons.info .. count.info)
+	end
+	if count.hint > 0 then
+		table.insert(result, "%#DiagnosticHint#" .. diagnostics_icons.hint .. count.hint)
 	end
 
-	return "%#@comment#| " .. errors .. warnings .. hints .. info
+	return table.concat(result, " ") .. (next(result) and "%#Normal#" or "")
 end
 
 function M.gitHead()
@@ -92,7 +84,7 @@ function M.gitHead()
 		return ""
 	end
 	return table.concat({
-		" ",
+		"   ",
 		git_info.head,
 		" ",
 	})
@@ -136,26 +128,24 @@ function _G._statusline_component(name)
 	return M[name]()
 end
 
+local winbar = {
+	' %{%v:lua._statusline_component("filepath")%}',
+	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',
+}
+
 local statusline = {
 	"%#Cursor#",
 	'%{%v:lua._statusline_component("mode")%}',
 	"%#StatusLine#",
-	' %{%v:lua._statusline_component("gitHead")%}',
+	'%{%v:lua._statusline_component("gitHead")%}',
 	"%#TabLine#",
-	'  %{%v:lua._statusline_component("filepath")%}',
-	"%t %m%r",
+	' %{%v:lua._statusline_component("filepath")%}',
+	'%{%v:lua._statusline_component("gitsigns")%}',
+	'%{%v:lua._statusline_component("diagnostic")%}',
 	"%=",
 	"%#Cursor#",
 	" %{&filetype} ",
 	"%P %l:%c ",
-}
-
-local winbar = {
-	"%#Cursor#",
-	'  %{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
-	'%{%v:lua._statusline_component("diagnostic")%}',
-	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',
 }
 
 vim.o.winbar = table.concat(winbar, "")
