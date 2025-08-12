@@ -66,7 +66,7 @@ return {
 			matcher = {
 				frecency = true,
 			},
-			layout = { preset = "fat_preview" },
+			layout = { preset = "fat_preview", cycle = true },
 			layouts = {
 				tall = {
 					preview = false,
@@ -151,6 +151,7 @@ return {
 				smart = { multi = { "recent", "files" }, hidden = true },
 				undo = { layout = { preset = "fat_split" } },
 				qflist = { focus = "list" },
+				yanky = { layout = { preset = "dropdown", preview = true }, focus = "list" },
 			},
 		},
 	},

@@ -1,11 +1,5 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- default colorscheme
 vim.cmd([[colorscheme default]])
-
--- lsp and diagnostic
-vim.diagnostic.config({ virtual_text = true })
 
 -- disable netrw
 -- vim.g.loaded_netrwPlugin = 1
@@ -22,7 +16,9 @@ vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
 -- vim.options
+-- lsp and diagnostic
 vim.diagnostic.config({
+	virtual_text = true,
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = "✘",

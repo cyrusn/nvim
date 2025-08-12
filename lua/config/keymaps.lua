@@ -1,24 +1,11 @@
 vim.keymap.set("n", "<leader>al", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>au", "<cmd>Lazy update<cr>", { desc = "Lazy Update" })
--- vim.keymap.set("n", "<leader>g", "<cmd>Ex .<cr>", { desc = "Netrew" })
--- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Write file" })
--- vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Write files" })
--- vim.keymap.set("n", "<leader>q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
--- vim.keymap.set("n", "<leader>Q", "<cmd>wqa<cr>", { desc = "Save and Quit" })
-
--- use mini.bufremove and bufferline to handle it, they won't affect the layout when buffer closed
--- vim.keymap.set("n", "<leader>x", "<cmd>bd #<cr>", { desc = "Close buffer" })
--- vim.keymap.set("n", "<leader>X", "<cmd>%bd|e#<cr>", { desc = "Close all other buffers" })
 
 -- terminal
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- better jumps
 -- redraw after jumps
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
--- vim.keymap.set("n", "<C-o>", "<C-o>zz")
--- vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
@@ -59,4 +46,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = tr
 
 -- lsp
 vim.keymap.set("n", "<leader>ci", "<cmd>checkhealth vim.lsp<cr>", { desc = "LSP Info" })
-

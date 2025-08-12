@@ -42,7 +42,7 @@ function M.filepath()
 		return ""
 	end
 
-	return string.format("%s/", fpath)
+	return string.format("%s", fpath)
 end
 
 function M.diagnostic()
@@ -143,8 +143,7 @@ local statusline = {
 	' %{%v:lua._statusline_component("gitHead")%}',
 	"%#TabLine#",
 	'  %{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
-	'%{%v:lua._statusline_component("diagnostic")%}',
+	"%t %m%r",
 	"%=",
 	"%#Cursor#",
 	" %{&filetype} ",
@@ -153,10 +152,6 @@ local statusline = {
 
 local winbar = {
 	"%#Cursor#",
-	'%{%v:lua._statusline_component("mode")%}',
-	"%#StatusLine#",
-	' %{%v:lua._statusline_component("gitHead")%}',
-	"%#TabLine#",
 	'  %{%v:lua._statusline_component("filepath")%}',
 	'%{%v:lua._statusline_component("gitsigns")%}',
 	'%{%v:lua._statusline_component("diagnostic")%}',

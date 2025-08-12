@@ -1,7 +1,27 @@
 return {
 	{
+		"mason-org/mason.nvim",
+		keys = {
+			{ "<leader>am", "<cmd>Mason<cr>", desc = "Mason" },
+			{ "<leader>aM", "<cmd>MasonUpdate<cr>", desc = "Mason Update" },
+		},
+		config = true,
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		config = function()
+			require("mason-lspconfig").setup({
+				automatic_installation = true,
+			})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
-		event = "LazyFile",
+		dependancies = {
+			"mason-org/mason.nvim",
+			"mason-org/mason-lspconfig.nvim",
+		},
 		opts = {
 			servers = {
 				lua_ls = {
@@ -11,13 +31,9 @@ return {
 								globals = { "vim", "require" },
 							},
 							codeLens = { enable = true },
-							completion = {
-								callSnippet = "Both",
-							},
-							hint = {
-								enable = true,
-								setType = false,
-								paramType = true,
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+								checkThirdParty = false,
 							},
 						},
 					},
@@ -57,9 +73,6 @@ return {
 						},
 						provideFormatter = true,
 					},
-					root_dir = function()
-						return vim.loop.cwd()
-					end,
 				},
 				jsonls = {},
 				ts_ls = {},
@@ -70,22 +83,6 @@ return {
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
-		end,
-	},
-	{
-		"mason-org/mason.nvim",
-		keys = {
-			{ "<leader>am", "<cmd>Mason<cr>", desc = "Mason" },
-			{ "<leader>aM", "<cmd>MasonUpdate<cr>", desc = "Mason Update" },
-		},
-		config = true,
-	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				automatic_enable = true,
-			})
 		end,
 	},
 }
