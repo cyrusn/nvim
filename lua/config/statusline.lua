@@ -1,29 +1,6 @@
 -- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 local M = {}
 
-local modes = {
-	["n"] = "NORMAL",
-	["no"] = "NORMAL",
-	["v"] = "VISUAL",
-	["V"] = "V.LINE",
-	[""] = "V.BLOCK",
-	["s"] = "SELECT",
-	["S"] = "S.LINE",
-	[""] = "S.BLOCK",
-	["i"] = "INSERT",
-	["ic"] = "INSERT",
-	["R"] = "REPLACE",
-	["Rv"] = "V.REPLACE",
-	["c"] = "COMMAND",
-	["cv"] = "VIM EX",
-	["ce"] = "EX",
-	["r"] = "PROMPT",
-	["rm"] = "MOAR",
-	["r?"] = "CONFIRM",
-	["!"] = "SHELL",
-	["t"] = "TERMINAL",
-}
-
 local diagnostics_icons = {
 	error = "✘ ",
 	warn = " ",
@@ -33,7 +10,7 @@ local diagnostics_icons = {
 
 function M.mode()
 	local current_mode = vim.api.nvim_get_mode().mode
-	return string.format("  %s ", modes[current_mode]):upper()
+	return string.format(" [%s]", current_mode):upper()
 end
 
 function M.filepath()
@@ -42,7 +19,7 @@ function M.filepath()
 		return ""
 	end
 
-	return string.format("%s", fpath)
+	return string.format(" %s", fpath) .. "/%t%m%r"
 end
 
 function M.diagnostic()
@@ -63,19 +40,19 @@ function M.diagnostic()
 
 	local result = {}
 	if count.error > 0 then
-		table.insert(result, "%#DiagnosticError#" .. diagnostics_icons.error .. count.error)
+		table.insert(result, diagnostics_icons.error .. count.error)
 	end
 	if count.warn > 0 then
-		table.insert(result, "%#DiagnosticWarn#" .. diagnostics_icons.warn .. count.warn)
+		table.insert(result, diagnostics_icons.warn .. count.warn)
 	end
 	if count.info > 0 then
-		table.insert(result, "%#DiagnosticInfo#" .. diagnostics_icons.info .. count.info)
+		table.insert(result, diagnostics_icons.info .. count.info)
 	end
 	if count.hint > 0 then
-		table.insert(result, "%#DiagnosticHint#" .. diagnostics_icons.hint .. count.hint)
+		table.insert(result, diagnostics_icons.hint .. count.hint)
 	end
 
-	return table.concat(result, " ") .. (next(result) and "%#Normal#" or "")
+	return table.concat(result, " ")
 end
 
 function M.gitHead()
@@ -84,9 +61,8 @@ function M.gitHead()
 		return ""
 	end
 	return table.concat({
-		"   ",
+		" ",
 		git_info.head,
-		" ",
 	})
 end
 
@@ -95,9 +71,9 @@ function M.gitsigns()
 	if not git_info or git_info.head == "" then
 		return ""
 	end
-	local added = git_info.added and ("%#GitSignsAdd#" .. "+" .. git_info.added .. " ") or ""
-	local changed = git_info.changed and ("%#GitSignsChange#" .. "~" .. git_info.changed .. " ") or ""
-	local removed = git_info.removed and ("%#GitSignsDelete#" .. "-" .. git_info.removed .. " ") or ""
+	local added = git_info.added and ("+" .. git_info.added .. " ") or ""
+	local changed = git_info.changed and ("~" .. git_info.changed .. " ") or ""
+	local removed = git_info.removed and ("-" .. git_info.removed .. " ") or ""
 
 	if git_info.added == 0 then
 		added = ""
@@ -109,7 +85,6 @@ function M.gitsigns()
 		removed = ""
 	end
 	return table.concat({
-		"%* ",
 		added,
 		changed,
 		removed,
@@ -117,35 +92,51 @@ function M.gitsigns()
 end
 
 function M.filetype()
-	return string.format(" %s ", vim.bo.filetype):upper()
+	return " " .. string.format("%s ", vim.bo.filetype)
+end
+
+function M.encoding()
+	local str = "%{&fileencoding}"
+	return string.format("[%s] ", str):upper()
 end
 
 function M.time()
 	return " " .. os.date("%Y-%m-%d %R")
 end
 
-function _G._statusline_component(name)
+function M.lsp_server()
+	local lsp = vim.lsp.get_clients()
+	if #lsp ~= 0 then
+		if lsp[1] ~= nil then
+			local server = lsp[1].name
+			return "  " .. server .. " "
+		end
+	else
+		return ""
+	end
+end
+
+function _G._getStatusline(name)
 	return M[name]()
 end
 
 local winbar = {
-	' %{%v:lua._statusline_component("filepath")%}',
-	'%=%#Cursor# %{%v:lua._statusline_component("time") %} ',
+	'%{%v:lua._getStatusline("mode")%} ',
+	'%{%v:lua._getStatusline("filepath")%}',
+	"%=",
+	'%{%v:lua._getStatusline("time") %} ',
 }
 
 local statusline = {
-	"%#Cursor#",
-	'%{%v:lua._statusline_component("mode")%}',
-	"%#StatusLine#",
-	'%{%v:lua._statusline_component("gitHead")%}',
-	"%#TabLine#",
-	' %{%v:lua._statusline_component("filepath")%}',
-	'%{%v:lua._statusline_component("gitsigns")%}',
-	'%{%v:lua._statusline_component("diagnostic")%}',
+	'%{%v:lua._getStatusline("mode")%} ',
+	'%{%v:lua._getStatusline("filepath")%} ',
 	"%=",
-	"%#Cursor#",
-	" %{&filetype} ",
-	"%P %l:%c ",
+	'%{%v:lua._getStatusline("gitHead")%} ',
+	'%{%v:lua._getStatusline("gitsigns")%}',
+	'%{%v:lua._getStatusline("diagnostic")%}',
+	'%{%v:lua._getStatusline("filetype")%}',
+	"[%{&fileencoding}] ",
+	" %P %l:%c ",
 }
 
 vim.o.winbar = table.concat(winbar, "")
