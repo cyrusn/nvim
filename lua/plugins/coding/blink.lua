@@ -4,6 +4,7 @@ return {
 		"rafamadriz/friendly-snippets",
 		"neovim/nvim-lspconfig",
 		"mason-org/mason-lspconfig.nvim",
+		"marcoSven/blink-cmp-yanky",
 	},
 	version = "1.*",
 	opts = {
@@ -13,9 +14,19 @@ return {
 			["<C-space>"] = false, -- or {}
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "yank" ,"buffer" },
 			providers = {
 				lsp = { fallbacks = {} },
+				yank = {
+					name = "yank",
+					module = "blink-yanky",
+					opts = {
+						minLength = 5,
+						onlyCurrentFiletype = true,
+						trigger_characters = { '"' },
+						kind_icon = "󰅍",
+					},
+				},
 			},
 		},
 		signature = { enabled = true },

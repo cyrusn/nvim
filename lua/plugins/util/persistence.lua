@@ -3,6 +3,11 @@ return {
 	-- event = "BufReadPre", -- this will only start session saving when an actual file was opened
 	keys = {
 		{
+			"<leader>w",
+			"",
+			desc = "+session",
+		},
+		{
 			"<leader>ww",
 			function()
 				require("persistence").load()

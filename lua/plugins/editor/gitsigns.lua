@@ -1,6 +1,9 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	enabled = true,
+	keys = {
+		{ "<leader>h", "", desc = "+hunk" },
+	},
 	config = function(_, opts)
 		opts.on_attach = function(bufnr)
 			local gs = require("gitsigns")
