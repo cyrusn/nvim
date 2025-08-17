@@ -122,11 +122,11 @@ function M.gitsigns()
 end
 
 function M.filetype()
-	return "%* " .. string.format("%s ", vim.bo.filetype) .. "%*"
+	return "%* " .. string.format("%s", vim.bo.filetype) .. "·%{&fileencoding}" .. "%* "
 end
 
 function M.time()
-	return "%* " .. os.date("%Y-%m-%d %R")
+	return "%#@attribute.builtin# " .. os.date("%Y-%m-%d %R") .. "%* "
 end
 
 function _G._getStatusline(name)
@@ -149,8 +149,7 @@ local statusline = {
 	'%{%v:lua._getStatusline("diagnostic")%}',
 	"%=",
 	'%{%v:lua._getStatusline("filetype")%}',
-	"%*[%{&fileencoding}]%* ",
-	" %P %7(%l/%3L%):%2c%* ",
+	" %7(%l/%3L%):%2c%* [%P] ",
 }
 
 vim.o.winbar = table.concat(winbar, "")
