@@ -1,6 +1,3 @@
-vim.keymap.set("n", "<leader>al", "<cmd>Lazy<cr>", { desc = "Lazy" })
-vim.keymap.set("n", "<leader>au", "<cmd>Lazy update<cr>", { desc = "Lazy Update" })
-
 -- terminal
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
@@ -43,6 +40,3 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = tru
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
-
--- lsp
-vim.keymap.set("n", "<leader>ci", "<cmd>checkhealth vim.lsp<cr>", { desc = "LSP Info" })

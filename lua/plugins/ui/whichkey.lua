@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>a?",
+			"<leader>?",
 			function()
 				require("which-key").show({ global = false })
 			end,
@@ -18,16 +18,15 @@ return {
 			triggers = {
 				{ "<auto>", mode = "nixsotc" },
 			},
+			icons = {
+				mappings = false,
+			},
 		})
 		wk.add({
-			{ "<leader>a", group = "action", icon = { icon = "󱐋", color = "blue" } },
-			{ "<leader>al", icon = { icon = "󰫹", color = "red" } },
-			{ "<leader>am", icon = { icon = "󰫺", color = "red" } },
 			{ "<leader>c", group = "code" },
-			{ "<leader>h", group = "hunk", icon = { icon = "", color = "red" }, mode = { "n", "v" } },
-			{ "<leader>e", icon = { icon = "󰙅", color = "magenta" } },
-			{ "<leader>w", group = "session", icon = { icon = "", color = "green" } },
-			{ "<leader>l", group = "harpoon", icon = { icon = "", color = "blue" } },
+			{ "<leader>h", group = "hunk" },
+			{ "<leader>w", group = "session" },
+			{ "<leader>l", group = "harpoon" },
 		})
 	end,
 }

@@ -1,10 +1,6 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		keys = {
-			{ "<leader>am", "<cmd>Mason<cr>", desc = "Mason" },
-			{ "<leader>aM", "<cmd>MasonUpdate<cr>", desc = "Mason Update" },
-		},
 		config = true,
 	},
 	{

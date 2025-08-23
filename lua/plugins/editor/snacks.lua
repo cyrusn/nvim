@@ -5,39 +5,20 @@ return {
 	keys = {
 		-- bufdelete
 		{ "<leader>x", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
-		{ "<leader>ax", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Others Buffers" },
-		{ "<leader>aX", "<cmd>lua Snacks.bufdelete.all()<cr>", desc = "Close All Buffers" },
+		{ "<leader>X", "<cmd>lua Snacks.bufdelete.all()<cr>", desc = "Close All Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
 		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
-		-- -- dashboard
-		-- { "<leader>ad", "<cmd>lua Snacks.dashboard()<cr>", desc = "Dashboard " },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Explorer" },
 		-- picker:main
-		{ "<leader><space>", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
-		{
-			"<leader>ac",
-			"<cmd>lua Snacks.picker.explorer({cwd=vim.fn.stdpath('config')})<cr>",
-			desc = "Find Config Files",
-		},
+		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
 
-		{ "<leader>s", "", desc = "+search" },
-		{ "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
-		{ "<leader>ss", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
-		{ "<leader>sl", "<cmd>lua Snacks.picker.lines()<cr>", desc = "Lines" },
-		{ "<leader>sd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "LSP Definitions" },
-		{ "<leader>sS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
-		{ "<leader>sr", "<cmd>lua Snacks.picker.lsp_references()<cr>", nowait = true, desc = "LSP References" },
-		{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", nowait = true, desc = "Help" },
-		{ "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Word in Buffers" },
-		{ "<leader>sp", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
-		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix List", mode = { "n", "x" } },
 		{ "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume", mode = { "n", "x" } },
 	},
 	opts = {
@@ -56,20 +37,20 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		util = {},
-		-- notifier = {
-		-- 	style = "minimal",
-		-- 	top_down = false,
-		-- 	width = { min = 1, max = 0.4 },
-		-- 	height = { min = 1, max = 0.4 },
-		-- 	margin = { top = 2, right = 1, bottom = 2 },
-		-- },
+		notifier = {
+			style = "minimal",
+			top_down = false,
+			width = { min = 1, max = 0.4 },
+			height = { min = 1, max = 0.4 },
+			margin = { top = 2, right = 1, bottom = 2 },
+		},
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
 			matcher = {
 				frecency = true,
 			},
-			layout = { preset = "fat_preview", cycle = true },
+			layout = { preset = "tall", preview = "main", cycle = true },
 			layouts = {
 				tall = {
 					preview = false,
@@ -151,7 +132,7 @@ return {
 				},
 				search_history = { layout = { preset = "fat" } },
 				zoxide = { layout = { preset = "fat" } },
-				smart = { multi = { "recent", "files" }, hidden = true },
+				smart = { multi = { "buffers", "recent", "files" }, hidden = true },
 				undo = { layout = { preset = "fat_split" } },
 				qflist = { focus = "list" },
 				yanky = { layout = { preset = "dropdown", preview = true }, focus = "list" },
