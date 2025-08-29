@@ -1,5 +1,6 @@
 return {
 	"saghen/blink.cmp",
+	event = "VeryLazy",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		"neovim/nvim-lspconfig",
@@ -14,7 +15,7 @@ return {
 			["<C-space>"] = false, -- or {}
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "yank" ,"buffer" },
+			default = { "lsp", "path", "snippets", "yank", "buffer" },
 			providers = {
 				lsp = { fallbacks = {} },
 				yank = {

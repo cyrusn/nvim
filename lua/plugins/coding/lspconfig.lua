@@ -9,6 +9,13 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
+				ensure_installed = {
+					"lua_ls",
+					"eslint",
+					"gopls",
+					"jsonls",
+					"ts_ls",
+				},
 			})
 		end,
 	},

@@ -1,10 +1,43 @@
 return {
 	"ThePrimeagen/harpoon",
+	event = "VeryLazy",
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	keys = {
-		{ "<leader>l", "", desc = "+harpoon" },
-	},
+	keys = function()
+		local keys = {
+			{ "<leader>l", "", desc = "+harpoon" },
+			{
+				"<leader>la",
+				function()
+					require("harpoon"):list():add()
+				end,
+				desc = "Harpoon File",
+			},
+			{
+				"<leader>ll",
+				"<cmd>lua Snacks.picker.harpoon()<cr>",
+				desc = "Open Harpoon",
+			},
+			{
+				"<leader>le",
+				function()
+					local harpoon = require("harpoon")
+					harpoon.ui:toggle_quick_menu(harpoon:list())
+				end,
+				desc = "Harpoon Quick Menu",
+			},
+		}
+		for i = 1, 5 do
+			table.insert(keys, {
+				"<leader>l" .. i,
+				function()
+					require("harpoon"):list():select(i)
+				end,
+				desc = "Harpoon to File " .. i,
+			})
+		end
+		return keys
+	end,
 	config = function()
 		local harpoon = require("harpoon")
 		-- REQUIRED
@@ -14,27 +47,6 @@ return {
 		harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
 		harpoon:extend(harpoon_extensions.builtins.navigate_with_number())
 
-		vim.keymap.set("n", "<leader>la", function()
-			harpoon:list():add()
-		end, { desc = "Add file to harpoon" })
-
-		vim.keymap.set("n", "<leader>ll", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end, { desc = "Edit harpoon list" })
-
-		vim.keymap.set("n", "<M-1>", function()
-			harpoon:list():select(1)
-		end, { desc = "Harpoon 1" })
-		vim.keymap.set("n", "<M-2>", function()
-			harpoon:list():select(2)
-		end, { desc = "Harpoon 2" })
-		vim.keymap.set("n", "<M-3>", function()
-			harpoon:list():select(3)
-		end, { desc = "Harpoon 3" })
-		vim.keymap.set("n", "<M-4>", function()
-			harpoon:list():select(4)
-		end, { desc = "Harpoon 4" })
-
 		-- Toggle previous & next buffers stored within Harpoon list
 		vim.keymap.set("n", "<M-S-P>", function()
 			harpoon:list():prev()
@@ -42,6 +54,7 @@ return {
 		vim.keymap.set("n", "<M-S-N>", function()
 			harpoon:list():next()
 		end, { desc = "Next harpoon" })
+		-- Example: Using snacks.picker to list harpoon files
 	end,
 	specs = {
 		{
