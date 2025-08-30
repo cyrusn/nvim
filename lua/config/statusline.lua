@@ -129,26 +129,26 @@ function M.time()
 	return "%#@attribute.builtin# " .. os.date("%Y-%m-%d %R") .. "%* "
 end
 
-function _G._getStatusline(name)
+function _G._statusline(name)
 	return M[name]()
 end
 
 local winbar = {
-	'%{%v:lua._getStatusline("mode")%}',
-	'%{%v:lua._getStatusline("filepath")%}',
-	'%{%v:lua._getStatusline("gitsigns")%}',
-	'%{%v:lua._getStatusline("diagnostic")%}',
+	'%{%v:lua._statusline("mode")%}',
+	'%{%v:lua._statusline("filepath")%}',
+	'%{%v:lua._statusline("gitsigns")%}',
+	'%{%v:lua._statusline("diagnostic")%}',
 	"%=",
-	'%{%v:lua._getStatusline("time") %} ',
+	'%{%v:lua._statusline("time") %} ',
 }
 
 local statusline = {
-	'%{%v:lua._getStatusline("mode")%}',
-	'%{%v:lua._getStatusline("filepath")%}',
-	'%{%v:lua._getStatusline("gitsigns")%}',
-	'%{%v:lua._getStatusline("diagnostic")%}',
+	'%{%v:lua._statusline("mode")%}',
+	'%{%v:lua._statusline("filepath")%}',
+	'%{%v:lua._statusline("gitsigns")%}',
+	'%{%v:lua._statusline("diagnostic")%}',
 	"%=",
-	'%{%v:lua._getStatusline("filetype")%}',
+	'%{%v:lua._statusline("filetype")%}',
 	" %7(%l/%3L%):%2c%* [%P] ",
 }
 

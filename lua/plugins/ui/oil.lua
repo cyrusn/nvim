@@ -3,9 +3,9 @@ return {
 		"stevearc/oil.nvim",
 		event = "VeryLazy",
 		enabled = true,
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
 		keys = {
-			{ "<leader>e", "<cmd>Oil<cr>", desc = "Open oil explorer" },
+			{ "<leader>e", "<cmd>Oil<cr>", desc = "Open Oil explorer" },
 		},
 		config = function()
 			require("oil").setup({
@@ -16,6 +16,11 @@ return {
 					is_always_hidden = function(name)
 						return name == ".." or name == ".git"
 					end,
+				},
+				keymaps = {
+					["<C-s>"] = { "actions.select", opts = { horizontal = true } },
+					["<C-v>"] = { "actions.select", opts = { vertical = true } },
+					["<C-h>"] = false,
 				},
 				win_options = {
 					signcolumn = "yes:2",
