@@ -16,21 +16,10 @@ return {
 			winbar = {
 				lualine_a = {
 					{ "filename", path = 1 },
-					-- "buffers",
-					-- "mode",
 				},
-				lualine_b = {
-					-- "branch",
-				},
-				lualine_c = {
-					-- { "filename", path = 5 },
-				},
-				lualine_x = {
-					-- {
-					-- 	require("noice").api.status.mode.get,
-					-- 	cond = require("noice").api.status.mode.has,
-					-- },
-				},
+				lualine_b = {},
+				lualine_c = {},
+				lualine_x = {},
 				lualine_z = {
 					{
 						function()
@@ -45,7 +34,7 @@ return {
 					"branch",
 				},
 				lualine_c = {
-					{ "filename", path = 1 },
+					{ "filename", path = 1, file_status = true },
 					{
 						"diff",
 						source = function()
@@ -69,18 +58,8 @@ return {
 							info = " ",
 						},
 					},
-					-- {
-					-- 	"navic",
-					-- 	color_correction = "dynamic",
-					-- 	navic_opts = nil,
-					-- },
 				},
-				lualine_x = {
-					-- {
-					-- 	require("noice").api.status.command.get,
-					-- 	cond = require("noice").api.status.command.has,
-					-- },
-				},
+				lualine_x = {},
 				lualine_y = {
 					"encoding",
 					"filetype",
@@ -94,24 +73,9 @@ return {
 			extensions = {
 				"lazy",
 				"mason",
+				"oil",
 			},
 		}
-
-		-- local trouble = require("trouble")
-		-- local symbols = trouble.statusline({
-		-- 	mode = "lsp_document_symbols",
-		-- 	groups = {},
-		-- 	title = false,
-		-- 	filter = { range = true },
-		-- 	format = "{kind_icon}{symbol.name:Normal}",
-		-- 	-- The following line is needed to fix the background color
-		-- 	-- Set it to the lualine section you want to use
-		-- 	hl_group = "lualine_c_normal",
-		-- })
-		-- table.insert(opts.sections.lualine_c, {
-		-- 	symbols.get,
-		-- 	cond = symbols.has,
-		-- })
 
 		require("lualine").setup(opts)
 	end,

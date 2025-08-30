@@ -26,6 +26,7 @@ return {
 			{ "<leader>h", group = "hunk" },
 			{ "<leader>w", group = "session" },
 			{ "<leader>l", group = "harpoon" },
+			{ "<leader>s", group = "search" },
 		})
 	end,
 }

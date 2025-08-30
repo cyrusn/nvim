@@ -8,17 +8,24 @@ return {
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
-		{ "<leader>n", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
+		{ "<leader>sn", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 		-- explorer
-		{ "<leader>E", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
+		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
 		-- picker:main
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers", mode = { "n", "x" } },
-		{ "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume", mode = { "n", "x" } },
-		{ "<leader>s", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep", mode = { "n", "x" } },
+		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
+		{ "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
+		{ "<leader>sg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
+		{ "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
+		{ "<leader>sf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
+		{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
+		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix" },
+		{ "<leader>sc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
+		{ "<leader>sr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "LSP References" },
+		{ "<leader>sd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "LSP Definintions" },
 	},
 	opts = {
 		styles = {
@@ -49,7 +56,7 @@ return {
 			matcher = {
 				frecency = true,
 			},
-			layout = { preset = "vscode", preview = "main", cycle = true },
+			layout = { preset = "ivy", preview = "main", cycle = true },
 			sources = {
 				buffers = { focus = "list", current = false },
 				explorer = {

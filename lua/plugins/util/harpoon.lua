@@ -5,7 +5,6 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = function()
 		local keys = {
-			{ "<leader>l", "", desc = "+harpoon" },
 			{
 				"<leader>la",
 				function()
