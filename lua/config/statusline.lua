@@ -152,5 +152,17 @@ local statusline = {
 	" %7(%l/%3L%):%2c%* [%P] ",
 }
 
-vim.o.winbar = table.concat(winbar, "")
 vim.o.statusline = table.concat(statusline, "")
+
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+	callback = function()
+		local buftype = vim.bo.buftype
+		local filetype = vim.bo.filetype
+
+		if buftype == "terminal" or buftype == "nofile" or filetype == "snacks_picker_list" then
+			vim.o.winbar = ""
+		else
+			vim.o.winbar = table.concat(winbar, "")
+		end
+	end,
+})
