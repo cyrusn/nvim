@@ -12,7 +12,7 @@ return {
 		-- terminal
 		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 		-- explorer
-		{ "<leader>t", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
+		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
 		-- picker:main
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },

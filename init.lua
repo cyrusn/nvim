@@ -30,6 +30,7 @@ require("lazy").setup({
 	spec = {
 		-- add your plugins here
 		{ import = "plugins.editor" },
+
 		{ import = "plugins.coding" },
 		{ import = "plugins.ui" },
 		{ import = "plugins.util" },
