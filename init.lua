@@ -23,14 +23,13 @@ vim.g.maplocalleader = "\\"
 
 require("config.autocmds")
 require("config.options")
-require("config.statusline")
+-- require("config.statusline")
 
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
 		-- add your plugins here
 		{ import = "plugins.editor" },
-
 		{ import = "plugins.coding" },
 		{ import = "plugins.ui" },
 		{ import = "plugins.util" },

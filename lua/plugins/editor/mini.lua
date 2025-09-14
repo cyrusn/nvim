@@ -17,10 +17,6 @@ return {
 				move_with_alt = true,
 			},
 		})
-		require("mini.move").setup()
-		require("mini.cursorword").setup()
-		require("mini.jump").setup()
-		require("mini.surround").setup()
-		require("mini.pairs").setup()
+    require("mini.move").setup()
 	end,
 }

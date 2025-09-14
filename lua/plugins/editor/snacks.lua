@@ -39,7 +39,7 @@ return {
 		lazygit = {},
 		quickfile = {},
 		bigfile = {},
-		-- words = {},
+		words = {},
 		statuscolumn = {},
 		terminal = {},
 		util = {},
