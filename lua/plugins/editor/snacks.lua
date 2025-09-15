@@ -38,11 +38,9 @@ return {
 		scope = {},
 		lazygit = {},
 		quickfile = {},
-		bigfile = {},
 		words = {},
 		statuscolumn = {},
 		terminal = {},
-		util = {},
 		notifier = {
 			style = "minimal",
 			top_down = false,
@@ -53,14 +51,57 @@ return {
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
-			matcher = {
-				frecency = true,
+			matcher = { frecency = true },
+			layout = { preset = "fat_split", cycle = true },
+			layouts = {
+				tall = {
+					preview = false,
+					layout = {
+						backdrop = false,
+						row = -2,
+						col = -1,
+						width = 35,
+						height = 0.8,
+						title = "{title} {live} {flags}",
+						title_pos = "center",
+						border = "rounded",
+						box = "vertical",
+						{ win = "input", height = 1 },
+						{
+							box = "horizontal",
+							{ win = "list" },
+							{ win = "preview", width = 0.7 },
+						},
+					},
+				},
+				fat = {
+					preview = false,
+					layout = {
+						box = "vertical",
+						backdrop = false,
+						row = -1,
+						width = 0.7,
+						height = 12,
+						border = "rounded",
+						title = " {title} {live} {flags}",
+						title_pos = "center",
+						{ win = "input", height = 1 },
+						{
+							box = "horizontal",
+							{ win = "list", border = "none" },
+							{ win = "preview", title = "{preview}", width = 0.7 },
+						},
+					},
+				},
+				fat_preview = { preset = "fat", preview = true },
+				fat_split = { preset = "fat", preview = "main" },
+				tall_split = { preset = "tall", preview = "main" },
 			},
-			layout = { preset = "ivy", preview = "main", cycle = true },
+			formatters = { file = { filename_first = true, truncate = 120 } },
 			sources = {
 				buffers = { current = false },
 				explorer = {
-					layout = { preview = "main" },
+					layout = { preset = "tall", preview = "main" },
 					auto_close = true,
 					git_status_open = true,
 					diagnostics_open = true,
