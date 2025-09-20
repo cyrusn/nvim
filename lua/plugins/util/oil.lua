@@ -4,6 +4,7 @@ vim.pack.add({
 	"https://github.com/refractalize/oil-git-status.nvim",
 	"https://github.com/JezerM/oil-lsp-diagnostics.nvim",
 })
+
 vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Open Oil explorer" })
 
 require("oil").setup({

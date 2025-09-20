@@ -3,7 +3,8 @@ vim.pack.add({
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/lewis6991/gitsigns.nvim",
 })
-local opts = {
+
+require("lualine").setup({
 	options = {
 		theme = "auto",
 		icons_enabled = true,
@@ -69,10 +70,7 @@ local opts = {
 		},
 	},
 	extensions = {
-		"lazy",
 		"mason",
 		"oil",
 	},
-}
-
-require("lualine").setup(opts)
+})

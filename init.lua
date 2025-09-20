@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.keymap.set("n", "<leader>u", "<cmd>lua vim.pack.update()<cr>", { desc = "Update Packages" })
 require("config.autocmds")
 require("config.options")
 
