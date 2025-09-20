@@ -1,10 +1,5 @@
-return {
-	{
-		"rose-pine/neovim",
-		-- enabled = false,
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	},
-}
+vim.pack.add({
+		"https://github.com/rose-pine/neovim",
+})
+
+vim.cmd[[colorscheme rose-pine-main]]

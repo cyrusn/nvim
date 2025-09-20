@@ -1,11 +1,8 @@
-return {
-	"echasnovski/mini.nvim",
-	-- enabled = false,
-	lazy = false,
-	dependancies = {
-		"echasnovski/mini.icons",
-	},
-	config = function()
+
+vim.pack.add({
+  {src = "https://github.com/nvim-mini/mini.nvim"},
+  {src = "https://github.com/nvim-mini/mini.icons" }
+})
 		require("mini.basics").setup({
 			options = {
 				basic = true,
@@ -18,5 +15,3 @@ return {
 			},
 		})
     require("mini.move").setup()
-	end,
-}
