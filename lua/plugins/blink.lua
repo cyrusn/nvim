@@ -1,5 +1,5 @@
 vim.pack.add({
-	{ src = "https://github.com/Saghen/blink.cmp" },
+	{ src = "https://github.com/Saghen/blink.cmp", build = "cargo build --release" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },

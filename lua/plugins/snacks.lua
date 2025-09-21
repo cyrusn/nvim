@@ -27,7 +27,8 @@ require("snacks").setup({
 		matcher = { frecency = true },
 		layout = { preset = "fat_split", cycle = true },
 		layouts = {
-			tall = {
+			float = {
+				preview = true,
 				layout = {
 					backdrop = false,
 					width = 0.9,
@@ -36,13 +37,28 @@ require("snacks").setup({
 					title_pos = "center",
 					border = "rounded",
 					box = "horizontal",
-					{ win = "preview", width = 0.7, border = "right" },
+					{ win = "preview", title = "{preview}", width = 0.7, border = "right" },
 					{
 						box = "vertical",
-						widht = 0.3,
-						{ win = "input", height = 1 },
+						{ win = "input", height = 1, border = "bottom" },
 						{ win = "list" },
 					},
+				},
+			},
+			tall = {
+				layout = {
+					backdrop = false,
+					width = 0.25,
+					height = 0.8,
+					row = -1,
+					col = -2,
+					title = "{title} {live} {flags}",
+					title_pos = "center",
+					border = "rounded",
+					box = "vertical",
+					{ win = "input", height = 1 },
+					{ win = "list" },
+					{ win = "preview", title = "{preview}", height = 0.4, border = "top" },
 				},
 			},
 			fat = {
@@ -71,7 +87,7 @@ require("snacks").setup({
 		sources = {
 			buffers = { current = false },
 			explorer = {
-				layout = { preset = "tall", preview = true },
+				layout = { preset = "float", preview = true },
 				auto_close = true,
 				git_status_open = true,
 				diagnostics_open = true,
