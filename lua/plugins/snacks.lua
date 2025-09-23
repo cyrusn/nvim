@@ -31,13 +31,15 @@ require("snacks").setup({
 				preview = true,
 				layout = {
 					backdrop = false,
-					width = 0.9,
-					height = 0.9,
+					width = 0.6,
+					height = 0.8,
+					col = -1,
+					row = -1,
 					title = "{title} {live} {flags}",
 					title_pos = "center",
 					border = "rounded",
 					box = "horizontal",
-					{ win = "preview", title = "{preview}", width = 0.7, border = "right" },
+					{ win = "preview", title = "{preview}", width = 0.6, border = "right" },
 					{
 						box = "vertical",
 						{ win = "input", height = 1, border = "bottom" },
