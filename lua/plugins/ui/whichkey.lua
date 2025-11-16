@@ -28,6 +28,7 @@ return {
 			{ "<leader>w", group = "session" },
 			{ "<leader>l", group = "harpoon" },
 			{ "<leader>k", group = "search" },
+			{ "<leader>u", group = "ui" },
 		})
 	end,
 }

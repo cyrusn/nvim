@@ -40,18 +40,18 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- auto load session
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = augroup("load_session"),
-	callback = function()
-		local ok, _ = pcall(require, "persistence")
-		if ok then
-			vim.defer_fn(function()
-				require("persistence").load()
-			end, 100) -- Delay by 100ms, for loading of treesitter
-		end
-	end,
-	nested = true,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- 	group = augroup("load_session"),
+-- 	callback = function()
+-- 		local ok, _ = pcall(require, "persistence")
+-- 		if ok then
+-- 			vim.defer_fn(function()
+-- 				require("persistence").load()
+-- 			end, 100) -- Delay by 100ms, for loading of treesitter
+-- 		end
+-- 	end,
+-- 	nested = true,
+-- })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)

@@ -4,7 +4,7 @@ return {
 	keys = {
 		-- bufdelete
 		{ "<leader>x", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
-		{ "<leader>X", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
+		{ "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 		-- notifier
@@ -14,11 +14,11 @@ return {
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
 		-- picker:main
-		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
+		{ "<leader><space>", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
-		{ "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
-		{ "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
+		{ "<leader>kp", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
 		{ "<leader>kg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
+    { "<leader>ks", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
 		{ "<leader>kw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
 		{ "<leader>kf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
 		{ "<leader>kh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },

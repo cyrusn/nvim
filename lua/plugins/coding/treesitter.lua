@@ -1,11 +1,10 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = "VeryLazy",
+	build = ":TSUpdate",
+	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			autotag = {
-				enable = true,
-			},
 			ensure_installed = {
 				"bash",
 				"comment",
@@ -29,7 +28,6 @@ return {
 			auto_install = true,
 			sync_install = true,
 			highlight = { enable = true },
-			indent = { enable = true },
 		})
 	end,
 }
