@@ -11,24 +11,24 @@ return {
 			options = {
 				theme = "auto",
 				icons_enabled = true,
-				component_separators = "",
-				section_separators = { left = "", right = "" },
+				component_separators = "",
+				section_separators = { left = "", right = "" },
 			},
-			winbar = {
-				lualine_a = { "mode" },
-				lualine_b = {
-					{ "filename", path = 1 },
-				},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_z = {
-					{
-						function()
-							return " " .. os.date("%Y-%m-%d %R")
-						end,
-					},
-				},
-			},
+			-- winbar = {
+			-- 	lualine_a = { "mode" },
+			-- 	lualine_b = {
+			-- 		{ "filename", path = 1 },
+			-- 	},
+			-- 	lualine_c = {},
+			-- 	lualine_x = {},
+			-- 	lualine_z = {
+			-- 		{
+			-- 			function()
+			-- 				return " " .. os.date("%Y-%m-%d %R")
+			-- 			end,
+			-- 		},
+			-- 	},
+			-- },
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
@@ -36,6 +36,17 @@ return {
 				},
 				lualine_c = {
 					"branch",
+					{
+						"diagnostics",
+						symbols = {
+							error = "✘ ",
+							warn = " ",
+							hint = " ",
+							info = " ",
+						},
+					},
+				},
+				lualine_x = {
 					{
 						"diff",
 						source = function()
@@ -50,26 +61,17 @@ return {
 							}
 						end,
 					},
-					{
-						"diagnostics",
-						symbols = {
-							error = "✘ ",
-							warn = " ",
-							hint = " ",
-							info = " ",
-						},
-					},
-				},
-				lualine_x = {
 					"encoding",
+					"filetype",
 				},
 				lualine_y = {
-					"filetype",
-					"filesize",
+					{ "progress", separator = "", padding = { left = 1, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
 				},
 				lualine_z = {
-					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-					{ "location", padding = { left = 0, right = 1 } },
+					function()
+						return " " .. os.date("%R")
+					end,
 				},
 			},
 			extensions = {

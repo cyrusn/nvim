@@ -8,14 +8,14 @@ return {
 			desc = "+session",
 		},
 		{
-			"<leader>qw",
+			"<leader>qs",
 			function()
 				require("persistence").load()
 			end,
 			desc = "Load",
 		},
 		{
-			"<leader>qs",
+			"<leader>qS",
 			function()
 				require("persistence").select()
 			end,
@@ -29,7 +29,7 @@ return {
 			desc = "Last",
 		},
 		{
-			"<leader>q",
+			"<leader>qd",
 			function()
 				require("persistence").stop()
 			end,
