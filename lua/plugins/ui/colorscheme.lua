@@ -2,6 +2,7 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
+		enabled = false,
 		priority = 1000,
 		config = function()
 			vim.cmd("colorscheme catppuccin-mocha")
@@ -9,7 +10,7 @@ return {
 	},
 	{
 		"rose-pine/neovim",
-    enabled = false,
+		enabled = false,
 		name = "rose-pine",
 		priority = 1000,
 		config = function()

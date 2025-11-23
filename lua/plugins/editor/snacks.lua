@@ -18,7 +18,7 @@ return {
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
 		{ "<leader>kp", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
 		{ "<leader>kg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
-    { "<leader>ks", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
+		{ "<leader>ks", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart" },
 		{ "<leader>kw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
 		{ "<leader>kf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Files" },
 		{ "<leader>kh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
@@ -41,6 +41,7 @@ return {
 		words = {},
 		statuscolumn = {},
 		terminal = {},
+		toggle = {},
 		notifier = {
 			style = "minimal",
 			top_down = false,

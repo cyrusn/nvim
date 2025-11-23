@@ -1,10 +1,6 @@
-local function augroup(name)
-	return vim.api.nvim_create_augroup("cyrusn_" .. name, { clear = true })
-end
-
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = augroup("highlight_yank"),
+	group = vim.api.nvim_create_augroup("cyrusn_highlight_yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -12,7 +8,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- remember last edit position
 vim.api.nvim_create_autocmd("BufReadPost", {
-	group = augroup("last_loc"),
+	group = vim.api.nvim_create_augroup("cyrusn_last_loc", { clear = true }),
 	callback = function(event)
 		local exclude = { "gitcommit" }
 		local buf = event.buf
@@ -30,7 +26,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- settings for markdown and git commit
 vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("markdown_settings"),
+	group = vim.api.nvim_create_augroup("cyrusn_markdown_settings", { clear = true }),
 	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.wrap = true
@@ -41,7 +37,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- auto load session
 -- vim.api.nvim_create_autocmd("VimEnter", {
--- 	group = augroup("load_session"),
+-- group = vim.api.nvim_create_augroup("cyrusn_load_session", { clear = true }),
 -- 	callback = function()
 -- 		local ok, _ = pcall(require, "persistence")
 -- 		if ok then
@@ -54,6 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- })
 
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("cyrusn_lsp_attach", { clear = true }),
 	callback = function(event)
 		local bufmap = function(mode, rhs, lhs, desc)
 			vim.keymap.set(mode, rhs, lhs, { buffer = event.buf, desc = desc })

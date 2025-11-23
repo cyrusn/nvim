@@ -1,9 +1,9 @@
 -- default colorscheme
-vim.cmd([[colorscheme default]])
+-- vim.cmd([[colorscheme default]])
 
 -- disable netrw
--- vim.g.loaded_netrwPlugin = 1
--- vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 
 -- enable netrw if file explorer is not installed
 vim.g.netrw_preview = 1
@@ -60,9 +60,9 @@ vim.opt.showmode = false
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.smartcase = true -- Don't ignore case with capitals
 vim.opt.smartindent = true -- Insert indents automatically
-vim.opt.spell = true
 vim.opt.spelllang = { "en" }
 vim.opt.spelloptions = "camel"
+vim.opt.spell = true
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.timeoutlen = 300
