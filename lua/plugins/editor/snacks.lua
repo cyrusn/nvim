@@ -10,7 +10,7 @@ return {
 		-- notifier
 		{ "<leader>kn", "<cmd>lua Snacks.picker.notifications()<cr>", desc = "Show Notifier History" },
 		-- terminal
-		{ "<leader>z", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
+		{ "<leader>uz", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 		-- explorer
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
 		-- picker:main
@@ -26,6 +26,7 @@ return {
 		{ "<leader>kc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
 		{ "<leader>kr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "LSP References" },
 		{ "<leader>kd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "LSP Definintions" },
+		{ "<leader>k<tab>", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
 	},
 	opts = {
 		styles = {
@@ -42,13 +43,13 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		toggle = {},
-		notifier = {
-			style = "minimal",
-			top_down = false,
-			width = { min = 1, max = 0.4 },
-			height = { min = 1, max = 0.4 },
-			margin = { top = 2, right = 1, bottom = 2 },
-		},
+		-- notifier = {
+		-- 	style = "minimal",
+		-- 	top_down = false,
+		-- 	width = { min = 1, max = 0.4 },
+		-- 	height = { min = 1, max = 0.4 },
+		-- 	margin = { top = 2, right = 1, bottom = 2 },
+		-- },
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
@@ -128,4 +129,26 @@ return {
 			},
 		},
 	},
+	init = function()
+		vim.api.nvim_create_autocmd("User", {
+			group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
+			callback = function()
+				local toggle = require("snacks.toggle")
+				toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+				toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+				toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+				toggle.diagnostics():map("<leader>ud")
+				toggle.line_number():map("<leader>ul")
+				toggle.treesitter():map("<leader>uT")
+				toggle.dim():map("<leader>uD")
+				toggle.indent():map("<leader>ug")
+				toggle
+					.option(
+						"conceallevel",
+						{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }
+					)
+					:map("<leader>uc")
+			end,
+		})
+	end,
 }

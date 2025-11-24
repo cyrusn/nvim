@@ -32,7 +32,6 @@ vim.opt.timeout = false
 vim.opt.laststatus = 3
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99 -- unfold all folds by default
-vim.opt.helpheight = 36
 vim.opt.autowrite = true -- Enable auto write
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.opt.conceallevel = 0 -- Hide * markup for bold and italic

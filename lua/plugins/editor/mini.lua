@@ -17,6 +17,13 @@ return {
 				move_with_alt = true,
 			},
 		})
-    require("mini.move").setup()
+		require("mini.move").setup()
+
+		require("mini.notify").setup({
+			window = { config = { title = "", border = "none" }, winblend = 0 },
+		})
+
+		vim.api.nvim_set_hl(0, "MiniNotifyNormal", { link = "NormalNC", bg = "none" })
+		vim.api.nvim_set_hl(0, "MiniNotifyLspProgress", { link = "NormalNC", bg = "none" })
 	end,
 }

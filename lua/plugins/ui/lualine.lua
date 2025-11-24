@@ -14,28 +14,12 @@ return {
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},
-			-- winbar = {
-			-- 	lualine_a = { "mode" },
-			-- 	lualine_b = {
-			-- 		{ "filename", path = 1 },
-			-- 	},
-			-- 	lualine_c = {},
-			-- 	lualine_x = {},
-			-- 	lualine_z = {
-			-- 		{
-			-- 			function()
-			-- 				return " " .. os.date("%Y-%m-%d %R")
-			-- 			end,
-			-- 		},
-			-- 	},
-			-- },
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
-					{ "filename", path = 1, file_status = true },
+					"branch",
 				},
 				lualine_c = {
-					"branch",
 					{
 						"diagnostics",
 						symbols = {
@@ -45,8 +29,25 @@ return {
 							info = " ",
 						},
 					},
+					{ "filename", path = 1, file_status = true, separator = "", padding = { left = 1 } },
+					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
 				},
 				lualine_x = {
+					-- {
+					-- 	require("noice").api.status.command.get,
+					-- 	cond = require("noice").api.status.command.has,
+					-- 	color = { fg = "#ff9e64" },
+					-- },
+					-- {
+					-- 	require("noice").api.status.mode.get,
+					-- 	cond = require("noice").api.status.mode.has,
+					-- 	color = { fg = "#ff9e64" },
+					-- },
+					-- {
+					-- 	require("noice").api.status.search.get,
+					-- 	cond = require("noice").api.status.search.has,
+					-- 	color = { fg = "#ff9e64" },
+					-- },
 					{
 						"diff",
 						source = function()
@@ -61,8 +62,7 @@ return {
 							}
 						end,
 					},
-					"encoding",
-					"filetype",
+					-- "encoding",
 				},
 				lualine_y = {
 					{ "progress", separator = "", padding = { left = 1, right = 0 } },
