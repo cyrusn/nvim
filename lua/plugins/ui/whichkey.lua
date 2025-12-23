@@ -30,6 +30,7 @@ return {
 			{ "<leader>k", group = "search" },
 			{ "<leader>u", group = "ui" },
 			{ "<leader>b", group = "buffer" },
+			{ "<leader>x", group = "trouble" },
 		})
 	end,
 }

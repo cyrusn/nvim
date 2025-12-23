@@ -1,11 +1,11 @@
 return {
 	{
 		"catppuccin/nvim",
+    enabled = false,
 		name = "catppuccin",
-		enabled = false,
 		priority = 1000,
 		config = function()
-			vim.cmd("colorscheme catppuccin-mocha")
+			vim.cmd("colorscheme catppuccin")
 		end,
 	},
 	{
@@ -19,6 +19,7 @@ return {
 	},
 	{
 		"craftzdog/solarized-osaka.nvim",
+		-- enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()

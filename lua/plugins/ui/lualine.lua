@@ -14,6 +14,9 @@ return {
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},
+			winbar = {
+				lualine_c = {},
+			},
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
@@ -31,23 +34,9 @@ return {
 					},
 					{ "filename", path = 1, file_status = true, separator = "", padding = { left = 1 } },
 					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+					{ "trouble" },
 				},
 				lualine_x = {
-					-- {
-					-- 	require("noice").api.status.command.get,
-					-- 	cond = require("noice").api.status.command.has,
-					-- 	color = { fg = "#ff9e64" },
-					-- },
-					-- {
-					-- 	require("noice").api.status.mode.get,
-					-- 	cond = require("noice").api.status.mode.has,
-					-- 	color = { fg = "#ff9e64" },
-					-- },
-					-- {
-					-- 	require("noice").api.status.search.get,
-					-- 	cond = require("noice").api.status.search.has,
-					-- 	color = { fg = "#ff9e64" },
-					-- },
 					{
 						"diff",
 						source = function()
@@ -65,7 +54,7 @@ return {
 					-- "encoding",
 				},
 				lualine_y = {
-					{ "progress", separator = "", padding = { left = 1, right = 0 } },
+					{ "progress", separator = "", padding = { left = 1, right = 1 } },
 					{ "location", padding = { left = 0, right = 1 } },
 				},
 				lualine_z = {
@@ -78,8 +67,25 @@ return {
 				"lazy",
 				"mason",
 				"oil",
+				"trouble",
 			},
 		}
+
+		local trouble = require("trouble")
+		local symbols = trouble.statusline({
+			mode = "lsp_document_symbols",
+			groups = {},
+			title = false,
+			filter = { range = true },
+			format = "{kind_icon}{symbol.name:Normal}",
+			-- The following line is needed to fix the background color
+			-- Set it to the lualine section you want to use
+			hl_group = "lualine_c_normal",
+		})
+		table.insert(opts.winbar.lualine_c, {
+			symbols.get,
+			cond = symbols.has,
+		})
 
 		require("lualine").setup(opts)
 	end,

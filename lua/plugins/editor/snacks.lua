@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		-- bufdelete
-		{ "<leader>x", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
+		{ "<leader>bx", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
 		{ "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
@@ -26,7 +26,7 @@ return {
 		{ "<leader>kc", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
 		{ "<leader>kr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "LSP References" },
 		{ "<leader>kd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "LSP Definintions" },
-		{ "<leader>k<tab>", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
+		{ "<leader>k<tab>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
 	},
 	opts = {
 		styles = {
@@ -43,13 +43,7 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		toggle = {},
-		-- notifier = {
-		-- 	style = "minimal",
-		-- 	top_down = false,
-		-- 	width = { min = 1, max = 0.4 },
-		-- 	height = { min = 1, max = 0.4 },
-		-- 	margin = { top = 2, right = 1, bottom = 2 },
-		-- },
+		notifier = {},
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
@@ -150,5 +144,7 @@ return {
 					:map("<leader>uc")
 			end,
 		})
+
+		vim.api.nvim_set_hl(0, "SnacksNotifierMinimal", { link = "NormalNC", bg = "none" })
 	end,
 }
