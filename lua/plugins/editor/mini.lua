@@ -21,7 +21,11 @@ return {
 				move_with_alt = true,
 			},
 		})
+
 		require("mini.move").setup()
+
+		-- require("mini.tabline").setup()
+
 		-- require("mini.files").setup({
 		-- 	mappings = {
 		-- 		close = "q",

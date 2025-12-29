@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		-- bufdelete
-		{ "<leader>bx", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
+		{ "<leader>bd", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Buffer" },
 		{ "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 		-- lazygit
 		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
