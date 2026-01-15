@@ -37,9 +37,6 @@ return {
 				auto_show = true,
 			},
 		},
-		cmdline = {
-			completion = { menu = { auto_show = true } },
-		},
 	},
 	opts_extend = { "sources.default" },
 }

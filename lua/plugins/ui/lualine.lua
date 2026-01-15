@@ -17,7 +17,7 @@ return {
 			winbar = {
 				lualine_c = {
 					{ "filename", path = 5, file_status = true, separator = ":", padding = { left = 1 } },
-        },
+				},
 			},
 			sections = {
 				lualine_a = { "mode" },

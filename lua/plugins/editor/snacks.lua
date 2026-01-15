@@ -45,7 +45,6 @@ return {
 		statuscolumn = {},
 		terminal = {},
 		toggle = {},
-		-- notifier = {},
 		explorer = { replace_netrw = true },
 		picker = {
 			ui_select = { enabled = true },
