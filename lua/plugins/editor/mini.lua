@@ -2,14 +2,13 @@ return {
 	"echasnovski/mini.nvim",
 	-- enabled = false,
 	lazy = false,
-	keys = {
-
-		{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "File Tree" },
-	},
+	-- keys = {
+	-- 	{ "<leader>e", "<cmd>lua MiniFiles.open()<cr>", desc = "File Tree" },
+	-- },
 	dependancies = {
 		"echasnovski/mini.icons",
 	},
-	config = function()
+  config = function()
 		require("mini.basics").setup({
 			options = {
 				basic = true,
@@ -24,7 +23,7 @@ return {
 
 		require("mini.move").setup()
 
-		-- require("mini.tabline").setup()
+		require("mini.tabline").setup()
 
 		-- require("mini.files").setup({
 		-- 	mappings = {

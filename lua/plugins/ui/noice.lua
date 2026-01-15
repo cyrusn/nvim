@@ -1,8 +1,12 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-	enabled = false,
-	opts = {},
+	-- enabled = false,
+	opts = {
+		notify = {
+			view = "popup",
+		},
+	},
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
