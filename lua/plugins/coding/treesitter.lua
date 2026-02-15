@@ -5,7 +5,7 @@ return {
 	build = ":TSUpdate",
 	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 	config = function()
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.config").setup({
 			ensure_installed = {
 				"bash",
 				"comment",
