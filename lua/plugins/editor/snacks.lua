@@ -74,7 +74,7 @@ return {
 					},
 				},
 				recent = { filter = { cwd = true } },
-				lines = { layout = { preset = "vertical" } },
+				lines = { layout = { preset = "bottom" } },
 				lsp_type_definitions = { include_current = true, auto_confirm = false },
 				lsp_workspace_symbols = { include_current = true },
 				smart = { multi = { "buffers", "recent", "files" }, hidden = true },
