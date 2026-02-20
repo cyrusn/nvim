@@ -1,7 +1,5 @@
 return {
 	"folke/which-key.nvim",
-	-- enabled = false,
-	event = "VeryLazy",
 	lazy = false,
 	keys = {
 		{
@@ -27,10 +25,13 @@ return {
 			{ "<leader>c", group = "code" },
 			{ "<leader>h", group = "hunk" },
 			{ "<leader>w", group = "session" },
-			{ "<leader>k", group = "search" },
+			{ "<leader>s", group = "search" },
+			{ "<leader>k", group = "find" },
 			{ "<leader>u", group = "ui" },
 			{ "<leader>b", group = "buffer" },
 			{ "<leader>x", group = "trouble" },
+			{ "<leader>l", group = "System" },
+			{ "gr", group = "LSP" },
 		})
 	end,
 }

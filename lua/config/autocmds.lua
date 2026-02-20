@@ -35,16 +35,16 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("cyrusn_lsp_attach", { clear = true }),
-	callback = function(event)
-		local bufmap = function(mode, rhs, lhs, desc)
-			vim.keymap.set(mode, rhs, lhs, { buffer = event.buf, desc = desc })
-		end
-
-		bufmap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action")
-		bufmap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", "LSP Rename")
-		-- +diagnostics
-		bufmap("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float()<cr>", "Show Line Diagnostics")
-	end,
-})
+-- auto load session
+-- vim.api.nvim_create_autocmd("VimEnter", {
+-- group = vim.api.nvim_create_augroup("cyrusn_load_session", { clear = true }),
+-- 	callback = function()
+-- 		local ok, _ = pcall(require, "persistence")
+-- 		if ok then
+-- 			vim.defer_fn(function()
+-- 				require("persistence").load()
+-- 			end, 100) -- Delay by 100ms, for loading of treesitter
+-- 		end
+-- 	end,
+-- 	nested = true,
+-- })
