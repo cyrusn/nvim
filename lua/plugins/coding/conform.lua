@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	keys = {
 		{
-			"<leader>f",
+			"<leader>cf",
 			function()
 				require("conform").format()
 			end,

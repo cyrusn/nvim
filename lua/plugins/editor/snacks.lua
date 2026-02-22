@@ -6,30 +6,29 @@ return {
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
 		{ "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", desc = "Smart Search" },
 		{ "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", desc = "Buffers" },
+		{ "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 
 		-- buffers
 		{ "<leader>bd", "<cmd>lua Snacks.bufdelete.delete()<cr>", desc = "Close Current Buffer" },
 		{ "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", desc = "Close Other Buffers" },
 
 		-- lazygit
-		{ "<leader>hg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
+		{ "<leader>gg", "<cmd>lua Snacks.lazygit()<cr>", desc = "Lazygit" },
 
 		-- terminal
 		{ "<leader>ut", "<cmd>lua Snacks.terminal()<cr>", desc = "Terminal" },
 
 		-- find
-		{ "<leader>kc", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config File" },
-		{ "<leader>kf", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
-		{ "<leader>kg", "<cmd>lua Snacks.picker.git_files()<cr>", desc = "Find Git Files" },
-		{ "<leader>kp", "<cmd>lua Snacks.picker.projects()<cr>", desc = "Projects" },
-		{ "<leader>kr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
+		{ "<leader>fc", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config File" },
+		{ "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
+		{ "<leader>fg", "<cmd>lua Snacks.picker.git_files()<cr>", desc = "Find Git Files" },
+		{ "<leader>fp", "<cmd>lua Snacks.picker.projects()<cr>", desc = "Projects" },
+		{ "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
 
 		-- search
 		{ "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
 		{ "<leader>sc", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 		{ "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
-		{ "<leader>sd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "LSP Definintions" },
-		{ "<leader>sg", "<cmd>lua Snacks.picker.grep()<cr>", desc = "Grep" },
 		{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
 		{ "<leader>sH", "<cmd>lua Snacks.picker.highlights()<cr>", desc = "Highlights" },
 		{ "<leader>si", "<cmd>lua Snacks.picker.icons()<cr>", desc = "Icons" },
@@ -42,11 +41,21 @@ return {
 		{ "<leader>sp", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
 		{ "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", desc = "Search for Plugin Spec" },
 		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix" },
-		{ "<leader>sr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "LSP References" },
-		{ "<leader>ss", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "LSP Symbols" },
 		{ "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", desc = "Undo History" },
 		{ "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
 		{ "<leader>s<space>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
+
+		-- code
+		{ "<leader>cr", "<cmd>lua Snacks.picker.lsp_references()<cr>", desc = "References" },
+		{ "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", desc = "Definintions" },
+		{ "<leader>cD", "<cmd>lua Snacks.picker.lsp_declarations()<cr>", desc = "Declaration" },
+		{ "<leader>cI", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", desc = "Implementation" },
+		{ "<leader>ct", "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>", desc = "Type Definition" },
+		{ "<leader>ci", "<cmd>lua Snacks.picker.lsp_incoming_calls()<cr>", desc = "Calls Incoming" },
+		{ "<leader>co", "<cmd>lua Snacks.picker.lsp_outgoing_calls()<cr>", desc = "Calls Outgoing" },
+		{ "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", desc = "Rename File" },
+    { "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
+    { "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
 	},
 	opts = {
 		bigfile = {},

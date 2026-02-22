@@ -2,31 +2,25 @@ return {
 	"folke/which-key.nvim",
 	lazy = false,
 	keys = {
-		{
-			"<leader>?",
-			function()
-				require("which-key").show({ global = false })
-			end,
-			desc = "Local Keymaps",
+		{ "<leader>?", '<cmd>require("which-key").show({ global = false })<cr>', desc = "Local Keymaps" },
+	},
+	opts = {
+		preset = "helix",
+		triggers = {
+			{ "<auto>", mode = "nixsotc" },
+		},
+		icons = {
+			mappings = false,
 		},
 	},
-	config = function()
+	init = function()
 		local wk = require("which-key")
-		wk.setup({
-			preset = "helix",
-			triggers = {
-				{ "<auto>", mode = "nixsotc" },
-			},
-			icons = {
-				mappings = false,
-			},
-		})
 		wk.add({
 			{ "<leader>c", group = "code" },
-			{ "<leader>h", group = "hunk" },
+			{ "<leader>g", group = "git" },
 			{ "<leader>w", group = "session" },
 			{ "<leader>s", group = "search" },
-			{ "<leader>k", group = "find" },
+			{ "<leader>f", group = "find" },
 			{ "<leader>u", group = "ui" },
 			{ "<leader>b", group = "buffer" },
 			{ "<leader>x", group = "trouble" },

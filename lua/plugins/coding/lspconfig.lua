@@ -72,7 +72,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
-		config = function(_, opts)
+		config = function()
 			for server, config in pairs(lsp_servers) do
 				vim.lsp.config(server, config)
 			end
