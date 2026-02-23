@@ -28,6 +28,7 @@ return {
 
 		-- search
 		{ "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
+		{ "<leader>sd", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Git Diff" },
 		{ "<leader>sc", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 		{ "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
 		{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
@@ -42,6 +43,7 @@ return {
 		{ "<leader>sp", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
 		{ "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", desc = "Search for Plugin Spec" },
 		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix" },
+		{ "<leader>sr", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Quickfix" },
 		{ "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", desc = "Undo History" },
 		{ "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
 		{ "<leader>s<space>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },
@@ -56,7 +58,7 @@ return {
 		{ "<leader>co", "<cmd>lua Snacks.picker.lsp_outgoing_calls()<cr>", desc = "Calls Outgoing" },
 		{ "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", desc = "Rename File" },
 		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
-		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
+    { "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
 	},
 	opts = {
 		bigfile = {},
@@ -101,7 +103,7 @@ return {
 			},
 			formatters = { file = { filename_first = true, truncate = 120 } },
 			sources = {
-				buffers = { current = false },
+				buffers = { focus = "lit" },
 				command_history = {
 					layout = { preset = "custom", preview = false },
 				},
