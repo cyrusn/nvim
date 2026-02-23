@@ -1,6 +1,7 @@
 return {
 	"folke/snacks.nvim",
-	event = "VeryLazy",
+	lazy = false,
+	priority = 1000,
 	keys = {
 		-- picker:main
 		{ "<leader>e", "<cmd>lua Snacks.explorer()<cr>", desc = "File Tree" },
@@ -54,14 +55,17 @@ return {
 		{ "<leader>ci", "<cmd>lua Snacks.picker.lsp_incoming_calls()<cr>", desc = "Calls Incoming" },
 		{ "<leader>co", "<cmd>lua Snacks.picker.lsp_outgoing_calls()<cr>", desc = "Calls Outgoing" },
 		{ "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", desc = "Rename File" },
-    { "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
-    { "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
+		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
+		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
 	},
 	opts = {
 		bigfile = {},
 		bufdelete = {},
 		indent = {},
 		scope = {},
+		notifier = { enabled = false },
+		scroll = { enabled = false },
+		dashboard = { enabled = false },
 		lazygit = {},
 		quickfile = {},
 		words = {},
@@ -114,32 +118,4 @@ return {
 			},
 		},
 	},
-	init = function()
-		vim.api.nvim_create_autocmd("User", {
-			group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
-			callback = function()
-				local toggle = require("snacks.toggle")
-				toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-				toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-				toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-				toggle.diagnostics():map("<leader>ud")
-				toggle.line_number():map("<leader>ul")
-				toggle
-					.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-					:map("<leader>uc")
-				toggle.treesitter():map("<leader>uT")
-				toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-				toggle.inlay_hints():map("<leader>uh")
-				toggle.indent():map("<leader>ug")
-				toggle.dim():map("<leader>uD")
-				toggle.zen():map("<leader>uz")
-				toggle
-					.option(
-						"conceallevel",
-						{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }
-					)
-					:map("<leader>uc")
-			end,
-		})
-	end,
 }
