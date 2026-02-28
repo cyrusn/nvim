@@ -22,13 +22,14 @@ return {
 		-- find
 		{ "<leader>fc", "<cmd>lua Snacks.picker.files({cwd=vim.fn.stdpath('config')})<cr>", desc = "Find Config File" },
 		{ "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", desc = "Find Files" },
+		{ "<leader>fd", "<cmd>lua Snacks.picker.git_status()<cr>", desc = "Git " },
 		{ "<leader>fg", "<cmd>lua Snacks.picker.git_files()<cr>", desc = "Find Git Files" },
 		{ "<leader>fp", "<cmd>lua Snacks.picker.projects()<cr>", desc = "Projects" },
 		{ "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", desc = "Recent" },
 
 		-- search
 		{ "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", desc = "Grep Open Buffers" },
-		{ "<leader>sd", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Git Diff" },
+		{ "<leader>sd", "<cmd>lua Snacks.picker.git_diff()<cr>", desc = "Git Diffs" },
 		{ "<leader>sc", "<cmd>lua Snacks.picker.command_history()<cr>", desc = "Command History" },
 		{ "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", desc = "Commands" },
 		{ "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", desc = "Help" },
@@ -58,7 +59,7 @@ return {
 		{ "<leader>co", "<cmd>lua Snacks.picker.lsp_outgoing_calls()<cr>", desc = "Calls Outgoing" },
 		{ "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", desc = "Rename File" },
 		{ "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", desc = "Symbols" },
-    { "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
+		{ "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", desc = "Workspace Symbols" },
 	},
 	opts = {
 		bigfile = {},
