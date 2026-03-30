@@ -1,42 +1,15 @@
-return {
-	"folke/persistence.nvim",
-	event = "BufReadPre", -- this will only start session saving when an actual file was opened
-	keys = {
-		{
-			"<leader>q",
-			"",
-			desc = "+session",
-		},
-		{
-			"<leader>qs",
-			function()
-				require("persistence").load()
-			end,
-			desc = "Load",
-		},
-		{
-			"<leader>qS",
-			function()
-				require("persistence").select()
-			end,
-			desc = "Select",
-		},
-		{
-			"<leader>ql",
-			function()
-				require("persistence").load({ last = true })
-			end,
-			desc = "Last",
-		},
-		{
-			"<leader>qd",
-			function()
-				require("persistence").stop()
-			end,
-			desc = "Stop",
-		},
-	},
-	opts = {
-		-- add any custom options here
-	},
-}
+vim.keymap.set("n", "<leader>q", "", { desc = "+session" })
+vim.keymap.set("n", "<leader>qs", function()
+	require("persistence").load()
+end, { desc = "Load" })
+vim.keymap.set("n", "<leader>qS", function()
+	require("persistence").select()
+end, { desc = "Select" })
+vim.keymap.set("n", "<leader>ql", function()
+	require("persistence").load({ last = true })
+end, { desc = "Last" })
+vim.keymap.set("n", "<leader>qd", function()
+	require("persistence").stop()
+end, { desc = "Stop" })
+
+require("persistence").setup({})

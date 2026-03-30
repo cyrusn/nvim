@@ -50,33 +50,14 @@ local lsp_servers = {
 	pylint = {},
 }
 
-return {
-	{
-		"mason-org/mason.nvim",
-		keys = { { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" } },
-		opts = {},
-	},
-	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		dependencies = {
-			"mason-org/mason.nvim",
-			"mason-org/mason-lspconfig.nvim",
-		},
-		config = function()
-			require("mason-lspconfig").setup()
-			require("mason-tool-installer").setup({
-				ensure_installed = vim.tbl_keys(lsp_servers),
-			})
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
-		config = function()
-			for server, config in pairs(lsp_servers) do
-				vim.lsp.config(server, config)
-			end
-		end,
-		opts = {},
-	},
-}
+vim.keymap.set("n", "<leader>lm", "<cmd>Mason<cr>", { desc = "Mason" })
+require("mason").setup({})
+
+require("mason-lspconfig").setup()
+require("mason-tool-installer").setup({
+	ensure_installed = vim.tbl_keys(lsp_servers),
+})
+
+for server, config in pairs(lsp_servers) do
+	vim.lsp.config(server, config)
+end

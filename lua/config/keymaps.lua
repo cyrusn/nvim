@@ -1,4 +1,5 @@
-vim.keymap.set("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>lp", "<cmd>lua vim.pack.update()<cr>", { desc = "Pack Update" })
+vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.pack.del()<cr>", { desc = "Pack Delete" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
 vim.keymap.set("n", "<M-n>", "<cmd>cnext<cr>", { desc = "Next Quickfix" })
