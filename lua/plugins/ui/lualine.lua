@@ -14,7 +14,10 @@ return {
 				component_separators = "",
 				section_separators = { left = "", right = "" },
 			},
-			winbar = {
+			winbar = { lualine_c = {}, lualine_x = { "tabs" } },
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch" },
 				lualine_c = {
 					{ "filetype", icon_only = true, separator = "", padding = { left = 1 } },
 					{ "filename", path = 1, file_status = true, separator = "", padding = { left = 0, right = 1 } },
@@ -38,13 +41,7 @@ return {
 						symbols = { error = "✘ ", warn = " ", hint = " ", info = " " },
 					},
 				},
-				lualine_x = {},
-			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "branch" },
-				lualine_c = {},
-				lualine_x = {},
+				lualine_x = { "encoding", "filetype" },
 				lualine_y = {
 					{ "progress", separator = "", padding = { left = 1, right = 1 } },
 					{ "location", padding = { left = 0, right = 1 } },
@@ -71,7 +68,7 @@ return {
 			filter = { range = true },
 			format = "{kind_icon}{symbol.name:Normal}",
 		})
-		table.insert(opts.sections.lualine_c, {
+		table.insert(opts.winbar.lualine_c, {
 			symbols.get,
 			cond = symbols.has,
 		})

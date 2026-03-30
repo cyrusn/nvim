@@ -44,7 +44,7 @@ return {
 		{ "<leader>sp", "<cmd>lua Snacks.picker.pickers()<cr>", desc = "Pickers" },
 		{ "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", desc = "Search for Plugin Spec" },
 		{ "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", desc = "Quickfix" },
-		{ "<leader>sr", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Quickfix" },
+		{ "<leader>sr", "<cmd>lua Snacks.picker.registers()<cr>", desc = "Register" },
 		{ "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", desc = "Undo History" },
 		{ "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", desc = "Grep Word" },
 		{ "<leader>s<space>", "<cmd>lua Snacks.picker.resume()<cr>", desc = "Resume" },

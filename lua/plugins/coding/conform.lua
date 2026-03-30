@@ -28,7 +28,7 @@ return {
 				json = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "markdownlint" },
-				python = { "flake8", lsp_format = "fallback" },
+				python = { lsp_format = "fallback" },
 				sql = { "sql_formatter" },
 				toml = { lsp_format = "fallback" },
 				vue = { "prettier" },
