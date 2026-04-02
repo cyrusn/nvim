@@ -50,13 +50,16 @@ MiniStatusline.setup({
 -- Setup mini.notify (replaces noice)
 require("mini.notify").setup({
 	window = {
-		config = {
-			relative = "editor",
-			border = "none",
-			anchor = "SE",
-			row = vim.o.lines - 2,
-			col = vim.o.columns,
-		},
+		config = function()
+			local has_statusline = vim.o.laststatus > 0
+			local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
+			return {
+				anchor = "SE", -- South-East anchor
+				col = vim.o.columns,
+				row = vim.o.lines - pad,
+				border = "none",
+			}
+		end,
 	},
 })
 vim.notify = require("mini.notify").make_notify()
@@ -64,7 +67,6 @@ vim.notify = require("mini.notify").make_notify()
 -- Setup mini.clue (replaces which-key)
 local miniclue = require("mini.clue")
 miniclue.setup({
-	delay = 200,
 	triggers = {
 		-- Leader triggers
 		{ mode = "n", keys = "<Leader>" },
@@ -118,9 +120,9 @@ miniclue.setup({
 	},
 
 	window = {
+		delay = 100,
 		config = {
 			width = "auto",
-			border = "none",
 		},
 	},
 })
