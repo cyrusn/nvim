@@ -1,6 +1,22 @@
 -- Setup mini.tabline (replaces bufferline)
 require("mini.tabline").setup()
 
+-- Setup mini.sessions (replaces persistence)
+require("mini.sessions").setup({
+	-- Directory where sessions are stored
+	directory = vim.fn.stdpath("data") .. "/session",
+	-- Whether to read latest session on startup
+	autoread = false,
+	-- Whether to write current session (one which was read) on leave
+	autowrite = true,
+})
+
+vim.keymap.set("n", "<leader>wr", function() require("mini.sessions").read() end, { desc = "Read Session" })
+vim.keymap.set("n", "<leader>ws", function() require("mini.sessions").select() end, { desc = "Select Session" })
+vim.keymap.set("n", "<leader>wl", function() require("mini.sessions").read("default") end, { desc = "Load Global Session" })
+vim.keymap.set("n", "<leader>ww", function() require("mini.sessions").write("default") end, { desc = "Save Global Session" })
+vim.keymap.set("n", "<leader>wd", function() require("mini.sessions").delete() end, { desc = "Delete Session" })
+
 -- Setup mini.statusline (replaces lualine)
 local MiniStatusline = require("mini.statusline")
 MiniStatusline.setup({
@@ -34,16 +50,13 @@ MiniStatusline.setup({
 -- Setup mini.notify (replaces noice)
 require("mini.notify").setup({
 	window = {
-		config = function()
-			local has_statusline = vim.o.laststatus > 0
-			local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
-			return {
-				anchor = "SE", -- South-East anchor
-				col = vim.o.columns,
-				row = vim.o.lines - pad,
-				border = "none",
-			}
-		end,
+		config = {
+			relative = "editor",
+			border = "none",
+			anchor = "SE",
+			row = vim.o.lines - 2,
+			col = vim.o.columns,
+		},
 	},
 })
 vim.notify = require("mini.notify").make_notify()
@@ -51,6 +64,7 @@ vim.notify = require("mini.notify").make_notify()
 -- Setup mini.clue (replaces which-key)
 local miniclue = require("mini.clue")
 miniclue.setup({
+	delay = 200,
 	triggers = {
 		-- Leader triggers
 		{ mode = "n", keys = "<Leader>" },
@@ -104,9 +118,9 @@ miniclue.setup({
 	},
 
 	window = {
-		delay = 100,
 		config = {
 			width = "auto",
+			border = "none",
 		},
 	},
 })

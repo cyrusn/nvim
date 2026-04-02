@@ -73,43 +73,46 @@ require("snacks").setup({
 	picker = {
 		ui_select = { enabled = true },
 		matcher = {},
-		layout = { preset = "custom", cycle = true, preview = true },
-		layouts = {
-			custom = {
-				layout = {
-					backdrop = false,
-					width = 0.65,
-					min_width = 80,
-					height = 0.9,
-					min_height = 30,
-					box = "vertical",
-					title_pos = "center",
-					{ win = "preview", title = "{preview:Preview}", height = 0.618, border = true },
-					{
-						box = "vertical",
-						border = true,
-						title = "{title} {live} {flags}",
-						{ win = "input", height = 1, border = "bottom" },
-						{ win = "list" },
-					},
-				},
-			},
-		},
+		layout = { preset = "dropdown", cycle = true },
+		-- layouts = {
+		-- 	custom = {
+		-- 		layout = {
+		-- 			backdrop = false,
+		-- 			width = 0.65,
+		-- 			min_width = 80,
+		-- 			height = 0.9,
+		-- 			min_height = 30,
+		-- 			box = "vertical",
+		-- 			title_pos = "center",
+		-- 			{ win = "preview", title = "{preview:Preview}", height = 0.618, border = true },
+		-- 			{
+		-- 				box = "vertical",
+		-- 				border = true,
+		-- 				title = "{title} {live} {flags}",
+		-- 				{ win = "input", height = 1, border = "bottom" },
+		-- 				{ win = "list" },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
 		formatters = { file = { filename_first = true, truncate = 120 } },
 		sources = {
-			buffers = { focus = "lit" },
-			command_history = {
-				layout = { preset = "custom", preview = false },
-			},
+			buffers = { focus = "list" },
+			-- command_history = {
+			-- 	layout = { preset = "custom", preview = false },
+			-- },
 			explorer = {
-				layout = { preset = "custom", preview = "main" },
+				layout = {
+					-- preset = "custom",
+					preview = "main",
+				},
 				auto_close = true,
 				git_status_open = true,
 				diagnostics_open = true,
 				hidden = true,
 			},
 			files = { hidden = true },
-			lines = { layout = { preset = "custom" } },
+			-- lines = { layout = { preset = "custom" } },
 			smart = { hidden = true, sort_empty = false },
 		},
 	},
