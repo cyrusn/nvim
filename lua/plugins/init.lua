@@ -13,14 +13,9 @@ local plugins = {
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/gbprod/yanky.nvim",
 	"https://github.com/nvim-mini/mini.nvim",
-
-	-- colorscheme
 	"https://github.com/rose-pine/neovim",
-	"https://github.com/catppuccin/nvim",
-	"https://github.com/folke/tokyonight.nvim",
 }
 
--- Setup hooks for build commands
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
@@ -34,15 +29,13 @@ vim.api.nvim_create_autocmd("PackChanged", {
 })
 
 vim.pack.add(plugins)
--- vim.cmd("colorscheme solarized-osaka")
 vim.cmd("colorscheme rose-pine")
 
--- Load plugin configurations
 require("plugins.coding.blink")
 require("plugins.coding.conform")
 require("plugins.coding.gitsigns")
 require("plugins.coding.lspconfig")
 require("plugins.coding.treesitter")
 require("plugins.editor.snacks")
-require("plugins.ui.mini")
-require("plugins.util.yanky")
+require("plugins.editor.mini")
+require("plugins.editor.yanky")

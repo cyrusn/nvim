@@ -1,23 +1,38 @@
--- Setup mini.tabline (replaces bufferline)
 require("mini.tabline").setup()
 
--- Setup mini.sessions (replaces persistence)
 require("mini.sessions").setup({
-	-- Directory where sessions are stored
 	directory = vim.fn.stdpath("data") .. "/session",
-	-- Whether to read latest session on startup
 	autoread = false,
-	-- Whether to write current session (one which was read) on leave
 	autowrite = true,
 })
 
-vim.keymap.set("n", "<leader>wr", function() require("mini.sessions").read() end, { desc = "Read Session" })
-vim.keymap.set("n", "<leader>ws", function() require("mini.sessions").select() end, { desc = "Select Session" })
-vim.keymap.set("n", "<leader>wl", function() require("mini.sessions").read("default") end, { desc = "Load Global Session" })
-vim.keymap.set("n", "<leader>ww", function() require("mini.sessions").write("default") end, { desc = "Save Global Session" })
-vim.keymap.set("n", "<leader>wd", function() require("mini.sessions").delete() end, { desc = "Delete Session" })
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	group = vim.api.nvim_create_augroup("MiniSessionsAutoSave", { clear = true }),
+	callback = function()
+		local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+		require("mini.sessions").write(name)
+	end,
+})
 
--- Setup mini.statusline (replaces lualine)
+vim.keymap.set("n", "<leader>qs", function()
+	require("mini.sessions").select()
+end, { desc = "Select Session" })
+vim.keymap.set("n", "<leader>ql", function()
+	local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	require("mini.sessions").read(name)
+end, { desc = "Load Project Session" })
+vim.keymap.set("n", "<leader>qd", function()
+	require("mini.sessions").select("delete")
+end, { desc = "Delete Session" })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),
+	callback = function(ev)
+		local _, lang = ev.match, vim.treesitter.language.get_lang(ev.match)
+		pcall(vim.treesitter.start, ev.buf, lang)
+	end,
+})
+
 local MiniStatusline = require("mini.statusline")
 MiniStatusline.setup({
 	content = {
@@ -27,7 +42,7 @@ MiniStatusline.setup({
 			local diff = MiniStatusline.section_diff({ trunc_width = 75 })
 			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
 			local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
-			local filename = vim.fn.expand("%:.") -- Relative path to project
+			local filename = vim.fn.expand("%:.")
 			local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
 			local location = MiniStatusline.section_location({ trunc_width = 75 })
 			local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
@@ -37,9 +52,9 @@ MiniStatusline.setup({
 			return MiniStatusline.combine_groups({
 				{ hl = mode_hl, strings = { mode } },
 				{ hl = "MiniStatuslineDevinfo", strings = { git, diff, diagnostics, lsp } },
-				"%<", -- Mark general truncate point
+				"%<",
 				{ hl = "MiniStatuslineFilename", strings = { filename } },
-				"%=", -- End left alignment
+				"%=",
 				{ hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
 				{ hl = mode_hl, strings = { search, location, time } },
 			})
@@ -47,14 +62,13 @@ MiniStatusline.setup({
 	},
 })
 
--- Setup mini.notify (replaces noice)
 require("mini.notify").setup({
 	window = {
 		config = function()
 			local has_statusline = vim.o.laststatus > 0
 			local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
 			return {
-				anchor = "SE", -- South-East anchor
+				anchor = "SE",
 				col = vim.o.columns,
 				row = vim.o.lines - pad,
 				border = "none",
@@ -64,65 +78,73 @@ require("mini.notify").setup({
 })
 vim.notify = require("mini.notify").make_notify()
 
--- Setup mini.clue (replaces which-key)
 local miniclue = require("mini.clue")
 miniclue.setup({
 	triggers = {
-		-- Leader triggers
 		{ mode = "n", keys = "<Leader>" },
 		{ mode = "x", keys = "<Leader>" },
-
-		-- Built-in completion
 		{ mode = "i", keys = "<C-x>" },
-
-		-- `g` key
 		{ mode = "n", keys = "g" },
 		{ mode = "x", keys = "g" },
-
-		-- Marks
 		{ mode = "n", keys = "'" },
 		{ mode = "n", keys = "`" },
 		{ mode = "x", keys = "'" },
 		{ mode = "x", keys = "`" },
-
-		-- Registers
 		{ mode = "n", keys = '"' },
 		{ mode = "x", keys = '"' },
 		{ mode = "i", keys = "<C-r>" },
 		{ mode = "c", keys = "<C-r>" },
-
-		-- Window commands
 		{ mode = "n", keys = "<C-w>" },
-
-		-- `z` key
 		{ mode = "n", keys = "z" },
 		{ mode = "x", keys = "z" },
+		{ mode = "n", keys = "[" },
+		{ mode = "n", keys = "]" },
+		{ mode = "x", keys = "[" },
+		{ mode = "x", keys = "]" },
 	},
 
 	clues = {
-		-- Enhance this by adding descriptions for <Leader> groups
 		{ mode = "n", keys = "<Leader>c", desc = "+code" },
 		{ mode = "n", keys = "<Leader>g", desc = "+git" },
-		{ mode = "n", keys = "<Leader>w", desc = "+session" },
+		{ mode = "n", keys = "<Leader>q", desc = "+session" },
 		{ mode = "n", keys = "<Leader>s", desc = "+search" },
 		{ mode = "n", keys = "<Leader>f", desc = "+find" },
 		{ mode = "n", keys = "<Leader>u", desc = "+ui" },
 		{ mode = "n", keys = "<Leader>b", desc = "+buffer" },
-		{ mode = "n", keys = "<Leader>x", desc = "+trouble" },
 		{ mode = "n", keys = "<Leader>l", desc = "+System" },
-		{ mode = "n", keys = "gr", desc = "+LSP" },
 		miniclue.gen_clues.builtin_completion(),
 		miniclue.gen_clues.g(),
 		miniclue.gen_clues.marks(),
+		miniclue.gen_clues.square_brackets(),
 		miniclue.gen_clues.registers(),
 		miniclue.gen_clues.windows(),
 		miniclue.gen_clues.z(),
 	},
 
 	window = {
-		delay = 100,
+		delay = 200,
 		config = {
 			width = "auto",
 		},
+	},
+})
+
+require("mini.move").setup()
+
+require("mini.basics").setup({
+	options = {
+		basic = true,
+		extra_ui = false,
+		win_borders = "default",
+	},
+	mappings = {
+		basic = true,
+		option_toggle_prefix = "",
+		windows = true,
+		move_with_alt = true,
+	},
+	autocommands = {
+		basic = true,
+		relnum_in_visual_mode = false,
 	},
 })
