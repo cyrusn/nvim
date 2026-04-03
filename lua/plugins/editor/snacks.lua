@@ -101,9 +101,9 @@ require("snacks").setup({
 			-- command_history = {
 			-- 	layout = { preset = "custom", preview = false },
 			-- },
+			-- lines = { layout = { preset = "custom" } },
 			explorer = {
 				layout = {
-					-- preset = "custom",
 					preview = "main",
 				},
 				auto_close = true,
@@ -112,7 +112,6 @@ require("snacks").setup({
 				hidden = true,
 			},
 			files = { hidden = true },
-			-- lines = { layout = { preset = "custom" } },
 			smart = { hidden = true, sort_empty = false },
 		},
 	},
@@ -141,4 +140,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			:map("<leader>uc")
 	end,
 })
-
