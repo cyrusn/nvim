@@ -1,5 +1,19 @@
 vim.keymap.set("n", "<leader>lp", "<cmd>lua vim.pack.update()<cr>", { desc = "Pack Update" })
-vim.keymap.set("n", "<leader>ld", "<cmd>lua vim.pack.del()<cr>", { desc = "Pack Delete" })
+vim.keymap.set("n", "<leader>ld", function()
+	local pkgs = vim.pack.get()
+	local names = vim.tbl_map(function(p)
+		return p.spec.name
+	end, pkgs)
+	table.sort(names)
+	vim.ui.select(names, {
+		prompt = "Select Package to Delete",
+	}, function(choice)
+		if choice then
+			vim.pack.del({ choice })
+		end
+	end)
+end, { desc = "Pack Delete" })
+
 vim.keymap.set("n", "<leader>lr", "<cmd>restart<cr>", { desc = "Restart" })
 vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth<cr>", { desc = "Cheak Health" })
 

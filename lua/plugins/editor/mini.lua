@@ -17,10 +17,12 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 vim.keymap.set("n", "<leader>qs", function()
 	require("mini.sessions").select()
 end, { desc = "Select Session" })
+
 vim.keymap.set("n", "<leader>ql", function()
 	local name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 	require("mini.sessions").read(name)
 end, { desc = "Load Project Session" })
+
 vim.keymap.set("n", "<leader>qd", function()
 	require("mini.sessions").select("delete")
 end, { desc = "Delete Session" })

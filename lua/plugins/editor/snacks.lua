@@ -67,13 +67,13 @@ require("snacks").setup({
 	scroll = { enabled = false },
 	statuscolumn = {},
 	terminal = {},
-	toggle = {},
+	toggle = { which_key = false },
 	words = { enabled = false },
 	zen = {},
 
 	-- picker settings
 	picker = {
-		ui_select = { enabled = true },
+		ui_select = true,
 		matcher = {},
 		layout = { preset = "dropdown", cycle = true },
 		formatters = { file = { filename_first = true, truncate = 120 } },
@@ -94,6 +94,9 @@ require("snacks").setup({
 	},
 })
 
+local Snacks = require("snacks")
+vim.ui.select = Snacks.picker.select
+
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
 	callback = function()
@@ -109,6 +112,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		toggle.indent():map("<leader>ug")
 		toggle.dim():map("<leader>uD")
 		toggle.zen():map("<leader>uz")
+		toggle.words():map("<leader>uW")
+		toggle.scroll():map("<leader>uS")
 		toggle
 			.option(
 				"conceallevel",
