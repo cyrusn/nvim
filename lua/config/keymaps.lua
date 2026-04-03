@@ -10,5 +10,3 @@ vim.keymap.set("n", "<M-p>", "<cmd>cprev<cr>", { desc = "Prev Quickfix" })
 
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-
-vim.keymap.set("i", "<C-l>", "<C-x><C-o>")

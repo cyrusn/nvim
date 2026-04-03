@@ -23,7 +23,6 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.opt.autowrite = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.conceallevel = 0
 vim.opt.confirm = true
 vim.opt.expandtab = true

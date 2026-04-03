@@ -57,51 +57,28 @@ vim.keymap.set("n", "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols(
 require("snacks").setup({
 	bigfile = {},
 	bufdelete = {},
-	indent = {},
-	scope = {},
-	notifier = { enabled = false },
-	scroll = { enabled = false },
 	dashboard = { enabled = false },
+	explorer = {},
+	indent = {},
 	lazygit = {},
+	notifier = { enabled = false },
 	quickfile = {},
-	words = {},
+	scope = {},
+	scroll = { enabled = false },
 	statuscolumn = {},
 	terminal = {},
 	toggle = {},
-	explorer = {},
+	words = { enabled = false },
 	zen = {},
+
+	-- picker settings
 	picker = {
 		ui_select = { enabled = true },
 		matcher = {},
 		layout = { preset = "dropdown", cycle = true },
-		-- layouts = {
-		-- 	custom = {
-		-- 		layout = {
-		-- 			backdrop = false,
-		-- 			width = 0.65,
-		-- 			min_width = 80,
-		-- 			height = 0.9,
-		-- 			min_height = 30,
-		-- 			box = "vertical",
-		-- 			title_pos = "center",
-		-- 			{ win = "preview", title = "{preview:Preview}", height = 0.618, border = true },
-		-- 			{
-		-- 				box = "vertical",
-		-- 				border = true,
-		-- 				title = "{title} {live} {flags}",
-		-- 				{ win = "input", height = 1, border = "bottom" },
-		-- 				{ win = "list" },
-		-- 			},
-		-- 		},
-		-- 	},
-		-- },
 		formatters = { file = { filename_first = true, truncate = 120 } },
 		sources = {
 			buffers = { focus = "list" },
-			-- command_history = {
-			-- 	layout = { preset = "custom", preview = false },
-			-- },
-			-- lines = { layout = { preset = "custom" } },
 			explorer = {
 				layout = {
 					preview = "main",

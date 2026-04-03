@@ -1,4 +1,5 @@
 local plugins = {
+	"https://github.com/saghen/blink.cmp",
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/lewis6991/gitsigns.nvim",
@@ -21,12 +22,16 @@ vim.api.nvim_create_autocmd("PackChanged", {
 		if name == "nvim-treesitter" and (kind == "install" or kind == "update") then
 			vim.cmd("TSUpdate")
 		end
+		if name == "blink.cmp" and (kind == "install" or kind == "update") then
+			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
+		end
 	end,
 })
 
 vim.pack.add(plugins)
 vim.cmd("colorscheme rose-pine")
 
+require("plugins.coding.blink")
 require("plugins.coding.conform")
 require("plugins.coding.gitsigns")
 require("plugins.coding.mason")
