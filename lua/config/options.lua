@@ -26,6 +26,15 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.conceallevel = 0
 vim.opt.confirm = true
 vim.opt.expandtab = true
+vim.opt.list = true
+vim.opt.listchars:append({
+	tab = "│ ",
+	lead = "·",
+	trail = "·",
+	extends = "▸",
+	precedes = "◂",
+	leadmultispace = "│·",
+})
 vim.opt.hlsearch = false
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 4

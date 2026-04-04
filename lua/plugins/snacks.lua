@@ -81,14 +81,12 @@ require("snacks").setup({
 	picker = {
 		ui_select = true,
 		matcher = {},
-		layout = { preset = "dropdown", cycle = true },
+		layout = { preset = "vertical", cycle = true },
 		formatters = { file = { filename_first = true, truncate = 120 } },
 		sources = {
-			buffers = { focus = "list" },
+			buffers = { focus = "list", current = false },
 			explorer = {
-				layout = {
-					preview = "main",
-				},
+				layout = { preset = "vertical", preview = true },
 				auto_close = true,
 				git_status_open = true,
 				diagnostics_open = true,
