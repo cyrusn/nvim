@@ -1,3 +1,9 @@
+vim.pack.add({
+	"https://github.com/folke/snacks.nvim",
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+})
+
 vim.keymap.set("n", "<leader>e", "<cmd>lua Snacks.explorer()<cr>", { desc = "File Tree" })
 vim.keymap.set("n", "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", { desc = "Smart Search" })
 vim.keymap.set("n", "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", { desc = "Buffers" })
