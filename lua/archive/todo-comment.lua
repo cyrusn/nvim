@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/folke/todo-comments.nvim" })
+
 vim.keymap.set("n", "]t", "<cmd>lua require('todo-comments').jump_next()<cr>", { desc = "Next Todo Comment" })
 vim.keymap.set("n", "[t", "<cmd>lua require('todo-comments').jump_prev()<cr>", { desc = "Previous Todo Comment" })
 vim.keymap.set("n", "<leader>xt", "<cmd>Trouble todo toggle<cr>", { desc = "Todo (Trouble)" })

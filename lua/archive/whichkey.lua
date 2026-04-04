@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+
 vim.keymap.set("n", "<leader>?", '<cmd>require("which-key").show({ global = false })<cr>', { desc = "Local Keymaps" })
 
 local wk = require("which-key")
