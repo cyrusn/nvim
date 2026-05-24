@@ -4,7 +4,7 @@ require("mini.tabline").setup()
 
 require("mini.sessions").setup({
 	directory = vim.fn.stdpath("data") .. "/session",
-	autoread = false,
+	autoread = true,
 	autowrite = true,
 })
 
@@ -116,6 +116,8 @@ miniclue.setup({
 		{ mode = "n", keys = "<Leader>u", desc = "+ui" },
 		{ mode = "n", keys = "<Leader>b", desc = "+buffer" },
 		{ mode = "n", keys = "<Leader>l", desc = "+System" },
+		{ mode = "n", keys = "<Leader>t", desc = "+Scratch" },
+		{ mode = "n", keys = "<Leader>a", desc = "+AI" },
 		miniclue.gen_clues.builtin_completion(),
 		miniclue.gen_clues.g(),
 		miniclue.gen_clues.marks(),

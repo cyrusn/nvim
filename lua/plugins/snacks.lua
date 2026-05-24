@@ -30,6 +30,7 @@ vim.keymap.set("n", "<leader>fr", "<cmd>lua Snacks.picker.recent()<cr>", { desc 
 
 vim.keymap.set("n", "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", { desc = "Grep Open Buffers" })
 vim.keymap.set("n", "<leader>sd", "<cmd>lua Snacks.picker.git_diff()<cr>", { desc = "Git Diffs" })
+vim.keymap.set("n", "<leader>sg", "<cmd>lua Snacks.picker.git_status()<cr>", { desc = "Git Status" })
 vim.keymap.set("n", "<leader>sc", "<cmd>lua Snacks.picker.command_history()<cr>", { desc = "Command History" })
 vim.keymap.set("n", "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", { desc = "Commands" })
 vim.keymap.set("n", "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", { desc = "Help" })
@@ -60,6 +61,10 @@ vim.keymap.set("n", "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", { 
 vim.keymap.set("n", "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", { desc = "Symbols" })
 vim.keymap.set("n", "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", { desc = "Workspace Symbols" })
 
+vim.keymap.set("n", "<leader>b.", "<cmd>lua Snacks.scratch()<cr>", { desc = "Toggle Scratch Buffer" })
+vim.keymap.set("n", "<leader>bs", "<cmd>lua Snacks.scratch.select()<cr>", { desc = "Select Scratch Buffer" })
+vim.keymap.set("n", "<leader>bl", "<cmd>lua Snacks.scratch.list()<cr>", { desc = "List Scratch Buffer" })
+
 require("snacks").setup({
 	bigfile = {},
 	bufdelete = {},
@@ -71,6 +76,7 @@ require("snacks").setup({
 	quickfile = {},
 	scope = {},
 	scroll = { enabled = false },
+	scrcatch = { enabled = true },
 	statuscolumn = {},
 	terminal = {},
 	toggle = { which_key = false },
@@ -94,6 +100,21 @@ require("snacks").setup({
 			},
 			files = { hidden = true },
 			smart = { hidden = true, sort_empty = false },
+		},
+		actions = {
+			sidekick_send = function(...)
+			 	return require("sidekick.cli.picker.snacks").send(...)
+			end,
+		},
+		win = {
+			input = {
+				keys = {
+					["<a-a>"] = {
+						"sidekick_send",
+						mode = { "n", "i" },
+					},
+				},
+			},
 		},
 	},
 })
