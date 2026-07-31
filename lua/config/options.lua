@@ -6,6 +6,8 @@ vim.g.netrw_banner = 0
 vim.g.netrw_localrmdir = "rm -rf"
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
 
+vim.opt.shortmess:append("I")
+
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = {

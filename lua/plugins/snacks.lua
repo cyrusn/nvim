@@ -63,7 +63,6 @@ vim.keymap.set("n", "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols(
 
 vim.keymap.set("n", "<leader>b.", "<cmd>lua Snacks.scratch()<cr>", { desc = "Toggle Scratch Buffer" })
 vim.keymap.set("n", "<leader>bs", "<cmd>lua Snacks.scratch.select()<cr>", { desc = "Select Scratch Buffer" })
-vim.keymap.set("n", "<leader>bl", "<cmd>lua Snacks.scratch.list()<cr>", { desc = "List Scratch Buffer" })
 
 require("snacks").setup({
 	bigfile = {},
@@ -76,7 +75,7 @@ require("snacks").setup({
 	quickfile = {},
 	scope = {},
 	scroll = { enabled = false },
-	scrcatch = { enabled = true },
+	scratch = { enabled = true },
 	statuscolumn = {},
 	terminal = {},
 	toggle = { which_key = false },
@@ -103,7 +102,7 @@ require("snacks").setup({
 		},
 		actions = {
 			sidekick_send = function(...)
-			 	return require("sidekick.cli.picker.snacks").send(...)
+				return require("sidekick.cli.picker.snacks").send(...)
 			end,
 		},
 		win = {
