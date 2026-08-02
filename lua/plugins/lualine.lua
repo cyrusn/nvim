@@ -7,15 +7,20 @@ local opts = {
 	options = {
 		component_separators = "",
 	},
-	winbar = { lualine_c = {}, lualine_x = { "tabs" } },
-	sections = {
+	winbar = {
 		lualine_a = { "mode" },
-		lualine_b = { "branch" },
-		lualine_c = {
-			{ "filename", path = 1, file_status = true },
+		lualine_b = {
+			"branch",
 			"diff",
 			"diagnostics",
 		},
+		lualine_c = {
+			{ "filename", path = 1, file_status = true },
+		},
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_c = {},
 		lualine_x = { "encoding", "filetype" },
 		lualine_y = { "progress", "location" },
 		lualine_z = {
@@ -39,7 +44,7 @@ local symbols = trouble.statusline({
 	filter = { range = true },
 	format = "{kind_icon}{symbol.name:Normal}",
 })
-table.insert(opts.winbar.lualine_c, {
+table.insert(opts.sections.lualine_c, {
 	symbols.get,
 	cond = symbols.has,
 })

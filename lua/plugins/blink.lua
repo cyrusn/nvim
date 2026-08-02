@@ -18,28 +18,19 @@ local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 
 cmp.setup({
-	keymap = {
-		preset = "default",
-		["<C-l>"] = { "show", "show_documentation", "hide_documentation" },
-		["<C-space>"] = false,
-		["<C-u>"] = { "scroll_documentation_up", "fallback" },
-		["<C-d>"] = { "scroll_documentation_down", "fallback" },
-		["<Tab>"] = {
-			"snippet_forward",
-			function() -- sidekick next edit suggestion
-				return require("sidekick").nes_jump_or_apply()
-			end,
-			function() -- if you are using Neovim's native inline completions
-				return vim.lsp.inline_completion.get()
-			end,
-			"fallback",
-		},
-	},
+	keymap = { preset = "default" },
 	signature = { enabled = true },
 	fuzzy = { implementation = "prefer_rust" },
 	completion = {
 		menu = {
 			auto_show = true,
+			border = "rounded",
+		},
+		documentation = {
+			auto_show = true,
+			window = {
+				border = "rounded",
+			},
 		},
 	},
 })
