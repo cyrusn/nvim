@@ -46,3 +46,5 @@ require("mini.basics").setup({
 		relnum_in_visual_mode = false,
 	},
 })
+
+require("mini.trailspace").setup()

@@ -1,5 +1,7 @@
--- vim.pack.add({ "https://github.com/rose-pine/neovim" })
--- vim.cmd("colorscheme rose-pine")
+vim.pack.add({
+	"https://github.com/rose-pine/neovim",
+	"https://github.com/catppuccin/nvim",
+})
 
-vim.pack.add({ "https://github.com/catppuccin/nvim" })
-vim.cmd("colorscheme catppuccin-mocha")
+-- vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme catppuccin")
