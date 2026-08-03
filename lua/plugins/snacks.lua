@@ -95,7 +95,6 @@ require("snacks").setup({
 	-- picker settings
 	picker = {
 		ui_select = true,
-		matcher = {},
 		layout = { preset = "vertical", cycle = true },
 		formatters = { file = { filename_first = true, truncate = 120 } },
 		sources = {
@@ -115,6 +114,12 @@ require("snacks").setup({
 				sort_empty = false,
 				multi = { "recent", "files" },
 				filter = { cwd = true },
+			},
+			git_status = {
+				layout = { preset = "ivy_split" },
+			},
+			git_diff = {
+				layout = { preset = "ivy_split" },
 			},
 		},
 		actions = {
