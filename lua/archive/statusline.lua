@@ -1,4 +1,6 @@
 -- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
+
+vim.pack.add({ "https://github.com/folke/trouble.nvim" })
 local M = {}
 
 local modes = {

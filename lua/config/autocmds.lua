@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),
+	group = vim.api.nvim_create_augroup("cyrusn_treesitter_highlight", { clear = true }),
 	callback = function(ev)
 		local _, lang = ev.match, vim.treesitter.language.get_lang(ev.match)
 		pcall(vim.treesitter.start, ev.buf, lang)

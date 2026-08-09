@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", { d
 vim.keymap.set("n", "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", { desc = "Grep" })
 vim.keymap.set("n", "<leader>p", "<cmd>lua Snacks.picker.pickers()<cr>", { desc = "Pickers" })
-vim.keymap.set("n", "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", { desc = "Resume" })
+vim.keymap.set("n", "<leader><tab>", "<cmd>lua Snacks.picker.resume()<cr>", { desc = "Pickers Resume" })
 
 vim.keymap.set("n", "<leader>bd", "<cmd>lua Snacks.bufdelete.delete()<cr>", { desc = "Close Current Buffer" })
 vim.keymap.set("n", "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", { desc = "Close Other Buffers" })
@@ -31,24 +31,25 @@ vim.keymap.set("n", "<leader>fd", "<cmd>lua Snacks.picker.git_status()<cr>", { d
 vim.keymap.set("n", "<leader>fg", "<cmd>lua Snacks.picker.git_files()<cr>", { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>fp", "<cmd>lua Snacks.picker.projects()<cr>", { desc = "Projects" })
 
-vim.keymap.set("n", "<leader>sb", "<cmd>lua Snacks.picker.grep_buffers()<cr>", { desc = "Grep Open Buffers" })
-vim.keymap.set("n", "<leader>sd", "<cmd>lua Snacks.picker.git_diff()<cr>", { desc = "Git Diffs" })
-vim.keymap.set("n", "<leader>sg", "<cmd>lua Snacks.picker.git_status()<cr>", { desc = "Git Status" })
-vim.keymap.set("n", "<leader>sc", "<cmd>lua Snacks.picker.command_history()<cr>", { desc = "Command History" })
-vim.keymap.set("n", "<leader>sh", "<cmd>lua Snacks.picker.help()<cr>", { desc = "Help" })
+vim.keymap.set("n", "<leader>s/b", "<cmd>lua Snacks.picker.grep_buffers()<cr>", { desc = "Grep Open Buffers" })
+vim.keymap.set("n", "<leader>s/w", "<cmd>lua Snacks.picker.grep_word()<cr>", { desc = "Grep Word" })
+vim.keymap.set("n", "<leader>sgs", "<cmd>lua Snacks.picker.git_status()<cr>", { desc = "Git Status" })
+vim.keymap.set("n", "<leader>sgd", "<cmd>lua Snacks.picker.git_diff()<cr>", { desc = "Git Diffs" })
+vim.keymap.set("n", "<leader>sd", "<cmd>lua Snacks.picker.diagnostics()<cr>", { desc = "Diagnostics" })
+vim.keymap.set("n", "<leader>shc", "<cmd>lua Snacks.picker.command_history()<cr>", { desc = "Command History" })
+vim.keymap.set("n", "<leader>shs", "<cmd>lua Snacks.picker.search_history()<cr>", { desc = "Search History" })
+vim.keymap.set("n", "<leader>shn", "<cmd>lua Snacks.picker.notifications()<cr>", { desc = "Show Notifier History" })
+vim.keymap.set("n", "<leader>sH", "<cmd>lua Snacks.picker.help()<cr>", { desc = "Help" })
+vim.keymap.set("n", "<leader>sj", "<cmd>lua Snacks.picker.jumps()<cr>", { desc = "Jumps" })
 vim.keymap.set("n", "<leader>sl", "<cmd>lua Snacks.picker.lines()<cr>", { desc = "Lines" })
 vim.keymap.set("n", "<leader>sm", "<cmd>lua Snacks.picker.marks()<cr>", { desc = "Marks" })
 vim.keymap.set("n", "<leader>sM", "<cmd>lua Snacks.picker.man()<cr>", { desc = "Man Pages" })
-vim.keymap.set("n", "<leader>sn", "<cmd>lua Snacks.picker.notifications()<cr>", { desc = "Show Notifier History" })
 vim.keymap.set("n", "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>sr", "<cmd>lua Snacks.picker.registers()<cr>", { desc = "Register" })
-vim.keymap.set("n", "<leader>ss", "<cmd>lua Snacks.picker.search_history()<cr>", { desc = "Search History" })
 vim.keymap.set("n", "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", { desc = "Undo History" })
-vim.keymap.set("n", "<leader>sw", "<cmd>lua Snacks.picker.grep_word()<cr>", { desc = "Grep Word" })
 -- vim.keymap.set("n", "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", { desc = "Commands" })
 -- vim.keymap.set("n", "<leader>sH", "<cmd>lua Snacks.picker.highlights()<cr>", { desc = "Highlights" })
 -- vim.keymap.set("n", "<leader>si", "<cmd>lua Snacks.picker.icons()<cr>", { desc = "Icons" })
--- vim.keymap.set("n", "<leader>sj", "<cmd>lua Snacks.picker.jumps()<cr>", { desc = "Jumps" })
 -- vim.keymap.set("n", "<leader>sk", "<cmd>lua Snacks.picker.keymaps()<cr>", { desc = "Keymaps" })
 -- vim.keymap.set("n", "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", { desc = "Search for Plugin Spec" })
 
@@ -64,12 +65,13 @@ vim.keymap.set("n", "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", { 
 vim.keymap.set("n", "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", { desc = "Workspace Symbols" })
 
 require("snacks").setup({
-	bigfile = {},
-	bufdelete = {},
+	bigfile = { enabled = true },
+	bufdelete = { enabled = true },
 	dashboard = { enabled = false },
-	explorer = {},
-	indent = {},
-	lazygit = {},
+	explorer = { enabled = true },
+	indent = { enabled = true },
+	lazygit = { enabled = true },
+	input = { enabled = false },
 	notifier = {
 		enabled = true,
 		style = "minimal",
@@ -82,15 +84,15 @@ require("snacks").setup({
 			bottom = 1,
 		},
 	},
-	quickfile = {},
-	scope = {},
+	quickfile = { enabled = true },
+	scope = { enabled = true },
 	scroll = { enabled = false },
 	scratch = { enabled = true },
-	statuscolumn = {},
-	terminal = {},
-	toggle = { which_key = false },
+	statuscolumn = { enabled = true },
+	terminal = { enabled = true },
+	toggle = { enabled = true },
 	words = { enabled = false },
-	zen = {},
+	zen = { enabled = false },
 
 	-- picker settings
 	picker = {
@@ -147,6 +149,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
 	callback = function()
 		local toggle = require("snacks.toggle")
+		toggle.animate():map("<leader>ua")
 		toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 		toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 		toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
@@ -168,3 +171,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			:map("<leader>uc")
 	end,
 })
+
+-- vim.notify = function(msg, level, opts)
+-- 	require("snacks").notifier.notify(msg, level, opts)
+-- end

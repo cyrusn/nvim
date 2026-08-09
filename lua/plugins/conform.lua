@@ -1,31 +1,34 @@
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
+
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-	require("conform").format()
+	require("conform").format({
+		lsp_format = "fallback",
+		async = false,
+		timeout_ms = 1000,
+	})
 end, { desc = "Format" })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
-vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
-
 require("conform").setup({
+	default_format_opts = {
+		lsp_format = "fallback",
+	},
 	formatters_by_ft = {
 		c = { "clang-format" },
 		sh = { "beautysh" },
-		fish = { "fish_indent", lsp_format = "fallback" },
+		fish = { "fish_indent" },
 		go = { "goimports", "gofmt" },
-		html = { "prettier", lsp_format = "fallback" },
-		css = { "prettier", lsp_format = "fallback" },
+		html = { "prettier" },
+		css = { "prettier" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		json = { "prettier" },
 		lua = { "stylua" },
 		markdown = { "markdownlint" },
-		python = { lsp_format = "fallback" },
 		sql = { "sql_formatter" },
-		toml = { lsp_format = "fallback" },
 		vue = { "prettier" },
 		yaml = { "yamlfmt" },
-		dotenv = { "yamlfmt" },
-		prisma = { lsp_format = "fallback" },
 		["_"] = { "trim_whitespace" },
 	},
 	formatters = {

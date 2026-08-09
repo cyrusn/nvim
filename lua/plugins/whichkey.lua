@@ -19,6 +19,9 @@ wk.add({
 	{ "<leader>x", group = "trouble" },
 	{ "<leader>l", group = "System" },
 	{ "<leader>a", group = "AI" },
+	{ "<leader>sh", group = "Search History" },
+	{ "<leader>sg", group = "Search Git" },
+	{ "<leader>s/", group = "Grep" },
 	{ "gr", group = "LSP" },
 })
 
@@ -27,7 +30,5 @@ require("which-key").setup({
 	triggers = {
 		{ "<auto>", mode = "nixsotc" },
 	},
-	icons = {
-		mappings = false,
-	},
+	icons = { mappings = false },
 })
