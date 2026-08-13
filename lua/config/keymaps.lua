@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action
 -- quickfix
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "Next Quickfix" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "Prev Quickfix" })
-vim.keymap.set("n", "<C-x>", toggle_quickfix, { desc = "Toggle Quickfix Window" })
+vim.keymap.set("n", "<leader>uq", toggle_quickfix, { desc = "Toggle Quickfix Window" })
 
 -- buffers
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })

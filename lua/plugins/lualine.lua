@@ -7,36 +7,39 @@ local clock = function()
 	return " " .. os.date("%R")
 end
 
+local getFilename = function(highlight)
+	return {
+		"filename",
+		path = 0,
+		symbols = { modified = " ●", readonly = " " },
+		file_status = true,
+		color = function()
+			if vim.bo.modified then
+				return highlight
+			end
+		end,
+	}
+end
+
 local opts = {
 	options = {
 		component_separators = "",
+		always_show_tabline = true,
 	},
 	winbar = {
 		lualine_a = { "mode" },
-		lualine_b = {
-			{
-				"filename",
-				path = 0,
-				symbols = {
-					modified = " ●",
-					readonly = " ",
-				},
-				file_status = true,
-				color = function()
-					if vim.bo.modified then
-						return "lualine_b_replace"
-					end
-				end,
-			},
-		},
+		lualine_b = { getFilename("lualine_b_replace") },
 		lualine_c = {},
 		lualine_x = {},
+	},
+	inactive_winbar = {
+		lualine_c = { { "filename", path = 1 } },
 	},
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
 		lualine_c = {
-			{ "filename", path = 1, file_status = true },
+			getFilename("Error"),
 			"diff",
 			"diagnostics",
 		},
