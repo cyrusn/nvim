@@ -11,6 +11,7 @@ vim.pack.add({
 	"https://github.com/saghen/blink.cmp",
 	"https://github.com/saghen/blink.lib",
 	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/folke/sidekick.nvim",
 })
 
 local cmp = require("blink.cmp")
@@ -18,7 +19,18 @@ local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 
 cmp.setup({
-	keymap = { preset = "default" },
+	keymap = {
+		preset = "default",
+		["<C-Space>"] = false,
+		["<C-s>"] = { "show", "show_documentation", "hide_documentation" },
+		["<TAB>"] = {
+			"snippet_forward",
+			function()
+				return require("sidekick").nes_jump_or_apply()
+			end,
+			"fallback",
+		},
+	},
 	signature = { enabled = true },
 	fuzzy = { implementation = "prefer_rust" },
 	completion = {

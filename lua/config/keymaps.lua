@@ -13,17 +13,24 @@ local delete_pack = function()
 	end)
 end
 
-local function toggle_quickfix()
+local toggle_quickfix = function()
 	local qf_exists = false
 	for _, win in pairs(vim.fn.getwininfo()) do
 		if win.quickfix == 1 then
 			qf_exists = true
+			break
 		end
 	end
+
 	if qf_exists then
 		vim.cmd("cclose")
 	else
-		vim.cmd("copen")
+		local qflist = vim.fn.getqflist()
+		if #qflist > 0 then
+			vim.cmd("copen")
+		else
+			vim.notify("Quickfix list is empty", vim.log.levels.INFO)
+		end
 	end
 end
 
