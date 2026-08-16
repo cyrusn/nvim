@@ -9,14 +9,14 @@ vim.keymap.set(
 
 local wk = require("which-key")
 wk.add({
-	{ "<leader>c", group = "code" },
-	{ "<leader>g", group = "git" },
-	{ "<leader>q", group = "session" },
-	{ "<leader>s", group = "search" },
-	{ "<leader>f", group = "find" },
-	{ "<leader>u", group = "ui" },
-	{ "<leader>b", group = "buffer" },
-	{ "<leader>x", group = "trouble" },
+	{ "<leader>c", group = "Code" },
+	{ "<leader>g", group = "Git" },
+	{ "<leader>q", group = "Session" },
+	{ "<leader>s", group = "Search" },
+	{ "<leader>f", group = "Find" },
+	{ "<leader>u", group = "UI" },
+	{ "<leader>b", group = "Buffer" },
+	{ "<leader>x", group = "Trouble" },
 	{ "<leader>l", group = "System" },
 	{ "<leader>a", group = "AI" },
 	{ "<leader>sh", group = "Search History" },

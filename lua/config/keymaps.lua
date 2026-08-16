@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>w", "<cmd>silent update<cr>", { desc = "Write", sil
 vim.keymap.set("n", "<leader>lp", "<cmd>lua vim.pack.update()<cr>", { desc = "Pack Update" })
 vim.keymap.set("n", "<leader>ld", delete_pack, { desc = "Pack Delete" })
 vim.keymap.set("n", "<leader>lr", "<cmd>restart<cr>", { desc = "Restart" })
-vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth<cr>", { desc = "Cheak Health" })
+vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth<cr>", { desc = "Check Health" })
 
 -- code
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })

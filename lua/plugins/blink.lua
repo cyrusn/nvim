@@ -11,7 +11,6 @@ vim.pack.add({
 	"https://github.com/saghen/blink.cmp",
 	"https://github.com/saghen/blink.lib",
 	"https://github.com/rafamadriz/friendly-snippets",
-	"https://github.com/folke/sidekick.nvim",
 })
 
 local cmp = require("blink.cmp")

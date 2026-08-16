@@ -27,7 +27,7 @@ vim.keymap.set(
 	{ desc = "Find Config File" }
 )
 vim.keymap.set("n", "<leader>ff", "<cmd>lua Snacks.picker.files()<cr>", { desc = "Find Files" })
-vim.keymap.set("n", "<leader>fd", "<cmd>lua Snacks.picker.git_status()<cr>", { desc = "Git " })
+vim.keymap.set("n", "<leader>fd", "<cmd>lua Snacks.picker.git_status()<cr>", { desc = "Git Status Files" })
 vim.keymap.set("n", "<leader>fg", "<cmd>lua Snacks.picker.git_files()<cr>", { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>fp", "<cmd>lua Snacks.picker.projects()<cr>", { desc = "Projects" })
 
@@ -54,7 +54,7 @@ vim.keymap.set("n", "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", { desc = 
 -- vim.keymap.set("n", "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", { desc = "Search for Plugin Spec" })
 
 vim.keymap.set("n", "<leader>cr", "<cmd>lua Snacks.picker.lsp_references()<cr>", { desc = "References" })
-vim.keymap.set("n", "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", { desc = "Definintions" })
+vim.keymap.set("n", "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", { desc = "Definitions" })
 vim.keymap.set("n", "<leader>cD", "<cmd>lua Snacks.picker.lsp_declarations()<cr>", { desc = "Declaration" })
 vim.keymap.set("n", "<leader>cI", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", { desc = "Implementation" })
 vim.keymap.set("n", "<leader>ct", "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>", { desc = "Type Definition" })
