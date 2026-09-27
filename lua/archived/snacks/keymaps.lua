@@ -1,10 +1,3 @@
-vim.pack.add({
-	"https://github.com/folke/snacks.nvim",
-	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/nvim-tree/nvim-web-devicons",
-})
-
-vim.keymap.set("n", "<leader>e", "<cmd>lua Snacks.explorer()<cr>", { desc = "File Tree" })
 vim.keymap.set("n", "<leader><space>", "<cmd>lua Snacks.picker.smart()<cr>", { desc = "Smart Search" })
 vim.keymap.set("n", "<leader>,", "<cmd>lua Snacks.picker.buffers()<cr>", { desc = "Buffers" })
 vim.keymap.set("n", "<leader>/", "<cmd>lua Snacks.picker.grep()<cr>", { desc = "Grep" })
@@ -17,7 +10,6 @@ vim.keymap.set("n", "<leader>b.", "<cmd>lua Snacks.scratch()<cr>", { desc = "Tog
 vim.keymap.set("n", "<leader>bs", "<cmd>lua Snacks.scratch.select()<cr>", { desc = "Select Scratch Buffer" })
 
 vim.keymap.set("n", "<leader>gg", "<cmd>lua Snacks.lazygit()<cr>", { desc = "Lazygit" })
-
 vim.keymap.set("n", "<leader>ut", "<cmd>lua Snacks.terminal()<cr>", { desc = "Terminal" })
 
 vim.keymap.set(
@@ -47,12 +39,6 @@ vim.keymap.set("n", "<leader>sM", "<cmd>lua Snacks.picker.man()<cr>", { desc = "
 vim.keymap.set("n", "<leader>sq", "<cmd>lua Snacks.picker.qflist()<cr>", { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>sr", "<cmd>lua Snacks.picker.registers()<cr>", { desc = "Register" })
 vim.keymap.set("n", "<leader>su", "<cmd>lua Snacks.picker.undo()<cr>", { desc = "Undo History" })
--- vim.keymap.set("n", "<leader>sC", "<cmd>lua Snacks.picker.commands()<cr>", { desc = "Commands" })
--- vim.keymap.set("n", "<leader>sH", "<cmd>lua Snacks.picker.highlights()<cr>", { desc = "Highlights" })
--- vim.keymap.set("n", "<leader>si", "<cmd>lua Snacks.picker.icons()<cr>", { desc = "Icons" })
--- vim.keymap.set("n", "<leader>sk", "<cmd>lua Snacks.picker.keymaps()<cr>", { desc = "Keymaps" })
--- vim.keymap.set("n", "<leader>sP", "<cmd>lua Snacks.picker.lazy()<cr>", { desc = "Search for Plugin Spec" })
-
 vim.keymap.set("n", "<leader>cr", "<cmd>lua Snacks.picker.lsp_references()<cr>", { desc = "References" })
 vim.keymap.set("n", "<leader>cd", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", { desc = "Definitions" })
 vim.keymap.set("n", "<leader>cD", "<cmd>lua Snacks.picker.lsp_declarations()<cr>", { desc = "Declaration" })
@@ -63,115 +49,3 @@ vim.keymap.set("n", "<leader>co", "<cmd>lua Snacks.picker.lsp_outgoing_calls()<c
 vim.keymap.set("n", "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", { desc = "Rename File" })
 vim.keymap.set("n", "<leader>cs", "<cmd>lua Snacks.picker.lsp_symbols()<cr>", { desc = "Symbols" })
 vim.keymap.set("n", "<leader>cS", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", { desc = "Workspace Symbols" })
-
-require("snacks").setup({
-	bigfile = { enabled = true },
-	bufdelete = { enabled = true },
-	dashboard = { enabled = false },
-	explorer = { enabled = true },
-	indent = { enabled = true },
-	lazygit = { enabled = true },
-	input = { enabled = false },
-	notifier = {
-		enabled = true,
-		style = "minimal",
-		width = { min = 40, max = 0.4 },
-		height = { min = 1, max = 0.6 },
-		top_down = false,
-		margin = {
-			top = 0,
-			right = 0,
-			bottom = 1,
-		},
-	},
-	quickfile = { enabled = true },
-	scope = { enabled = true },
-	scroll = { enabled = false },
-	scratch = { enabled = true },
-	statuscolumn = { enabled = true },
-	terminal = { enabled = true },
-	toggle = { enabled = true },
-	words = { enabled = false },
-	zen = { enabled = false },
-
-	-- picker settings
-	picker = {
-		ui_select = true,
-		layout = { preset = "vertical", cycle = true },
-		formatters = { file = { filename_first = true, truncate = 120 } },
-		sources = {
-			recent = {
-				filter = { cwd = true },
-			},
-			explorer = {
-				layout = { preset = "vertical", preview = true },
-				auto_close = true,
-				git_status_open = true,
-				diagnostics_open = true,
-				hidden = true,
-			},
-			files = { hidden = true },
-			smart = {
-				hidden = true,
-				sort_empty = false,
-				multi = { "recent", "files" },
-				filter = { cwd = true },
-			},
-			git_status = {
-				layout = { preset = "ivy_split" },
-			},
-			git_diff = {
-				layout = { preset = "ivy_split" },
-			},
-		},
-		actions = {
-			sidekick_send = function(...)
-				return require("sidekick.cli.picker.snacks").send(...)
-			end,
-		},
-		win = {
-			input = {
-				keys = {
-					["<a-a>"] = {
-						"sidekick_send",
-						mode = { "n", "i" },
-					},
-				},
-			},
-		},
-	},
-})
-
-local Snacks = require("snacks")
-vim.ui.select = Snacks.picker.select
-
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
-	callback = function()
-		local toggle = require("snacks.toggle")
-		toggle.animate():map("<leader>ua")
-		toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-		toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-		toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
-		toggle.diagnostics():map("<leader>ud")
-		toggle.line_number():map("<leader>ul")
-		toggle.treesitter():map("<leader>uT")
-		toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-		toggle.inlay_hints():map("<leader>uh")
-		toggle.indent():map("<leader>ug")
-		toggle.dim():map("<leader>uD")
-		toggle.zen():map("<leader>uz")
-		toggle.words():map("<leader>uW")
-		toggle.scroll():map("<leader>uS")
-		toggle
-			.option(
-				"conceallevel",
-				{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }
-			)
-			:map("<leader>uc")
-	end,
-})
-
--- vim.notify = function(msg, level, opts)
--- 	require("snacks").notifier.notify(msg, level, opts)
--- end

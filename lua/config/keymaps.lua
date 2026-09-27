@@ -35,10 +35,10 @@ local toggle_quickfix = function()
 end
 
 -- system
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = "Netrw Explorer" })
 vim.keymap.set("n", "<leader>w", "<cmd>silent update<cr>", { desc = "Write", silent = true })
 vim.keymap.set("n", "<leader>lp", "<cmd>lua vim.pack.update()<cr>", { desc = "Pack Update" })
 vim.keymap.set("n", "<leader>ld", delete_pack, { desc = "Pack Delete" })
-vim.keymap.set("n", "<leader>lr", "<cmd>restart<cr>", { desc = "Restart" })
 vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth<cr>", { desc = "Check Health" })
 
 -- code
@@ -53,3 +53,4 @@ vim.keymap.set("n", "<leader>uq", toggle_quickfix, { desc = "Toggle Quickfix Win
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>ba", "<cmd>b#<cr>", { desc = "Alternative Buffer" })
+vim.keymap.set("n", "<Esc><Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })

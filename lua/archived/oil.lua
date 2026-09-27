@@ -4,4 +4,4 @@ require("oil").setup({
 	default_file_explorer = false,
 })
 
-vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Oil Explorer" })
+vim.keymap.set("n", "<leader>O", "<cmd>Oil<cr>", { desc = "Oil Explorer" })

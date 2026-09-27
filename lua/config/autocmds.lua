@@ -23,3 +23,18 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.conceallevel = 1
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("cyrusn_help_settings", { clear = true }),
+	pattern = "help",
+	command = "wincmd L",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "netrw",
+	callback = function()
+		vim.opt_local.number = true -- Enable line numbers safely
+		vim.opt_local.wrap = false -- Disable line wrapping
+		vim.opt_local.bufhidden = "hide" -- Avoid breaking buffer sequences
+	end,
+})

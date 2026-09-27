@@ -22,6 +22,7 @@ require("conform").setup({
 		html = { "prettier" },
 		css = { "prettier" },
 		javascript = { "prettier" },
+		javascriptreact = { "prettier" },
 		typescript = { "prettier" },
 		json = { "prettier" },
 		lua = { "stylua" },

@@ -1,5 +1,5 @@
 vim.g.netrw_preview = 1
-vim.g.netrw_liststyle = 3
+vim.g.netrw_liststyle = 0
 vim.g.netrw_winsize = 30
 vim.g.netrw_sizestyle = "h"
 vim.g.netrw_banner = 0
@@ -49,3 +49,4 @@ vim.opt.tabstop = 2
 vim.opt.timeoutlen = 300
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 200
+vim.o.showmode = true
