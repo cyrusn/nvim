@@ -5,14 +5,20 @@ require("mini.pick").setup({
 	},
 	window = {
 		config = {
-			border = "rounded",
-			relative = "cursor",
+			border = "double",
 			anchor = "NW",
-			row = 2,
-			col = 4,
-			width = 80,
-			height = 15,
+      -- relative = "cursor",
+			-- row = 1,
+			-- col = -1,
+			-- width = math.max(math.floor(vim.o.columns / 3), 60),
+			-- height = math.max(math.floor(vim.o.lines / 3), 15),
+			width = math.floor(vim.o.columns * 0.6),
+			height = math.floor(vim.o.lines * 0.4),
+			-- Center the window on screen
+			col = math.floor(vim.o.columns * 0.2),
+			row = math.floor(vim.o.lines * 0.3),
 		},
+		prompt = "❯ ",
 	},
 })
 
@@ -354,7 +360,6 @@ MiniPick.registry.config_files = function()
 end
 MiniPick.registry.git_status = git_status
 MiniPick.registry.projects = projects
-
 MiniPick.registry.pickers = pickers
 MiniPick.registry.undo_history = undo_history
 

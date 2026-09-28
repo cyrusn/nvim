@@ -1,6 +1,5 @@
 local submodules = {
 	"mini",
-	"snacks",
 	"colorscheme",
 }
 

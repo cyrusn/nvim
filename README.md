@@ -70,9 +70,10 @@ nvim ~/.config/nvim/
 ## Language support
 
 - MiniCompletion supplies LSP completion, documentation, and signature help.
-- MiniSnippets loads the friendly-snippets collection; `<Tab>` advances snippets,
-  navigates the Mini completion menu, applies Sidekick suggestions, then accepts
-  Copilot ghost text as a fallback.
+- MiniSnippets loads the friendly-snippets collection.
+- Copilot Vim provides inline ghost-text suggestions: `<Tab>` accepts a visible
+  suggestion and inserts a literal Tab when none is shown. Sidekick Next Edit
+  Suggestions are separate and use the explicitly enabled Copilot LSP.
 - MiniPick handles file, grep, buffer, Git, diagnostics, history, and LSP
   pickers; MiniExtra adds sources beyond MiniPick's core built-ins. `<C-n>` /
   `<C-p>` move through matches, `<CR>` selects, and `<Tab>` toggles the preview.

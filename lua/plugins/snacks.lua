@@ -1,3 +1,20 @@
+vim.pack.add({ "https://github.com/folke/snacks.nvim" })
+require("snacks").setup({
+	lazygit = { enabled = true },
+	terminal = { enabled = true },
+	toggle = { enabled = true },
+	indent = { enabled = true },
+	bigfile = { enabled = true },
+	quickfile = { enabled = true },
+	scratch = { enabled = true },
+})
+
+vim.keymap.set("n", "<leader>gg", "<cmd>lua Snacks.lazygit()<cr>", { desc = "Lazygit" })
+vim.keymap.set("n", "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", { desc = "Rename File" })
+vim.keymap.set("n", "<leader>b.", "<cmd>lua Snacks.scratch()<cr>", { desc = "Toggle Scratch Buffer" })
+vim.keymap.set("n", "<leader>bs", "<cmd>lua Snacks.scratch.select()<cr>", { desc = "Select Scratch Buffer" })
+
+vim.keymap.set("n", "<leader>ut", "<cmd>lua Snacks.terminal()<cr>", { desc = "Terminal" })
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = vim.api.nvim_create_augroup("cyrusn_snacks_toggle", { clear = true }),
 	callback = function()

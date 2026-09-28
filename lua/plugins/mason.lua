@@ -96,9 +96,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("mason").setup({})
 
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+	automatic_enable = false,
+})
+
+local ensure_installed = vim.tbl_keys(lsp_servers)
+ensure_installed[#ensure_installed + 1] = "copilot"
+
 require("mason-tool-installer").setup({
-	ensure_installed = vim.tbl_keys(lsp_servers),
+	ensure_installed = ensure_installed,
 })
 
 for server, config in pairs(lsp_servers) do
@@ -106,3 +112,5 @@ for server, config in pairs(lsp_servers) do
 	vim.lsp.config(server, config)
 	vim.lsp.enable(server)
 end
+
+vim.lsp.enable("copilot")
