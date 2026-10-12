@@ -2,7 +2,7 @@ vim.g.copilot_no_tab_map = true
 
 vim.pack.add({ "https://github.com/github/copilot.vim" })
 
-vim.keymap.set("i", "<C-y>", function()
+vim.keymap.set({ "n", "i" }, "<C-y>", function()
 	if vim.fn.pumvisible() == 1 then
 		return vim.api.nvim_replace_termcodes("<C-n>", true, false, true)
 	end

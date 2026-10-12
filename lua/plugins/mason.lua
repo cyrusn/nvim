@@ -21,6 +21,7 @@ local lsp_servers = {
 						"require",
 						"MiniCompletion",
 						"MiniExtra",
+						"MiniVisits",
 						"MiniPick",
 						"MiniSessions",
 						"MiniSnippets",

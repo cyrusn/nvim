@@ -38,6 +38,9 @@ local miniclue_opts = {
 		{ mode = "n", keys = "<leader>sh", desc = "Search History" },
 		{ mode = "n", keys = "<leader>sg", desc = "Search Git" },
 		{ mode = "n", keys = "<leader>s/", desc = "Grep" },
+		{ mode = "n", keys = "<leader>v", desc = "Visits" },
+		{ mode = "n", keys = "<leader>r", desc = "Rename" },
+
 		{ mode = "n", keys = "gr", desc = "LSP" },
 	},
 	window = {

@@ -43,6 +43,10 @@ vim.keymap.set("n", "<leader>lh", "<cmd>checkhealth<cr>", { desc = "Check Health
 
 -- code
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set('n', '<leader>cq', function()
+  vim.fn.setqflist({}, 'r')
+  print("Quickfix list cleared!")
+end, { desc = "Clear quickfix list" })
 
 -- quickfix
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "Next Quickfix" })
