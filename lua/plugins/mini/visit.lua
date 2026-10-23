@@ -9,6 +9,14 @@ local map = vim.keymap.set
 -- Remembers the currently active topic label (defaults to "core")
 local active_label = "core"
 
+map("n", "]v", function()
+	MiniVisits.iterate_paths("forward", vim.fn.getcwd(), { filter = active_label, wrap = true })
+end, { desc = "Next active visit" })
+
+map("n", "[v", function()
+	MiniVisits.iterate_paths("backward", vim.fn.getcwd(), { filter = active_label, wrap = true })
+end, { desc = "Previous active visit" })
+
 local function is_valid_file_buffer(buf)
 	local path = vim.api.nvim_buf_get_name(buf)
 	return path ~= "" and vim.bo[buf].buftype == "", path

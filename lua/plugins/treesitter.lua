@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
 
-require("nvim-treesitter").install({
+local parsers = {
 	"bash",
 	"comment",
 	"css",
@@ -26,7 +26,17 @@ require("nvim-treesitter").install({
 	"vimdoc",
 	"yaml",
 	"json",
-})
+}
+
+if vim.fn.executable("tree-sitter") == 1 then
+	require("nvim-treesitter").install(parsers)
+else
+	vim.notify(
+		"Skipping parser installs: `tree-sitter` CLI is not available. Install it to enable parser updates.",
+		vim.log.levels.WARN,
+		{ title = "nvim-treesitter" }
+	)
+end
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("treesitter_highlight", { clear = true }),

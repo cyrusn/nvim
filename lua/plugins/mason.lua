@@ -104,14 +104,88 @@ require("mason-lspconfig").setup({
 local ensure_installed = vim.tbl_keys(lsp_servers)
 ensure_installed[#ensure_installed + 1] = "copilot"
 
+local enabled_servers = {}
+
+local function enable_available_servers()
+	local unavailable = {}
+	for _, server in ipairs(ensure_installed) do
+		local server_config = vim.lsp.config[server]
+		local cmd = server_config and server_config.cmd
+		local executable = type(cmd) == "table" and cmd[1] or nil
+		if not enabled_servers[server] then
+			if type(executable) == "string" and vim.fn.executable(executable) == 1 then
+				vim.lsp.enable(server)
+				enabled_servers[server] = true
+			else
+				unavailable[#unavailable + 1] = server
+			end
+		end
+	end
+	return unavailable
+end
+
+local installer_errors = {}
+local original_notify
+local filtered_notify
+
+local function report_install_result()
+	if filtered_notify and vim.notify == filtered_notify then
+		vim.notify = original_notify
+	end
+	filtered_notify = nil
+
+	local unavailable = enable_available_servers()
+	local failed_packages = {}
+	for _, message in ipairs(installer_errors) do
+		failed_packages[#failed_packages + 1] = message:gsub(": failed to install$", "")
+	end
+	installer_errors = {}
+
+	if #failed_packages == 0 and #unavailable == 0 then
+		return
+	end
+
+	local details = {}
+	if #failed_packages > 0 then
+		details[#details + 1] = "install failed: " .. table.concat(failed_packages, ", ")
+	end
+	if #unavailable > 0 then
+		details[#details + 1] = "LSP unavailable: " .. table.concat(unavailable, ", ")
+	end
+	vim.notify(table.concat(details, "; "), vim.log.levels.WARN, { title = "Mason" })
+end
+
+vim.api.nvim_create_autocmd("User", {
+	group = vim.api.nvim_create_augroup("cyrusn_mason_install_notifications", { clear = true }),
+	pattern = "MasonToolsStartingInstall",
+	callback = function()
+		installer_errors = {}
+		original_notify = vim.notify
+		filtered_notify = function(message, level, opts)
+			if opts and opts.title == "mason-tool-installer" and level == vim.log.levels.ERROR then
+				installer_errors[#installer_errors + 1] = tostring(message)
+				return
+			end
+			return original_notify(message, level, opts)
+		end
+		vim.notify = filtered_notify
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	group = vim.api.nvim_create_augroup("cyrusn_mason_install_complete", { clear = true }),
+	pattern = "MasonToolsUpdateCompleted",
+	callback = report_install_result,
+})
+
 require("mason-tool-installer").setup({
 	ensure_installed = ensure_installed,
+	run_on_start = true,
 })
 
 for server, config in pairs(lsp_servers) do
 	config.capabilities = capabilities
 	vim.lsp.config(server, config)
-	vim.lsp.enable(server)
 end
 
-vim.lsp.enable("copilot")
+enable_available_servers()
