@@ -13,10 +13,6 @@ local session_name = function()
 	return string.format("%s-%s", basename, vim.fn.sha256(root):sub(1, 12))
 end
 
-local legacy_session_name = function()
-	return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-end
-
 local load_project_session = function()
 	local name = session_name()
 	if MiniSessions.detected[name] then

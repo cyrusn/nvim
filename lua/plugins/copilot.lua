@@ -12,9 +12,9 @@ vim.keymap.set({ "n", "i" }, "<C-y>", function()
 		return ""
 	end
 
-	if require("sidekick").nes_jump_or_apply() then
-		return ""
-	end
+	-- if require("sidekick").nes_jump_or_apply() then
+	-- 	return ""
+	-- end
 
 	return vim.fn["copilot#Accept"]("\t")
 end, {

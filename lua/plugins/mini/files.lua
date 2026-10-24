@@ -6,7 +6,6 @@ MiniFiles.setup({
 		go_out = "H",
 		go_out_plus = "h",
 	},
-
 	windows = {
 		preview = true,
 		width_focus = 25,
@@ -14,7 +13,12 @@ MiniFiles.setup({
 		width_preview = 60,
 	},
 })
+local minifiles_toggle = function(...)
+	if MiniFiles.close() == nil then
+		MiniFiles.open(...)
+	end
+end
 
 vim.keymap.set("n", "<leader>e", function()
-	MiniFiles.open(vim.api.nvim_buf_get_name(0))
+	minifiles_toggle(vim.api.nvim_buf_get_name(0))
 end, { desc = "Explorer" })

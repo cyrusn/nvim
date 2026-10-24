@@ -20,6 +20,7 @@ end
 vim.keymap.set("n", "<leader>bd", function()
 	delete_buffer(vim.api.nvim_get_current_buf())
 end, { desc = "Close Current Buffer" })
+
 vim.keymap.set("n", "<leader>bo", function()
 	local current = vim.api.nvim_get_current_buf()
 	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
