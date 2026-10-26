@@ -1,19 +1,22 @@
 vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 require("snacks").setup({
-	lazygit = { enabled = true },
-	terminal = { enabled = true },
-	toggle = { enabled = true },
-	indent = { enabled = true },
 	bigfile = { enabled = true },
+	bufdelete = { enabled = true },
+	indent = { enabled = true },
+	lazygit = { enabled = true },
 	quickfile = { enabled = true },
 	scratch = { enabled = true },
 	statuscolumn = { enabled = true },
+	terminal = { enabled = true },
+	toggle = { enabled = true },
 })
 
 vim.keymap.set("n", "<leader>gg", "<cmd>lua Snacks.lazygit()<cr>", { desc = "Lazygit" })
 vim.keymap.set("n", "<leader>cn", "<cmd>lua Snacks.rename.rename_file()<cr>", { desc = "Rename File" })
 vim.keymap.set("n", "<leader>b.", "<cmd>lua Snacks.scratch()<cr>", { desc = "Toggle Scratch Buffer" })
 vim.keymap.set("n", "<leader>bs", "<cmd>lua Snacks.scratch.select()<cr>", { desc = "Select Scratch Buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>lua Snacks.bufdelete.delete()<cr>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bo", "<cmd>lua Snacks.bufdelete.other()<cr>", { desc = "Delete other buffers" })
 
 vim.keymap.set("n", "<leader>ut", "<cmd>lua Snacks.terminal()<cr>", { desc = "Terminal" })
 vim.api.nvim_create_autocmd("VimEnter", {
